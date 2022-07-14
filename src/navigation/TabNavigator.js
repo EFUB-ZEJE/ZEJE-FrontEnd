@@ -11,6 +11,7 @@ const Tab = createBottomTabNavigator();
 export default function TabNavigator() {
   return (
     <Tab.Navigator
+      initialRouteName="AroundTab" // 개발하는 페이지에 맞는걸로 설정해두면 편리할듯.
       screenOptions={{
         //tabBarShowLabel: false,
         tabBarActiveTintColor: 'black',
