@@ -4,6 +4,7 @@ import {Dimensions} from 'react-native';
 import styled from 'styled-components';
 import Icon from '../../assets/images/Icon';
 import {theme} from '../../styles/theme';
+import font from '../fonts/font';
 
 const Container = styled.View`
   width: 100%;
@@ -16,19 +17,15 @@ const Container = styled.View`
   align-items: center;
 `;
 
-const H3 = styled.Text`
-  color: white;
-  font-size: 16px;
-  font-weight: 700;
-`;
-
 export default function CommonBanner({text, onClick}) {
   const width = Dimensions.get('window').width;
   console.log(Icon);
   return (
     <Container width={width}>
       <Image source={Icon.SproutIcon} style={{width: 43, height: 43}} />
-      <H3>{text}</H3>
+      <font.title.Subhead_long3 color={'white'}>
+        {text}
+      </font.title.Subhead_long3>
       <Image
         source={Icon.RightArrowIcon}
         style={{width: 24, height: 24, marginLeft: 30}}
