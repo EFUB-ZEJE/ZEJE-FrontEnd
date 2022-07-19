@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import HomeStackNavigator from './HomeStackNavigator';
 import MyListStackNavigator from './MyListStackNavigator';
 import RememberStackNavigator from './RememberStackNavigator';
