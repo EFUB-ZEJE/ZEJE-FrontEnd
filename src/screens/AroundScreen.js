@@ -1,9 +1,9 @@
 import {View, Text} from 'react-native';
 import React from 'react';
-import CommonBanner from '../components/common/CommonBanner';
+import CommonBanner from '../components/Around/CommonBanner';
 import styled from 'styled-components';
-import SmallBanner from '../components/common/SmallBanner';
-import PhotoBanner from '../components/common/PhotoBanner';
+import SmallBanner from '../components/Around/SmallBanner';
+import PhotoBanner from '../components/Around/PhotoBanner';
 
 const Container = styled.View`
   display: flex;
