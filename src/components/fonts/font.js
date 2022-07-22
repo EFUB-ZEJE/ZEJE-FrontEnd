@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 
+const k = 1.3;
 // Title
 export const DisPlay5 = styled.Text`
   font-weight: bold;
   color: ${({color}) => (color ? color : 'black')};
-  font-size: 40px;
+  font-size: ${40 * k}px;
   line-height: 52px;
   letter-spacing: -0.3px;
   font-family: 'Pretendard';
@@ -13,7 +14,7 @@ export const DisPlay5 = styled.Text`
 const DisPlay4 = styled.Text`
   font-weight: bold;
   color: ${({color}) => (color ? color : 'black')};
-  font-size: 36px;
+  font-size: ${36 * k}px;
   line-height: 46px;
   letter-spacing: -0.3px;
   font-family: 'Pretendard';
@@ -22,7 +23,7 @@ const DisPlay4 = styled.Text`
 const DisPlay3 = styled.Text`
   font-weight: bold;
   color: ${({color}) => (color ? color : 'black')};
-  font-size: 32px;
+  font-size: ${32 * k}px;
   line-height: 42px;
   letter-spacing: -0.3px;
   font-family: 'Pretendard';
@@ -30,7 +31,7 @@ const DisPlay3 = styled.Text`
 const DisPlay2 = styled.Text`
   font-weight: bold;
   color: ${({color}) => (color ? color : 'black')};
-  font-size: 28px;
+  font-size: ${28 * k}px;
   line-height: 38px;
   letter-spacing: -0.3px;
   font-family: 'Pretendard';
@@ -39,7 +40,7 @@ const DisPlay2 = styled.Text`
 const DisPlay1 = styled.Text`
   font-weight: bold;
   color: ${({color}) => (color ? color : 'black')};
-  font-size: 24px;
+  font-size: ${24 * k}px;
   line-height: 34px;
   letter-spacing: -0.3px;
   font-family: 'Pretendard';
@@ -48,7 +49,7 @@ const DisPlay1 = styled.Text`
 const Headline = styled.Text`
   font-weight: bold;
   color: ${({color}) => (color ? color : 'black')};
-  font-size: 20px;
+  font-size: ${20 * k}px;
   line-height: 28px;
   letter-spacing: -0.3px;
   font-family: 'Pretendard';
@@ -57,7 +58,7 @@ const Headline = styled.Text`
 const Subhead1 = styled.Text`
   font-weight: bold;
   color: ${({color}) => (color ? color : 'black')};
-  font-size: 12px;
+  font-size: ${12 * k}px;
   line-height: 18px;
   letter-spacing: -0.3px;
   font-family: 'Pretendard';
@@ -66,7 +67,7 @@ const Subhead1 = styled.Text`
 const Subhead2 = styled.Text`
   font-weight: bold;
   color: ${({color}) => (color ? color : 'black')};
-  font-size: 14px;
+  font-size: ${14 * k}px;
   line-height: 20px;
   letter-spacing: -0.3px;
   font-family: 'Pretendard';
@@ -75,7 +76,7 @@ const Subhead2 = styled.Text`
 const Subhead3 = styled.Text`
   font-weight: bold;
   color: ${({color}) => (color ? color : 'black')};
-  font-size: 16px;
+  font-size: ${16 * k}px;
   line-height: 22px;
   letter-spacing: -0.3px;
   font-family: 'Pretendard';
@@ -84,7 +85,7 @@ const Subhead3 = styled.Text`
 const Subhead_long2 = styled.Text`
   font-weight: bold;
   color: ${({color}) => (color ? color : 'black')};
-  font-size: 14px;
+  font-size: ${14 * k}px;
   line-height: 24px;
   letter-spacing: -0.3px;
   font-family: 'Pretendard';
@@ -93,7 +94,7 @@ const Subhead_long2 = styled.Text`
 const Subhead_long3 = styled.Text`
   font-weight: bold;
   color: ${({color}) => (color ? color : 'black')};
-  font-size: 16px;
+  font-size: ${16 * k}px;
   line-height: 28px;
   letter-spacing: -0.3px;
   font-family: 'Pretendard';
@@ -104,7 +105,7 @@ const regular = 400; //regular는 우선 400으로
 const Body1 = styled.Text`
   font-weight: ${regular};
   color: ${({color}) => (color ? color : 'black')};
-  font-size: 14px;
+  font-size: ${14 * k}px;
   line-height: 20px;
   letter-spacing: -0.6px;
   font-family: 'Pretendard';
@@ -112,7 +113,7 @@ const Body1 = styled.Text`
 const Body2 = styled.Text`
   font-weight: ${regular};
   color: ${({color}) => (color ? color : 'black')};
-  font-size: 16px;
+  font-size: ${16 * k}px;
   line-height: 24px;
   letter-spacing: -0.6px;
   font-family: 'Pretendard';
@@ -121,7 +122,7 @@ const Body2 = styled.Text`
 const Body_long1 = styled.Text`
   font-weight: ${regular};
   color: ${({color}) => (color ? color : 'black')};
-  font-size: 14px;
+  font-size: ${14 * k}px;
   line-height: 24px;
   letter-spacing: -0.6px;
   font-family: 'Pretendard';
@@ -129,7 +130,7 @@ const Body_long1 = styled.Text`
 const Body_long2 = styled.Text`
   font-weight: ${regular};
   color: ${({color}) => (color ? color : 'black')};
-  font-size: 16px;
+  font-size: ${16 * k}px;
   line-height: 28px;
   letter-spacing: -0.6px;
   font-family: 'Pretendard';
@@ -138,7 +139,7 @@ const Body_long2 = styled.Text`
 const Caption = styled.Text`
   font-weight: ${regular};
   color: ${({color}) => (color ? color : 'black')};
-  font-size: 12px;
+  font-size: ${12 * k}px;
   line-height: 28px;
   letter-spacing: -0.6px;
   font-family: 'Pretendard';
