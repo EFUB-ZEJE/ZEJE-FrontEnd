@@ -4,7 +4,6 @@ import {Dimensions} from 'react-native';
 import styled from 'styled-components';
 import Icon from '../../assets/images/Icon';
 import {theme} from '../../styles/theme';
-import font from '../fonts/font';
 
 /*https://reactnative.dev/docs/imagebackground*/
 const image = {
@@ -24,6 +23,12 @@ const Background = styled.ImageBackground`
   padding: 20px;
 `;
 
+const H3 = styled.Text`
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+`;
+
 const Wrapper = styled.View`
   display: flex;
   flex-direction: row;
@@ -35,7 +40,7 @@ export default function PhotoBanner({text, onClick}) {
   return (
     <Background>
       <Wrapper>
-        <font.title.Subhead3 color="white">{text}</font.title.Subhead3>
+        <H3>{text}</H3>
         <Image source={Icon.RightArrowIcon} style={{width: 24, height: 24}} />
       </Wrapper>
     </Background>
