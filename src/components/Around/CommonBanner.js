@@ -4,34 +4,28 @@ import {Dimensions} from 'react-native';
 import styled from 'styled-components';
 import Icon from '../../assets/images/Icon';
 import {theme} from '../../styles/theme';
-
+import font from '../fonts/font';
 const Container = styled.View`
   width: 100%;
   height: 80px;
-  background-color: ${theme.colors.main};
-  border-radius: 10px;
+  background-color: ${({bgColor}) => bgColor};
+  border-radius: 15px;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  padding: 20px;
   align-items: center;
 `;
 
-const H3 = styled.Text`
-  color: white;
-  font-size: 16px;
-  font-weight: 700;
-`;
-
-export default function CommonBanner({text, onClick}) {
+export default function CommonBanner({text, onClick, color, bgColor}) {
   const width = Dimensions.get('window').width;
   console.log(Icon);
   return (
-    <Container width={width}>
-      <Image source={Icon.SproutIcon} style={{width: 43, height: 43}} />
-      <H3>{text}</H3>
+    <Container width={width} bgColor={bgColor}>
+      <font.title.Subhead3 color={color}>{text}</font.title.Subhead3>
       <Image
         source={Icon.RightArrowIcon}
-        style={{width: 24, height: 24, marginLeft: 30}}
+        style={{width: 24, height: 24, marginLeft: 30, tintColor: color}}
       />
     </Container>
   );
