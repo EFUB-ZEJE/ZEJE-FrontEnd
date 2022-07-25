@@ -6,9 +6,8 @@ const HomeStack = createNativeStackNavigator();
 
 export default function HomeStackNavigator() {
   return (
-    <HomeStack.Navigator>
+    <HomeStack.Navigator screenOptions={{headerShown: false}}>
       <HomeStack.Screen name="Home" component={HomeScreen} />
-      {/*이부분에 Home탭에서 사용할 스크린 추가 */}
     </HomeStack.Navigator>
   );
 }
