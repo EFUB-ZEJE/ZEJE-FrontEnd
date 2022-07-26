@@ -6,6 +6,9 @@ export const palette = {
   orange400: '#FFBA50', // 방문한 포인트 스팟 연한 글씨
   green100: '#E6F6ED', // 배너 뒷배경
   green300: '#9ADAB6', // 배너 화살표
+  gray50: '#FBFBFB',
+  gray150: '#EBEBEB',
+  gray200: '#DCDCDC',
   gray600: '#221E1A', // 서체 색상
   gray350: '#8E8A83', // 포인트 스팟 주소목록
 };
@@ -15,5 +18,7 @@ export const theme = {
     main: palette.orange,
     font: palette.gray600,
     black: palette.black,
+    home_background: palette.gray50,
+    divider: palette.gray150,
   },
 };
