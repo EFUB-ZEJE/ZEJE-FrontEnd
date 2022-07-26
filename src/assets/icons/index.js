@@ -1,3 +1,10 @@
 export {default as GoBack} from './GoBackIcon.svg';
 export {default as List} from './ListIcon.svg';
 export {default as Map} from './MapIcon.svg';
+export {default as Search} from './SearchIcon.svg';
+export {default as Sort} from './SortIcon.svg';
+export {default as HeartOutline} from './HeartOutlineIcon.svg';
+export {default as HeartFilled} from './HeartFilledIcon.svg';
+export {default as RadioTrue} from './RadioTrueIcon.svg';
+export {default as RadioFalse} from './RadioFalseIcon.svg';
+export {default as Close} from './CloseIcon.svg';
