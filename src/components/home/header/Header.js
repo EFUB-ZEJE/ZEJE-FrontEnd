@@ -1,9 +1,15 @@
 import {Image, Row} from 'native-base';
 import React from 'react';
+import {HEADER_HEIGHT} from '../../../styles/layout';
 
 export default function Header() {
   return (
-    <Row justifyContent={'space-between'} px={18} py={5} bgColor={'white'}>
+    <Row
+      justifyContent={'space-between'}
+      alignItems={'center'}
+      h={HEADER_HEIGHT}
+      px={18}
+      bgColor={'white'}>
       <Image
         alt="logo"
         style={{width: 69, height: 33}}

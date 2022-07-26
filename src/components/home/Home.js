@@ -1,24 +1,23 @@
 import React from 'react';
-import {Box, Image} from 'native-base';
-import GoToAroundScreenButton from './GoToAroundScreenButton';
+import {Column} from 'native-base';
 import {theme} from '../../styles/theme';
+import layout, {BOTTOM_HEIGHT, HEADER_HEIGHT} from '../../styles/layout';
+import Tree from './Tree';
+import GoToAroundScreenButton from './GoToAroundScreenButton';
 
 export default function Home() {
+  const HOME_HEIGHT = layout.window.height - HEADER_HEIGHT - BOTTOM_HEIGHT;
   return (
-    <Box
-      h={'100%'}
+    <Column
+      h={HOME_HEIGHT}
+      justifyContent={'center'}
       borderColor={theme.colors.divider}
       borderTopWidth={1}
-      borderBottomWidth={1}>
-      <Image
-        alt="tree background"
-        h={'67%'}
-        px={'20px'}
-        justifyContent={'flex-start'}
-        resizeMode={'contain'}
-        source={require(`../../assets/images/tree.png`)}
-      />
+      borderBottomWidth={1}
+      space={'5%'}
+      py={6}>
+      <Tree />
       <GoToAroundScreenButton />
-    </Box>
+    </Column>
   );
 }

@@ -7,12 +7,12 @@ function GoToAroundScreenButton() {
   return (
     <Pressable
       bgColor={theme.colors.main}
-      h={'10%'}
+      h={'50px'}
       w={'320px'}
       borderRadius={15}
       alignSelf={'center'}
       justifyContent={'center'}>
-      <Row w={'320px'} justifyContent={'space-around'}>
+      <Row justifyContent={'space-around'}>
         <Subhead3 style={{color: 'white'}}>여행지 방문해 꽃 더 모으기</Subhead3>
         <Image
           alt="arrow right"

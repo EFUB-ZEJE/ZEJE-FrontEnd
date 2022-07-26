@@ -4,8 +4,8 @@ import MyListStackNavigator from './MyListStackNavigator';
 import RememberStackNavigator from './RememberStackNavigator';
 import MyPageStackNavigator from './MyPageStackNavigator';
 import AroundStackNavigator from './AroundStackNavigator';
-
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {BOTTOM_HEIGHT} from '../styles/layout';
 
 const Tab = createBottomTabNavigator();
 export default function TabNavigator() {
@@ -16,7 +16,7 @@ export default function TabNavigator() {
         tabBarActiveTintColor: 'black',
         tabBarStyle: {
           width: '100%',
-          height: '10%', // 74/776 = 10 % 로 어림해서 계산
+          height: BOTTOM_HEIGHT,
         },
       }}>
       <Tab.Screen
