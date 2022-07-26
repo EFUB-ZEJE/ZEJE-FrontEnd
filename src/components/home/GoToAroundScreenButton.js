@@ -1,7 +1,7 @@
 import React from 'react';
 import {Image, Pressable, Row} from 'native-base';
 import {theme} from '../../styles/theme';
-import {Subhead3} from '../../styles/typography';
+import {Subhead3} from '../fonts/font';
 
 function GoToAroundScreenButton() {
   return (
