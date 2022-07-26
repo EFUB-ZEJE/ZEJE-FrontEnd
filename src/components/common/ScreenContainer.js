@@ -9,5 +9,5 @@ export default ScreenContainer;
 
 const Container = styled.ScrollView`
   background-color: white;
-  padding: 12px 20px;
+  padding: 16px 20px;
 `;
