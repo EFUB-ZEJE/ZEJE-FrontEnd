@@ -20,5 +20,7 @@ export const theme = {
     black: palette.black,
     search: palette.gray100,
     searchText: palette.gray250,
+    home_background: palette.gray50,
+    divider: palette.gray150,
   },
 };
