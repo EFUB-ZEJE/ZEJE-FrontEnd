@@ -1,46 +1,59 @@
-import {ImageBackground, View, Text, Image} from 'react-native';
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {Dimensions} from 'react-native';
 import styled from 'styled-components';
-import Icon from '../../assets/images/Icon';
 import {theme} from '../../styles/theme';
-/*https://reactnative.dev/docs/imagebackground*/
-const image = {
-  uri: 'https://a.cdn-hotels.com/gdcs/production98/d1029/31b58e32-dd0c-4b74-8b96-c4d873979ee3.jpg?impolicy=fcrop&w=1600&h=1066&q=medium',
-};
 import font from '../../styles/font.js';
+import DropShadow from 'react-native-drop-shadow';
+import {RightArrow} from '../../assets/icons';
 
-const Background = styled.ImageBackground`
-  width: 100%;
-  height: 25%;
-  background-color: white;
-  source: image;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  filter: drop-shadow(0px 0px 32px rgba(0, 0, 0, 0.06));
-  padding: 20px;
+export default function PhotoBanner({text, navigation, path}) {
+  return (
+    <DropShadow
+      style={{
+        shadowColor: '#000',
+        shadowOffset: {
+          width: 0,
+          height: 3,
+        },
+        shadowOpacity: 0.06,
+        shadowRadius: 5,
+      }}>
+      <BoxContainer onPress={() => navigation.navigate(path)}>
+        <Wrapper>
+          <font.title.Subhead3>{text}</font.title.Subhead3>
+          <RightArrow color={theme.colors.black} />
+        </Wrapper>
+        <Empty />
+        {/* <ImageContainer source={require('../../assets/images/sample.jpeg')} /> */}
+      </BoxContainer>
+    </DropShadow>
+  );
+}
+
+const BoxContainer = styled.TouchableOpacity`
+  padding-bottom: 16px;
 `;
 
+const Empty = styled.View`
+  background-color: white;
+  width: 100%;
+  height: 158px;
+  border-radius: 10px;
+`;
+
+// const ImageContainer = styled.Image`
+//   width: 100%;
+//   height: 158px;
+//   border-radius: 10px;
+//   opacity: 0.1;
+// `;
+
 const Wrapper = styled.View`
-  display: flex;
+  position: absolute;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  padding: 20px;
+  z-index: 1;
 `;
-
-export default function PhotoBanner({text, onClick}) {
-  return (
-    <Background>
-      <Wrapper>
-        <font.title.Subhead3>{text}</font.title.Subhead3>
-        <Image
-          source={Icon.RightArrowIcon}
-          style={{width: 20, height: 20, tintColor: theme.colors.black}}
-        />
-      </Wrapper>
-    </Background>
-  );
-}
