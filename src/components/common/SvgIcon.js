@@ -3,12 +3,12 @@ import styled from 'styled-components/native';
 
 import * as Icons from '../../assets/icons';
 
-const SvgIcon = ({name, props}) => {
+const SvgIcon = ({name, size, color}) => {
   const Comp = Icons[name];
 
   return (
-    <IconContainer>
-      <Comp {...props} />
+    <IconContainer size={size}>
+      <Comp color={color} />
     </IconContainer>
   );
 };
@@ -18,6 +18,6 @@ export default SvgIcon;
 const IconContainer = styled.View`
   justify-content: center;
   align-items: center;
-  height: 36px;
-  width: 36px;
+  height: ${props => (props.size ? props.size : '36px')};
+  width: ${props => (props.size ? props.size : '36px')};
 `;
