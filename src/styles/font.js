@@ -146,8 +146,7 @@ export const Caption = styled.Text`
   font-family: 'Pretendard';
 `;
 // ------------------------------------------------------
-
-export const font = {
+const font = {
   title: {
     DisPlay1: DisPlay1,
     DisPlay2: DisPlay2,
@@ -170,3 +169,5 @@ export const font = {
     Caption: Caption,
   },
 };
+
+export default font;
