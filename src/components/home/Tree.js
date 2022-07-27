@@ -8,7 +8,7 @@ function Tree() {
     <Box>
       <Row
         position={'absolute'}
-        top={4}
+        top={'3%'}
         zIndex={10}
         justifyContent={'center'}
         alignSelf={'center'}
