@@ -2,9 +2,9 @@
 import React from 'react';
 import {View, TouchableOpacity} from 'react-native';
 import styled from 'styled-components/native';
-import font from '../fonts/font.js';
+import font from '../../styles/font.js';
 import DropShadow from 'react-native-drop-shadow';
-import {SvgIcon} from '../../components';
+import SvgIcon from '../common/SvgIcon';
 
 // DropShadow 해결 방법 찾는 중
 const ImageCard = ({id, title, address, liked, handleLike}) => {
@@ -52,7 +52,6 @@ const ImageContainer = styled.Image`
   height: 180px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  background-color: lightgray;
 `;
 
 const TextContainer = styled.View`

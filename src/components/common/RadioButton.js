@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import {SvgIcon} from '../../components';
-import font from '../fonts/font.js';
+import SvgIcon from '../common/SvgIcon';
+import font from '../../styles/font.js';
 
 const RadioButton = ({id, label, activated, handlePress}) => {
   return (

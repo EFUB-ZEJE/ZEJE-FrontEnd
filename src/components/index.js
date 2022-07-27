@@ -5,6 +5,7 @@ import SvgIcon from './common/SvgIcon';
 import SearchBar from './common/SearchBar';
 import BottomSheet from './common/BottomSheet';
 import RadioButton from './common/RadioButton';
+import CommonBanner from './common/CommonBanner';
 
 import FilterBox from './Around/FilterBox';
 import FilterList from './Around/FilterList';
@@ -19,6 +20,7 @@ export {
   SearchBar,
   BottomSheet,
   RadioButton,
+  CommonBanner,
   FilterBox,
   FilterList,
   SortButton,

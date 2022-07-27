@@ -4,7 +4,7 @@ import {Dimensions} from 'react-native';
 import styled from 'styled-components';
 import Icon from '../../assets/images/Icon';
 import {theme, palette} from '../../styles/theme';
-import font from '../fonts/font';
+import font from '../../styles/font.js';
 
 const Container = styled.View`
   width: ${({width}) => (width - 40) / 2 - 10}px;

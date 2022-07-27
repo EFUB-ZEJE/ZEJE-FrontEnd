@@ -13,7 +13,7 @@ import {
   SvgIcon,
   RadioButton,
 } from '../../components';
-import font from '../../components/fonts/font';
+import font from '../../styles/font.js';
 import {theme} from '../../styles/theme.js';
 
 export default function TourMainScreen({navigation}) {
