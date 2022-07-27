@@ -1,3 +1,4 @@
+// 베껴온 거라 수정 필요
 import React, {useEffect, useRef} from 'react';
 import {
   View,
