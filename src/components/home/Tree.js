@@ -5,14 +5,14 @@ import LeftWalks from './LeftWalks';
 
 function Tree() {
   return (
-    <Box h={'80%'} mt={-5}>
+    <Box h={'85%'} mt={-5}>
       <Row
         position={'absolute'}
-        top={4}
+        top={'3%'}
         zIndex={10}
         justifyContent={'center'}
         alignSelf={'center'}
-        space={5}>
+        space={'3%'}>
         <LeftFlowers leftFlowers={0} />
         <LeftWalks leftWalks={0} />
       </Row>

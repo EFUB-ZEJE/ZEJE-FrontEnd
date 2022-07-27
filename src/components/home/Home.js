@@ -14,7 +14,7 @@ export default function Home() {
       borderColor={theme.colors.divider}
       borderTopWidth={1}
       borderBottomWidth={1}
-      space={'5%'}
+      space={'3%'}
       py={6}>
       <Tree />
       <GoToAroundScreenButton />
