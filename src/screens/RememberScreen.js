@@ -1,10 +1,14 @@
-import {View, Text} from 'react-native';
 import React from 'react';
+import {Text} from 'react-native';
+import {ScreenContainer, ScreenHeader} from '../components';
 
-export default function RememberScreen() {
+export default function RememberScreen({navigation}) {
   return (
-    <View>
-      <Text>RememberScreen</Text>
-    </View>
+    <>
+      <ScreenHeader navigation={navigation} screenTitle="기록하기" />
+      <ScreenContainer>
+        <Text>기록하기 스크린</Text>
+      </ScreenContainer>
+    </>
   );
 }

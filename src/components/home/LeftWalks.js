@@ -15,7 +15,7 @@ function LeftWalks({leftWalks}) {
       <Image
         alt="leaf icon"
         size="16px"
-        source={require(`../../assets/images/leaf.png`)}
+        source={require('../../assets/images/leaf.png')}
       />
 
       <Text fontSize={12} color={theme.colors.font} fontWeight={700}>

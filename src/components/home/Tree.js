@@ -5,14 +5,14 @@ import LeftWalks from './LeftWalks';
 
 function Tree() {
   return (
-    <Box h={'85%'} mt={-5}>
+    <Box>
       <Row
         position={'absolute'}
         top={'3%'}
         zIndex={10}
         justifyContent={'center'}
         alignSelf={'center'}
-        space={'3%'}>
+        space={20}>
         <LeftFlowers leftFlowers={0} />
         <LeftWalks leftWalks={0} />
       </Row>
@@ -20,7 +20,7 @@ function Tree() {
         alt="tree background"
         h={'100%'}
         resizeMode={'contain'}
-        source={require(`../../assets/images/tree.png`)}
+        source={require('../../assets/images/tree.png')}
       />
     </Box>
   );
