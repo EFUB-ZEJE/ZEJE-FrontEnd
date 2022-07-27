@@ -1,9 +1,12 @@
-import {Box, Image, Row} from 'native-base';
+import {Box, Image, Pressable, Row} from 'native-base';
 import React from 'react';
+import {useOrangeInfoModal} from '../../recoil/modal/useModals';
 import LeftFlowers from './LeftFlowers';
 import LeftWalks from './LeftWalks';
 
 function Tree() {
+  const {openModal} = useOrangeInfoModal();
+
   return (
     <Box h={'85%'} mt={-5}>
       <Row
@@ -16,12 +19,14 @@ function Tree() {
         <LeftFlowers leftFlowers={0} />
         <LeftWalks leftWalks={0} />
       </Row>
-      <Image
-        alt="tree background"
-        h={'100%'}
-        resizeMode={'contain'}
-        source={require(`../../assets/images/tree.png`)}
-      />
+      <Pressable onPress={openModal}>
+        <Image
+          alt="tree background"
+          h={'100%'}
+          resizeMode={'contain'}
+          source={require(`../../assets/images/tree.png`)}
+        />
+      </Pressable>
     </Box>
   );
 }
