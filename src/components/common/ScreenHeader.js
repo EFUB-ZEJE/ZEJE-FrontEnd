@@ -8,45 +8,68 @@ import SizedBox from '../common/SizedBox';
 import SearchBar from '../common/SearchBar';
 
 const ScreenHeader = ({
-  navigation: {goBack},
+  isHome,
+  navigation,
   screenTitle,
   canGoBack,
   rightIcon,
   canSearch,
   placeholder,
   handleChange,
+  handlePress,
 }) => {
   return (
     <HeaderWrapper>
       <LineWrapper>
-        <TitleWrapper>
-          {canGoBack ? (
-            <>
+        {isHome ? (
+          <>
+            <Logo alt="logo" source={require('../../assets/images/logo.png')} />
+            <Wrapper>
               <TouchableOpacity
-                onPress={() => {
-                  goBack();
-                }}>
-                <SvgIcon name="GoBack" />
+                onPress={() => navigation.navigate('MypageMain')}>
+                <SvgIcon name="Mypage" />
               </TouchableOpacity>
-              <SizedBox width={16} />
-            </>
-          ) : (
-            <></>
-          )}
-          <font.title.Headline color={theme.colors.main}>
-            {screenTitle}
-          </font.title.Headline>
-        </TitleWrapper>
-        {/* 임시 */}
-        <TouchableOpacity
-          onPress={() => {
-            goBack();
-          }}>
-          {rightIcon ? <SvgIcon name={rightIcon} /> : <></>}
-        </TouchableOpacity>
+              <SizedBox width={12} />
+              <TouchableOpacity
+                onPress={() => navigation.navigate('AlertMain')}>
+                <SvgIcon name="Alert" />
+              </TouchableOpacity>
+            </Wrapper>
+          </>
+        ) : (
+          <>
+            <Wrapper>
+              {canGoBack ? (
+                <>
+                  <TouchableOpacity
+                    onPress={() => {
+                      navigation.goBack();
+                    }}>
+                    <SvgIcon name="GoBack" />
+                  </TouchableOpacity>
+                  <SizedBox width={16} />
+                </>
+              ) : (
+                <SizedBox width={8} />
+              )}
+              <font.title.Headline color={theme.colors.main}>
+                {screenTitle}
+              </font.title.Headline>
+            </Wrapper>
+            <TouchableOpacity
+              onPress={() => {
+                handlePress();
+              }}>
+              {rightIcon ? <SvgIcon name={rightIcon} /> : <></>}
+            </TouchableOpacity>
+          </>
+        )}
       </LineWrapper>
       {canSearch ? (
-        <SearchBar placeholder={placeholder} handleChange={handleChange} />
+        <>
+          <SizedBox height={8} />
+          <SearchBar placeholder={placeholder} handleChange={handleChange} />
+        </>
       ) : (
         <></>
       )}
@@ -60,22 +83,25 @@ const HeaderWrapper = styled.View`
   flex-direction: column;
   align-items: center;
   background-color: white;
-  padding: 16px;
+  padding: 18px 16px;
   border-bottom-width: 1px;
   border-color: ${palette.gray150};
 `;
 
-// 아래 화면이랑 구분하기 위해서 임시로 gray
 const LineWrapper = styled.View`
   width: 100%;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   background-color: white;
-  padding: 12px 0;
 `;
 
-const TitleWrapper = styled.View`
+const Wrapper = styled.View`
   flex-direction: row;
   align-items: center;
+`;
+
+const Logo = styled.Image`
+  width: 69px;
+  height: 33px;
 `;
