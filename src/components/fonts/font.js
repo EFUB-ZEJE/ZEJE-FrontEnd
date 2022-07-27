@@ -11,7 +11,7 @@ export const DisPlay5 = styled.Text`
   font-family: 'Pretendard';
 `;
 
-const DisPlay4 = styled.Text`
+export const DisPlay4 = styled.Text`
   font-weight: bold;
   color: ${({color}) => (color ? color : 'black')};
   font-size: ${36 * k}px;
@@ -20,7 +20,7 @@ const DisPlay4 = styled.Text`
   font-family: 'Pretendard';
 `;
 
-const DisPlay3 = styled.Text`
+export const DisPlay3 = styled.Text`
   font-weight: bold;
   color: ${({color}) => (color ? color : 'black')};
   font-size: ${32 * k}px;
@@ -28,7 +28,8 @@ const DisPlay3 = styled.Text`
   letter-spacing: -0.3px;
   font-family: 'Pretendard';
 `;
-const DisPlay2 = styled.Text`
+
+export const DisPlay2 = styled.Text`
   font-weight: bold;
   color: ${({color}) => (color ? color : 'black')};
   font-size: ${28 * k}px;
@@ -37,7 +38,7 @@ const DisPlay2 = styled.Text`
   font-family: 'Pretendard';
 `;
 
-const DisPlay1 = styled.Text`
+export const DisPlay1 = styled.Text`
   font-weight: bold;
   color: ${({color}) => (color ? color : 'black')};
   font-size: ${24 * k}px;
@@ -46,7 +47,7 @@ const DisPlay1 = styled.Text`
   font-family: 'Pretendard';
 `;
 
-const Headline = styled.Text`
+export const Headline = styled.Text`
   font-weight: bold;
   color: ${({color}) => (color ? color : 'black')};
   font-size: ${20 * k}px;
@@ -55,7 +56,7 @@ const Headline = styled.Text`
   font-family: 'Pretendard';
 `;
 
-const Subhead1 = styled.Text`
+export const Subhead1 = styled.Text`
   font-weight: bold;
   color: ${({color}) => (color ? color : 'black')};
   font-size: ${12 * k}px;
@@ -64,7 +65,7 @@ const Subhead1 = styled.Text`
   font-family: 'Pretendard';
 `;
 
-const Subhead2 = styled.Text`
+export const Subhead2 = styled.Text`
   font-weight: bold;
   color: ${({color}) => (color ? color : 'black')};
   font-size: ${14 * k}px;
@@ -73,7 +74,7 @@ const Subhead2 = styled.Text`
   font-family: 'Pretendard';
 `;
 
-const Subhead3 = styled.Text`
+export const Subhead3 = styled.Text`
   font-weight: bold;
   color: ${({color}) => (color ? color : 'black')};
   font-size: ${16 * k}px;
@@ -82,7 +83,7 @@ const Subhead3 = styled.Text`
   font-family: 'Pretendard';
 `;
 
-const Subhead_long2 = styled.Text`
+export const Subhead_long2 = styled.Text`
   font-weight: bold;
   color: ${({color}) => (color ? color : 'black')};
   font-size: ${14 * k}px;
@@ -91,7 +92,7 @@ const Subhead_long2 = styled.Text`
   font-family: 'Pretendard';
 `;
 
-const Subhead_long3 = styled.Text`
+export const Subhead_long3 = styled.Text`
   font-weight: bold;
   color: ${({color}) => (color ? color : 'black')};
   font-size: ${16 * k}px;
@@ -100,9 +101,9 @@ const Subhead_long3 = styled.Text`
   font-family: 'Pretendard';
 `;
 
-const regular = 400; //regular는 우선 400으로
+export const regular = 400; //regular는 우선 400으로
 
-const Body1 = styled.Text`
+export const Body1 = styled.Text`
   font-weight: ${regular};
   color: ${({color}) => (color ? color : 'black')};
   font-size: ${14 * k}px;
@@ -110,7 +111,7 @@ const Body1 = styled.Text`
   letter-spacing: -0.6px;
   font-family: 'Pretendard';
 `;
-const Body2 = styled.Text`
+export const Body2 = styled.Text`
   font-weight: ${regular};
   color: ${({color}) => (color ? color : 'black')};
   font-size: ${16 * k}px;
@@ -119,7 +120,7 @@ const Body2 = styled.Text`
   font-family: 'Pretendard';
 `;
 
-const Body_long1 = styled.Text`
+export const Body_long1 = styled.Text`
   font-weight: ${regular};
   color: ${({color}) => (color ? color : 'black')};
   font-size: ${14 * k}px;
@@ -127,7 +128,7 @@ const Body_long1 = styled.Text`
   letter-spacing: -0.6px;
   font-family: 'Pretendard';
 `;
-const Body_long2 = styled.Text`
+export const Body_long2 = styled.Text`
   font-weight: ${regular};
   color: ${({color}) => (color ? color : 'black')};
   font-size: ${16 * k}px;
@@ -136,7 +137,7 @@ const Body_long2 = styled.Text`
   font-family: 'Pretendard';
 `;
 
-const Caption = styled.Text`
+export const Caption = styled.Text`
   font-weight: ${regular};
   color: ${({color}) => (color ? color : 'black')};
   font-size: ${12 * k}px;
@@ -146,7 +147,7 @@ const Caption = styled.Text`
 `;
 // ------------------------------------------------------
 
-const font = {
+export const font = {
   title: {
     DisPlay1: DisPlay1,
     DisPlay2: DisPlay2,
@@ -169,5 +170,3 @@ const font = {
     Caption: Caption,
   },
 };
-
-export default font;
