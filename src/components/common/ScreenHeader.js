@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import {palette, theme} from '../../styles/theme.js';
-import font from '../fonts/font.js';
+import font from '../../styles/font.js';
 import {TouchableOpacity} from 'react-native';
-import {SvgIcon, SizedBox, SearchBar} from '../../components';
+import SvgIcon from '../common/SvgIcon';
+import SizedBox from '../common/SizedBox';
+import SearchBar from '../common/SearchBar';
 
 const ScreenHeader = ({
   navigation: {goBack},

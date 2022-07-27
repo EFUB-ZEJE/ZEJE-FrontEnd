@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components/native';
 import {theme} from '../../styles/theme.js';
 import SizedBox from '../common/SizedBox.js';
-import font from '../fonts/font.js';
+import font from '../../styles/font.js';
 
 const FilterBox = ({id, title, activated, handlePress}) => {
   return (

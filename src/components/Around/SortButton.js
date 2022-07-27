@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import {theme} from '../../styles/theme.js';
-import font from '../fonts/font.js';
-import {SvgIcon} from '../../components';
+import font from '../../styles/font.js';
+import SvgIcon from '../common/SvgIcon';
 
 const SortButton = ({sortBy, handlePress}) => {
   return (

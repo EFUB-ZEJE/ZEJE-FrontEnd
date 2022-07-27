@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const k = 1.4;
+const k = 1;
 // Title
 export const DisPlay5 = styled.Text`
   font-weight: bold;
