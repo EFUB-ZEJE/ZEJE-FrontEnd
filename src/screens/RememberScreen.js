@@ -10,7 +10,7 @@ export default function RememberScreen({navigation}) {
           icon="RightArrow"
           text="일기장 추가"
           navigation={navigation}
-          path="BikeMain"
+          path="DairyPost"
         />
       </ScreenContainer>
     </>
