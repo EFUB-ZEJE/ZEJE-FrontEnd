@@ -1,7 +1,13 @@
 import React, {useState} from 'react';
 import {ScreenContainer, ScreenHeader, SortButton} from '../../components';
 import {Text} from 'react-native';
+import Map from './Map';
+import styled from 'styled-components';
 
+const MapContainer = styled.View`
+  width: 100%;
+  height: 100%;
+`;
 export default function SpotMainScreen({navigation}) {
   const [sortType, setSortType] = useState('내 위치 중심');
   const [viewType, setViewType] = useState('List');
@@ -33,7 +39,7 @@ export default function SpotMainScreen({navigation}) {
       />
       <ScreenContainer>
         {viewType === 'List' ? (
-          <Text>지도</Text>
+          <Map />
         ) : (
           <>
             <Text>리스트</Text>
