@@ -13,6 +13,7 @@ import {
   RememberScreen,
   SpotMainScreen,
   ShareInfoMainScreen,
+  DairyPostScreen,
 } from '../screens';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
@@ -40,6 +41,7 @@ export default function StackNavigator() {
       <Stack.Screen name="ShareInfoMain" component={ShareInfoMainScreen} />
 
       <Stack.Screen name="Remember" component={RememberScreen} />
+      <Stack.Screen name="DairyPost" component={DairyPostScreen} />
     </Stack.Navigator>
   );
 }

@@ -13,6 +13,8 @@ import BikeMainScreen from './Around/BikeMainScreen';
 import SpotMainScreen from './Around/SpotMainScreen';
 import ShareInfoMainScreen from './Around/ShareInfoMainScreen';
 
+import DairyPostScreen from './Remember/DairyPostScreen';
+
 export {
   AroundScreen,
   HomeScreen,
@@ -26,4 +28,5 @@ export {
   BikeMainScreen,
   SpotMainScreen,
   ShareInfoMainScreen,
+  DairyPostScreen,
 };
