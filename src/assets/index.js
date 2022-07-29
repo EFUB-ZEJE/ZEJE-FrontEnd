@@ -18,3 +18,4 @@ export {default as RememberTab} from './icons/RememberTabIcon.svg';
 export {default as Mypage} from './icons/MypageIcon.svg';
 export {default as Alert} from './icons/AlertIcon.svg';
 export {default as NotFound} from './images/not-found.svg';
+export {default as RedOrange} from './images/orange-red.svg';
