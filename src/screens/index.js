@@ -14,6 +14,7 @@ import SpotMainScreen from './Around/SpotMainScreen';
 import ShareInfoMainScreen from './Around/ShareInfoMainScreen';
 
 import DairyPostScreen from './Remember/DairyPostScreen';
+import DairyDetailScreen from './Remember/DairyDetailScreen';
 
 export {
   AroundScreen,
@@ -29,4 +30,5 @@ export {
   SpotMainScreen,
   ShareInfoMainScreen,
   DairyPostScreen,
+  DairyDetailScreen,
 };

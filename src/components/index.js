@@ -13,6 +13,8 @@ import SortButton from './Around/SortButton';
 import ImageCard from './Around/ImageCard';
 
 import PostBanner from './Remember/PostBanner';
+import DiaryList from './Remember/List/DiaryList';
+import AddButton from './Remember/AddButton';
 
 export {
   ScreenContainer,
@@ -28,4 +30,6 @@ export {
   SortButton,
   ImageCard,
   PostBanner,
+  DiaryList,
+  AddButton,
 };
