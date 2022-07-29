@@ -22,6 +22,7 @@ export default class Map extends Component {
 const styles = StyleSheet.create({
   map: {
     width: '100%',
-    height: layout.window.height - HEADER_HEIGHT - 100,
+
+    height: layout.window.height - HEADER_HEIGHT,
   },
 });
