@@ -11,7 +11,7 @@ export default function DairyPostScreen({navigation}) {
         canGoBack={true}
       />
       <ScreenContainer>
-        <Text>일기 작성하기</Text>
+        <Text>일기 추가 스크린</Text>
       </ScreenContainer>
     </>
   );
