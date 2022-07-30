@@ -6,7 +6,7 @@ function LeftWalks({leftWalks}) {
   return (
     <Row
       h={'32px'}
-      w={'40%'}
+      w={'44%'}
       bgColor={'white'}
       borderRadius={16}
       justifyContent={'space-between'}
@@ -15,7 +15,7 @@ function LeftWalks({leftWalks}) {
       <Image
         alt="leaf icon"
         size="16px"
-        source={require('../../assets/images/leaf.png')}
+        source={require('../../assets/images/footprint-fill.png')}
       />
 
       <Text fontSize={12} color={theme.colors.font} fontWeight={700}>
