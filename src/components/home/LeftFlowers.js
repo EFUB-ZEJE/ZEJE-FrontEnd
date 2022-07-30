@@ -16,7 +16,7 @@ function LeftFlowers({leftFlowers}) {
         <Image
           alt="leaf icon"
           size="16px"
-          source={require(`../../assets/images/leaf.png`)}
+          source={require('../../assets/images/leaf.png')}
         />
         <Text fontSize={12} color={theme.colors.font}>
           남은 꽃
