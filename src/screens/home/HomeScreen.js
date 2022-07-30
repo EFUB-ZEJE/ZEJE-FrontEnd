@@ -1,14 +1,29 @@
-import {View} from 'native-base';
 import React from 'react';
-import Header from '../../components/home/header/Header';
 import Home from '../../components/home/Home';
 import {theme} from '../../styles/theme';
+import {
+  CommonBanner,
+  ScreenContainer,
+  ScreenHeader,
+  SizedBox,
+} from '../components';
+import Home from '../components/home/Home';
 
-export default function HomeScreen() {
+export default function HomeScreen({navigation}) {
   return (
-    <View bgColor={theme.colors.home_background}>
-      <Header />
-      <Home />
-    </View>
+    <>
+      <ScreenHeader isHome={true} navigation={navigation} />
+      <ScreenContainer>
+        <Home />
+        <SizedBox height={16} />
+        <CommonBanner
+          text="여행지 방문해 꽃 더 모으기"
+          color="white"
+          bgColor={theme.colors.main}
+          navigation={navigation}
+          path="SpotMain"
+        />
+      </ScreenContainer>
+    </>
   );
 }

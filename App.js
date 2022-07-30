@@ -1,7 +1,7 @@
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import TabNavigator from './src/navigation/TabNavigator';
 import {NativeBaseProvider} from 'native-base';
+import StackNavigator from './src/navigation/StackNavigator.js';
+import {NavigationContainer} from '@react-navigation/native';
 import {RecoilRoot} from 'recoil';
 import ModalWrapper from './src/components/common/ModalWrapper';
 
@@ -10,7 +10,7 @@ export default function App() {
     <RecoilRoot>
       <NativeBaseProvider>
         <NavigationContainer>
-          <TabNavigator />
+          <StackNavigator />
           <ModalWrapper />
         </NavigationContainer>
       </NativeBaseProvider>

@@ -8,14 +8,14 @@ function Tree() {
   const {openModal} = useOrangeInfoModal();
 
   return (
-    <Box h={'85%'} mt={-5}>
+    <Box>
       <Row
         position={'absolute'}
         top={'3%'}
         zIndex={10}
         justifyContent={'center'}
         alignSelf={'center'}
-        space={'3%'}>
+        space={20}>
         <LeftFlowers leftFlowers={0} />
         <LeftWalks leftWalks={0} />
       </Row>
