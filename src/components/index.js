@@ -12,6 +12,8 @@ import FilterList from './Around/FilterList';
 import SortButton from './Around/SortButton';
 import ImageCard from './Around/ImageCard';
 
+import OrangeSvg from './home/oranges/OrangeSvg';
+
 export {
   ScreenContainer,
   ScreenHeader,
@@ -25,4 +27,5 @@ export {
   FilterList,
   SortButton,
   ImageCard,
+  OrangeSvg,
 };
