@@ -6,7 +6,7 @@ function LeftFlowers({leftFlowers}) {
   return (
     <Row
       h={'32px'}
-      w={'40%'}
+      w={'44%'}
       bgColor={'white'}
       borderRadius={16}
       justifyContent={'space-between'}
