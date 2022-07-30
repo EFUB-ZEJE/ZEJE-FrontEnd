@@ -1,13 +1,12 @@
 import React from 'react';
-import Home from '../../components/home/Home';
-import {theme} from '../../styles/theme';
 import {
   CommonBanner,
   ScreenContainer,
   ScreenHeader,
   SizedBox,
-} from '../components';
-import Home from '../components/home/Home';
+} from '../../components';
+import Home from '../../components/home/Home';
+import {theme} from '../../styles/theme';
 
 export default function HomeScreen({navigation}) {
   return (
