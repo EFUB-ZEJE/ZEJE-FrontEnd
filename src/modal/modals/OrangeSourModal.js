@@ -5,9 +5,12 @@ import {Column} from 'native-base';
 import {OrangeSour} from '../../assets/images/oranges';
 import {Body_long1, Subhead_long3} from '../../styles/font';
 import OrangeModalCloseButton from '../../components/home/oranges/OrangeModalCloseButton';
+import OrangeModalProgressBar from '../../components/home/oranges/OrangeModalProgressBar';
 
 const OrangeSourModal = () => {
   const {isModalOpen, closeModal} = useOrangeSourModal();
+  const walk = 1000;
+  const maxWalk = 4000;
 
   return (
     <ModalSheet isModalOpen={isModalOpen} closeModal={closeModal}>
@@ -18,6 +21,7 @@ const OrangeSourModal = () => {
           새콤함이 특징인 청견은 감귤과 오렌지의 교배종으로, 감귤보다 큰 크기에
           오렌지보다 얇은 껍질과 풍부한 과즙을 가지고 있습니다.
         </Body_long1>
+        <OrangeModalProgressBar walk={walk} maxWalk={maxWalk} />
         <OrangeModalCloseButton onPress={closeModal} />
       </Column>
     </ModalSheet>
