@@ -5,9 +5,12 @@ import {Column} from 'native-base';
 import {OrangeGold} from '../../assets/images/oranges';
 import {Body_long1, Subhead_long3} from '../../styles/font';
 import OrangeModalCloseButton from '../../components/home/oranges/OrangeModalCloseButton';
+import OrangeModalProgressBar from '../../components/home/oranges/OrangeModalProgressBar';
 
 const OrangeGoldModal = () => {
   const {isModalOpen, closeModal} = useOrangeGoldModal();
+  const walk = 500;
+  const maxWalk = 12000;
 
   return (
     <ModalSheet isModalOpen={isModalOpen} closeModal={closeModal}>
@@ -18,6 +21,7 @@ const OrangeGoldModal = () => {
           황금향은 여왕과 같은 품위를 지녔다고 해서 이런 이름이 붙었다고 합니다.
           알맹이가 통통하고 신맛이 적으며, 과즙이 풍부합니다.
         </Body_long1>
+        <OrangeModalProgressBar walk={walk} maxWalk={maxWalk} />
         <OrangeModalCloseButton onPress={closeModal} />
       </Column>
     </ModalSheet>

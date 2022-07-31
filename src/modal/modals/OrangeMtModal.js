@@ -5,9 +5,12 @@ import {Column} from 'native-base';
 import {OrangeMt} from '../../assets/images/oranges';
 import {Body_long1, Subhead_long3} from '../../styles/font';
 import OrangeModalCloseButton from '../../components/home/oranges/OrangeModalCloseButton';
+import OrangeModalProgressBar from '../../components/home/oranges/OrangeModalProgressBar';
 
 const OrangeMtModal = () => {
   const {isModalOpen, closeModal} = useOrangeMtModal();
+  const walk = 500;
+  const maxWalk = 4000;
 
   return (
     <ModalSheet isModalOpen={isModalOpen} closeModal={closeModal}>
@@ -18,6 +21,7 @@ const OrangeMtModal = () => {
           꼭지가 튀어나온 모양이 꼭 한라산같은 한라봉은 과육이 부드럽고, 과즙이
           풍부하며 당도가 매우 높은 것이 특징이랍니다.
         </Body_long1>
+        <OrangeModalProgressBar walk={walk} maxWalk={maxWalk} />
         <OrangeModalCloseButton onPress={closeModal} />
       </Column>
     </ModalSheet>
