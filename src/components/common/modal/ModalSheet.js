@@ -12,8 +12,6 @@ export default ModalSheet = ({isModalOpen, closeModal, children}) => {
 
 const styles = StyleSheet.create({
   modalContainer: {
-    width: '70%',
-    height: 'auto',
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'white',
