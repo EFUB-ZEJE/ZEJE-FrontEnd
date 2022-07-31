@@ -5,7 +5,7 @@ import {palette, theme} from '../../../styles/theme';
 
 export function OrangeSmallProgressBar({walk, maxWalk}) {
   return (
-    <View style={{marginTop: -5}}>
+    <View style={{marginTop: -5, width: '100%'}}>
       <Progress.Bar
         progress={walk / maxWalk}
         width={null}

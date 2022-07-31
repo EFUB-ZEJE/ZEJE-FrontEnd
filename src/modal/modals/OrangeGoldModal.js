@@ -6,11 +6,12 @@ import {OrangeGold} from '../../assets/images/oranges';
 import {Body_long1, Subhead_long3} from '../../styles/font';
 import OrangeModalCloseButton from '../../components/home/oranges/OrangeModalCloseButton';
 import OrangeModalProgressBar from '../../components/home/oranges/OrangeModalProgressBar';
+import {ORANGES_LIST} from '../../components/home/oranges/OrangeBox';
 
 const OrangeGoldModal = () => {
   const {isModalOpen, closeModal} = useOrangeGoldModal();
-  const walk = 500;
-  const maxWalk = 12000;
+  const walk = ORANGES_LIST[1].walk;
+  const maxWalk = ORANGES_LIST[1].maxWalk;
 
   return (
     <ModalSheet isModalOpen={isModalOpen} closeModal={closeModal}>
