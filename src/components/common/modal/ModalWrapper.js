@@ -1,10 +1,10 @@
 import React from 'react';
-import OrangeInfoModal from './OrangeInfoModal';
+import OrangeRedModal from '../../../modal/modals/OrangeRedModal';
 
 const ModalWrapper = () => {
   return (
     <>
-      <OrangeInfoModal />
+      <OrangeRedModal />
     </>
   );
 };

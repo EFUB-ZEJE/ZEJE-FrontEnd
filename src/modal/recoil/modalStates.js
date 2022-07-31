@@ -2,6 +2,6 @@ import {atom} from 'recoil';
 
 const generateModalAtomOption = key => ({key, default: false});
 
-export const orangeInfoModalState = atom(
-  generateModalAtomOption('OrangeInfoModal'),
+export const orangeRedModalState = atom(
+  generateModalAtomOption('OrangeRedModal'),
 );

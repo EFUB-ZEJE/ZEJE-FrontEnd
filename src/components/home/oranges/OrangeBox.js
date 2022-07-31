@@ -2,38 +2,38 @@ import React from 'react';
 import styled from 'styled-components';
 import Orange from './Orange';
 
-const ORANGES_LIST = [
-  {
-    name: 'OrangeFlower',
-    walk: 200,
-  },
-  {
-    name: 'OrangeGold',
-    walk: 500,
-  },
-  {
-    name: 'OrangeGreen',
-    walk: 500,
-  },
-  {
-    name: 'OrangeMandarin',
-    walk: 500,
-  },
-  {
-    name: 'OrangeMt',
-    walk: 500,
-  },
-  {
-    name: 'OrangeSour',
-    walk: 500,
-  },
-  {
-    name: 'OrangeThousand',
-    walk: 500,
-  },
-];
-
 export default function OrangeBox() {
+  const ORANGES_LIST = [
+    {
+      name: 'OrangeFlower',
+      walk: 200,
+    },
+    {
+      name: 'OrangeGold',
+      walk: 500,
+    },
+    {
+      name: 'OrangeGreen',
+      walk: 500,
+    },
+    {
+      name: 'OrangeMandarin',
+      walk: 500,
+    },
+    {
+      name: 'OrangeMt',
+      walk: 500,
+    },
+    {
+      name: 'OrangeSour',
+      walk: 500,
+    },
+    {
+      name: 'OrangeThousand',
+      walk: 500,
+    },
+  ];
+
   return (
     <View>
       <Orange
