@@ -17,3 +17,5 @@ export {default as AroundTab} from './AroundTabIcon.svg';
 export {default as RememberTab} from './RememberTabIcon.svg';
 export {default as Mypage} from './MypageIcon.svg';
 export {default as Alert} from './AlertIcon.svg';
+export {default as More} from './MoreIcon.svg';
+export {default as PlusCircle} from './PlusCircleIcon.svg';
