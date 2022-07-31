@@ -1,22 +1,22 @@
 import React from 'react';
-import {useOrangeRedModal} from '../recoil/useModals';
+import {useOrangeMandarinModal} from '../recoil/useModals';
 import ModalSheet from '../../components/common/modal/ModalSheet';
 import {Column} from 'native-base';
-import {OrangeRed} from '../../assets/images/oranges';
+import {OrangeMandarin} from '../../assets/images/oranges';
 import {Body_long1, Subhead_long3} from '../../styles/font';
 import OrangeModalCloseButton from '../../components/home/oranges/OrangeModalCloseButton';
 
-const OrangeRedModal = () => {
-  const {isModalOpen, closeModal} = useOrangeRedModal();
+const OrangeMandarinModal = () => {
+  const {isModalOpen, closeModal} = useOrangeMandarinModal();
 
   return (
     <ModalSheet isModalOpen={isModalOpen} closeModal={closeModal}>
       <Column space={3} alignItems={'center'} w={'100%'}>
-        <OrangeRed width="100" height="100" />
-        <Subhead_long3>붉게 물든 빛 레드향</Subhead_long3>
+        <OrangeMandarin width="100" height="100" />
+        <Subhead_long3>제주 대표 감귤 온주</Subhead_long3>
         <Body_long1>
-          껍질과 과육에 붉은 빛이 도는 레드향은 신맛이 적고, 다른 만감류에 비해
-          껍질을 벗기기가 편하다는 특징이 있습니다.
+          감귤 하면 떠오르는 대표 품종인 온주는 껍질이 얇고 쉽게 벗겨져 생과로
+          가장 많이 먹는 품종입니다.
         </Body_long1>
         <OrangeModalCloseButton onPress={closeModal} />
       </Column>
@@ -24,4 +24,4 @@ const OrangeRedModal = () => {
   );
 };
 
-export default OrangeRedModal;
+export default OrangeMandarinModal;

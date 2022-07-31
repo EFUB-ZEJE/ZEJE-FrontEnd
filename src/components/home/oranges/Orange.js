@@ -1,14 +1,46 @@
 import React from 'react';
 import {Pressable} from 'native-base';
 import OrangeSvg from './OrangeSvg';
-import {useOrangeRedModal} from '../../../modal/recoil/useModals';
+import {
+  useOrangeGoldModal,
+  useOrangeGreenModal,
+  useOrangeMandarinModal,
+  useOrangeMtModal,
+  useOrangeRedModal,
+  useOrangeSourModal,
+  useOrangeThousandModal,
+  useOrangeTinyModal,
+} from '../../../modal/recoil/useModals';
 
 export default function Orange({name, walk, top, left, right}) {
-  const {openModal: openOrangeModal} = useOrangeRedModal();
+  const {openModal: openGoldModal} = useOrangeGoldModal();
+  const {openModal: openGreenModal} = useOrangeGreenModal();
+  const {openModal: openMandarinModal} = useOrangeMandarinModal();
+  const {openModal: openMtModal} = useOrangeMtModal();
+  const {openModal: openRedModal} = useOrangeRedModal();
+  const {openModal: openSourModal} = useOrangeSourModal();
+  const {openModal: openThousandModal} = useOrangeThousandModal();
+  const {openModal: openTinyModal} = useOrangeTinyModal();
 
   return (
     <Pressable
-      onPress={name === 'OrangeRed' ? openOrangeModal : null}
+      onPress={
+        name === 'OrangeGold'
+          ? openGoldModal
+          : name === 'OrangeGreen'
+          ? openGreenModal
+          : name === 'OrangeMandarin'
+          ? openMandarinModal
+          : name === 'OrangeMt'
+          ? openMtModal
+          : name === 'OrangeRed'
+          ? openRedModal
+          : name === 'OrangeSour'
+          ? openSourModal
+          : name === 'OrangeThousand'
+          ? openThousandModal
+          : openTinyModal
+      }
       position={'absolute'}
       top={top}
       left={left}
