@@ -11,6 +11,7 @@ import {
   useOrangeThousandModal,
   useOrangeTinyModal,
 } from '../../../modal/recoil/useModals';
+import OrangeSmallProgressBar from './OrangeSmallProgressBar';
 
 export default function Orange({name, walk, top, left, right}) {
   const {openModal: openGoldModal} = useOrangeGoldModal();
@@ -46,6 +47,7 @@ export default function Orange({name, walk, top, left, right}) {
       left={left}
       right={right}>
       <OrangeSvg name={name} width={48} height={48} />
+      <OrangeSmallProgressBar walk={10} maxWalk={20} />
     </Pressable>
   );
 }
