@@ -26,7 +26,7 @@ export default function DiaryList({navigation}) {
       ListHeaderComponent={() => {
         return (
           <PostBanner
-            icon="RightArrow"
+            icon="Plus"
             text="일기장 추가"
             navigation={navigation}
             path="DairyPost"
