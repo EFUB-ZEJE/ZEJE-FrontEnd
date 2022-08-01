@@ -38,8 +38,12 @@ export default function DairyDetailScreen({navigation}) {
       />
       <ScreenContainer>
         <AddButton
+          height="56px"
+          width="100%"
           text="추가하기"
+          type="navigate"
           icon="PlusCircle"
+          display="row"
           navigation={navigation}
           path="DairyPost"
         />

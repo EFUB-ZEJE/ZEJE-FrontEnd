@@ -4,6 +4,7 @@ import {
   ScreenHeader,
   WriteEditor,
   DateEditor,
+  ImageEditor,
 } from '../../components';
 
 const _hangleComplete = () => {
@@ -31,6 +32,7 @@ export default function DairyPostScreen({navigation}) {
           onChangeBody={setBody}
           onChangeTitle={setTitle}
         />
+        <ImageEditor />
       </ScreenContainer>
     </>
   );

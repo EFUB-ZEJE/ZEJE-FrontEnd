@@ -34,6 +34,7 @@ export default function WriteEditor({
         value={body}
         ref={bodyRef}
       />
+    <SizedBox height={22} />
     </StyledRoot>
   );
 }

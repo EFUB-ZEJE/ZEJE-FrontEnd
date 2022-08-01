@@ -17,6 +17,7 @@ import DiaryList from './Remember/List/DiaryList';
 import AddButton from './Remember/AddButton';
 import WriteEditor from './Remember/Post/WriteEditor';
 import DateEditor from './Remember/Post/DateEditor';
+import ImageEditor from './Remember/Post/ImageEditor';
 
 export {
   ScreenContainer,
@@ -36,4 +37,5 @@ export {
   AddButton,
   WriteEditor,
   DateEditor,
+  ImageEditor,
 };
