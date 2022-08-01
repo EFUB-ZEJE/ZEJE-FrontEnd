@@ -15,6 +15,8 @@ import ImageCard from './Around/ImageCard';
 import PostBanner from './Remember/PostBanner';
 import DiaryList from './Remember/List/DiaryList';
 import AddButton from './Remember/AddButton';
+import WriteEditor from './Remember/Post/WriteEditor';
+import DateEditor from './Remember/Post/DateEditor';
 
 export {
   ScreenContainer,
@@ -32,4 +34,6 @@ export {
   PostBanner,
   DiaryList,
   AddButton,
+  WriteEditor,
+  DateEditor,
 };
