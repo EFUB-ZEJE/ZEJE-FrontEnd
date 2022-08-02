@@ -1,28 +1,18 @@
-import {Box, Image, Row} from 'native-base';
+import {Image} from 'native-base';
 import React from 'react';
-import LeftFlowers from './LeftFlowers';
-import LeftWalks from './LeftWalks';
+import OrangeBox from './oranges/OrangeBox';
 
 function Tree() {
   return (
-    <Box>
-      <Row
-        position={'absolute'}
-        top={'3%'}
-        zIndex={10}
-        justifyContent={'center'}
-        alignSelf={'center'}
-        space={20}>
-        <LeftFlowers leftFlowers={0} />
-        <LeftWalks leftWalks={0} />
-      </Row>
+    <>
+      <OrangeBox />
       <Image
         alt="tree background"
-        h={'100%'}
+        h={'493px'}
         resizeMode={'contain'}
-        source={require('../../assets/images/tree.png')}
+        source={require(`../../assets/images/tree.png`)}
       />
-    </Box>
+    </>
   );
 }
 

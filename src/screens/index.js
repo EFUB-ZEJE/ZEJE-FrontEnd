@@ -1,5 +1,5 @@
 import AroundScreen from './AroundScreen';
-import HomeScreen from './HomeScreen';
+import HomeScreen from './Home/HomeScreen';
 import MyListScreen from './MyListScreen';
 import RememberScreen from './RememberScreen';
 

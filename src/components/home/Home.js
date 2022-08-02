@@ -1,13 +1,28 @@
 import React from 'react';
-import {Column} from 'native-base';
-import layout, {BOTTOM_HEIGHT, HEADER_HEIGHT} from '../../styles/layout';
+import {Row} from 'native-base';
 import Tree from './Tree';
+import LeftFlowers from './LeftFlowers';
+import LeftWalks from './LeftWalks';
+import {StyleSheet} from 'react-native';
 
 export default function Home() {
-  const HOME_HEIGHT = layout.window.height - HEADER_HEIGHT - BOTTOM_HEIGHT;
   return (
-    <Column h={HOME_HEIGHT} justifyContent={'center'}>
+    <>
+      <Row style={styles.stateBar} space={3}>
+        <LeftFlowers leftFlowers={0} />
+        <LeftWalks leftWalks={0} />
+      </Row>
       <Tree />
-    </Column>
+    </>
   );
 }
+
+const styles = StyleSheet.create({
+  stateBar: {
+    position: 'absolute',
+    top: 10,
+    zIndex: 10,
+    justifyContent: 'center',
+    alignSelf: 'center',
+  },
+});

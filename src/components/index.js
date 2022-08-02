@@ -16,6 +16,8 @@ import PostBanner from './Remember/PostBanner';
 import DiaryList from './Remember/List/DiaryList';
 import AddButton from './Remember/AddButton';
 
+import OrangeSvg from './home/oranges/OrangeSvg';
+
 export {
   ScreenContainer,
   ScreenHeader,
@@ -32,4 +34,5 @@ export {
   PostBanner,
   DiaryList,
   AddButton,
+  OrangeSvg,
 };

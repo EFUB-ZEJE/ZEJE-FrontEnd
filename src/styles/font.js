@@ -127,6 +127,7 @@ export const Body_long1 = styled.Text`
   line-height: ${24 * k}px;
   letter-spacing: -0.6px;
   font-family: 'Pretendard';
+  text-align: center;
 `;
 export const Body_long2 = styled.Text`
   font-weight: ${regular};
