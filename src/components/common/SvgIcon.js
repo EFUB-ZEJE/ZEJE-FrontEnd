@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/native';
 
-import * as Icons from '../../assets/icons';
+import * as Icons from '../../assets';
 
 const SvgIcon = ({name, size, color}) => {
   const Comp = Icons[name];

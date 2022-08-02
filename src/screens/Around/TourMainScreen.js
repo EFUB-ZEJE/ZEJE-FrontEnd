@@ -68,7 +68,7 @@ export default function TourMainScreen({navigation}) {
         placeholder="여행지의 이름이나 주소를 검색해보세요"
         handleChange={_handleTextChange}
       />
-      <ScreenContainer>
+      <>
         <FilterList>
           {filters.map(f => (
             <FilterBox
@@ -81,7 +81,8 @@ export default function TourMainScreen({navigation}) {
         </FilterList>
         <BottomSheet
           modalVisible={modalVisible}
-          setModalVisible={setModalVisible}>
+          setModalVisible={setModalVisible}
+          focus>
           <BottomDrawerTitle>
             <font.title.Subhead3 color={theme.colors.main}>
               정렬
@@ -127,7 +128,7 @@ export default function TourMainScreen({navigation}) {
                   handleLike={_handleLikeChange}
                 />
               ))}
-      </ScreenContainer>
+      </>
     </>
   );
 }

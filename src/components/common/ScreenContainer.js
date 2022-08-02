@@ -1,11 +1,13 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import SizedBox from './SizedBox';
+import {Text} from 'react-native';
 
-const ScreenContainer = ({children}) => {
+const ScreenContainer = ({children, bgColor}) => {
   return (
-    <Container>
+    <Container bgColor={bgColor}>
       {children}
+
       <SizedBox height={30} />
     </Container>
   );
@@ -14,6 +16,6 @@ const ScreenContainer = ({children}) => {
 export default ScreenContainer;
 
 const Container = styled.ScrollView`
-  background-color: white;
+  background-color: ${({bgColor}) => (bgColor ? bgColor : 'white')};
   padding: 16px 20px;
 `;
