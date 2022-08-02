@@ -1,17 +1,12 @@
-import {Image, Row, Text} from 'native-base';
+import {Image, Row} from 'native-base';
 import React from 'react';
+import {StyleSheet} from 'react-native';
+import styled from 'styled-components';
 import {theme} from '../../styles/theme';
 
 function LeftFlowers({leftFlowers}) {
   return (
-    <Row
-      h={'32px'}
-      w={'40%'}
-      bgColor={'white'}
-      borderRadius={16}
-      justifyContent={'space-between'}
-      alignItems={'center'}
-      px={3}>
+    <Row style={styles.container}>
       <Row space={1} alignItems={'center'}>
         <Image
           alt="leaf icon"
@@ -23,12 +18,35 @@ function LeftFlowers({leftFlowers}) {
         </Text>
       </Row>
       <Row>
-        <Text fontSize={12} color={theme.colors.font} fontWeight={700}>
+        <TextBold fontSize={12} color={theme.colors.font} fontWeight={700}>
           {leftFlowers.toString()}개
-        </Text>
+        </TextBold>
       </Row>
     </Row>
   );
 }
 
 export default LeftFlowers;
+
+const styles = StyleSheet.create({
+  container: {
+    height: 32,
+    width: '45%',
+    backgroundColor: 'white',
+    borderRadius: 16,
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 10,
+  },
+});
+
+const Text = styled.Text`
+  font-size: 12px;
+  color: ${theme.colors.font};
+`;
+
+const TextBold = styled.Text`
+  font-size: 12px;
+  color: ${theme.colors.font};
+  font-weight: 700;
+`;
