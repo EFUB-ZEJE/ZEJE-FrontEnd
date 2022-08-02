@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import {theme} from '../../styles/theme';
 import font from '../../styles/font.js';
 import DropShadow from 'react-native-drop-shadow';
-import {RightArrow} from '../../assets/icons';
+import SvgIcon from '../common/SvgIcon';
 
 export default function PhotoBanner({text, navigation, path}) {
   return (
@@ -21,7 +21,7 @@ export default function PhotoBanner({text, navigation, path}) {
       <BoxContainer onPress={() => navigation.navigate(path)}>
         <Wrapper>
           <font.title.Subhead3>{text}</font.title.Subhead3>
-          <RightArrow color={theme.colors.black} />
+          <SvgIcon name="RightArrow" color={theme.colors.black} />
         </Wrapper>
         <Empty />
         {/* <ImageContainer source={require('../../assets/images/sample.jpeg')} /> */}
