@@ -1,28 +1,40 @@
-import {Image, Row, Text} from 'native-base';
+import {Image, Row} from 'native-base';
 import React from 'react';
+import {StyleSheet} from 'react-native';
+import styled from 'styled-components';
 import {theme} from '../../styles/theme';
 
 function LeftWalks({leftWalks}) {
   return (
-    <Row
-      h={'32px'}
-      w={'40%'}
-      bgColor={'white'}
-      borderRadius={16}
-      justifyContent={'space-between'}
-      alignItems={'center'}
-      px={3}>
+    <Row style={styles.container}>
       <Image
         alt="leaf icon"
         size="16px"
-        source={require('../../assets/images/leaf.png')}
+        source={require('../../assets/images/footprint-fill.png')}
       />
-
-      <Text fontSize={12} color={theme.colors.font} fontWeight={700}>
+      <TextBold fontSize={12} color={theme.colors.font} fontWeight={700}>
         {leftWalks.toString()}걸음
-      </Text>
+      </TextBold>
     </Row>
   );
 }
 
 export default LeftWalks;
+
+const styles = StyleSheet.create({
+  container: {
+    height: 32,
+    width: '45%',
+    backgroundColor: 'white',
+    borderRadius: 16,
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 10,
+  },
+});
+
+const TextBold = styled.Text`
+  font-size: 12px;
+  color: ${theme.colors.font};
+  font-weight: 700;
+`;

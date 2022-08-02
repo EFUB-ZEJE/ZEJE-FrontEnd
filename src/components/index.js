@@ -19,6 +19,8 @@ import WriteEditor from './Remember/Post/WriteEditor';
 import DateEditor from './Remember/Post/DateEditor';
 import ImageEditor from './Remember/Post/ImageEditor';
 
+import OrangeSvg from './home/oranges/OrangeSvg';
+
 export {
   ScreenContainer,
   ScreenHeader,
@@ -35,7 +37,11 @@ export {
   PostBanner,
   DiaryList,
   AddButton,
+
   WriteEditor,
   DateEditor,
   ImageEditor,
+
+  OrangeSvg,
+
 };

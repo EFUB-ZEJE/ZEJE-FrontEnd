@@ -10,7 +10,8 @@ import {
   PanResponder,
 } from 'react-native';
 
-const BottomSheet = ({modalVisible, setModalVisible, children}) => {
+//focus : 모달 이외의 영역을 블러 처리할 건지 결정
+const BottomSheet = ({modalVisible, setModalVisible, children, focus}) => {
   const screenHeight = Dimensions.get('screen').height;
   const panY = useRef(new Animated.Value(screenHeight)).current;
   const translateY = panY.interpolate({
@@ -65,13 +66,13 @@ const BottomSheet = ({modalVisible, setModalVisible, children}) => {
       animationType={'fade'}
       transparent
       statusBarTranslucent>
-      <View style={styles.overlay}>
+      <View style={styles(focus).overlay}>
         <TouchableWithoutFeedback onPress={closeModal}>
-          <View style={styles.background} />
+          <View style={styles().background} />
         </TouchableWithoutFeedback>
         <Animated.View
           style={{
-            ...styles.bottomSheetContainer,
+            ...styles().bottomSheetContainer,
             transform: [{translateY: translateY}],
           }}
           {...panResponders.panHandlers}>
@@ -82,20 +83,21 @@ const BottomSheet = ({modalVisible, setModalVisible, children}) => {
   );
 };
 
-const styles = StyleSheet.create({
-  overlay: {
-    flex: 1,
-    backgroundColor: 'rgba(0, 0, 0, 0.4)',
-  },
-  background: {
-    flex: 1,
-  },
-  bottomSheetContainer: {
-    backgroundColor: 'white',
-    borderTopLeftRadius: 30,
-    borderTopRightRadius: 30,
-    padding: 20,
-  },
-});
+const styles = focus =>
+  StyleSheet.create({
+    overlay: {
+      flex: 1,
+      backgroundColor: focus ? 'rgba(0, 0, 0, 0.4)' : 'transparent',
+    },
+    background: {
+      flex: 1,
+    },
+    bottomSheetContainer: {
+      backgroundColor: 'white',
+      borderTopLeftRadius: 30,
+      borderTopRightRadius: 30,
+      padding: 20,
+    },
+  });
 
 export default BottomSheet;
