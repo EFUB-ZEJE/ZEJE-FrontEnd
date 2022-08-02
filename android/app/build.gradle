@@ -1,5 +1,6 @@
 apply plugin: "com.android.application"
-
+/*개발 환경변수 setup을 위한 설정 추가*/
+apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
 import com.android.build.OutputFile
 
 /**

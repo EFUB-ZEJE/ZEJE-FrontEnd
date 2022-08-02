@@ -7,7 +7,7 @@ import SvgIcon from '../common/SvgIcon';
 const SortButton = ({sortBy, handlePress}) => {
   return (
     <Container onPress={() => handlePress()}>
-      <SvgIcon name="Sort" />
+      <SvgIcon name="Sort" size={'25px'} />
       <font.title.Subhead2 color={theme.colors.main}>
         {sortBy}
       </font.title.Subhead2>
