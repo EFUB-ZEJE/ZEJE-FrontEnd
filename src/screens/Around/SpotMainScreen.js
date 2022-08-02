@@ -12,8 +12,6 @@ import Spot from '../../components/Around/Spot';
 export default function SpotMainScreen({navigation}) {
   const [sortType, setSortType] = useState('내 위치 중심');
   const [viewType, setViewType] = useState('Map');
-  const [modalVisible, setModalVisible] = useState(true);
-  const numOfNearSpots = 0; // 현재 위치와 가까운 스팟 목록
   const [sproutPlaces, setSproutPlace] = useState([
     {
       spotId: 87,
@@ -65,46 +63,6 @@ export default function SpotMainScreen({navigation}) {
       description: null,
       link: null,
     },
-    {
-      spotId: 92,
-      contentId: 126467,
-      category: '여행',
-      type: '자연',
-      name: '무수천',
-      location: '제주특별자치도 제주시 애월읍 무수천길',
-      description: null,
-      link: null,
-    },
-    {
-      spotId: 93,
-      contentId: 2740130,
-      category: '여행',
-      type: '자연',
-      name: '문도지오름',
-      location: '제주특별자치도 제주시 한림읍 금악리 3444',
-      description: null,
-      link: null,
-    },
-    {
-      spotId: 94,
-      contentId: 127048,
-      category: '여행',
-      type: '자연',
-      name: '문섬/섶섬/범섬/새섬',
-      location: '제주특별자치도 서귀포시 막숙포로',
-      description: null,
-      link: null,
-    },
-    {
-      spotId: 95,
-      contentId: 2433925,
-      category: '여행',
-      type: '자연',
-      name: '물영아리오름',
-      location: '제주특별자치도 서귀포시 남원읍 태수로 552',
-      description: null,
-      link: null,
-    },
   ]);
 
   const _fetchSproutPlaces = () => {
@@ -127,67 +85,8 @@ export default function SpotMainScreen({navigation}) {
     }
   };
 
-  // 전체 모달 종류
-  const modalContents = {
-    getPossibleFlowers: (
-      <ModalContainer height="78px">
-        <font.title.Subhead3 color={theme.colors.main}>
-          오늘 10 개의 꽃을 받을 수 있어요!
-        </font.title.Subhead3>
-        <font.body.Body1 color={palette.gray400}>
-          친환경 스팟을 선택해주세요
-        </font.body.Body1>
-      </ModalContainer>
-    ),
-
-    getAllFlowers: (
-      <ModalContainer height="196px">
-        <SvgIcon name="NotFound" size={'130px'} />
-        <SizedBox height={16} />
-        <font.title.Subhead3 color={theme.colors.main}>
-          10개의 꽃을 모두 받았어요!
-        </font.title.Subhead3>
-      </ModalContainer>
-    ),
-
-    notFound: (
-      <ModalContainer height="228px">
-        <SvgIcon name="NotFound" size={'130px'} />
-        <font.title.Subhead3 color={theme.colors.main}>
-          주위에 친환경 스팟이 없어요.
-        </font.title.Subhead3>
-        <font.body.Body1 color={palette.gray400}>
-          다른 위치로 이동해보세요.
-        </font.body.Body1>
-      </ModalContainer>
-    ),
-  };
-
-  const modalChildren = modalContents.notFound;
-
-  if (
-    viewType === 'List' &&
-    sortType === '내 위치 중심' &&
-    numOfNearSpots === 0
-  ) {
-    return (
-      <ScreenContainer2>
-        <SvgIcon name="RedOrange" size="120px" />
-        <font.title.Subhead_long3 color={theme.colors.main}>
-          주변에 친환경 스팟이 없어요!
-        </font.title.Subhead_long3>
-      </ScreenContainer2>
-    );
-  }
-
   return (
     <>
-      <BottomSheet
-        modalVisible={modalVisible}
-        setModalVisible={setModalVisible}>
-        {modalChildren}
-      </BottomSheet>
-      {/**모달창 하나로 children 만 바꿔쓰기 */}
       <ScreenHeader
         navigation={navigation}
         screenTitle="내 주변의 친환경 스팟"
@@ -232,24 +131,9 @@ export default function SpotMainScreen({navigation}) {
   );
 }
 
-const ModalContainer = styled.View`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: ${({height}) => (height ? height : '228px')};
-  padding: 16px;
-`;
-
 const ScreenContainer = styled.ScrollView`
   background-color: white;
   padding: 16px 20px;
   padding-top: 0px;
   height: 100%;
-`;
-
-const ScreenContainer2 = styled.View`
-  display: flex;
-  justify-content: center;
-  height: 100%;
-  align-items: center;
 `;
