@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import font from '../../styles/font';
-import {RightArrow} from '../../assets/icons';
+import SvgIcon from './SvgIcon';
 
 export default function CommonBanner({text, color, bgColor, navigation, path}) {
   return (
     <Container bgColor={bgColor} onPress={() => navigation.navigate(path)}>
       <font.title.Subhead3 color={color}>{text}</font.title.Subhead3>
-      <RightArrow color={color} />
+      <SvgIcon name="RightArrow" color={color} />
     </Container>
   );
 }
