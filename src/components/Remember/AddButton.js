@@ -5,9 +5,25 @@ import {theme} from '../../styles/theme';
 import font from '../../styles/font.js';
 import SvgIcon from '../../components/common/SvgIcon';
 
-export default function AddButton({text, icon, navigation, path}) {
+export default function AddButton({
+  height,
+  width,
+  text,
+  icon,
+  type,
+  navigation,
+  handlefunction,
+  path,
+  display,
+}) {
+  const handleOnPress =
+    type === 'navigate' ? () => navigation.navigate(path) : handlefunction;
   return (
-    <Container onPress={() => navigation.navigate(path)}>
+    <Container
+      width={width}
+      height={height}
+      dislay={display}
+      onPress={handleOnPress}>
       <SvgIcon name={icon} size="24px" />
       <font.title.Subhead3 color={theme.colors.main}>
         {text}
@@ -17,11 +33,12 @@ export default function AddButton({text, icon, navigation, path}) {
 }
 
 const Container = styled.TouchableOpacity`
-  height: 56px;
+  height: ${props => props.height};
+  width: ${props => props.width};
   border-radius: 10px;
   background-color: white;
   display: flex;
-  flex-direction: row;
+  flex-direction: ${props => props.dislay}
   align-items: center;
   justify-content: center;
   border: 1px solid ${theme.colors.main};

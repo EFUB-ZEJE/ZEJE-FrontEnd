@@ -15,6 +15,9 @@ import ImageCard from './Around/ImageCard';
 import PostBanner from './Remember/PostBanner';
 import DiaryList from './Remember/List/DiaryList';
 import AddButton from './Remember/AddButton';
+import WriteEditor from './Remember/Post/WriteEditor';
+import DateEditor from './Remember/Post/DateEditor';
+import ImageEditor from './Remember/Post/ImageEditor';
 
 import OrangeSvg from './home/oranges/OrangeSvg';
 
@@ -34,5 +37,11 @@ export {
   PostBanner,
   DiaryList,
   AddButton,
+
+  WriteEditor,
+  DateEditor,
+  ImageEditor,
+
   OrangeSvg,
+
 };

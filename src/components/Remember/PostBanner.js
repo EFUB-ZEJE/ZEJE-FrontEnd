@@ -13,12 +13,12 @@ export default function PostBanner({text, icon, navigation, path}) {
     <>
       <Container
         width={width}
-        style={styles.shadowProp}
+        /* style={styles.shadowProp} */
         onPress={() => navigation.navigate(path)}>
-        <font.title.Subhead3 color={palette.gray200}>
+        <font.title.Subhead3 color={palette.gray250}>
           {text}
         </font.title.Subhead3>
-        <SvgIcon name={icon} size="24px" color={palette.gray400} />
+        <SvgIcon name={icon} size="24px" color={palette.gray250} />
       </Container>
       <SizedBox height={22} />
     </>
@@ -41,7 +41,7 @@ const Container = styled.TouchableOpacity`
   width: ${({width}) => (width - 40) / 2 - 8}px;
   height: 152px;
   border-radius: 10px;
-  background-color: white;
+  background-color: ${palette.gray100};
   display: flex;
   flex-direction: column;
   align-items: center;
