@@ -19,6 +19,7 @@ export default function WriteEditor({
         placeholder="제목을 입력하세요"
         returnKeyType="next"
         onChangeTitle={onChangeTitle}
+        maxLength={24}
         value={title}
         onSubmitEditing={() => bodyRef.current.focus()}
       />
@@ -31,10 +32,12 @@ export default function WriteEditor({
         placeholder="제주도 여행의 추억을 오래 기억하도록 기록을 남겨주세요"
         textAlignVertical="top"
         onChangeBody={onChangeBody}
+        multiline={true}
+        numberOfLines={9}
         value={body}
         ref={bodyRef}
       />
-    <SizedBox height={22} />
+      <SizedBox height={22} />
     </StyledRoot>
   );
 }

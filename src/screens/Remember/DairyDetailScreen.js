@@ -2,32 +2,27 @@ import React, {useState} from 'react';
 import {
   ScreenContainer,
   ScreenHeader,
-  ImageCard,
+  DiaryCard,
   AddButton,
 } from '../../components';
+import {DeleteDiaryModal} from '../../modal/modals/Remember';
+import {useDeleteDiaryFolderModal} from '../../modal/recoil/useModals';
+
 export default function DairyDetailScreen({navigation}) {
   const [tourData, setTourData] = useState([
     {
       id: 0,
-      title: '추천 여행지 이름 1',
-      address: '추천 여행지 주소 1',
-      liked: true,
-      tag: 1,
+      title: '일기제목 1',
+      date: '22.03.01',
     },
     {
       id: 1,
-      title: '추천 여행지 이름 2',
-      address: '추천 여행지 주소 2',
-      liked: false,
-      tag: 2,
+      title: '일기제목 2',
+      date: '22.03.02',
     },
   ]);
 
-  const _handleLikeChange = id => {
-    let newData = tourData;
-    newData[id].liked = !newData[id].liked;
-    setTourData(newData);
-  };
+  const {isModalOpen, openModal, closeModal} = useDeleteDiaryFolderModal();
 
   return (
     <>
@@ -48,15 +43,16 @@ export default function DairyDetailScreen({navigation}) {
           path="DairyPost"
         />
         {tourData.map(d => (
-          <ImageCard
+          <DiaryCard
             key={d.id}
             id={d.id}
             title={d.title}
-            address={d.address}
-            liked={d.liked}
-            handleLike={_handleLikeChange}
+            date={d.date}
+            openModal={openModal}
+            closeModal={closeModal}
           />
         ))}
+        <DeleteDiaryModal />
       </ScreenContainer>
     </>
   );
