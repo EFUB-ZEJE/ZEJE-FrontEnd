@@ -26,3 +26,11 @@ export const orangeThousandModalState = atom(
 export const orangeTinyModalState = atom(
   generateModalAtomOption('orangeTinyModalState'),
 );
+
+export const deleteDiaryFolderModalState = atom(
+  generateModalAtomOption('deleteDiaryFolderModalState'),
+);
+
+export const deleteDiaryModalState = atom(
+  generateModalAtomOption('deleteDiaryModalState'),
+);
