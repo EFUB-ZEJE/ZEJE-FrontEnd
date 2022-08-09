@@ -1,12 +1,12 @@
 import React from 'react';
-import {useOrangeSourModal} from '../recoil/useModals';
-import ModalSheet from '../../components/common/modal/ModalSheet';
+import {useOrangeSourModal} from '../../recoil/useModals';
+import ModalSheet from '../../../components/common/modal/ModalSheet';
 import {Column} from 'native-base';
-import {OrangeSour} from '../../assets/images/oranges';
-import {Body_long1, Subhead_long3} from '../../styles/font';
-import OrangeModalCloseButton from '../../components/home/oranges/OrangeModalCloseButton';
-import OrangeModalProgressBar from '../../components/home/oranges/OrangeModalProgressBar';
-import {ORANGES_LIST} from '../../components/home/oranges/OrangeBox';
+import {OrangeSour} from '../../../assets/images/oranges';
+import {Body_long1, Subhead_long3} from '../../../styles/font';
+import OrangeModalCloseButton from '../../../components/home/oranges/OrangeModalCloseButton';
+import OrangeModalProgressBar from '../../../components/home/oranges/OrangeModalProgressBar';
+import {ORANGES_LIST} from '../../../components/home/oranges/OrangeBox';
 
 const OrangeSourModal = () => {
   const {isModalOpen, closeModal} = useOrangeSourModal();
