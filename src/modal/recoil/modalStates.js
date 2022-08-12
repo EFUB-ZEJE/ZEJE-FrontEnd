@@ -29,3 +29,6 @@ export const orangeTinyModalState = atom(
 export const letterModalState = atom(
   generateModalAtomOption('letterModalState'),
 );
+export const basketModalState = atom(
+  generateModalAtomOption('basketModalState'),
+);

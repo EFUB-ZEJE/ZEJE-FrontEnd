@@ -4,7 +4,7 @@ import ModalSheet from '../../../components/common/modal/ModalSheet';
 import {Column} from 'native-base';
 import {OrangeGold} from '../../../assets/images/oranges';
 import {Body_long1, Subhead_long3} from '../../../styles/font';
-import ModalCloseButton from '../../../components/home/oranges/ModalCloseButton';
+import ModalButton from '../../../components/home/ModalButton';
 import OrangeModalProgressBar from '../../../components/home/oranges/OrangeModalProgressBar';
 import {ORANGES_LIST} from '../../../components/home/oranges/OrangeBox';
 
@@ -23,7 +23,7 @@ const OrangeGoldModal = () => {
           알맹이가 통통하고 신맛이 적으며, 과즙이 풍부합니다.
         </Body_long1>
         <OrangeModalProgressBar walk={walk} maxWalk={maxWalk} />
-        <ModalCloseButton onPress={closeModal} />
+        <ModalButton onPress={closeModal} text={'닫기'} />
       </Column>
     </ModalSheet>
   );

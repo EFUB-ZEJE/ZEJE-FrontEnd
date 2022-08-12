@@ -3,7 +3,7 @@ import {useLetterModal} from '../../recoil/useModals';
 import ModalSheet from '../../../components/common/modal/ModalSheet';
 import {Column} from 'native-base';
 import {Body_long1, Subhead_long3} from '../../../styles/font';
-import ModalCloseButton from '../../../components/home/oranges/ModalCloseButton';
+import ModalButton from '../../../components/home/ModalButton';
 import {palette} from '../../../styles/theme';
 
 const LetterModal = () => {
@@ -19,7 +19,7 @@ const LetterModal = () => {
           맛있는 때인 달을 의미한답니다. 여행 중 제철인 감귤을 만나게 된다면
           놓치지 말고 시도해 보세요!
         </Body_long1>
-        <ModalCloseButton onPress={closeModal} />
+        <ModalButton onPress={closeModal} text={'닫기'} />
       </Column>
     </ModalSheet>
   );
