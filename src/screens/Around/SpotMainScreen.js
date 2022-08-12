@@ -9,6 +9,8 @@ import {palette, theme} from '../../styles/theme';
 import SvgIcon from '../../components/common/SvgIcon';
 import Spot from '../../components/Around/Spot';
 
+import GetPossibleFlowersModal from '../../modal/modals/Around/GetPosibleFlowersModal';
+
 export default function SpotMainScreen({navigation}) {
   const [sortType, setSortType] = useState('내 위치 중심');
   const [viewType, setViewType] = useState('Map');
@@ -107,7 +109,10 @@ export default function SpotMainScreen({navigation}) {
       />
 
       {viewType === 'Map' ? (
-        <Map places={sproutPlaces} />
+        <>
+          <Map places={sproutPlaces} navigation={navigation} />
+          <GetPossibleFlowersModal />
+        </>
       ) : (
         <ScreenContainer>
           <SortButton sortBy={sortType} handlePress={_handlePressSortButton} />
