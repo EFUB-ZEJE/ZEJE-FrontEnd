@@ -4,7 +4,7 @@ import ModalSheet from '../../../components/common/modal/ModalSheet';
 import {Column} from 'native-base';
 import {OrangeGreen} from '../../../assets/images/oranges';
 import {Body_long1, Subhead_long3} from '../../../styles/font';
-import OrangeModalCloseButton from '../../../components/home/oranges/OrangeModalCloseButton';
+import ModalCloseButton from '../../../components/home/oranges/ModalCloseButton';
 import OrangeModalProgressBar from '../../../components/home/oranges/OrangeModalProgressBar';
 import {ORANGES_LIST} from '../../../components/home/oranges/OrangeBox';
 
@@ -23,7 +23,7 @@ const OrangeGreenModal = () => {
           됩니다. 시중에 보이는 덜 익은 귤인 하귤과는 다르다는 사실!
         </Body_long1>
         <OrangeModalProgressBar walk={walk} maxWalk={maxWalk} />
-        <OrangeModalCloseButton onPress={closeModal} />
+        <ModalCloseButton onPress={closeModal} />
       </Column>
     </ModalSheet>
   );
