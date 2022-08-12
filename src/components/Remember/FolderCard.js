@@ -49,13 +49,13 @@ const FolderCard = ({
         openDeleteModal={openDeleteModal}
         closeDeleteModal={closeDeleteModal}
       />
+
       <FolderTitle
         modalVisible={folderModalVisible}
         setModalVisible={setFolderModalVisible}
         setFolder={setFolder}
         folder={folder}
       />
-      
     </>
   );
 };

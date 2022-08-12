@@ -8,12 +8,6 @@ export default function RememberScreen({navigation}) {
   return (
     <>
       <ScreenHeader navigation={navigation} screenTitle="기록하기" />
-
-      {/* <PostBanner
-          icon="Plus"
-          text="일기장 추가"
-          onPress={console.log('open BottomSheet')}
-        /> */}
       <FolderList
         navigation={navigation}
         modalVisible={modalVisible}
