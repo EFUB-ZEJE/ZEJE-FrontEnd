@@ -26,3 +26,23 @@ export const orangeThousandModalState = atom(
 export const orangeTinyModalState = atom(
   generateModalAtomOption('orangeTinyModalState'),
 );
+
+export const ArriveSpotModalState = atom(
+  generateModalAtomOption('ArriveSpotModalState'),
+);
+
+export const DistanceToSpotModalState = atom(
+  generateModalAtomOption('DistanceToSpotModalState'),
+);
+
+export const GetAllFlowersModalState = atom(
+  generateModalAtomOption('GetAllFlowersModalState'),
+);
+
+export const GetPossibleFlowersModalState = atom(
+  generateModalAtomOption('GetPossibleFlowersModal'),
+);
+
+export const NotFoundModalState = atom(
+  generateModalAtomOption('NotFoundModal'),
+);

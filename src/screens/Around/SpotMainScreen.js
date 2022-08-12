@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {ScreenHeader, SizedBox, SortButton} from '../../components';
-import {Text} from 'react-native';
+import {Alert, Text} from 'react-native';
 import Map from './Map';
 import styled from 'styled-components';
 import BottomSheet from '../../components/common/BottomSheet';
@@ -21,6 +21,8 @@ export default function SpotMainScreen({navigation}) {
       name: '마라도 등대',
       location: '제주특별자치도 서귀포시 대정읍 마라로 161',
       description: null,
+      latitude: 33.31,
+      longitude: 126.42,
       link: null,
     },
     {
@@ -30,6 +32,8 @@ export default function SpotMainScreen({navigation}) {
       type: '자연',
       name: '마라도(마라해양도립공원)',
       location: '제주특별자치도 서귀포시 대정읍 마라로101번길 46',
+      latitude: 33.33,
+      longitude: 126.47,
       description: null,
       link: null,
     },
@@ -40,6 +44,8 @@ export default function SpotMainScreen({navigation}) {
       type: '자연',
       name: '만장굴 (제주도 국가지질공원)',
       location: '제주특별자치도 제주시 구좌읍 만장굴길 182',
+      latitude: 33.36,
+      longitude: 126.44,
       description: null,
       link: null,
     },
@@ -50,6 +56,8 @@ export default function SpotMainScreen({navigation}) {
       type: '자연',
       name: '모구리오름',
       location: '제주특별자치도 서귀포시 성산읍 서성일로',
+      latitude: 33.39,
+      longitude: 126.42,
       description: null,
       link: null,
     },
@@ -60,6 +68,8 @@ export default function SpotMainScreen({navigation}) {
       type: '자연',
       name: '모지오름',
       location: '제주특별자치도 서귀포시 표선면 번영로',
+      latitude: 33.37,
+      longitude: 126.48,
       description: null,
       link: null,
     },
@@ -97,7 +107,7 @@ export default function SpotMainScreen({navigation}) {
       />
 
       {viewType === 'Map' ? (
-        <Map />
+        <Map places={sproutPlaces} />
       ) : (
         <ScreenContainer>
           <SortButton sortBy={sortType} handlePress={_handlePressSortButton} />
