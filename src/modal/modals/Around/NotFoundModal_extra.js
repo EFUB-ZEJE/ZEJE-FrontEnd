@@ -5,6 +5,8 @@ import font from '../../../styles/font';
 import {palette, theme} from '../../../styles/theme';
 import SvgIcon from '../../../components/common/SvgIcon';
 import {SizedBox} from '../../../components';
+import {useRecoilState} from 'recoil';
+import {NotFounModalState} from '../../recoil/modalStates';
 
 const ModalContainer = styled.View`
   display: flex;
@@ -15,8 +17,7 @@ const ModalContainer = styled.View`
 `;
 
 export default function NotFoundModal() {
-  modalVisible = true;
-  setModalVisible = () => console.log(test);
+  const {modalVisible, setModalVisible} = useRecoilState(NotFounModalState);
   return (
     <BottomSheet modalVisible={modalVisible} setModalVisible={setModalVisible}>
       <ModalContainer height="228px">

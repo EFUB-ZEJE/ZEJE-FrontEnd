@@ -6,6 +6,8 @@ import {palette, theme} from '../../../styles/theme';
 import SvgIcon from '../../../components/common/SvgIcon';
 import {SizedBox} from '../../../components';
 import BottomSheet from '../../../components/common/BottomSheet';
+import {useRecoilState} from 'recoil';
+import {GetAllFlowersModalState} from '../../recoil/modalStates';
 
 const ModalContainer = styled.View`
   display: flex;
@@ -16,8 +18,9 @@ const ModalContainer = styled.View`
 `;
 
 export default function GetAllFlowersModal() {
-  modalVisible = true;
-  setModalVisible = () => console.log(test);
+  const {modalVisible, setModalVisible} = useRecoilState(
+    GetAllFlowersModalState,
+  );
   return (
     <BottomSheet modalVisible={modalVisible} setModalVisible={setModalVisible}>
       <ModalContainer height="196px">

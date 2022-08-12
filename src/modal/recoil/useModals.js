@@ -8,6 +8,11 @@ import {
   orangeSourModalState,
   orangeThousandModalState,
   orangeTinyModalState,
+  ArriveSpotModalState,
+  DistanceToSpotModalState,
+  GetAllFlowersModalState,
+  GetPossibleFlowersModalState,
+  NotFoundModalState,
 } from './modalStates';
 
 export const useOrangeGoldModal = generateModalHook(orangeGoldModalState);
@@ -22,3 +27,13 @@ export const useOrangeThousandModal = generateModalHook(
   orangeThousandModalState,
 );
 export const useOrangeTinyModal = generateModalHook(orangeTinyModalState);
+
+export const useArriveSpotModal = generateModalHook(ArriveSpotModalState);
+export const useDistanceToSpotModal = generateModalHook(
+  DistanceToSpotModalState,
+);
+export const useGetAllFlowersModal = generateModalHook(GetAllFlowersModalState);
+export const useGetPossibleFlowersModal = generateModalHook(
+  GetPossibleFlowersModalState,
+);
+export const useNotFoundModal = generateModalHook(NotFoundModalState);

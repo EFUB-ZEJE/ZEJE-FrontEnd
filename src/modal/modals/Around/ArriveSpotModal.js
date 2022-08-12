@@ -1,7 +1,8 @@
 import {View, Text} from 'react-native';
 import React from 'react';
-import BottomSheet from '../../../components/common/BottomSheet';
-
+import BottomSheet from '../../../compuseOrangeMandarinModalonents/common/BottomSheet';
+import {useRecoilState} from 'recoil';
+import {ArriveSpotModalState} from '../../recoil/modalStates';
 const ModalContainer = styled.View`
   display: flex;
   justify-content: space-between;
@@ -11,11 +12,11 @@ const ModalContainer = styled.View`
 `;
 
 export default function ArriveSpotModal() {
-  modalVisible = true;
-  setModalVisible = () => console.log(test);
+  const {modalVisible, setModalVisible} = useRecoilState(ArriveSpotModalState);
+
   return (
     <BottomSheet modalVisible={modalVisible} setModalVisible={setModalVisible}>
-      <ModalContainer>dsfds</ModalContainer>
+      <ModalContainer>특정 스팟에 도착했어요!</ModalContainer>
     </BottomSheet>
   );
 }
