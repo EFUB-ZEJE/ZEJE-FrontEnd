@@ -1,5 +1,6 @@
 import {generateModalHook} from './generateModalHook';
 import {
+  basketModalState,
   letterModalState,
   orangeGoldModalState,
   orangeGreenModalState,
@@ -24,3 +25,4 @@ export const useOrangeThousandModal = generateModalHook(
 );
 export const useOrangeTinyModal = generateModalHook(orangeTinyModalState);
 export const useLetterModal = generateModalHook(letterModalState);
+export const useBaksetModal = generateModalHook(basketModalState);
