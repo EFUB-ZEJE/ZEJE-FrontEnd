@@ -1,6 +1,7 @@
 import {View, Text} from 'react-native';
 import React from 'react';
 import font from '../../../styles/font';
+import styled from 'styled-components';
 import {palette, theme} from '../../../styles/theme';
 import SvgIcon from '../../../components/common/SvgIcon';
 import {SizedBox} from '../../../components';
@@ -16,7 +17,7 @@ const ModalContainer = styled.View`
 `;
 
 export default function GetPossibleFlowersModal() {
-  const {modalVisible, setModalVisible} = useRecoilState(
+  const [modalVisible, setModalVisible] = useRecoilState(
     GetPossibleFlowersModalState,
   );
   return (

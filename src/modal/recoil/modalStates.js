@@ -39,9 +39,10 @@ export const GetAllFlowersModalState = atom(
   generateModalAtomOption('GetAllFlowersModalState'),
 );
 
-export const GetPossibleFlowersModalState = atom(
-  generateModalAtomOption('GetPossibleFlowersModal'),
-);
+export const GetPossibleFlowersModalState = atom({
+  key: 'GetPossibleFlowersModalState',
+  default: true,
+});
 
 export const NotFoundModalState = atom(
   generateModalAtomOption('NotFoundModal'),
