@@ -1,4 +1,5 @@
 import React from 'react';
+import LetterModal from '../../../modal/modals/Home/LetterModal';
 import OrangeGoldModal from '../../../modal/modals/Home/OrangeGoldModal';
 import OrangeGreenModal from '../../../modal/modals/Home/OrangeGreenModal';
 import OrangeMandarinModal from '../../../modal/modals/Home/OrangeMandarinModal';
@@ -19,6 +20,7 @@ const ModalWrapper = () => {
       <OrangeSourModal />
       <OrangeThousandModal />
       <OrangeTinyModal />
+      <LetterModal />
     </>
   );
 };
