@@ -4,7 +4,7 @@ import ModalSheet from '../../../components/common/modal/ModalSheet';
 import {Column} from 'native-base';
 import {OrangeThousand} from '../../../assets/images/oranges';
 import {Body_long1, Subhead_long3} from '../../../styles/font';
-import OrangeModalCloseButton from '../../../components/home/oranges/OrangeModalCloseButton';
+import ModalCloseButton from '../../../components/home/oranges/ModalCloseButton';
 import OrangeModalProgressBar from '../../../components/home/oranges/OrangeModalProgressBar';
 import {ORANGES_LIST} from '../../../components/home/oranges/OrangeBox';
 
@@ -23,7 +23,7 @@ const OrangeThousandModal = () => {
           이름처럼 진한 향과 얇고 매끈한 껍질, 높은 당도가 특징입니다.
         </Body_long1>
         <OrangeModalProgressBar walk={walk} maxWalk={maxWalk} />
-        <OrangeModalCloseButton onPress={closeModal} />
+        <ModalCloseButton onPress={closeModal} />
       </Column>
     </ModalSheet>
   );
