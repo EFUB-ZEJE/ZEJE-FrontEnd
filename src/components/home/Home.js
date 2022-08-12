@@ -20,9 +20,10 @@ export default function Home() {
 const styles = StyleSheet.create({
   stateBar: {
     position: 'absolute',
-    top: 10,
+    top: 15,
     zIndex: 10,
     justifyContent: 'center',
     alignSelf: 'center',
+    marginHorizontal: 25,
   },
 });
