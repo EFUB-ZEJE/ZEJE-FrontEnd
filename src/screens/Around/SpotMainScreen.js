@@ -7,7 +7,8 @@ import BottomSheet from '../../components/common/BottomSheet';
 import font from '../../styles/font';
 import {palette, theme} from '../../styles/theme';
 import SvgIcon from '../../components/common/SvgIcon';
-import Spot from '../../components/Around/Spot';
+import SpotList from '../../components/Around/SpotList';
+import haversine from 'haversine';
 
 import GetPossibleFlowersModal from '../../modal/modals/Around/GetPosibleFlowersModal';
 
@@ -116,30 +117,7 @@ export default function SpotMainScreen({navigation}) {
       ) : (
         <ScreenContainer>
           <SortButton sortBy={sortType} handlePress={_handlePressSortButton} />
-
-          {sortType === '내 위치 중심'
-            ? sproutPlaces.map(
-                (
-                  place, // 내위치 중심 -> 나중에 수정 필요
-                ) => (
-                  <Spot
-                    name={place.name}
-                    desc={place.description}
-                    location={place.location}
-                  />
-                ),
-              )
-            : sproutPlaces.map(
-                (
-                  place, // 지도 중심
-                ) => (
-                  <Spot
-                    name={place.name}
-                    desc={place.description}
-                    location={place.location}
-                  />
-                ),
-              )}
+          <SpotList sproutPlaces={sproutPlaces} type={sortType} />
         </ScreenContainer>
       )}
     </>
