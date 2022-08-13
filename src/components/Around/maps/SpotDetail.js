@@ -18,7 +18,7 @@ const Container = styled.View`
 
 const Wrapper = styled.View`
   display: flex;
-  width: 256px;
+  //width: 256px;
   justify-content: center;
 
   align-items: flex-start;
