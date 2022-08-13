@@ -7,6 +7,7 @@ import {useRecoilState} from 'recoil';
 import SpotDetail from '../../../components/Around/maps/SpotDetail';
 import font from '../../../styles/font';
 import {theme, palette} from '../../../styles/theme';
+
 const ModalContainer = styled.View`
   display: flex;
   justify-content: space-between;
@@ -14,6 +15,7 @@ const ModalContainer = styled.View`
   align-items: center;
   height: ${({height}) => (height ? height : '228px')};
   padding: 16px;
+  padding-bottom: 8px;
 `;
 
 /*
@@ -37,7 +39,6 @@ export default function DistanceToSpotModal({
   const setDistanceUnit = dist_between => {
     if (dist_between <= 1) {
       //1km미만이면 m단위로 보여줌
-
       return String(Math.round(dist_between * 1000)) + 'm';
     } else {
       //1km 이상이면 km단위로 보여줌 (소수 둘째자리)

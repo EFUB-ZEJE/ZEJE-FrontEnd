@@ -15,7 +15,7 @@ import haversine from 'haversine';
 import {PermissionsAndroid} from 'react-native';
 import ArriveSpotModal from '../../modal/modals/Around/ArriveSpotModal';
 
-const ARRIVEDSTANDARD = 0.1; //0.1km
+const ARRIVEDSTANDARD = 0.1; //0.1km=100m
 export default function Map({places, navigation}) {
   const [placeDetailModalVisible, setPlaceDetailModalVisible] = useRecoilState(
     DistanceToSpotModalState,
@@ -23,18 +23,7 @@ export default function Map({places, navigation}) {
 
   const [ArriveSpotModalVisible, setArriveSpotModalVisible] =
     useRecoilState(ArriveSpotModalState);
-  const [focusedSpot, setFocusedSpot] = useState({
-    spotId: 90,
-    contentId: 1926601,
-    category: '여행',
-    type: '자연',
-    name: '모구리오름',
-    location: '제주특별자치도 서귀포시 성산읍 서성일로',
-    latitude: 33.39,
-    longitude: 126.42,
-    description: null,
-    link: null,
-  });
+  const [focusedSpot, setFocusedSpot] = useState(null);
 
   const [distBetween, setDistBetween] = useState(0);
 
@@ -50,19 +39,19 @@ export default function Map({places, navigation}) {
       }
     }
   }
-  const _onMarkerClick = place => {
-    setFocusedSpot(place); //현재 포커스된 spot 변경
 
+  const _onMarkerClick = place => {
     Geolocation.getCurrentPosition(
       position => {
-        const dist_between = haversine(position.coords, focusedSpot);
-        setDistBetween(dist_between);
-
-        console.log('내위치', position.coords);
-        console.log('현재포커스된장소', focusedSpot);
-
+        setFocusedSpot(place); //현재 포커스된 spot 변경
         // 내위치와 스팟간의 거리차이 계산 (단위 : km)
-        console.log(dist_between);
+        const dist_between = haversine(position.coords, place);
+        setDistBetween(dist_between);
+        console.log('거리차이set');
+        //console.log('내위치', position.coords);
+        //console.log('현재포커스된장소', focusedSpot);
+
+        //console.log(dist_between);
         if (dist_between <= ARRIVEDSTANDARD) {
           //거리차이가 기준치 이하라면
 
@@ -78,6 +67,8 @@ export default function Map({places, navigation}) {
   useEffect(() => {
     requestPermissions();
   }, []);
+
+  console.log('hello');
   return (
     <>
       <MapView
@@ -124,16 +115,16 @@ export default function Map({places, navigation}) {
           );
         })}
       </MapView>
-      <DistanceToSpotModal
-        spotInfo={focusedSpot}
-        navigation={navigation}
-        dist_between={distBetween}
-      />
-      <ArriveSpotModal
-        spotInfo={focusedSpot}
-        navigation={navigation}
-        dist_between={distBetween}
-      />
+      {focusedSpot && (
+        <DistanceToSpotModal
+          spotInfo={focusedSpot}
+          navigation={navigation}
+          dist_between={distBetween}
+        />
+      )}
+      {focusedSpot && (
+        <ArriveSpotModal spotInfo={focusedSpot} navigation={navigation} />
+      )}
     </>
   );
 }
