@@ -25,18 +25,32 @@ spotInfo
 
 */
 
-// 유저의 현재위치와 spotInfo 가 들어오면 두 지점의 거리차이 계산하기
-export default function DistanceToSpotModal({spotInfo, navigation}) {
+export default function DistanceToSpotModal({
+  spotInfo,
+  navigation,
+  dist_between, // 단위 :km
+}) {
   const [modalVisible, setModalVisible] = useRecoilState(
     DistanceToSpotModalState,
   );
-  const difference = 100; //단위 : m
+
+  const setDistanceUnit = dist_between => {
+    if (dist_between <= 1) {
+      //1km미만이면 m단위로 보여줌
+
+      return String(Math.round(dist_between * 1000)) + 'm';
+    } else {
+      //1km 이상이면 km단위로 보여줌 (소수 둘째자리)
+      return String(Math.round(dist_between * 100) / 100) + 'km';
+    }
+  };
+
   return (
     <BottomSheet modalVisible={modalVisible} setModalVisible={setModalVisible}>
       <ModalContainer height={'132px'}>
         <SpotDetail spotInfo={spotInfo} navigation={navigation} />
         <font.title.Subhead3 color={theme.colors.main}>
-          현재위치에서 {difference}m 떨어져 있습니다.{' '}
+          현재위치에서 {setDistanceUnit(dist_between)} 떨어져 있습니다.{' '}
         </font.title.Subhead3>
       </ModalContainer>
     </BottomSheet>

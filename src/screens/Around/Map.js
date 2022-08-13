@@ -9,10 +9,20 @@ import {Svg, Path} from 'react-native-svg';
 import {DistanceToSpotModalState} from '../../modal/recoil/modalStates';
 import {useRecoilState} from 'recoil';
 import DistanceToSpotModal from '../../modal/modals/Around/DistanceToSpotModal';
+import {ArriveSpotModalState} from '../../modal/recoil/modalStates';
+import Geolocation from 'react-native-geolocation-service';
+import haversine from 'haversine';
+import {PermissionsAndroid} from 'react-native';
+import ArriveSpotModal from '../../modal/modals/Around/ArriveSpotModal';
+
+const ARRIVEDSTANDARD = 0.1; //0.1km
 export default function Map({places, navigation}) {
   const [placeDetailModalVisible, setPlaceDetailModalVisible] = useRecoilState(
     DistanceToSpotModalState,
   );
+
+  const [ArriveSpotModalVisible, setArriveSpotModalVisible] =
+    useRecoilState(ArriveSpotModalState);
   const [focusedSpot, setFocusedSpot] = useState({
     spotId: 90,
     contentId: 1926601,
@@ -26,17 +36,48 @@ export default function Map({places, navigation}) {
     link: null,
   });
 
+  const [distBetween, setDistBetween] = useState(0);
+
+  // 위치 정보 승인 요청
+  async function requestPermissions() {
+    if (Platform.OS === 'android') {
+      await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+      );
+
+      if ('granted' === PermissionsAndroid.RESULTS.GRANTED) {
+        console.log('승인되었습니다');
+      }
+    }
+  }
   const _onMarkerClick = place => {
-    setPlaceDetailModalVisible(true); // 상세설명모달 on
     setFocusedSpot(place); //현재 포커스된 spot 변경
+
+    Geolocation.getCurrentPosition(
+      position => {
+        const dist_between = haversine(position.coords, focusedSpot);
+        setDistBetween(dist_between);
+
+        console.log('내위치', position.coords);
+        console.log('현재포커스된장소', focusedSpot);
+
+        // 내위치와 스팟간의 거리차이 계산 (단위 : km)
+        console.log(dist_between);
+        if (dist_between <= ARRIVEDSTANDARD) {
+          //거리차이가 기준치 이하라면
+
+          setArriveSpotModalVisible(true); //도착 모달 on
+        } else setPlaceDetailModalVisible(true); // 상세설명모달 on (도착x시)
+      },
+      error => {
+        console.log(error.code, error.message);
+      },
+      {enableHighAccuracy: true, timeout: 15000, maximumAge: 10000},
+    );
   };
   useEffect(() => {
-    /*
-    navigator.geolocation.watchPosition(position => {
-      console.log(position);
-    });
-    */
-  });
+    requestPermissions();
+  }, []);
   return (
     <>
       <MapView
@@ -83,7 +124,16 @@ export default function Map({places, navigation}) {
           );
         })}
       </MapView>
-      <DistanceToSpotModal spotInfo={focusedSpot} navigation={navigation} />
+      <DistanceToSpotModal
+        spotInfo={focusedSpot}
+        navigation={navigation}
+        dist_between={distBetween}
+      />
+      <ArriveSpotModal
+        spotInfo={focusedSpot}
+        navigation={navigation}
+        dist_between={distBetween}
+      />
     </>
   );
 }

@@ -20,7 +20,7 @@ import DateEditor from './Remember/Post/DateEditor';
 import ImageEditor from './Remember/Post/ImageEditor';
 
 import OrangeSvg from './home/oranges/OrangeSvg';
-
+import CommonButton from './common/CommonButton';
 export {
   ScreenContainer,
   ScreenHeader,
@@ -37,11 +37,9 @@ export {
   PostBanner,
   DiaryList,
   AddButton,
-
+  CommonButton,
   WriteEditor,
   DateEditor,
   ImageEditor,
-
   OrangeSvg,
-
 };
