@@ -1,11 +1,13 @@
 import React from 'react';
-import styled from 'styled-components/native';
+
+import styled from 'styled-components';
 import {Subhead2} from '../../styles/font';
+
 import {theme} from '../../styles/theme';
 
 export default function CommonButton({onPress, text}) {
   return (
-    <Pressable onPress={() => onPress()}>
+    <Pressable onPress={onPress}>
       <Subhead2 color={'white'}>{text}</Subhead2>
     </Pressable>
   );

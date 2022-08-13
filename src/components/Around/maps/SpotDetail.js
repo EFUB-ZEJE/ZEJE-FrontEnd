@@ -13,7 +13,7 @@ const Container = styled.View`
 
   align-items: flex-start;
   width: 370px;
-  padding: 5px 30px;
+  padding: 5px 20px;
 `;
 
 const Wrapper = styled.View`
