@@ -23,8 +23,8 @@ export default function Map({places, navigation}) {
 
   const [ArriveSpotModalVisible, setArriveSpotModalVisible] =
     useRecoilState(ArriveSpotModalState);
-  const [focusedSpot, setFocusedSpot] = useState(null);
 
+  const [focusedSpot, setFocusedSpot] = useState(null);
   const [distBetween, setDistBetween] = useState(0);
 
   // 위치 정보 승인 요청
@@ -44,17 +44,12 @@ export default function Map({places, navigation}) {
     Geolocation.getCurrentPosition(
       position => {
         setFocusedSpot(place); //현재 포커스된 spot 변경
+
         // 내위치와 스팟간의 거리차이 계산 (단위 : km)
         const dist_between = haversine(position.coords, place);
         setDistBetween(dist_between);
-        console.log('거리차이set');
-        //console.log('내위치', position.coords);
-        //console.log('현재포커스된장소', focusedSpot);
 
-        //console.log(dist_between);
         if (dist_between <= ARRIVEDSTANDARD) {
-          //거리차이가 기준치 이하라면
-
           setArriveSpotModalVisible(true); //도착 모달 on
         } else setPlaceDetailModalVisible(true); // 상세설명모달 on (도착x시)
       },
@@ -68,7 +63,6 @@ export default function Map({places, navigation}) {
     requestPermissions();
   }, []);
 
-  console.log('hello');
   return (
     <>
       <MapView
@@ -81,7 +75,8 @@ export default function Map({places, navigation}) {
           longitudeDelta: 0.0421,
         }}
         followsUserLocation
-        showsUserLocation>
+        showsUserLocation
+        onRegionChange={e => setMapRegionState(e)}>
         {places.map(place => {
           return (
             <Marker

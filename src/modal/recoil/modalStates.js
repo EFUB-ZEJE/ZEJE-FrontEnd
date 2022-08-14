@@ -1,4 +1,5 @@
 import {atom} from 'recoil';
+// 유저가 보고 있는 지역
 
 const generateModalAtomOption = key => ({key, default: false});
 
