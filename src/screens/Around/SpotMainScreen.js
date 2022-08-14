@@ -28,6 +28,7 @@ export default function SpotMainScreen({navigation}) {
       latitude: 33.31,
       longitude: 126.42,
       link: null,
+      isVisited: false,
     },
     {
       spotId: 88,
@@ -40,6 +41,7 @@ export default function SpotMainScreen({navigation}) {
       longitude: 126.47,
       description: null,
       link: null,
+      isVisited: false,
     },
     {
       spotId: 89,
@@ -52,6 +54,7 @@ export default function SpotMainScreen({navigation}) {
       longitude: 126.44,
       description: null,
       link: null,
+      isVisited: true,
     },
     {
       spotId: 90,
@@ -64,6 +67,7 @@ export default function SpotMainScreen({navigation}) {
       longitude: 126.42,
       description: null,
       link: null,
+      isVisited: false,
     },
     {
       spotId: 91,
@@ -76,6 +80,7 @@ export default function SpotMainScreen({navigation}) {
       longitude: 126.48,
       description: null,
       link: null,
+      isVisited: true,
     },
     {
       spotId: 92,
@@ -88,6 +93,7 @@ export default function SpotMainScreen({navigation}) {
       longitude: 126.41,
       description: null,
       link: null,
+      isVisited: false,
     },
   ]);
 
@@ -126,15 +132,11 @@ export default function SpotMainScreen({navigation}) {
         <>
           <Map places={sproutPlaces} navigation={navigation} />
           <GetPossibleFlowersModal />
-        </>
+        </> //
       ) : (
         <ScreenContainer>
           <SortButton sortBy={sortType} handlePress={_handlePressSortButton} />
-          <SpotList
-            sproutPlaces={sproutPlaces}
-            type={sortType}
-            region={{latitude: 33.33, longitude: 126.47}}
-          />
+          <SpotList sproutPlaces={sproutPlaces} type={sortType} />
         </ScreenContainer>
       )}
     </>
