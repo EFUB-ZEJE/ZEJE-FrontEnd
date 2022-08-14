@@ -15,6 +15,7 @@ import GetPossibleFlowersModal from '../../modal/modals/Around/GetPosibleFlowers
 export default function SpotMainScreen({navigation}) {
   const [sortType, setSortType] = useState('내 위치 중심');
   const [viewType, setViewType] = useState('Map');
+
   const [sproutPlaces, setSproutPlace] = useState([
     {
       spotId: 87,
@@ -76,6 +77,18 @@ export default function SpotMainScreen({navigation}) {
       description: null,
       link: null,
     },
+    {
+      spotId: 92,
+      contentId: 1928047,
+      category: '여행',
+      type: '자연',
+      name: '먼곳',
+      location: '제주특별자치도 서귀포시 표선면 번영로',
+      latitude: 33.31,
+      longitude: 126.41,
+      description: null,
+      link: null,
+    },
   ]);
 
   const _fetchSproutPlaces = () => {
@@ -117,7 +130,11 @@ export default function SpotMainScreen({navigation}) {
       ) : (
         <ScreenContainer>
           <SortButton sortBy={sortType} handlePress={_handlePressSortButton} />
-          <SpotList sproutPlaces={sproutPlaces} type={sortType} />
+          <SpotList
+            sproutPlaces={sproutPlaces}
+            type={sortType}
+            region={{latitude: 33.33, longitude: 126.47}}
+          />
         </ScreenContainer>
       )}
     </>
