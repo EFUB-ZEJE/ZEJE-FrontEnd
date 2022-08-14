@@ -23,3 +23,4 @@ export {default as BasketEmpty} from './images/basket-empty.svg';
 export {default as BasketOne} from './images/basket-one.svg';
 export {default as BasketTwo} from './images/basket-two.svg';
 export {default as BasektThree} from './images/basket-three.svg';
+export {default as LogoSvg} from './images/logo.svg';
