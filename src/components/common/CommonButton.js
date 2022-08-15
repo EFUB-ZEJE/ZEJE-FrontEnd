@@ -13,7 +13,7 @@ export default function CommonButton({onPress, text}) {
   );
 }
 
-const Pressable = styled.Pressable`
+const Pressable = styled.TouchableOpacity`
   width: 100%;
   height: 48px;
   border-radius: 24px;

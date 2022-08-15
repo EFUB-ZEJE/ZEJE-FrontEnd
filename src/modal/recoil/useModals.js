@@ -27,13 +27,3 @@ export const useOrangeThousandModal = generateModalHook(
   orangeThousandModalState,
 );
 export const useOrangeTinyModal = generateModalHook(orangeTinyModalState);
-
-export const useArriveSpotModal = generateModalHook(ArriveSpotModalState);
-export const useDistanceToSpotModal = generateModalHook(
-  DistanceToSpotModalState,
-);
-export const useGetAllFlowersModal = generateModalHook(GetAllFlowersModalState);
-export const useGetPossibleFlowersModal = generateModalHook(
-  GetPossibleFlowersModalState,
-);
-export const useNotFoundModal = generateModalHook(NotFoundModalState);

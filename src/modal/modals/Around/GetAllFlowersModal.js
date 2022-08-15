@@ -1,6 +1,6 @@
 import {View, Text} from 'react-native';
 import React from 'react';
-
+import styled from 'styled-components';
 import font from '../../../styles/font';
 import {palette, theme} from '../../../styles/theme';
 import SvgIcon from '../../../components/common/SvgIcon';
@@ -18,14 +18,14 @@ const ModalContainer = styled.View`
 `;
 
 export default function GetAllFlowersModal() {
-  const {modalVisible, setModalVisible} = useRecoilState(
+  const [modalVisible, setModalVisible] = useRecoilState(
     GetAllFlowersModalState,
   );
   return (
     <BottomSheet modalVisible={modalVisible} setModalVisible={setModalVisible}>
       <ModalContainer height="196px">
-        <SvgIcon name="NotFound" size={'130px'} />
-        <SizedBox height={16} />
+        {/*<SizedBox height={"16px"} />*/}
+        <SvgIcon name="Hanrabong" size={'130px'} />
         <font.title.Subhead3 color={theme.colors.main}>
           10개의 꽃을 모두 받았어요!
         </font.title.Subhead3>

@@ -19,6 +19,8 @@ export {default as Mypage} from './icons/MypageIcon.svg';
 export {default as Alert} from './icons/AlertIcon.svg';
 export {default as NotFound} from './images/not-found.svg';
 export {default as RedOrange} from './images/oranges/orange-red.svg';
+export {default as Mandarin} from './images/oranges/orange-mandarin.svg';
+export {default as Hanrabong} from './images/oranges/hanrabong.svg';
 export {default as UnvistedMarkerSmall} from './icons/unvisited-marker-small.svg';
 export {default as VistedMarkerBig} from './icons/visited-marker-big.svg';
 export {default as VistedMarkerSmall} from './icons/visited-marker-small.svg';

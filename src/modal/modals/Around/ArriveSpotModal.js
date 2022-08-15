@@ -22,7 +22,7 @@ const _handleBtnClick = () => {
 };
 export default function ArriveSpotModal({spotInfo, navigation}) {
   const [modalVisible, setModalVisible] = useRecoilState(ArriveSpotModalState);
-  console.log('ArriveSpotModal');
+
   return (
     <BottomSheet modalVisible={modalVisible} setModalVisible={setModalVisible}>
       <ModalContainer height={'196px'}>

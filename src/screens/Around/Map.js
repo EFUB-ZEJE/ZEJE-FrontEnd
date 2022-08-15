@@ -17,7 +17,7 @@ import ArriveSpotModal from '../../modal/modals/Around/ArriveSpotModal';
 import {MapRegionState} from '../../recoil/GlobalState';
 import GrayMarker from '../../components/Around/maps/GrayMarker';
 import OrangeMarker from '../../components/Around/maps/OrangeMarker';
-const ARRIVEDSTANDARD = 0.1; //0.1km=100m
+const ARRIVEDSTANDARD = 0.3; //0.3km
 export default function Map({places, navigation}) {
   const [placeDetailModalVisible, setPlaceDetailModalVisible] = useRecoilState(
     DistanceToSpotModalState,
@@ -106,16 +106,14 @@ export default function Map({places, navigation}) {
           );
         })}
       </MapView>
-      {focusedSpot && (
-        <DistanceToSpotModal
-          spotInfo={focusedSpot}
-          navigation={navigation}
-          dist_between={distBetween}
-        />
-      )}
-      {focusedSpot && (
-        <ArriveSpotModal spotInfo={focusedSpot} navigation={navigation} />
-      )}
+
+      <DistanceToSpotModal
+        spotInfo={focusedSpot}
+        navigation={navigation}
+        dist_between={distBetween}
+      />
+
+      <ArriveSpotModal spotInfo={focusedSpot} navigation={navigation} />
     </>
   );
 }
