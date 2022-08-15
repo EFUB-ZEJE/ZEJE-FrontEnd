@@ -2,9 +2,9 @@ import React, {useEffect, useState} from 'react';
 import {ScreenHeader, SortButton} from '../../components';
 import EVService from '../../services/EVService';
 import EVstationMap from './EVstationMap';
-import {FoundEVstationModalState} from '../../modal/recoil/modalStates';
+import {FoundModalState} from '../../modal/recoil/modalStates';
 import {useRecoilState} from 'recoil';
-import FoundEVstationModal from '../../modal/modals/Around/FoundEVstationModal';
+import FoundModal from '../../modal/modals/Around/FoundModal';
 import SpotList from '../../components/Around/SpotList';
 import styled from 'styled-components';
 
@@ -61,10 +61,9 @@ export default function BatteryMainScreen({navigation}) {
       longitude: 126.43548295,
     },
   ]);
-  const [foundEVstationModalVisible, setFoundEVstationModalVisible] =
-    useRecoilState(FoundEVstationModalState);
+  const [foundModalVisible, setFoundModalVisible] =
+    useRecoilState(FoundModalState);
 
-  console.log(useRecoilState(FoundEVstationModalState));
   useEffect(() => {
     /*
     EVService.getEVstation()
@@ -90,7 +89,7 @@ export default function BatteryMainScreen({navigation}) {
       .catch(err => console.log(err));
       */
 
-    setFoundEVstationModalVisible(true);
+    setFoundModalVisible(true);
   }, []);
 
   const _handlePressSortButton = () => {
@@ -122,7 +121,7 @@ export default function BatteryMainScreen({navigation}) {
       {viewType === 'Map' ? (
         <>
           <EVstationMap places={EVstations} />
-          <FoundEVstationModal />
+          <FoundModal text="주변의 전기차 충전소를 찾아보세요!" />
         </>
       ) : (
         <ScreenContainer>

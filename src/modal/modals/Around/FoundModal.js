@@ -7,7 +7,7 @@ import SvgIcon from '../../../components/common/SvgIcon';
 import {SizedBox} from '../../../components';
 import BottomSheet from '../../../components/common/BottomSheet';
 import {useRecoilState} from 'recoil';
-import {FoundEVstationModalState} from '../../recoil/modalStates';
+import {FoundModalState} from '../../recoil/modalStates';
 const ModalContainer = styled.View`
   display: flex;
   justify-content: space-between;
@@ -16,15 +16,13 @@ const ModalContainer = styled.View`
   padding: 16px;
 `;
 
-export default function FoundEVstationModal() {
-  const [modalVisible, setModalVisible] = useRecoilState(
-    FoundEVstationModalState,
-  );
+export default function FoundModal({text}) {
+  const [modalVisible, setModalVisible] = useRecoilState(FoundModalState);
   return (
     <BottomSheet modalVisible={modalVisible} setModalVisible={setModalVisible}>
       <ModalContainer height="78px">
         <font.title.Subhead3 color={theme.colors.main}>
-          주변의 전기차 충전소를 찾아보세요!
+          {text}
         </font.title.Subhead3>
       </ModalContainer>
     </BottomSheet>
