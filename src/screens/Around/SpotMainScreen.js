@@ -51,6 +51,7 @@ export default function SpotMainScreen({navigation}) {
       link: null,
       isVisited: true,
     },
+
     {
       spotId: 88,
       contentId: 126450,
@@ -78,19 +79,6 @@ export default function SpotMainScreen({navigation}) {
       isVisited: false,
     },
     {
-      spotId: 101,
-      contentId: 126452,
-      category: '여행',
-      type: '자연',
-      name: '만장굴2 (제주도 국가지질공원)',
-      location: '제주특별자치도 제주시 구좌읍 만장굴길 182',
-      latitude: 33.369,
-      longitude: 126.442,
-      description: null,
-      link: null,
-      isVisited: false,
-    },
-    {
       spotId: 90,
       contentId: 1926601,
       category: '여행',
@@ -103,6 +91,20 @@ export default function SpotMainScreen({navigation}) {
       link: null,
       isVisited: true,
     },
+    {
+      spotId: 101,
+      contentId: 126452,
+      category: '여행',
+      type: '자연',
+      name: '먼곳',
+      location: '제주특별자치도 제주시 구좌읍 만장굴길 182',
+      latitude: 34.369,
+      longitude: 127.442,
+      description: null,
+      link: null,
+      isVisited: false,
+    },
+
     {
       spotId: 91,
       contentId: 1928045,
@@ -121,7 +123,6 @@ export default function SpotMainScreen({navigation}) {
   const _handleFirstModal = (unVisitedCnt, nearbySpotCnt) => {
     if (unVisitedCnt == 0) {
       //모두 방문했다면
-
       setGetAllFlowersModalVisible(true);
     } else if (nearbySpotCnt == 0) {
       setNotFoundModalVisible(true);
@@ -144,8 +145,8 @@ export default function SpotMainScreen({navigation}) {
         for (place of sproutPlaces) {
           // 내위치와 스팟간의 거리차이 계산 (단위 : km)
           const dist_between = haversine(position.coords, place);
-          if (dist_between <= 5) {
-            //5km 이내라면 (가까운)
+          if (dist_between <= 10) {
+            //10km 이내라면 (가까운)
             nearbySpotCnt++;
           }
         }
