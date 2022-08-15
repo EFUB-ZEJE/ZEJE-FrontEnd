@@ -16,7 +16,7 @@ const ModalContainer = styled.View`
   padding: 16px;
 `;
 
-export default function GetPossibleFlowersModal() {
+export default function GetPossibleFlowersModal({unvisitedSpotCnt}) {
   const [modalVisible, setModalVisible] = useRecoilState(
     GetPossibleFlowersModalState,
   );
@@ -24,7 +24,7 @@ export default function GetPossibleFlowersModal() {
     <BottomSheet modalVisible={modalVisible} setModalVisible={setModalVisible}>
       <ModalContainer height="78px">
         <font.title.Subhead3 color={theme.colors.main}>
-          오늘 10 개의 꽃을 받을 수 있어요!
+          오늘 {unvisitedSpotCnt} 개의 꽃을 받을 수 있어요!
         </font.title.Subhead3>
         <font.body.Body1 color={palette.gray400}>
           친환경 스팟을 선택해주세요
