@@ -17,8 +17,16 @@ import ArriveSpotModal from '../../modal/modals/Around/ArriveSpotModal';
 import {MapRegionState} from '../../recoil/GlobalState';
 import GrayMarker from '../../components/Around/maps/GrayMarker';
 import OrangeMarker from '../../components/Around/maps/OrangeMarker';
-const ARRIVEDSTANDARD = 0.3; //0.3km
-export default function Map({places, navigation}) {
+
+const ARRIVEDSTANDARD = 0.9; //0.9km
+
+export default function Map({
+  places,
+  navigation,
+  sproutPlaces,
+  setSproutPlace,
+}) {
+  console.log('map');
   const [placeDetailModalVisible, setPlaceDetailModalVisible] = useRecoilState(
     DistanceToSpotModalState,
   );
@@ -113,7 +121,12 @@ export default function Map({places, navigation}) {
         dist_between={distBetween}
       />
 
-      <ArriveSpotModal spotInfo={focusedSpot} navigation={navigation} />
+      <ArriveSpotModal
+        spotInfo={focusedSpot}
+        navigation={navigation}
+        sproutPlaces={sproutPlaces}
+        setSproutPlace={setSproutPlace}
+      />
     </>
   );
 }
