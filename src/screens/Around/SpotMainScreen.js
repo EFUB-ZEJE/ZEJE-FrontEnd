@@ -234,8 +234,7 @@ const Center = styled.View`
   display: flex;
   justify-content: center;
   align-items: center;
-
-  background-color: red;
+  height: 400px;
 `;
 
 const ScreenContainer = styled.ScrollView`
