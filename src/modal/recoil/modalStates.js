@@ -48,6 +48,4 @@ export const NotFoundModalState = atom(
   generateModalAtomOption('NotFoundModalState'),
 );
 
-export const FoundEVstationModalState = atom(
-  generateModalAtomOption('FoundEVstationModalState'),
-);
+export const FoundModalState = atom(generateModalAtomOption('FoundModalState'));
