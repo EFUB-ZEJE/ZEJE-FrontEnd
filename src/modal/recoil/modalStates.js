@@ -47,3 +47,7 @@ export const GetPossibleFlowersModalState = atom(
 export const NotFoundModalState = atom(
   generateModalAtomOption('NotFoundModalState'),
 );
+
+export const FoundEVstationModalState = atom(
+  generateModalAtomOption('FoundEVstationModalState'),
+);
