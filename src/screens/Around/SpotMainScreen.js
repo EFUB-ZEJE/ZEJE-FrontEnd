@@ -214,7 +214,7 @@ export default function SpotMainScreen({navigation}) {
               </font.title.Subhead3>
             </Center>
           ) : (
-            <SpotList sproutPlaces={sproutPlaces} type={sortType} />
+            <SpotList places={sproutPlaces} type={sortType} />
           )}
         </ScreenContainer>
       )}
