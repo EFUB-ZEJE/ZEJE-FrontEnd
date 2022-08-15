@@ -39,19 +39,6 @@ export default function SpotMainScreen({navigation}) {
 
   const [sproutPlaces, setSproutPlace] = useState([
     {
-      spotId: 56,
-      contentId: 129145,
-      category: '여행',
-      type: '자연',
-      name: '시작',
-      location: '제주특별자치도 서귀포시 대정읍 마라로 161',
-      description: null,
-      latitude: 33.31,
-      longitude: 126.42,
-      link: null,
-      isVisited: false,
-    },
-    {
       spotId: 87,
       contentId: 129145,
       category: '여행',
@@ -91,6 +78,19 @@ export default function SpotMainScreen({navigation}) {
       isVisited: false,
     },
     {
+      spotId: 101,
+      contentId: 126452,
+      category: '여행',
+      type: '자연',
+      name: '만장굴2 (제주도 국가지질공원)',
+      location: '제주특별자치도 제주시 구좌읍 만장굴길 182',
+      latitude: 33.369,
+      longitude: 126.442,
+      description: null,
+      link: null,
+      isVisited: false,
+    },
+    {
       spotId: 90,
       contentId: 1926601,
       category: '여행',
@@ -112,19 +112,6 @@ export default function SpotMainScreen({navigation}) {
       location: '제주특별자치도 서귀포시 표선면 번영로',
       latitude: 33.37,
       longitude: 126.48,
-      description: null,
-      link: null,
-      isVisited: true,
-    },
-    {
-      spotId: 92,
-      contentId: 1928047,
-      category: '여행',
-      type: '자연',
-      name: '먼곳',
-      location: '제주특별자치도 서귀포시 표선면 번영로',
-      latitude: 33.31,
-      longitude: 126.41,
       description: null,
       link: null,
       isVisited: false,
@@ -205,7 +192,12 @@ export default function SpotMainScreen({navigation}) {
 
       {viewType === 'Map' ? (
         <>
-          <Map places={sproutPlaces} navigation={navigation} />
+          <Map
+            places={sproutPlaces}
+            navigation={navigation}
+            sproutPlaces={sproutPlaces}
+            setSproutPlace={setSproutPlace}
+          />
           <GetPossibleFlowersModal unvisitedSpotCnt={unvisitedSpotCnt} />
           <NotFoundModal />
           <GetAllFlowersModal />
