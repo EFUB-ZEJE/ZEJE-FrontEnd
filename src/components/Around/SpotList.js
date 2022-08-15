@@ -27,6 +27,7 @@ export default function SpotList({sproutPlaces, type}) {
       });
 
       resolve(sproutPlaces);
+      reject('sortByMap 실패');
     });
   }
 
@@ -47,6 +48,7 @@ export default function SpotList({sproutPlaces, type}) {
         },
         error => {
           console.log(error.code, error.message);
+          reject(error);
         },
         {enableHighAccuracy: true, timeout: 15000, maximumAge: 10000},
       );
@@ -56,13 +58,17 @@ export default function SpotList({sproutPlaces, type}) {
   useEffect(() => {
     setIsLoading(true);
     if (type === '내 위치 중심') {
-      sortByUser().then(placesSortedByUser => {
-        setIsLoading(false);
-      });
+      sortByUser()
+        .then(placesSortedByUser => {
+          setIsLoading(false);
+        })
+        .catch(err => console.log(err));
     } else {
-      sortByMap().then(placesSortedByMap => {
-        setIsLoading(false);
-      });
+      sortByMap()
+        .then(placesSortedByMap => {
+          setIsLoading(false);
+        })
+        .catch(err => console.log(err));
     }
   }, [type]);
 

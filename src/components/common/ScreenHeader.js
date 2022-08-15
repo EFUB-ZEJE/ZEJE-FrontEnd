@@ -18,6 +18,12 @@ const ScreenHeader = ({
   handleChange,
   handlePress,
 }) => {
+  if (rightIcon === 'Map') {
+    rightIcon = 'List';
+  } else if (rightIcon === 'List') {
+    rightIcon = 'Map';
+  }
+
   return (
     <HeaderWrapper>
       <LineWrapper>
