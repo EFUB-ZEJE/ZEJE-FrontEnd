@@ -18,7 +18,7 @@ import {MapRegionState} from '../../recoil/GlobalState';
 import GrayMarker from '../../components/Around/maps/GrayMarker';
 import OrangeMarker from '../../components/Around/maps/OrangeMarker';
 
-const ARRIVEDSTANDARD = 0.9; //0.9km
+const ARRIVEDSTANDARD = 0.5; //500m
 
 export default function Map({
   places,
