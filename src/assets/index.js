@@ -18,6 +18,7 @@ export {default as RememberTab} from './icons/RememberTabIcon.svg';
 export {default as Mypage} from './icons/MypageIcon.svg';
 export {default as Alert} from './icons/AlertIcon.svg';
 export {default as NotFound} from './images/not-found.svg';
+
 export {default as More} from './icons/MoreIcon.svg';
 export {default as Plus} from './icons/PlusIcon.svg';
 export {default as Camera} from './icons/CameraIcon.svg';
@@ -26,3 +27,10 @@ export {default as PlusCircle} from './icons/PlusCircleIcon.svg';
 export {default as Trash} from './icons/TrashIcon.svg';
 export {default as Complete} from './icons/CompleteIcon.svg';
 // export {default as RedOrange} from './images/orange-red.svg';
+
+export {default as LetterSvg} from './images/letter.svg';
+export {default as BasketEmpty} from './images/basket-empty.svg';
+export {default as BasketOne} from './images/basket-one.svg';
+export {default as BasketTwo} from './images/basket-two.svg';
+export {default as BasektThree} from './images/basket-three.svg';
+

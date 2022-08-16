@@ -1,12 +1,12 @@
 import React from 'react';
-import {useOrangeTinyModal} from '../recoil/useModals';
-import ModalSheet from '../../components/common/modal/ModalSheet';
+import {useOrangeTinyModal} from '../../recoil/useModals';
+import ModalSheet from '../../../components/common/modal/ModalSheet';
 import {Column} from 'native-base';
-import {OrangeTiny} from '../../assets/images/oranges';
-import {Body_long1, Subhead_long3} from '../../styles/font';
-import OrangeModalCloseButton from '../../components/home/oranges/OrangeModalCloseButton';
-import OrangeModalProgressBar from '../../components/home/oranges/OrangeModalProgressBar';
-import {ORANGES_LIST} from '../../components/home/oranges/OrangeBox';
+import {OrangeTiny} from '../../../assets/images/oranges';
+import {Body_long1, Subhead_long3} from '../../../styles/font';
+import ModalButton from '../../../components/home/ModalButton';
+import OrangeModalProgressBar from '../../../components/home/oranges/OrangeModalProgressBar';
+import {ORANGES_LIST} from '../../../components/home/oranges/OrangeBox';
 
 const OrangeTinyModal = () => {
   const {isModalOpen, closeModal} = useOrangeTinyModal();
@@ -23,7 +23,7 @@ const OrangeTinyModal = () => {
           껍질은 달고 과육에서 톡 쏘는 신맛이 납니다.
         </Body_long1>
         <OrangeModalProgressBar walk={walk} maxWalk={maxWalk} />
-        <OrangeModalCloseButton onPress={closeModal} />
+        <ModalButton onPress={closeModal} text={'닫기'} />
       </Column>
     </ModalSheet>
   );
