@@ -27,6 +27,7 @@ export const orangeTinyModalState = atom(
   generateModalAtomOption('orangeTinyModalState'),
 );
 
+
 export const deleteDiaryFolderModalState = atom(
   generateModalAtomOption('deleteDiaryFolderModalState'),
 );
@@ -34,3 +35,11 @@ export const deleteDiaryFolderModalState = atom(
 export const deleteDiaryModalState = atom(
   generateModalAtomOption('deleteDiaryModalState'),
 );
+
+export const letterModalState = atom(
+  generateModalAtomOption('letterModalState'),
+);
+export const basketModalState = atom(
+  generateModalAtomOption('basketModalState'),
+);
+

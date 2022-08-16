@@ -1,12 +1,12 @@
 import React from 'react';
-import {useOrangeMtModal} from '../recoil/useModals';
-import ModalSheet from '../../components/common/modal/ModalSheet';
+import {useOrangeMtModal} from '../../recoil/useModals';
+import ModalSheet from '../../../components/common/modal/ModalSheet';
 import {Column} from 'native-base';
-import {OrangeMt} from '../../assets/images/oranges';
-import {Body_long1, Subhead_long3} from '../../styles/font';
-import OrangeModalCloseButton from '../../components/home/oranges/OrangeModalCloseButton';
-import OrangeModalProgressBar from '../../components/home/oranges/OrangeModalProgressBar';
-import {ORANGES_LIST} from '../../components/home/oranges/OrangeBox';
+import {OrangeMt} from '../../../assets/images/oranges';
+import {Body_long1, Subhead_long3} from '../../../styles/font';
+import ModalButton from '../../../components/home/ModalButton';
+import OrangeModalProgressBar from '../../../components/home/oranges/OrangeModalProgressBar';
+import {ORANGES_LIST} from '../../../components/home/oranges/OrangeBox';
 
 const OrangeMtModal = () => {
   const {isModalOpen, closeModal} = useOrangeMtModal();
@@ -23,7 +23,7 @@ const OrangeMtModal = () => {
           풍부하며 당도가 매우 높은 것이 특징이랍니다.
         </Body_long1>
         <OrangeModalProgressBar walk={walk} maxWalk={maxWalk} />
-        <OrangeModalCloseButton onPress={closeModal} />
+        <ModalButton onPress={closeModal} text={'닫기'} />
       </Column>
     </ModalSheet>
   );

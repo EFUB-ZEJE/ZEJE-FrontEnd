@@ -14,6 +14,7 @@ export const palette = {
   gray250: '#C2C2C2', // 서치바 placeholder 색
   gray350: '#8E8A83', // 포인트 스팟 주소목록
   gray400: '#717171', // 포인트 스팟 모달창 세부글씨
+  bluegray: '#4F5E71', // 모달 설명 색상
 };
 
 export const theme = {

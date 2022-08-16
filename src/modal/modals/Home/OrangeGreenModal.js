@@ -1,12 +1,12 @@
 import React from 'react';
-import {useOrangeGreenModal} from '../recoil/useModals';
-import ModalSheet from '../../components/common/modal/ModalSheet';
+import {useOrangeGreenModal} from '../../recoil/useModals';
+import ModalSheet from '../../../components/common/modal/ModalSheet';
 import {Column} from 'native-base';
-import {OrangeGreen} from '../../assets/images/oranges';
-import {Body_long1, Subhead_long3} from '../../styles/font';
-import OrangeModalCloseButton from '../../components/home/oranges/OrangeModalCloseButton';
-import OrangeModalProgressBar from '../../components/home/oranges/OrangeModalProgressBar';
-import {ORANGES_LIST} from '../../components/home/oranges/OrangeBox';
+import {OrangeGreen} from '../../../assets/images/oranges';
+import {Body_long1, Subhead_long3} from '../../../styles/font';
+import ModalButton from '../../../components/home/ModalButton';
+import OrangeModalProgressBar from '../../../components/home/oranges/OrangeModalProgressBar';
+import {ORANGES_LIST} from '../../../components/home/oranges/OrangeBox';
 
 const OrangeGreenModal = () => {
   const {isModalOpen, closeModal} = useOrangeGreenModal();
@@ -23,7 +23,7 @@ const OrangeGreenModal = () => {
           됩니다. 시중에 보이는 덜 익은 귤인 하귤과는 다르다는 사실!
         </Body_long1>
         <OrangeModalProgressBar walk={walk} maxWalk={maxWalk} />
-        <OrangeModalCloseButton onPress={closeModal} />
+        <ModalButton onPress={closeModal} text={'닫기'} />
       </Column>
     </ModalSheet>
   );
