@@ -2,9 +2,12 @@ import {Image, Row} from 'native-base';
 import React from 'react';
 import {StyleSheet} from 'react-native';
 import styled from 'styled-components';
+import {usePedometer} from '../../feature/pedometer/recoil/usePedometer';
 import {theme} from '../../styles/theme';
 
-function LeftWalks({leftWalks}) {
+function LeftWalks() {
+  const {stepCount} = usePedometer();
+
   return (
     <Row style={styles.container}>
       <Image
@@ -13,7 +16,7 @@ function LeftWalks({leftWalks}) {
         source={require('../../assets/images/footprint-fill.png')}
       />
       <TextBold fontSize={12} color={theme.colors.font} fontWeight={700}>
-        {leftWalks.toString()}걸음
+        {stepCount.toString()}걸음
       </TextBold>
     </Row>
   );
