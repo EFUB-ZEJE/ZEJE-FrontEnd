@@ -8,6 +8,7 @@ export const palette = {
   gray100: '#F6F6F6', // 서치바 배경
   gray150: '#EBEBEB', // Separator 색
   gray200: '#DCDCDC', // 일기 추가 텍스트 색상
+  gray300: '#A7A7A7', // 자전거 모달 km
   green300: '#9ADAB6', // 배너 화살표
   gray400: '#717171', //일기 추가 배너 화살표
   gray600: '#221E1A', // 서체 색상

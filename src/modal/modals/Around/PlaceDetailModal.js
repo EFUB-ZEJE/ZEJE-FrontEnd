@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 import {PlaceDetailModalState} from '../../recoil/modalStates';
 import {useRecoilState} from 'recoil';
-
+import {SizedBox} from '../../../components';
 import font from '../../../styles/font';
 import {theme, palette} from '../../../styles/theme';
 
@@ -23,6 +23,19 @@ export default function PlaceDetailModal({
   spotInfo,
   // 단위 :km
 }) {
+  // 20km/h 로 주행 가정
+  const calcTime = km => {
+    const taked = km / 20;
+    const hour = Math.floor(taked);
+    const minutes = Math.floor((taked - hour) * 60);
+
+    if (hour == 0) {
+      return String(minutes) + '분';
+    }
+
+    return String(hour) + '시간 ' + String(minutes) + '분';
+  };
+
   const [modalVisible, setModalVisible] = useRecoilState(PlaceDetailModalState);
   return (
     <BottomSheet modalVisible={true} setModalVisible={setModalVisible}>
@@ -32,8 +45,9 @@ export default function PlaceDetailModal({
         <font.body.Caption color={palette.gray300}>
           {spotInfo.length} km
         </font.body.Caption>
+        <SizedBox height={9} />
         <font.title.Subhead3 color={theme.colors.main}>
-          0시간 00분 소요 예상{' '}
+          {calcTime(spotInfo.length)} 소요 예상{' '}
         </font.title.Subhead3>
       </ModalContainer>
     </BottomSheet>
