@@ -22,7 +22,7 @@ export default function NotFoundModal() {
   return (
     <BottomSheet modalVisible={modalVisible} setModalVisible={setModalVisible}>
       <ModalContainer height="228px">
-        <SvgIcon name="NotFound" size={'130px'} />
+        <SvgIcon name="RedOrange" size={'130px'} />
         <font.title.Subhead3 color={theme.colors.main}>
           주위에 친환경 스팟이 없어요.
         </font.title.Subhead3>
