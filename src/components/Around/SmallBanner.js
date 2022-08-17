@@ -10,7 +10,11 @@ export default function SmallBanner({text, icon, onPress, color, bgColor}) {
 
   return (
     <Container width={width} onPress={onPress} bgColor={bgColor}>
-      <SvgIcon name={icon} size="24px" color={'#ffffff'} />
+      {icon == 'Heart' && bgColor == theme.colors.main ? (
+        <SvgIcon name={'WhiteHeart'} size="24px" />
+      ) : (
+        <SvgIcon name={icon} size="24px" />
+      )}
       <SizedBox width={9} />
       <font.title.Subhead3 color={color}>{text}</font.title.Subhead3>
     </Container>
