@@ -10,6 +10,8 @@ import {
   orangeSourModalState,
   orangeThousandModalState,
   orangeTinyModalState,
+  deleteDiaryFolderModalState,
+  deleteDiaryModalState,
 } from './modalStates';
 
 export const useOrangeGoldModal = generateModalHook(orangeGoldModalState);
@@ -24,5 +26,13 @@ export const useOrangeThousandModal = generateModalHook(
   orangeThousandModalState,
 );
 export const useOrangeTinyModal = generateModalHook(orangeTinyModalState);
+
+export const useDeleteDiaryFolderModal = generateModalHook(
+  deleteDiaryFolderModalState,
+);
+
+export const useDeleteDiaryModal = generateModalHook(deleteDiaryModalState);
+
 export const useLetterModal = generateModalHook(letterModalState);
 export const useBaksetModal = generateModalHook(basketModalState);
+
