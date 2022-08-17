@@ -79,9 +79,10 @@ export default function SpotList({places, type}) {
       ) : (
         places.map(place => (
           <Spot
-            key={place.loadName}
-            name={place.loadName}
-            location={place.start}
+            key={place.spotId ? place.spotId : place.loadName}
+            name={place.name ? place.name : place.loadName}
+            desc={place.description}
+            location={place.location ? place.location : place.start}
           />
         ))
       )}
