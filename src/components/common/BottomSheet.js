@@ -48,7 +48,7 @@ const BottomSheet = ({modalVisible, setModalVisible, children, focus}) => {
     }),
   ).current;
 
-  useEffect(() => {
+  (() => {
     if (modalVisible) {
       resetBottomSheet.start();
     }

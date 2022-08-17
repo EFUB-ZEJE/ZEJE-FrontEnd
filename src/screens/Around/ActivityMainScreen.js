@@ -64,9 +64,9 @@ export default function ActivityMainScreen({navigation}) {
         navigation={navigation}
         screenTitle="ZEJE의 추천 액티비티"
         canGoBack={true}
-        canSearch={true}
-        placeholder="액티비티의 이름이나 주소를 검색해보세요"
-        handleChange={_handleTextChange}
+        canSearch={false}
+        rightIcon="Search"
+        handlePress={() => navigation.navigate('ActivitySearch')}
       />
       <ScreenContainer>
         <FilterList>
@@ -81,7 +81,8 @@ export default function ActivityMainScreen({navigation}) {
         </FilterList>
         <BottomSheet
           modalVisible={modalVisible}
-          setModalVisible={setModalVisible}>
+          setModalVisible={setModalVisible}
+          focus>
           <BottomDrawerTitle>
             <font.title.Subhead3 color={theme.colors.main}>
               정렬
@@ -134,8 +135,11 @@ export default function ActivityMainScreen({navigation}) {
 
 const filters = [
   {id: 0, title: '전체'},
-  {id: 1, title: '스포츠'},
-  {id: 2, title: '문화예술'},
+  {id: 1, title: '스팟'},
+  {id: 2, title: '관광'},
+  {id: 3, title: '식당'},
+  {id: 4, title: '카페'},
+  {id: 5, title: '쇼핑'},
 ];
 
 const sorts = [

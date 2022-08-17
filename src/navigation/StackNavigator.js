@@ -7,7 +7,9 @@ import {
   MyListScreen,
   AroundScreen,
   ActivityMainScreen,
+  ActivitySearchScreen,
   TourMainScreen,
+  TourSearchScreen,
   BatteryMainScreen,
   BikeMainScreen,
   RememberScreen,
@@ -42,36 +44,36 @@ export default function StackNavigator() {
     setStepCount(parseInt(value));
   }
 
-  useEffect(() => {
-    initStepCount();
+  // useEffect(() => {
+  //   initStepCount();
 
-    const subscription = accelerometer
-      .pipe(data => data)
-      .subscribe(speed => {
-        setXAcceleration(speed.x);
-        setYAcceleration(speed.y);
-        setZAcceleration(speed.z);
-      });
-    return () => {
-      subscription.unsubscribe();
-    };
-  }, []);
+  //   const subscription = accelerometer
+  //     .pipe(data => data)
+  //     .subscribe(speed => {
+  //       setXAcceleration(speed.x);
+  //       setYAcceleration(speed.y);
+  //       setZAcceleration(speed.z);
+  //     });
+  //   return () => {
+  //     subscription.unsubscribe();
+  //   };
+  // }, []);
 
-  useEffect(() => {
-    const magnitude = Math.sqrt(
-      Math.pow(xAcceleration, 2) +
-        Math.pow(yAcceleration, 2) +
-        Math.pow(zAcceleration, 2),
-    );
+  // useEffect(() => {
+  //   const magnitude = Math.sqrt(
+  //     Math.pow(xAcceleration, 2) +
+  //       Math.pow(yAcceleration, 2) +
+  //       Math.pow(zAcceleration, 2),
+  //   );
 
-    const magnitudeDelta = magnitude - magnitudePrevious;
-    setMagnitudePrevious(() => magnitude);
+  //   const magnitudeDelta = magnitude - magnitudePrevious;
+  //   setMagnitudePrevious(() => magnitude);
 
-    if (magnitudeDelta > 2) {
-      setStepCount(prevSteps => prevSteps + 1);
-      saveData(STEP_COUNT, stepCount.toString());
-    }
-  }, [xAcceleration, yAcceleration, zAcceleration]);
+  //   if (magnitudeDelta > 2) {
+  //     setStepCount(prevSteps => prevSteps + 1);
+  //     saveData(STEP_COUNT, stepCount.toString());
+  //   }
+  // }, [xAcceleration, yAcceleration, zAcceleration]);
 
   return (
     <Stack.Navigator
@@ -87,7 +89,9 @@ export default function StackNavigator() {
 
       <Stack.Screen name="Around" component={AroundScreen} />
       <Stack.Screen name="ActivityMain" component={ActivityMainScreen} />
+      <Stack.Screen name="ActivitySearch" component={ActivitySearchScreen} />
       <Stack.Screen name="TourMain" component={TourMainScreen} />
+      <Stack.Screen name="TourSearch" component={TourSearchScreen} />
       <Stack.Screen name="BatteryMain" component={BatteryMainScreen} />
       <Stack.Screen name="BikeMain" component={BikeMainScreen} />
       <Stack.Screen name="SpotMain" component={SpotMainScreen} />

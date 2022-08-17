@@ -17,6 +17,9 @@ const ScreenHeader = ({
   placeholder,
   handleChange,
   handlePress,
+  refSearchBar,
+  onFocus,
+  onSubmitEditing,
 }) => {
   return (
     <HeaderWrapper>
@@ -68,7 +71,13 @@ const ScreenHeader = ({
       {canSearch ? (
         <>
           <SizedBox height={8} />
-          <SearchBar placeholder={placeholder} handleChange={handleChange} />
+          <SearchBar
+            placeholder={placeholder}
+            handleChange={handleChange}
+            refSearchBar={refSearchBar}
+            onFocus={onFocus}
+            onSubmitEditing={onSubmitEditing}
+          />
         </>
       ) : (
         <></>

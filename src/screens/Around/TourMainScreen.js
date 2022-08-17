@@ -64,11 +64,11 @@ export default function TourMainScreen({navigation}) {
         navigation={navigation}
         screenTitle="ZEJE의 추천 여행지"
         canGoBack={true}
-        canSearch={true}
-        placeholder="여행지의 이름이나 주소를 검색해보세요"
-        handleChange={_handleTextChange}
+        canSearch={false}
+        rightIcon="Search"
+        handlePress={() => navigation.navigate('TourSearch')}
       />
-      <>
+      <ScreenContainer>
         <FilterList>
           {filters.map(f => (
             <FilterBox
@@ -128,7 +128,7 @@ export default function TourMainScreen({navigation}) {
                   handleLike={_handleLikeChange}
                 />
               ))}
-      </>
+      </ScreenContainer>
     </>
   );
 }

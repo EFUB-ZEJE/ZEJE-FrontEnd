@@ -12,6 +12,8 @@ import BatteryMainScreen from './Around/BatteryMainScreen';
 import BikeMainScreen from './Around/BikeMainScreen';
 import SpotMainScreen from './Around/SpotMainScreen';
 import ShareInfoMainScreen from './Around/ShareInfoMainScreen';
+import TourSearchScreen from './Around/TourSearchScreen';
+import ActivitySearchScreen from './Around/ActivitySearchScreen';
 
 import DairyPostScreen from './Remember/DairyPostScreen';
 import DairyDetailScreen from './Remember/DairyDetailScreen';
@@ -29,6 +31,8 @@ export {
   BikeMainScreen,
   SpotMainScreen,
   ShareInfoMainScreen,
+  TourSearchScreen,
+  ActivitySearchScreen,
   DairyPostScreen,
   DairyDetailScreen,
 };

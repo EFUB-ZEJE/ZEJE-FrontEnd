@@ -1,18 +1,30 @@
 import React from 'react';
+import {TouchableOpacity} from 'react-native';
 import styled from 'styled-components/native';
 import {theme} from '../../styles/theme.js';
 import SvgIcon from './SvgIcon.js';
 
-const SearchBar = ({placeholder, handleChange}) => {
+const SearchBar = ({
+  placeholder,
+  handleChange,
+  refSearchBar,
+  onFocus,
+  onSubmitEditing,
+}) => {
   return (
     <SearchContainer>
       <SearchInput
+        ref={refSearchBar}
         placeholder={placeholder}
         onChangeText={text => handleChange(text)}
-        // returnKeyLabel 적용 안 되는 것 같음...
-        returnKeyLabel="검색"
+        returnKeyType="search"
+        autoFocus={true}
+        onFocus={onFocus}
+        onSubmitEditing={onSubmitEditing}
       />
-      <SvgIcon name="Search" />
+      <TouchableOpacity onPress={onSubmitEditing}>
+        <SvgIcon name="SearchDefault" />
+      </TouchableOpacity>
     </SearchContainer>
   );
 };
