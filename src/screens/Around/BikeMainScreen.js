@@ -7,6 +7,7 @@ import {useRecoilState} from 'recoil';
 import {FoundModalState} from '../../modal/recoil/modalStates';
 import BikeMap from './BikeMap';
 import styled from 'styled-components';
+import SpotList from '../../components/Around/SpotList';
 
 export default function BikeMainScreen({navigation}) {
   const [sortType, setSortType] = useState('내 위치 중심');
