@@ -49,3 +49,7 @@ export const NotFoundModalState = atom(
 );
 
 export const FoundModalState = atom(generateModalAtomOption('FoundModalState'));
+
+export const PlaceDetailModalState = atom(
+  generateModalAtomOption('PlaceDetailModalState'),
+);
