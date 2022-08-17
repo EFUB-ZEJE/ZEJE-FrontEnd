@@ -2,6 +2,7 @@ import {View, Text} from 'react-native';
 import React, {useState} from 'react';
 import font from '../../styles/font';
 import List from './List';
+import ListInput from './ListInput';
 export default function CheckList() {
   // task 의 id는 그때 시간으로해서 겹치지(unique) 않도록
   const [tasks, setTasks] = useState({
@@ -12,13 +13,23 @@ export default function CheckList() {
     //randomNumber : {}
   });
 
+  const _addTask = text => {
+    const ID = Date.now().toString();
+    const newTaskObject = {
+      [ID]: {id: ID, text: text, completed: false},
+    };
+
+    setTasks({...tasks, ...newTaskObject});
+  };
+
   return (
     <View>
-      <font.body.Body1>CheckList</font.body.Body1>
-
-      {Object.values(tasks).map(task => (
-        <List key={task.id} text={task.text} completed={task.completed} />
-      ))}
+      <ListInput _addTask={_addTask} />
+      {Object.values(tasks)
+        .reverse()
+        .map(task => (
+          <List key={task.id} text={task.text} completed={task.completed} />
+        ))}
     </View>
   );
 }
