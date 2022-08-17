@@ -1,5 +1,6 @@
 // 베껴온 거라 수정 필요
 import React, {useEffect, useRef} from 'react';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {
   View,
   StyleSheet,
@@ -70,6 +71,7 @@ const BottomSheet = ({modalVisible, setModalVisible, children, focus}) => {
         <TouchableWithoutFeedback onPress={closeModal}>
           <View style={styles().background} />
         </TouchableWithoutFeedback>
+
         <Animated.View
           style={{
             ...styles().bottomSheetContainer,
