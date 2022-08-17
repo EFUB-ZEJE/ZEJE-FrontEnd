@@ -18,7 +18,7 @@ export {default as RememberTab} from './icons/RememberTabIcon.svg';
 export {default as Mypage} from './icons/MypageIcon.svg';
 export {default as Alert} from './icons/AlertIcon.svg';
 export {default as NotFound} from './images/not-found.svg';
-
+export {default as WhiteHeart} from './icons/heart-white.svg';
 export {default as More} from './icons/MoreIcon.svg';
 export {default as Plus} from './icons/PlusIcon.svg';
 export {default as Camera} from './icons/CameraIcon.svg';
