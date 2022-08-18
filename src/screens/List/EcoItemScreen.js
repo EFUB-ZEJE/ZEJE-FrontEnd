@@ -4,9 +4,12 @@ import {ScreenHeader, ScreenContainer} from '../../components';
 import List from '../../components/List/List';
 import {saveData, getData} from '../../services/LocalStorage';
 import {useExceedMaximumListModal} from '../../modal/recoil/useModals';
-
+import {useAddSuccessModal} from '../../modal/recoil/useModals';
+import AddSuccessModal from '../../modal/modals/List/AddSuccessModal';
+import ExceedMaximumListModal from '../../modal/modals/List/ExceedMaximumListModal';
 export default function EcoItemScreen({navigation}) {
-  const {openModal} = useExceedMaximumListModal();
+  const {openModal: openExceedMaximumListModal} = useExceedMaximumListModal();
+  const {openModal: openAddSuccessModal} = useAddSuccessModal();
   const ecoItems = [
     '텀블러',
     '다회용기',
@@ -24,7 +27,7 @@ export default function EcoItemScreen({navigation}) {
     var size = Object.keys(loadedData).length;
 
     if (size > 30) {
-      openModal();
+      openExceedMaximumListModal();
       return;
     }
 
@@ -35,7 +38,8 @@ export default function EcoItemScreen({navigation}) {
       [ID]: {id: ID, text: text, completed: false},
     };
 
-    storeData({...loadedData, ...newTaskObject}); //데이터 저장
+    storeData({...newTaskObject, ...loadedData}); //데이터 저장
+    openAddSuccessModal();
   };
 
   const storeData = async tasks => {
@@ -54,6 +58,8 @@ export default function EcoItemScreen({navigation}) {
           <List key={item} text={item} mode={'add'} _addItem={_addItem} />
         ))}
       </ScreenContainer>
+      <AddSuccessModal />
+      <ExceedMaximumListModal />
     </>
   );
 }
