@@ -3,7 +3,6 @@ import React, {useState} from 'react';
 import font from '../../styles/font';
 import SortButton from '../Around/SortButton';
 import ImageCard from '../Around/ImageCard';
-import ExceedMaximumListModal from '../../modal/modals/List/ExceedMaximumListModal';
 
 export default function WishList() {
   const [sortId, setSortId] = useState(0); // 0: 최신순, 1: 과거순
@@ -105,7 +104,6 @@ export default function WishList() {
             ))}
         </>
       )}
-      <ExceedMaximumListModal />
     </View>
   );
 }

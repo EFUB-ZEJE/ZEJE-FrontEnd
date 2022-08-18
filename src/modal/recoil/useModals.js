@@ -14,6 +14,7 @@ import {
   deleteDiaryModalState,
   checkDeleteAllTasksModalState,
   exceedMaximumListModalState,
+  addSuccessModalState,
 } from './modalStates';
 
 export const useOrangeGoldModal = generateModalHook(orangeGoldModalState);
@@ -44,3 +45,5 @@ export const useCheckDeleteAllTasksModal = generateModalHook(
 export const useExceedMaximumListModal = generateModalHook(
   exceedMaximumListModalState,
 );
+
+export const useAddSuccessModal = generateModalHook(addSuccessModalState);

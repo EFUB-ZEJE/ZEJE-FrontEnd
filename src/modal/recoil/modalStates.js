@@ -48,3 +48,6 @@ export const checkDeleteAllTasksModalState = atom(
 export const exceedMaximumListModalState = atom(
   generateModalAtomOption('exceedMaximumListModalState'),
 );
+export const addSuccessModalState = atom(
+  generateModalAtomOption('addSuccessModalState'),
+);
