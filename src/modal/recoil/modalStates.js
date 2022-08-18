@@ -27,7 +27,6 @@ export const orangeTinyModalState = atom(
   generateModalAtomOption('orangeTinyModalState'),
 );
 
-
 export const deleteDiaryFolderModalState = atom(
   generateModalAtomOption('deleteDiaryFolderModalState'),
 );
@@ -43,3 +42,6 @@ export const basketModalState = atom(
   generateModalAtomOption('basketModalState'),
 );
 
+export const checkDeleteAllTasksModalState = atom(
+  generateModalAtomOption('checkDeleteAllTasksModalState'),
+);

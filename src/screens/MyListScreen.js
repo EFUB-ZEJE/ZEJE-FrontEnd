@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Text} from 'react-native';
+import {Text, Pressable} from 'react-native';
 import {ScreenContainer, ScreenHeader} from '../components';
 import CommonBanner from '../components/common/CommonBanner';
 import SmallBanner from '../components/Around/SmallBanner';
@@ -11,12 +11,10 @@ import {SizedBox} from '../components';
 import font from '../styles/font';
 import useTab from '../components/List/useTab';
 
-const content = [<CheckList />, <WishList />];
-
 export default function MyListScreen({navigation}) {
+  const content = [<CheckList />, <WishList />];
   const {currentIdx, currentItem, changeItem} = useTab(0, content);
 
-  console.log(currentItem);
   return (
     <>
       <ScreenHeader navigation={navigation} screenTitle="리스트" />
@@ -47,19 +45,13 @@ export default function MyListScreen({navigation}) {
           />
         </BannerWrapper>
         <SizedBox height={8} />
-        <TextContainer>
-          <font.body.Caption color={theme.colors.main}>편집</font.body.Caption>
-        </TextContainer>
+
         {currentItem}
       </ScreenContainer>
     </>
   );
 }
 
-const TextContainer = styled.View`
-  display: flex;
-  align-items: flex-end;
-`;
 const BannerWrapper = styled.View`
   display: flex;
   flex-direction: row;
