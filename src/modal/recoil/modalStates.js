@@ -45,3 +45,6 @@ export const basketModalState = atom(
 export const checkDeleteAllTasksModalState = atom(
   generateModalAtomOption('checkDeleteAllTasksModalState'),
 );
+export const exceedMaximumListModalState = atom(
+  generateModalAtomOption('exceedMaximumListModalState'),
+);

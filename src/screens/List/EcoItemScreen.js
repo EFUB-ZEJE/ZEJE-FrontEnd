@@ -3,7 +3,10 @@ import React from 'react';
 import {ScreenHeader, ScreenContainer} from '../../components';
 import List from '../../components/List/List';
 import {saveData, getData} from '../../services/LocalStorage';
+import {useExceedMaximumListModal} from '../../modal/recoil/useModals';
+
 export default function EcoItemScreen({navigation}) {
+  const {openModal} = useExceedMaximumListModal();
   const ecoItems = [
     '텀블러',
     '다회용기',
@@ -18,7 +21,12 @@ export default function EcoItemScreen({navigation}) {
   const _addItem = async text => {
     const loadedData = await getData('tasks'); // 데이터 가져오기
 
-    //var size = Object.keys(loadedData).length;
+    var size = Object.keys(loadedData).length;
+
+    if (size > 30) {
+      openModal();
+      return;
+    }
 
     console.log(loadedData);
     //저장된 data가 없을때 예외처리
