@@ -12,8 +12,9 @@ export default function List({
   completed,
   _toggleTask,
   _deleteTask,
+  _addItem,
 }) {
-  var icon;
+  var icon; //right icon
   if (mode == 'edit') {
     icon = (
       <TouchableOpacity onPress={() => _deleteTask(id)}>
@@ -27,12 +28,19 @@ export default function List({
           <SvgIcon name="CheckedBox" size="24px" />
         </TouchableOpacity>
       );
-    else
+    else {
       icon = (
         <TouchableOpacity onPress={() => _toggleTask(id)}>
           <SvgIcon name="EmptyBox" size="24px" />
         </TouchableOpacity>
       );
+    }
+  } else if (mode == 'add') {
+    icon = (
+      <TouchableOpacity onPress={() => _addItem(text)}>
+        <SvgIcon name="AddOutline" size="24px" />
+      </TouchableOpacity>
+    );
   }
   return (
     <Container>

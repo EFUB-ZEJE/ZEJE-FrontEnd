@@ -23,7 +23,7 @@ export default function MyListScreen({navigation}) {
           text="추천 제로웨이스트 짐싸기 아이템"
           color={theme.colors.main}
           bgColor={'white'}
-          onPress={() => console.log('추천아이템')}
+          onPress={() => navigation.navigate('EcoItem')}
           border={true}
           borderColor={theme.colors.main}
         />
