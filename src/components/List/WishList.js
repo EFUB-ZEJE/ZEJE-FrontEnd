@@ -64,6 +64,7 @@ export default function WishList() {
   };
   console.log(wishList.length);
   let empty = wishList.length == 0;
+
   return (
     <View>
       <SortButton

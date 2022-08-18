@@ -15,6 +15,7 @@ import {
   ShareInfoMainScreen,
   DairyPostScreen,
   DairyDetailScreen,
+  EcoItemScreen,
 } from '../screens';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {usePedometer} from '../feature/pedometer/recoil/usePedometer';
@@ -27,9 +28,11 @@ import {saveData, STEP_COUNT} from '../services/LocalStorage';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Stack = createNativeStackNavigator();
-setUpdateIntervalForType(SensorTypes.accelerometer, 400);
+
+//setUpdateIntervalForType(SensorTypes.accelerometer, 400);
 
 export default function StackNavigator() {
+  /*
   const [xAcceleration, setXAcceleration] = useState(0);
   const [yAcceleration, setYAcceleration] = useState(0);
   const [zAcceleration, setZAcceleration] = useState(0);
@@ -72,14 +75,14 @@ export default function StackNavigator() {
       saveData(STEP_COUNT, stepCount.toString());
     }
   }, [xAcceleration, yAcceleration, zAcceleration]);
-
+*/
   return (
     <Stack.Navigator
       initialRouteName="TabNavigator"
       screenOptions={{headerShown: false}}>
       <Stack.Screen name="TabNavigator" component={TabNavigator} />
-
-      <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen name="EcoItem" component={EcoItemScreen} />
+      <Stack.Screen name="Home" component={MyListScreen} />
       <Stack.Screen name="MypageMain" component={MypageMainScreen} />
       <Stack.Screen name="AlertMain" component={AlertMainScreen} />
 
