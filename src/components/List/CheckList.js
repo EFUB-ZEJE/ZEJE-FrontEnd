@@ -23,7 +23,7 @@ export default function CheckList() {
   const [mode, setMode] = useState('view'); // view :조회모드 , edit : 삭제모드
   const [tasks, setTasks] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-  console.log('CheckList');
+
   const {openModal} = useExceedMaximumListModal();
   const _addTask = text => {
     if (text == '') return;
@@ -70,10 +70,10 @@ export default function CheckList() {
   };
 
   useEffect(() => {
-    console.log('빈배열마운트');
+    setIsLoading(true);
     loadData();
     setIsLoading(false);
-  }, []);
+  }, [tasks]);
 
   return (
     <View>
