@@ -6,10 +6,12 @@ import ListInput from './ListInput';
 import styled from 'styled-components';
 import {theme} from '../../styles/theme';
 import {useCheckDeleteAllTasksModal} from '../../modal/recoil/useModals';
-import CheckDeleteAllTasksModal from '../../modal/modals/Around/CheckDeleteAllTasksModal';
+import CheckDeleteAllTasksModal from '../../modal/modals/List/CheckDeleteAllTasksModal';
 import {saveData, getData} from '../../services/LocalStorage';
 import Spinner from 'react-native-loading-spinner-overlay';
 
+import ExceedMaximumListModal from '../../modal/modals/List/ExceedMaximumListModal';
+import {useExceedMaximumListModal} from '../../modal/recoil/useModals';
 /*
 {
     1: {id: 1, text: '잠옷바지', completed: false},
@@ -21,10 +23,17 @@ export default function CheckList() {
   const [mode, setMode] = useState('view'); // view :조회모드 , edit : 삭제모드
   const [tasks, setTasks] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-  const {openModal} = useCheckDeleteAllTasksModal();
-
+  console.log('CheckList');
+  const {openModal} = useExceedMaximumListModal();
   const _addTask = text => {
     if (text == '') return;
+
+    var size = Object.keys(tasks).length;
+
+    if (size > 30) {
+      openModal();
+      return;
+    }
     const ID = Date.now().toString();
     const newTaskObject = {
       [ID]: {id: ID, text: text, completed: false},
@@ -61,9 +70,10 @@ export default function CheckList() {
   };
 
   useEffect(() => {
+    console.log('빈배열마운트');
     loadData();
     setIsLoading(false);
-  });
+  }, []);
 
   return (
     <View>
@@ -112,9 +122,11 @@ export default function CheckList() {
           />
         ))}
       <CheckDeleteAllTasksModal _deleteAllTask={_deleteAllTask} />
+      <ExceedMaximumListModal />
     </View>
   );
 }
+
 const TextContainer1 = styled.Pressable`
   display: flex;
   align-items: flex-end;

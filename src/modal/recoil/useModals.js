@@ -13,6 +13,7 @@ import {
   deleteDiaryFolderModalState,
   deleteDiaryModalState,
   checkDeleteAllTasksModalState,
+  exceedMaximumListModalState,
 } from './modalStates';
 
 export const useOrangeGoldModal = generateModalHook(orangeGoldModalState);
@@ -38,4 +39,8 @@ export const useLetterModal = generateModalHook(letterModalState);
 export const useBaksetModal = generateModalHook(basketModalState);
 export const useCheckDeleteAllTasksModal = generateModalHook(
   checkDeleteAllTasksModalState,
+);
+
+export const useExceedMaximumListModal = generateModalHook(
+  exceedMaximumListModalState,
 );
