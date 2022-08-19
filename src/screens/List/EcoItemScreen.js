@@ -7,9 +7,13 @@ import {useExceedMaximumListModal} from '../../modal/recoil/useModals';
 import {useAddSuccessModal} from '../../modal/recoil/useModals';
 import AddSuccessModal from '../../modal/modals/List/AddSuccessModal';
 import ExceedMaximumListModal from '../../modal/modals/List/ExceedMaximumListModal';
+import {tasksState} from '../../Recoil/GlobalVariable';
+import {useRecoilState} from 'recoil';
 export default function EcoItemScreen({navigation}) {
   const {openModal: openExceedMaximumListModal} = useExceedMaximumListModal();
   const {openModal: openAddSuccessModal} = useAddSuccessModal();
+  const [tasks, setTasks] = useRecoilState(tasksState);
+
   const ecoItems = [
     '텀블러',
     '다회용기',
@@ -31,7 +35,6 @@ export default function EcoItemScreen({navigation}) {
       return;
     }
 
-    console.log(loadedData);
     //저장된 data가 없을때 예외처리
     const ID = Date.now().toString();
     const newTaskObject = {
@@ -44,6 +47,7 @@ export default function EcoItemScreen({navigation}) {
 
   const storeData = async tasks => {
     await saveData('tasks', JSON.stringify(tasks));
+    setTasks(tasks);
   };
 
   return (
