@@ -9,8 +9,11 @@ import {useCheckDeleteAllTasksModal} from '../../modal/recoil/useModals';
 import CheckDeleteAllTasksModal from '../../modal/modals/List/CheckDeleteAllTasksModal';
 import {saveData, getData} from '../../services/LocalStorage';
 import Spinner from 'react-native-loading-spinner-overlay';
+import {tasksState} from '../../Recoil/GlobalVariable';
+import {useRecoilState} from 'recoil';
 
 import ExceedMaximumListModal from '../../modal/modals/List/ExceedMaximumListModal';
+
 import {useExceedMaximumListModal} from '../../modal/recoil/useModals';
 /*
 {
@@ -19,19 +22,23 @@ import {useExceedMaximumListModal} from '../../modal/recoil/useModals';
     3: {id: 3, text: '양말', completed: false},
   }
   */
-export default function CheckList() {
+
+const NUM_OF_MAXIMUM_TASK = 30;
+export default function CheckList({route}) {
   const [mode, setMode] = useState('view'); // view :조회모드 , edit : 삭제모드
-  const [tasks, setTasks] = useState({});
+  const [tasks, setTasks] = useRecoilState(tasksState);
   const [isLoading, setIsLoading] = useState(true);
 
-  const {openModal} = useExceedMaximumListModal();
+  const {openModal: openExceedMaximumListModal} = useExceedMaximumListModal();
+  const {openModal: openCheckDeleteAllTasksModal} =
+    useCheckDeleteAllTasksModal();
   const _addTask = text => {
     if (text == '') return;
 
     var size = Object.keys(tasks).length;
 
-    if (size > 30) {
-      openModal();
+    if (size > NUM_OF_MAXIMUM_TASK) {
+      openExceedMaximumListModal();
       return;
     }
     const ID = Date.now().toString();
@@ -48,9 +55,11 @@ export default function CheckList() {
   };
 
   const loadData = async () => {
+    setIsLoading(true);
     const loadedData = await getData('tasks');
 
     if (loadedData) setTasks(loadedData);
+    setIsLoading(false);
   };
 
   const _toggleTask = id => {
@@ -70,10 +79,8 @@ export default function CheckList() {
   };
 
   useEffect(() => {
-    setIsLoading(true);
     loadData();
-    setIsLoading(false);
-  }, [tasks]);
+  }, []);
 
   return (
     <View>
@@ -94,7 +101,7 @@ export default function CheckList() {
         </TextContainer1>
       ) : (
         <TextContainer2>
-          <Pressable onPress={openModal}>
+          <Pressable onPress={openCheckDeleteAllTasksModal}>
             <font.body.Caption color={theme.colors.main}>
               전체삭제
             </font.body.Caption>
