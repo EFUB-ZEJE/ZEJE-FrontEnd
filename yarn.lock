@@ -5539,9 +5539,7 @@
     "kleur" "^3.0.3"
     "sisteransi" "^1.0.5"
 
-
 "prop-types@^15.5.10", "prop-types@^15.6.0", "prop-types@^15.6.2", "prop-types@^15.7.2", "prop-types@^15.8.1":
-
   "version" "15.8.1"
   dependencies:
     "loose-envify" "^1.4.0"
@@ -5549,6 +5547,8 @@
     "react-is" "^16.13.1"
 
 "prop-types@15.5.8":
+  "integrity" "sha512-QiDx7s0lWoAVxmEmOYnn3rIZGduup2PZgj3rta5O5y0NfPKu3ApWi+GdMfTto7PmO/5+p4yamSLMZkj0jaTL4A=="
+  "resolved" "https://registry.npmjs.org/prop-types/-/prop-types-15.5.8.tgz"
   "version" "15.5.8"
   dependencies:
     "fbjs" "^0.8.9"
@@ -5720,6 +5720,11 @@
   dependencies:
     "rxjs" ">= 6"
 
+"react-native-splash-screen@^3.3.0":
+  "integrity" "sha512-rGjt6HkoSXxMqH4SQUJ1gnPQlPJV8+J47+4yhgTIan4bVvAwJhEeJH7wWt9hXSdH4+VfwTS0GTaflj1Tw83IhA=="
+  "resolved" "https://registry.npmjs.org/react-native-splash-screen/-/react-native-splash-screen-3.3.0.tgz"
+  "version" "3.3.0"
+
 "react-native-svg-transformer@^1.0.0":
   "version" "1.0.0"
   dependencies:
@@ -5736,9 +5741,7 @@
 "react-native-swipe-gestures@^1.0.5":
   "version" "1.0.5"
 
-
-"react-native@*", "react-native@^0.0.0-0 || 0.60 - 0.69 || 1000.0.0", "react-native@>= 0.30.0", "react-native@>= 0.64.3", "react-native@>=0.39.0", "react-native@>=0.42.0", "react-native@>=0.48.4", "react-native@>=0.50.0", "react-native@>=0.59.0", "react-native@>=0.61.5", "react-native@>=0.65.0", "react-native@0.69.1":
-
+"react-native@*", "react-native@^0.0.0-0 || 0.60 - 0.69 || 1000.0.0", "react-native@>= 0.30.0", "react-native@>= 0.64.3", "react-native@>=0.39.0", "react-native@>=0.42.0", "react-native@>=0.48.4", "react-native@>=0.50.0", "react-native@>=0.57.0", "react-native@>=0.59.0", "react-native@>=0.61.5", "react-native@>=0.65.0", "react-native@0.69.1":
   "version" "0.69.1"
   dependencies:
     "@jest/create-cache-key-function" "^27.0.1"
@@ -5856,10 +5859,8 @@
     "hamt_plus" "1.0.2"
 
 "recyclerlistview@^3.0.5":
-
   "integrity" "sha512-JVHz13u520faEsbVqFrJOMuJjc4mJlOXODe5QdqAJHdl5/IpyYeo83uiHrpzxyLb8QtJ0889JMlDik+Z1Ed0QQ=="
   "resolved" "https://registry.npmjs.org/recyclerlistview/-/recyclerlistview-3.0.5.tgz"
-
   "version" "3.0.5"
   dependencies:
     "lodash.debounce" "4.0.8"
