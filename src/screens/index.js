@@ -5,7 +5,7 @@ import RememberScreen from './RememberScreen';
 
 import MypageMainScreen from './Home/MypageMainScreen';
 import AlertMainScreen from './Home/AlertMainScreen';
-
+import EcoItemScreen from './List/EcoItemScreen';
 import ActivityMainScreen from './Around/ActivityMainScreen';
 import TourMainScreen from './Around/TourMainScreen';
 import BatteryMainScreen from './Around/BatteryMainScreen';
@@ -31,4 +31,5 @@ export {
   ShareInfoMainScreen,
   DairyPostScreen,
   DairyDetailScreen,
+  EcoItemScreen,
 };
