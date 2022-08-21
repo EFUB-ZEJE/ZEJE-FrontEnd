@@ -33,6 +33,7 @@ export {default as BasketEmpty} from './images/basket-empty.svg';
 export {default as BasketOne} from './images/basket-one.svg';
 export {default as BasketTwo} from './images/basket-two.svg';
 export {default as BasektThree} from './images/basket-three.svg';
+export {default as DonationBadge} from './images/donation-badge.svg';
 
 export {default as Check} from './icons/check.svg';
 export {default as Add} from './icons/add.svg';
@@ -41,4 +42,10 @@ export {default as Heart} from './icons/heart.svg';
 export {default as EmptyBox} from './icons/empty-box.svg';
 export {default as CheckedBox} from './icons/checked-box.svg';
 export {default as AddOutline} from './icons/add-outline.svg';
-export {default as DonationBadge} from './images/donation-badge.svg';
+
+export {default as CameraBadge} from './icons/camera-badge.svg';
+export {default as Info} from './icons/info.svg';
+export {default as Bell} from './icons/bell.svg';
+export {default as Review} from './icons/review.svg';
+
+export {default as GrayCircle} from './icons/default-profile.svg';
