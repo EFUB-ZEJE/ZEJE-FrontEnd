@@ -19,23 +19,24 @@ export default function AroundScreen({navigation}) {
           text="내 주변의 친환경 스팟 확인하기"
           color="white"
           bgColor={theme.colors.main}
-          navigation={navigation}
-          path="SpotMain"
+          onPress={() => navigation.navigate('SpotMain')}
         />
         <SizedBox height={16} />
         <BannerWrapper>
           <SmallBanner
             icon="Battery"
             text="전기차 충전소"
-            navigation={navigation}
-            path="BatteryMain"
+            onPress={() => navigation.navigate('BatteryMain')}
+            color={theme.colors.main}
+            bgColor={palette.orange100}
           />
           <SizedBox width={16} />
           <SmallBanner
             icon="Bike"
             text="자전거 도로"
-            navigation={navigation}
-            path="BikeMain"
+            onPress={() => navigation.navigate('BikeMain')}
+            color={theme.colors.main}
+            bgColor={palette.orange100}
           />
         </BannerWrapper>
         <SizedBox height={24} />

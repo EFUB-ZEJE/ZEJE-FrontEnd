@@ -3613,9 +3613,6 @@
 "fs.realpath@^1.0.0":
   "version" "1.0.0"
 
-"fsevents@^2.1.2", "fsevents@^2.3.2":
-  "version" "2.3.2"
-
 "function-bind@^1.1.1":
   "version" "1.1.1"
 
@@ -5660,6 +5657,11 @@
     "prop-types" "^15.6.2"
     "react-native-iphone-x-helper" "^1.0.3"
 
+"react-native-loading-spinner-overlay@^3.0.1":
+  "integrity" "sha512-4GdR54HQnKg2HPSSisVizfTLuyhSh4splY9eb8mKiYF1Ihjn/5EmdNo5bN3S7uKPFRC3WLzIZIouX6G6fXfnjw=="
+  "resolved" "https://registry.npmjs.org/react-native-loading-spinner-overlay/-/react-native-loading-spinner-overlay-3.0.1.tgz"
+  "version" "3.0.1"
+
 "react-native-maps@^1.2.0":
   "integrity" "sha512-n6QtGLznQ+1psY09st/qD1WluyQx9qIz3S0l9w/UA/ZMYhNWJiQpqrXzNpgJW1N+4uy2umjEpIYYHnhdzIFSKg=="
   "resolved" "https://registry.npmjs.org/react-native-maps/-/react-native-maps-1.2.0.tgz"
@@ -5741,7 +5743,9 @@
 "react-native-swipe-gestures@^1.0.5":
   "version" "1.0.5"
 
+
 "react-native@*", "react-native@^0.0.0-0 || 0.60 - 0.69 || 1000.0.0", "react-native@>= 0.30.0", "react-native@>= 0.64.3", "react-native@>=0.39.0", "react-native@>=0.42.0", "react-native@>=0.48.4", "react-native@>=0.50.0", "react-native@>=0.57.0", "react-native@>=0.59.0", "react-native@>=0.61.5", "react-native@>=0.65.0", "react-native@0.69.1":
+
   "version" "0.69.1"
   dependencies:
     "@jest/create-cache-key-function" "^27.0.1"
