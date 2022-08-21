@@ -42,6 +42,7 @@ export default function StackNavigator() {
 
   async function initStepCount() {
     const value = await AsyncStorage.getItem(STEP_COUNT);
+    if (value == null) value = 0;
     setStepCount(parseInt(value));
   }
 
