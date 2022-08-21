@@ -15,6 +15,7 @@ import {
   checkDeleteAllTasksModalState,
   exceedMaximumListModalState,
   addSuccessModalState,
+  donationDialogModalState,
 } from './modalStates';
 
 export const useOrangeGoldModal = generateModalHook(orangeGoldModalState);
@@ -47,3 +48,7 @@ export const useExceedMaximumListModal = generateModalHook(
 );
 
 export const useAddSuccessModal = generateModalHook(addSuccessModalState);
+
+export const useDonationDialogModalState = generateModalHook(
+  donationDialogModalState,
+);
