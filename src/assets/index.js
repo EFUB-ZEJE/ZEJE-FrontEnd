@@ -42,3 +42,6 @@ export {default as Heart} from './icons/heart.svg';
 export {default as EmptyBox} from './icons/empty-box.svg';
 export {default as CheckedBox} from './icons/checked-box.svg';
 export {default as AddOutline} from './icons/add-outline.svg';
+
+export {default as LogoLogin} from './images/logo-login.svg';
+export {default as KakaoLoginButton} from './images/kakao-login-button.svg';
