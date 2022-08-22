@@ -1,4 +1,18 @@
 {
   "name": "Zeje",
-  "displayName": "Zeje"
+  "displayName": "Zeje",
+  "expo": {
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Allow Zeje to access your photos",
+          "cameraPermission": "Allow Zeje to open the camera",
+
+          "//": "Disables the microphone permission",
+          "microphonePermission": false
+        }
+      ]
+    ]
+  }
 }
