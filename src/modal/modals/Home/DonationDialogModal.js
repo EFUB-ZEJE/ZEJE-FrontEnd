@@ -1,4 +1,5 @@
 import React from 'react';
+import {Linking} from 'react-native';
 import {useDonationDialogModalState} from '../../recoil/useModals';
 import ModalSheet from '../../../components/common/modal/ModalSheet';
 import {Column} from 'native-base';
@@ -29,7 +30,7 @@ const DonationDialogModal = () => {
         <Column space={1} alignItems={'center'} w={'100%'}>
           <ModalButton
             onPress={() => {
-              console.log('열매 기부하기');
+              Linking.openURL('https://www.savejejubada.com/');
             }}
             text={'기부처 홈페이지 바로가기'}
           />
