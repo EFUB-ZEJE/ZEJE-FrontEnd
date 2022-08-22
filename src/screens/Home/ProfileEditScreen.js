@@ -15,14 +15,6 @@ export default function ProfileEditScreen({navigation}) {
     console.log('변경');
   };
 
-  const _logout = () => {
-    // 로그아웃 요청
-  };
-
-  const _unregister = () => {
-    //회원탈퇴 요청
-  };
-
   return (
     <>
       <ScreenHeader
@@ -63,15 +55,6 @@ export default function ProfileEditScreen({navigation}) {
           <Caption>비밀번호</Caption>
           <Subhead3>카카오 계정에서 변경하실 수 있습니다.</Subhead3>
         </Col>
-        <Right>
-          <TouchableOpacity onPress={_logout}>
-            <Subhead2 color={theme.colors.main}>로그아웃 </Subhead2>
-          </TouchableOpacity>
-          <Subhead2 color={palette.gray200}> | </Subhead2>
-          <TouchableOpacity onPress={_unregister}>
-            <Subhead2 color={palette.gray300}>회원탈퇴 </Subhead2>
-          </TouchableOpacity>
-        </Right>
       </ScreenContainer>
     </>
   );
@@ -95,12 +78,4 @@ const Col = styled.View`
   border-bottom-width: 1px;
   height: 77px;
   border-bottom-color: ${theme.colors.divider};
-`;
-
-const Right = styled.View`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
-  padding-top: 20px;
 `;
