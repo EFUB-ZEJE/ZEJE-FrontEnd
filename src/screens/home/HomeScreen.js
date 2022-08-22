@@ -20,7 +20,7 @@ export default function HomeScreen({navigation}) {
           color="white"
           bgColor={theme.colors.main}
           navigation={navigation}
-          path="SpotMain"
+          onPress={() => navigation.navigate('SpotMain')}
         />
       </ScreenContainer>
     </>
