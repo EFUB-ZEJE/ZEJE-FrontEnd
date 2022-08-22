@@ -15,9 +15,9 @@ import {
   DairyPostScreen,
   DairyDetailScreen,
   EcoItemScreen,
+  LoginScreen,
 } from '../screens';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import LoginScreen from '../screens/Login/LoginScreen';
 import {usePedometer} from '../feature/pedometer/recoil/usePedometer';
 import {
   accelerometer,
