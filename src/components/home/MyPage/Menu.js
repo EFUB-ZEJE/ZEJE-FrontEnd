@@ -1,27 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import {View} from 'react-native';
+import {View, TouchableOpacity} from 'react-native';
 import font, {Subhead3} from '../../../styles/font';
 import {palette} from '../../../styles/theme';
 import SvgIcon from '../../common/SvgIcon';
 import SizedBox from '../../common/SizedBox';
-const menus = [
-  {
-    name: ' 나의 후기 관리',
-    icon: 'Review',
-    onPress: () => console.log('후기관리페이지로'),
-  },
-  {
-    name: ' 정보',
-    icon: 'Bell',
-    onPress: () => console.log('정보페이지로'),
-  },
-  {
-    name: ' 정보',
-    icon: 'Info',
-    onPress: () => console.log('정보페이지로'),
-  },
-];
 
 function MenuItem({text, icon, onPress}) {
   return (
@@ -30,12 +13,28 @@ function MenuItem({text, icon, onPress}) {
         <SvgIcon name={icon} color={palette.gray400} />
         <Subhead3 color={palette.gray600}>{text}</Subhead3>
       </SubContainer>
-      <SvgIcon name={'RightArrow'} color={palette.gray400} />
+      <TouchableOpacity onPress={onPress}>
+        <SvgIcon name={'RightArrow'} color={palette.gray400} />
+      </TouchableOpacity>
     </Container>
   );
 }
 
-export default function Menu() {
+export default function Menu({navigation}) {
+  const menus = [
+    {
+      name: ' 나의 후기 관리',
+      icon: 'Review',
+      onPress: () => navigation.navigate('MyReview'),
+    },
+
+    {
+      name: ' 정보',
+      icon: 'Info',
+      onPress: () => navigation.navigate('Information'),
+    },
+  ];
+
   return (
     <>
       {menus.map(item => (
