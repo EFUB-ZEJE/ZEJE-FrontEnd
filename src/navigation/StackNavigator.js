@@ -16,6 +16,11 @@ import {
   DairyPostScreen,
   DairyDetailScreen,
   EcoItemScreen,
+  TosScreen,
+  ProfileEditScreen,
+  InformationScreen,
+  OpenSourceScreen,
+  MyReviewScreen,
 } from '../screens';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {usePedometer} from '../feature/pedometer/recoil/usePedometer';
@@ -82,9 +87,15 @@ export default function StackNavigator() {
       screenOptions={{headerShown: false}}>
       <Stack.Screen name="TabNavigator" component={TabNavigator} />
       <Stack.Screen name="EcoItem" component={EcoItemScreen} />
+
       <Stack.Screen name="Home" component={MyListScreen} />
       <Stack.Screen name="MypageMain" component={MypageMainScreen} />
       <Stack.Screen name="AlertMain" component={AlertMainScreen} />
+      <Stack.Screen name="Information" component={InformationScreen} />
+      <Stack.Screen name="MyReview" component={MyReviewScreen} />
+      <Stack.Screen name="OpenSource" component={OpenSourceScreen} />
+      <Stack.Screen name="Tos" component={TosScreen} />
+      <Stack.Screen name="ProfileEdit" component={ProfileEditScreen} />
 
       <Stack.Screen name="MyList" component={MyListScreen} />
 
