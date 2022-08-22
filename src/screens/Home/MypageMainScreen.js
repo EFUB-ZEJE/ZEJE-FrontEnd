@@ -28,21 +28,16 @@ export default function MypageMainScreen({navigation}) {
         canSearch={false}
       />
       <ScreenContainer>
-        {/*userInfo.profileUrl ? (
-          <Image source={{uri: userInfo.profileUrl}} />
-        ) : (
-          <SvgIcon name={'GrayCircle'} />
-        )*/}
         <Profile type="view" />
         <SizedBox height={40} />
         <UserInfo
           name={userInfo.nickname}
           email={userInfo.email}
-          onPress={() => console.log('Adsf')}
+          onPress={() => navigation.navigate('ProfileEdit')}
         />
         <DonationBox n={userInfo.fruitBox} />
         <SizedBox height={24} />
-        <Menu />
+        <Menu navigation={navigation} />
       </ScreenContainer>
 
       <DonationDialogModal />
