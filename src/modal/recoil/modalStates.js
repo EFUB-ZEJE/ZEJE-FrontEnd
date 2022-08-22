@@ -55,3 +55,7 @@ export const addSuccessModalState = atom(
 export const donationDialogModalState = atom(
   generateModalAtomOption('donationDialogModalState'),
 );
+
+export const logoutModalState = atom(
+  generateModalAtomOption('logoutModalState'),
+);

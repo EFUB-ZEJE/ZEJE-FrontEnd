@@ -16,6 +16,7 @@ import {
   exceedMaximumListModalState,
   addSuccessModalState,
   donationDialogModalState,
+  logoutModalState,
 } from './modalStates';
 
 export const useOrangeGoldModal = generateModalHook(orangeGoldModalState);
@@ -52,3 +53,4 @@ export const useAddSuccessModal = generateModalHook(addSuccessModalState);
 export const useDonationDialogModalState = generateModalHook(
   donationDialogModalState,
 );
+export const useLogoutModalState = generateModalHook(logoutModalState);
