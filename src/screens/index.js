@@ -1,3 +1,4 @@
+import OnBoardingScreen from './OnBoarding/OnBoardingScreen';
 import LoginScreen from './Login/LoginScreen';
 
 import AroundScreen from './AroundScreen';
@@ -19,6 +20,7 @@ import DairyPostScreen from './Remember/DairyPostScreen';
 import DairyDetailScreen from './Remember/DairyDetailScreen';
 
 export {
+  OnBoardingScreen,
   LoginScreen,
   AroundScreen,
   HomeScreen,
