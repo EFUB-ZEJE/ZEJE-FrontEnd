@@ -16,6 +16,7 @@ import {
   DairyDetailScreen,
   EcoItemScreen,
   LoginScreen,
+  OnBoardingScreen,
 } from '../screens';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {usePedometer} from '../feature/pedometer/recoil/usePedometer';
@@ -77,8 +78,9 @@ export default function StackNavigator() {
 
   return (
     <Stack.Navigator
-      initialRouteName="Login"
+      initialRouteName="OnBoarding"
       screenOptions={{headerShown: false}}>
+      <Stack.Screen name="OnBoarding" component={OnBoardingScreen} />
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="TabNavigator" component={TabNavigator} />
       <Stack.Screen name="EcoItem" component={EcoItemScreen} />
