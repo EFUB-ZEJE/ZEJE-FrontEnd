@@ -48,4 +48,4 @@ export {default as Info} from './icons/info.svg';
 export {default as Bell} from './icons/bell.svg';
 export {default as Review} from './icons/review.svg';
 
-export {default as GrayCircle} from './icons/default-profile.svg';
+export {default as GrayCircle} from './icons/gray-circle.svg';
