@@ -2,12 +2,12 @@ import {View, Text} from 'react-native';
 import React from 'react';
 import {ScreenHeader, ScreenContainer} from '../../components';
 import List from '../../components/List/List';
-import {saveData, getData} from '../../services/LocalStorage';
+import {saveData, getData} from '../../data/LocalStorage';
 import {useExceedMaximumListModal} from '../../modal/recoil/useModals';
 import {useAddSuccessModal} from '../../modal/recoil/useModals';
 import AddSuccessModal from '../../modal/modals/List/AddSuccessModal';
 import ExceedMaximumListModal from '../../modal/modals/List/ExceedMaximumListModal';
-import {tasksState} from '../../Recoil/GlobalVariable';
+import {tasksState} from '../../data/GlobalVariable';
 import {useRecoilState} from 'recoil';
 export default function EcoItemScreen({navigation}) {
   const {openModal: openExceedMaximumListModal} = useExceedMaximumListModal();
