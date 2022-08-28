@@ -7,9 +7,9 @@ import styled from 'styled-components';
 import {theme} from '../../styles/theme';
 import {useCheckDeleteAllTasksModal} from '../../modal/recoil/useModals';
 import CheckDeleteAllTasksModal from '../../modal/modals/List/CheckDeleteAllTasksModal';
-import {saveData, getData} from '../../services/LocalStorage';
+import {saveData, getData} from '../../data/LocalStorage';
 import Spinner from 'react-native-loading-spinner-overlay';
-import {tasksState} from '../../Recoil/GlobalVariable';
+import {tasksState} from '../../data/GlobalVariable';
 import {useRecoilState} from 'recoil';
 
 import ExceedMaximumListModal from '../../modal/modals/List/ExceedMaximumListModal';

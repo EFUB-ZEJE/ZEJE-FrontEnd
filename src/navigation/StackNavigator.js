@@ -24,7 +24,7 @@ import {
   SensorTypes,
   setUpdateIntervalForType,
 } from 'react-native-sensors';
-import {saveData, STEP_COUNT} from '../services/LocalStorage';
+import {saveData, STEP_COUNT} from '../data/LocalStorage';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Stack = createNativeStackNavigator();
