@@ -19,11 +19,3 @@ export const getData = async key => {
     console.log(e);
   }
 };
-
-export const saveToken = async value => {
-  try {
-    await AsyncStorage.setItem(ACCESS_TOKEN, JSON.stringify(value));
-  } catch (e) {
-    console.log(e);
-  }
-};
