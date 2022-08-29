@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import {Text, FlatList} from 'react-native';
 import styled from 'styled-components/native';
 import {theme} from '../../../styles/theme';
 import font from '../../../styles/font.js';
@@ -16,45 +17,32 @@ const imagePickerOption = {
 };
 
 export default function ImageEditor() {
-  const [cnt, setCnt] = useState(0);
-  const [img0, setImg0] = useState(null);
-  const [img1, setImg1] = useState(null);
-  const [img2, setImg2] = useState(null);
+  const MAX_IMG_CNT = 3;
+  const [imgs, setImgs] = useState([]);
 
   const onPickImage = res => {
-    if (res.didCancel || !res) {
+    // console.log("onPickImage",imgs.length)
+    if (imgs.length >= MAX_IMG_CNT) {
+      //3개 이상 이미지 추가 불가능 하게
       return;
-    }
-    if (!img0) {
-      setImg0(res.assets[0].uri);
-    } else if (!img1) {
-      setImg1(res.assets[0].uri);
-    } else if (!img2) {
-      setImg2(res.assets[0].uri);
-    } else {
+    } else if (res.didCancel || !res) {
       return;
+    } else if (res.assets[0].uri) {
+      setImgs(imgs => [...imgs, res.assets[0].uri]);
     }
   };
   const onLaunchImageLibrary = () => {
     launchImageLibrary(imagePickerOption, onPickImage);
   };
 
-  const handleDismiss = idx => {
-    console.log('handle', idx, 'photo');
-
-    if (idx == 0) {
-      setImg0(null);
-    } else if (idx == 1) {
-      setImg1(null);
-    } else if (idx == 2) {
-      setImg2(null);
-    }
-    // setImg({...imgs, ${idx}: null});
+  const handleDeleteImg = item => {
+    console.log('handleDismiss 특정 사진 삭제');
+    setImgs(imgs.filter(img => img !== item));
   };
 
   useEffect(() => {
     console.log('remove');
-  }, [img0, img1, img2]);
+  }, [imgs]);
   return (
     <StyledRoot>
       <font.title.Subhead2 color={theme.colors.black}>
@@ -62,49 +50,46 @@ export default function ImageEditor() {
       </font.title.Subhead2>
       <SizedBox height={8} />
       <PhotoContainer>
-        <AddButton
-          type="function"
-          handlefunction={onLaunchImageLibrary}
-          width="60px"
-          height="60px"
-          text={`${cnt}/3`}
-          icon="Camera"
-          display="column"
-          /* navigation={navigation} */
-          /* path="DairyPost" */
-        />
-        <SizedBox width={8} />
-        <Pressable
-          onPress={() => {
-            handleDismiss(String(0));
-          }}>
-          <SvgIcon name="DismissCircle" size="14px" />
-        </Pressable>
-        <SelectedImage
-          source={
-            img0 ? {uri: img0} : require('../../../assets/images/sample.jpeg')
+        <FlatList
+          showsHorizontalScrollIndicator={false}
+          data={imgs}
+          keyExtractor={(_, index) => `${index}`}
+          ListHeaderComponent={
+            <>
+              <AddButton
+                type="function"
+                handlefunction={onLaunchImageLibrary}
+                width="60px"
+                height="60px"
+                text={`${imgs.length}/${MAX_IMG_CNT}`}
+                icon="Camera"
+                display="column"
+                /* navigation={navigation} */
+                /* path="DairyPost" */
+              />
+              <SizedBox width={8} />
+            </>
           }
-          resizeMode="cover"
+          renderItem={({item}) => (
+            <>
+              <Pressable
+                onPress={() => {
+                  handleDeleteImg(item);
+                }}>
+                <SvgIcon name="DismissCircle" size="14px" />
+              </Pressable>
+              <SelectedImage
+                source={
+                  item
+                    ? {uri: item}
+                    : require('../../../assets/images/sample.jpeg')
+                }
+                resizeMode="cover"
+              />
+            </>
+          )}
+          horizontal={true}
         />
-        <SizedBox width={8} />
-        <Pressable onPress={() => handleDismiss(1)}>
-          <SvgIcon name="DismissCircle" size="14px" />
-        </Pressable>
-        <SelectedImage
-          source={
-            img1 ? {uri: img1} : require('../../../assets/images/sample.jpeg')
-          }
-        />
-        <SizedBox width={8} />
-        <Pressable onPress={() => handleDismiss(2)}>
-          <SvgIcon name="DismissCircle" size="14px" />
-        </Pressable>
-        <SelectedImage
-          source={
-            img2 ? {uri: img2} : require('../../../assets/images/sample.jpeg')
-          }
-        />
-        <SizedBox width={8} />
       </PhotoContainer>
 
       <SizedBox height={22} />

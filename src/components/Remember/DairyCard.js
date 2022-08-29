@@ -1,57 +1,49 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {View, TouchableOpacity, StyleSheet, Dimensions} from 'react-native';
+import {View, TouchableOpacity} from 'react-native';
 import styled from 'styled-components/native';
 import font from '../../styles/font.js';
+import DropShadow from 'react-native-drop-shadow';
 import SvgIcon from '../common/SvgIcon';
 
-const DairyCard = ({id, title, navigation, path}) => {
-  const width = Dimensions.get('window').width;
+// DropShadow 해결 방법 찾는 중
+const DiaryCard = ({id, title, date, openModal}) => {
   return (
-    <>
-      <Container
-        width={width}
-        style={styles.shadowProp}
-        onPress={() => navigation.navigate(path)}>
+    <DropShadow
+      style={{
+        shadowColor: '#000',
+        shadowOffset: {
+          width: 0,
+          height: 3,
+        },
+        shadowOpacity: 0.06,
+        shadowRadius: 5,
+      }}>
+      <BoxContainer>
         <ImageContainer source={require('../../assets/images/sample.jpeg')} />
         <TextContainer>
           <View>
             <font.title.Subhead2>{title}</font.title.Subhead2>
+            <font.body.Caption>{date}</font.body.Caption>
           </View>
-
-          <TouchableOpacity onPress={() => console.log(id)}>
-            <SvgIcon name="More" />
+          <TouchableOpacity onPress={openModal}>
+            <SvgIcon name="Trash" />
           </TouchableOpacity>
         </TextContainer>
-      </Container>
-    </>
+      </BoxContainer>
+    </DropShadow>
   );
 };
 
-export default DairyCard;
+export default DiaryCard;
 
-const styles = StyleSheet.create({
-  shadowProp: {
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 6,
-      height: 6,
-    },
-    shadowOpacity: 1,
-    elevation: 32,
-  },
-});
-
-const Container = styled.TouchableOpacity`
-  width: ${({width}) => (width - 40) / 2 - 8}px;
-  height: 152px;
-  border-radius: 10px;
-  margin-bottom: 22px;
+const BoxContainer = styled.TouchableOpacity`
+  padding-bottom: 16px;
 `;
 
 const ImageContainer = styled.Image`
   width: 100%;
-  height: 105px;
+  height: 180px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 `;
@@ -64,5 +56,5 @@ const TextContainer = styled.View`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 6px 12px 16px;
+  padding: 12px 20px;
 `;
