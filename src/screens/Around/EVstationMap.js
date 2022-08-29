@@ -4,37 +4,21 @@ import MapView, {Marker} from 'react-native-maps';
 import font from '../../styles/font';
 import layout, {HEADER_HEIGHT} from '../../styles/layout';
 import {SvgIcon} from '../../components/common/SvgIcon';
-import {UnvistedMarkerSmall} from '../../assets';
-
-import {DistanceToSpotModalState} from '../../modal/recoil/modalStates';
 import {useRecoilState} from 'recoil';
-import DistanceToSpotModal from '../../modal/modals/Around/DistanceToSpotModal';
-import {ArriveSpotModalState} from '../../modal/recoil/modalStates';
 import Geolocation from 'react-native-geolocation-service';
 import haversine from 'haversine';
 import {PermissionsAndroid} from 'react-native';
-import ArriveSpotModal from '../../modal/modals/Around/ArriveSpotModal';
 import {MapRegionState} from '../../recoil/GlobalState';
-import GrayMarker from '../../components/Around/maps/GrayMarker';
 import OrangeMarker from '../../components/Around/maps/OrangeMarker';
+import EVMarker from '../../components/Around/maps/EVMarker';
+import {DistanceToSpotModal} from '../../modal/modals/Around';
+import {DistanceToSpotModalState} from '../../modal/recoil/modalStates';
 
-const ARRIVEDSTANDARD = 0.5; //500m
-
-export default function Map({
-  places,
-  navigation,
-  sproutPlaces,
-  setSproutPlace,
-}) {
-  console.log('map');
+export default function EVstationMap({places}) {
+  const [mapRegionState, setMapRegionState] = useRecoilState(MapRegionState);
   const [placeDetailModalVisible, setPlaceDetailModalVisible] = useRecoilState(
     DistanceToSpotModalState,
   );
-  const [mapRegionState, setMapRegionState] = useRecoilState(MapRegionState);
-
-  const [ArriveSpotModalVisible, setArriveSpotModalVisible] =
-    useRecoilState(ArriveSpotModalState);
-
   const [focusedSpot, setFocusedSpot] = useState(null);
   const [distBetween, setDistBetween] = useState(0);
 
@@ -54,15 +38,13 @@ export default function Map({
   const _onMarkerClick = place => {
     Geolocation.getCurrentPosition(
       position => {
-        setFocusedSpot(place); //현재 포커스된 spot 변경
+        setFocusedSpot(place);
 
         // 내위치와 스팟간의 거리차이 계산 (단위 : km)
         const dist_between = haversine(position.coords, place);
         setDistBetween(dist_between);
 
-        if (dist_between <= ARRIVEDSTANDARD) {
-          setArriveSpotModalVisible(true); //도착 모달 on
-        } else setPlaceDetailModalVisible(true); // 상세설명모달 on (도착x시)
+        setPlaceDetailModalVisible(true);
       },
       error => {
         console.log(error.code, error.message);
@@ -94,11 +76,7 @@ export default function Map({
             ? focusedSpot.spotId == place.spotId
             : false;
 
-          if (place.isVisited) {
-            MarkerSVG = <GrayMarker size={focused ? 'big' : 'small'} />;
-          } else {
-            MarkerSVG = <OrangeMarker size={focused ? 'big' : 'small'} />;
-          }
+          MarkerSVG = <EVMarker size={focused ? 'big' : 'small'} />;
 
           return (
             <Marker
@@ -114,19 +92,7 @@ export default function Map({
           );
         })}
       </MapView>
-
-      <DistanceToSpotModal
-        spotInfo={focusedSpot}
-        navigation={navigation}
-        dist_between={distBetween}
-      />
-
-      <ArriveSpotModal
-        spotInfo={focusedSpot}
-        navigation={navigation}
-        sproutPlaces={sproutPlaces}
-        setSproutPlace={setSproutPlace}
-      />
+      <DistanceToSpotModal spotInfo={focusedSpot} dist_between={distBetween} />
     </>
   );
 }

@@ -18,6 +18,15 @@ export {default as RememberTab} from './icons/RememberTabIcon.svg';
 export {default as Mypage} from './icons/MypageIcon.svg';
 export {default as Alert} from './icons/AlertIcon.svg';
 export {default as NotFound} from './images/not-found.svg';
+
+export {default as RedOrange} from './images/oranges/orange-red.svg';
+export {default as Mandarin} from './images/oranges/orange-mandarin.svg';
+export {default as Hanrabong} from './images/oranges/hanrabong.svg';
+export {default as UnvistedMarkerSmall} from './icons/unvisited-marker-small.svg';
+export {default as VistedMarkerBig} from './icons/visited-marker-big.svg';
+export {default as VistedMarkerSmall} from './icons/visited-marker-small.svg';
+export {default as UnvistedMarkerBig} from './icons/unvisited-marker-big.svg';
+
 export {default as WhiteHeart} from './icons/heart-white.svg';
 export {default as More} from './icons/MoreIcon.svg';
 export {default as Plus} from './icons/PlusIcon.svg';
@@ -26,7 +35,7 @@ export {default as DismissCircle} from './icons/DismissCircleIcon.svg';
 export {default as PlusCircle} from './icons/PlusCircleIcon.svg';
 export {default as Trash} from './icons/TrashIcon.svg';
 export {default as Complete} from './icons/CompleteIcon.svg';
-// export {default as RedOrange} from './images/orange-red.svg';
+
 
 export {default as LetterSvg} from './images/letter.svg';
 export {default as BasketEmpty} from './images/basket-empty.svg';
@@ -54,8 +63,9 @@ export {default as Bell} from './icons/bell.svg';
 export {default as Review} from './icons/review.svg';
 
 export {default as GrayCircle} from './icons/gray-circle.svg';
-export {default as RedOrange} from './images/oranges/orange-red.svg';
+
 
 export {default as LogoLogin} from './images/logo-login.svg';
 export {default as KakaoLoginButton} from './images/kakao-login-button.svg';
+
 
