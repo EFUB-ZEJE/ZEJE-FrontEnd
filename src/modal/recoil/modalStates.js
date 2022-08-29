@@ -1,4 +1,5 @@
 import {atom} from 'recoil';
+// 유저가 보고 있는 지역
 
 const generateModalAtomOption = key => ({key, default: false});
 
@@ -26,6 +27,32 @@ export const orangeThousandModalState = atom(
 export const orangeTinyModalState = atom(
   generateModalAtomOption('orangeTinyModalState'),
 );
+
+
+export const ArriveSpotModalState = atom(
+  generateModalAtomOption('ArriveSpotModalState'),
+);
+
+export const DistanceToSpotModalState = atom(
+  generateModalAtomOption('DistanceToSpotModalState'),
+);
+
+export const GetAllFlowersModalState = atom(
+  generateModalAtomOption('GetAllFlowersModalState'),
+);
+
+export const GetPossibleFlowersModalState = atom(
+  generateModalAtomOption('GetPossibleFlowersModalState'),
+);
+
+export const NotFoundModalState = atom(
+  generateModalAtomOption('NotFoundModalState'),
+);
+
+export const FoundModalState = atom(generateModalAtomOption('FoundModalState'));
+
+export const PlaceDetailModalState = atom(
+  generateModalAtomOption('PlaceDetailModalState'),
 
 export const deleteDiaryFolderModalState = atom(
   generateModalAtomOption('deleteDiaryFolderModalState'),
@@ -58,4 +85,5 @@ export const donationDialogModalState = atom(
 
 export const logoutModalState = atom(
   generateModalAtomOption('logoutModalState'),
+
 );

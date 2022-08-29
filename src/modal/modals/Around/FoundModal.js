@@ -1,11 +1,13 @@
 import {View, Text} from 'react-native';
 import React from 'react';
-import BottomSheet from '../../../components/common/BottomSheet';
 import font from '../../../styles/font';
+import styled from 'styled-components';
 import {palette, theme} from '../../../styles/theme';
 import SvgIcon from '../../../components/common/SvgIcon';
 import {SizedBox} from '../../../components';
-
+import BottomSheet from '../../../components/common/BottomSheet';
+import {useRecoilState} from 'recoil';
+import {FoundModalState} from '../../recoil/modalStates';
 const ModalContainer = styled.View`
   display: flex;
   justify-content: space-between;
@@ -14,19 +16,14 @@ const ModalContainer = styled.View`
   padding: 16px;
 `;
 
-export default function NotFoundModal() {
-  modalVisible = true;
-  setModalVisible = () => console.log(test);
+export default function FoundModal({text}) {
+  const [modalVisible, setModalVisible] = useRecoilState(FoundModalState);
   return (
     <BottomSheet modalVisible={modalVisible} setModalVisible={setModalVisible}>
-      <ModalContainer height="228px">
-        <SvgIcon name="NotFound" size={'130px'} />
+      <ModalContainer height="78px">
         <font.title.Subhead3 color={theme.colors.main}>
-          주위에 친환경 스팟이 없어요.
+          {text}
         </font.title.Subhead3>
-        <font.body.Body1 color={palette.gray400}>
-          다른 위치로 이동해보세요.
-        </font.body.Body1>
       </ModalContainer>
     </BottomSheet>
   );
