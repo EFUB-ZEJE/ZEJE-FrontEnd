@@ -19,6 +19,7 @@ import TosScreen from './Home/TosScreen';
 import DairyPostScreen from './Remember/DairyPostScreen';
 import DairyDetailScreen from './Remember/DairyDetailScreen';
 import MyReviewScreen from './Home/MyReviewScreen';
+import LicenseDetailScreen from './Home/LicenseDetailScreen';
 export {
   AroundScreen,
   HomeScreen,
@@ -40,4 +41,5 @@ export {
   OpenSourceScreen,
   TosScreen,
   MyReviewScreen,
+  LicenseDetailScreen,
 };
