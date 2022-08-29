@@ -3,6 +3,7 @@ import {axiosBase} from '../axiosInstance';
 
 export const useLoginAPI = () => {
   const storeToken = async token => {
+    console.log(JSON.stringify(token));
     await saveData(ACCESS_TOKEN, JSON.stringify(token));
   };
 

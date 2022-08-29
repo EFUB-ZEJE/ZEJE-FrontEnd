@@ -28,7 +28,6 @@ export const orangeTinyModalState = atom(
   generateModalAtomOption('orangeTinyModalState'),
 );
 
-
 export const ArriveSpotModalState = atom(
   generateModalAtomOption('ArriveSpotModalState'),
 );
@@ -53,6 +52,7 @@ export const FoundModalState = atom(generateModalAtomOption('FoundModalState'));
 
 export const PlaceDetailModalState = atom(
   generateModalAtomOption('PlaceDetailModalState'),
+);
 
 export const deleteDiaryFolderModalState = atom(
   generateModalAtomOption('deleteDiaryFolderModalState'),
@@ -85,5 +85,4 @@ export const donationDialogModalState = atom(
 
 export const logoutModalState = atom(
   generateModalAtomOption('logoutModalState'),
-
 );

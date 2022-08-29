@@ -14,7 +14,7 @@ export default function List({
   _deleteTask,
   _addItem,
 }) {
-  var icon; //right icon
+  let icon; //right icon
   if (mode == 'edit') {
     icon = (
       <TouchableOpacity onPress={() => _deleteTask(id)}>
@@ -22,7 +22,7 @@ export default function List({
       </TouchableOpacity>
     );
   } else if (mode == 'view') {
-    if (completed)
+    if (completed == true)
       icon = (
         <TouchableOpacity onPress={() => _toggleTask(id)}>
           <SvgIcon name="CheckedBox" size="24px" />

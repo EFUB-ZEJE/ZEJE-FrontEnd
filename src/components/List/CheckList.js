@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import {theme} from '../../styles/theme';
 import {useCheckDeleteAllTasksModal} from '../../modal/recoil/useModals';
 import CheckDeleteAllTasksModal from '../../modal/modals/List/CheckDeleteAllTasksModal';
+
 import {saveData, getData} from '../../data/LocalStorage';
 import Spinner from 'react-native-loading-spinner-overlay';
 import {tasksState} from '../../data/GlobalVariable';
@@ -63,7 +64,7 @@ export default function CheckList({route}) {
   };
 
   const _toggleTask = id => {
-    const currentTask = Object.assign({}, tasks);
+    var currentTask = Object.assign({}, tasks);
     currentTask[id]['completed'] = !currentTask[id]['completed'];
     storeData(currentTask);
   };
