@@ -51,3 +51,11 @@ export const exceedMaximumListModalState = atom(
 export const addSuccessModalState = atom(
   generateModalAtomOption('addSuccessModalState'),
 );
+
+export const donationDialogModalState = atom(
+  generateModalAtomOption('donationDialogModalState'),
+);
+
+export const logoutModalState = atom(
+  generateModalAtomOption('logoutModalState'),
+);

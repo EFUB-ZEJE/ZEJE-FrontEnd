@@ -15,6 +15,12 @@ import {
   DairyPostScreen,
   DairyDetailScreen,
   EcoItemScreen,
+  TosScreen,
+  ProfileEditScreen,
+  InformationScreen,
+  OpenSourceScreen,
+  MyReviewScreen,
+  LicenseDetailScreen,
 } from '../screens';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import LoginScreen from '../screens/Login/LoginScreen';
@@ -82,9 +88,16 @@ export default function StackNavigator() {
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="TabNavigator" component={TabNavigator} />
       <Stack.Screen name="EcoItem" component={EcoItemScreen} />
+
       <Stack.Screen name="Home" component={MyListScreen} />
       <Stack.Screen name="MypageMain" component={MypageMainScreen} />
       <Stack.Screen name="AlertMain" component={AlertMainScreen} />
+      <Stack.Screen name="Information" component={InformationScreen} />
+      <Stack.Screen name="MyReview" component={MyReviewScreen} />
+      <Stack.Screen name="OpenSource" component={OpenSourceScreen} />
+      <Stack.Screen name="License" component={LicenseDetailScreen} />
+      <Stack.Screen name="Tos" component={TosScreen} />
+      <Stack.Screen name="ProfileEdit" component={ProfileEditScreen} />
 
       <Stack.Screen name="MyList" component={MyListScreen} />
 
