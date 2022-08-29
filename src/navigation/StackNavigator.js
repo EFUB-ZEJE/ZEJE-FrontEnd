@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import TabNavigator from './TabNavigator';
 import {
-  HomeScreen,
   MypageMainScreen,
   AlertMainScreen,
   MyListScreen,
@@ -18,21 +17,20 @@ import {
   EcoItemScreen,
 } from '../screens';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import LoginScreen from '../screens/Login/LoginScreen';
 import {usePedometer} from '../feature/pedometer/recoil/usePedometer';
 import {
   accelerometer,
   SensorTypes,
   setUpdateIntervalForType,
 } from 'react-native-sensors';
-import {saveData, STEP_COUNT} from '../services/LocalStorage';
+import {saveData, STEP_COUNT} from '../data/LocalStorage';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Stack = createNativeStackNavigator();
-
-//setUpdateIntervalForType(SensorTypes.accelerometer, 400);
+setUpdateIntervalForType(SensorTypes.accelerometer, 400);
 
 export default function StackNavigator() {
-  /*
   const [xAcceleration, setXAcceleration] = useState(0);
   const [yAcceleration, setYAcceleration] = useState(0);
   const [zAcceleration, setZAcceleration] = useState(0);
@@ -76,11 +74,12 @@ export default function StackNavigator() {
       saveData(STEP_COUNT, stepCount.toString());
     }
   }, [xAcceleration, yAcceleration, zAcceleration]);
-*/
+
   return (
     <Stack.Navigator
-      initialRouteName="TabNavigator"
+      initialRouteName="Login"
       screenOptions={{headerShown: false}}>
+      <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="TabNavigator" component={TabNavigator} />
       <Stack.Screen name="EcoItem" component={EcoItemScreen} />
       <Stack.Screen name="Home" component={MyListScreen} />
