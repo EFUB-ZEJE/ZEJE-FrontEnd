@@ -3,10 +3,10 @@ import {atom} from 'recoil';
 const generateModalAtomOption = key => ({key, default: false});
 
 export const orangeGoldModalState = atom(
-  generateModalAtomOption('OrangeGoldModalState'),
+  generateModalAtomOption('orangeGoldModalState'),
 );
 export const orangeGreenModalState = atom(
-  generateModalAtomOption('OrangeGreenModalState'),
+  generateModalAtomOption('orangeGreenModalState'),
 );
 export const orangeMandarinModalState = atom(
   generateModalAtomOption('orangeMandarinModalState'),
