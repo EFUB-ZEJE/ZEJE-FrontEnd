@@ -19,7 +19,7 @@ export default function InformationScreen({navigation}) {
         <Col>
           <Subhead3>버전정보</Subhead3>
           <SizedBox height={4} />
-          <Body1 color={palette.gray300}>v 0.0.0</Body1>
+          <Body1 color={palette.gray300}>v 1.0.0</Body1>
         </Col>
         <Row>
           <Subhead3>이용약관</Subhead3>

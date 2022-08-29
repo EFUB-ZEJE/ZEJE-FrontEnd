@@ -49,3 +49,4 @@ export {default as Bell} from './icons/bell.svg';
 export {default as Review} from './icons/review.svg';
 
 export {default as GrayCircle} from './icons/gray-circle.svg';
+export {default as RedOrange} from './images/oranges/orange-red.svg';
