@@ -6,15 +6,16 @@ import {palette} from '../../styles/theme';
 import font from '../../styles/font.js';
 import SvgIcon from '../../components/common/SvgIcon';
 import SizedBox from '../common/SizedBox';
+import BottomSheet from '../common/BottomSheet';
 
-export default function PostBanner({text, icon, navigation, path}) {
+export default function PostBanner({text, icon, onPress}) {
   const width = Dimensions.get('window').width;
   return (
     <>
       <Container
         width={width}
         /* style={styles.shadowProp} */
-        onPress={() => navigation.navigate(path)}>
+        onPress={onPress}>
         <font.title.Subhead3 color={palette.gray250}>
           {text}
         </font.title.Subhead3>
@@ -25,7 +26,7 @@ export default function PostBanner({text, icon, navigation, path}) {
   );
 }
 
-const styles = StyleSheet.create({
+/* const styles = StyleSheet.create({
   shadowProp: {
     shadowColor: '#000',
     shadowOffset: {
@@ -35,7 +36,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 1,
     elevation: 32,
   },
-});
+}); */
 
 const Container = styled.TouchableOpacity`
   width: ${({width}) => (width - 40) / 2 - 8}px;

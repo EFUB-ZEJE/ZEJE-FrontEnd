@@ -13,8 +13,10 @@ export const palette = {
   gray400: '#717171', //일기 추가 배너 화살표
   gray600: '#221E1A', // 서체 색상
   gray250: '#C2C2C2', // 서치바 placeholder 색
+  gray300: '#A7A7A7', //회원탈퇴
   gray350: '#8E8A83', // 포인트 스팟 주소목록
   gray400: '#717171', // 포인트 스팟 모달창 세부글씨
+  bluegray: '#4F5E71', // 모달 설명 색상
 };
 
 export const theme = {
