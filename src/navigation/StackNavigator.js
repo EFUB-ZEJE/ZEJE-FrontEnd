@@ -21,6 +21,7 @@ import {
   OpenSourceScreen,
   MyReviewScreen,
   LicenseDetailScreen,
+  OnBoardingScreen,
 } from '../screens';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import LoginScreen from '../screens/Login/LoginScreen';
