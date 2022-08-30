@@ -19,3 +19,7 @@ export const getData = async key => {
     console.log(e);
   }
 };
+
+export const storeToken = async token => {
+  await saveData(ACCESS_TOKEN, JSON.stringify(token));
+};
