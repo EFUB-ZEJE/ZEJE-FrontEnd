@@ -22,7 +22,7 @@ import FolderTitle from './Remember/BottomSheet/FolderTitle';
 import ReviseFolder from './Remember/BottomSheet/ReviseFolder';
 import DiaryCard from './Remember/DairyCard';
 import OrangeSvg from './home/oranges/OrangeSvg';
-
+import CommonButton from './common/CommonButton';
 export {
   ScreenContainer,
   ScreenHeader,
@@ -39,11 +39,15 @@ export {
   PostBanner,
   FolderList,
   AddButton,
+
+  CommonButton,
+
   FolderTitle,
   WriteEditor,
   DateEditor,
   ImageEditor,
   ReviseFolder,
   DiaryCard,
+
   OrangeSvg,
 };
