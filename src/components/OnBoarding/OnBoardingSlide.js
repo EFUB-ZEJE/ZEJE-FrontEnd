@@ -1,15 +1,20 @@
 import PagerView from 'react-native-pager-view';
 import {Animated, ImageBackground} from 'react-native';
-import {useMemo, useRef} from 'react';
+import {useEffect, useMemo, useRef} from 'react';
 import React from 'react';
 import {Box, Column} from 'native-base';
 import {SlidingDot} from 'react-native-animated-pagination-dots';
 import {palette, theme} from '../../styles/theme';
 import layout from '../../styles/layout';
+import {Subhead2} from '../../styles/font';
+import styled from 'styled-components';
+import {useNavigation} from '@react-navigation/native';
 
 const AnimatedPagerView = Animated.createAnimatedComponent(PagerView);
 
 export default function OnBoardingSlide() {
+  const navigation = useNavigation();
+
   const screens = [
     require('../../assets/images/onboarding-1.png'),
     require('../../assets/images/onboarding-2.png'),
@@ -26,6 +31,7 @@ export default function OnBoardingSlide() {
     inputRange,
     outputRange: [0, screens.length * layout.window.width],
   });
+
   const onPageScroll = useMemo(
     () =>
       Animated.event(
@@ -43,6 +49,11 @@ export default function OnBoardingSlide() {
       ),
     [],
   );
+
+  useEffect(() => {
+    console.log('he..');
+  }, [scrollX]);
+
   return (
     <Column space={1} alignItems={'center'}>
       <AnimatedPagerView
@@ -76,6 +87,23 @@ export default function OnBoardingSlide() {
           }}
         />
       </Box>
+
+      <Button
+        onPress={() => {
+          navigation.navigate('Login');
+        }}>
+        <Subhead2 style={{color: 'white', marginVertical: 10}}>
+          ZEJE 시작하기
+        </Subhead2>
+      </Button>
     </Column>
   );
 }
+
+const Button = styled.Pressable`
+  width: 80%;
+  background-color: ${theme.colors.main};
+  border-radius: 24px;
+  align-items: center;
+  margin-top: -10px;
+`;
