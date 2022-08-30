@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {EV_STATION_BASE_URL} from '../constants/config';
+import {BASE_URL, EV_STATION_BASE_URL} from '../constants/config';
 import Config from 'react-native-config';
 
 // 로그인 - 토큰 발급 용 api
