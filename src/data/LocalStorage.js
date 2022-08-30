@@ -1,6 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export const STEP_COUNT = 'step_count';
+export const STEP_COUNT = 'stepCount';
+export const ACCESS_TOKEN = 'accessToken';
 
 export const saveData = async (key, value) => {
   try {
@@ -13,8 +14,12 @@ export const saveData = async (key, value) => {
 export const getData = async key => {
   try {
     const loadedData = await AsyncStorage.getItem(key);
-    return JSON.parse(loadedData);
+    return loadedData != null ? JSON.parse(loadedData) : null;
   } catch (e) {
     console.log(e);
   }
+};
+
+export const storeToken = async token => {
+  await saveData(ACCESS_TOKEN, JSON.stringify(token));
 };

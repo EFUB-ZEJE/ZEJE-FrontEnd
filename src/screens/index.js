@@ -15,9 +15,14 @@ import BatteryMainScreen from './Around/BatteryMainScreen';
 import BikeMainScreen from './Around/BikeMainScreen';
 import SpotMainScreen from './Around/SpotMainScreen';
 import ShareInfoMainScreen from './Around/ShareInfoMainScreen';
-
+import InformationScreen from './Home/InformationScreen';
+import ProfileEditScreen from './Home/ProfileEditScreen';
+import OpenSourceScreen from './Home/OpenSourceScreen';
+import TosScreen from './Home/TosScreen';
 import DairyPostScreen from './Remember/DairyPostScreen';
 import DairyDetailScreen from './Remember/DairyDetailScreen';
+import MyReviewScreen from './Home/MyReviewScreen';
+import LicenseDetailScreen from './Home/LicenseDetailScreen';
 
 export {
   OnBoardingScreen,
@@ -37,4 +42,10 @@ export {
   DairyPostScreen,
   DairyDetailScreen,
   EcoItemScreen,
+  InformationScreen,
+  ProfileEditScreen,
+  OpenSourceScreen,
+  TosScreen,
+  MyReviewScreen,
+  LicenseDetailScreen,
 };
