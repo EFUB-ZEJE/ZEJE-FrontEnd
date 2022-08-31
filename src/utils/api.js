@@ -29,8 +29,6 @@ const API = axios.create({
   },
 });
 
-export default API;
-
 // 전기차 충전소 조회용 Axios
 export const EV_STATION_API = axios.create({
   baseURL: EV_STATION_BASE_URL,
@@ -48,3 +46,5 @@ export const EV_STATION_API = axios.create({
   withCredentials: false,
   crossDomain: true,
 });
+
+export default API;
