@@ -16,6 +16,12 @@ export const FRUIT_BOX_POINT_API = axios.create({
   },
 });
 
+const printToken = async () => {
+  const token = await getData(ACCESS_TOKEN);
+  console.log(token);
+};
+
+printToken();
 const API = axios.create({
   baseURL: BASE_URL, // 기본 서버 주소 입력
   headers: {
