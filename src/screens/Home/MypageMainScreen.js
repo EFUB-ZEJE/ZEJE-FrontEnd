@@ -25,18 +25,22 @@ export default function MypageMainScreen({navigation}) {
   });
   const [donations, setDonations] = useState(0);
 
-  useEffect(() => {
+  const fetchProfile = () => {
     MyPageService.getProfile()
       .then(res => {
         if (res.status == 200) {
           console.log('success getting profile');
           console.log(res.data);
           setUserInfo(res.data);
+          return res.data;
         } else {
           console.log('get profile failed');
         }
       })
       .catch(err => console.log(err));
+  };
+  useEffect(() => {
+    fetchProfile();
   }, []);
 
   useEffect(() => {
@@ -72,7 +76,9 @@ export default function MypageMainScreen({navigation}) {
         <UserInfo
           name={userInfo.nickname}
           email={userInfo.email}
-          onPress={() => navigation.navigate('ProfileEdit', userInfo)}
+          onPress={() =>
+            navigation.navigate('ProfileEdit', {userInfo, fetchProfile})
+          }
         />
         <DonationBox n={donations} />
         <SizedBox height={24} />
@@ -87,7 +93,7 @@ export default function MypageMainScreen({navigation}) {
           </TouchableOpacity>
         </Right>
       </ScreenContainer>
-      <LogoutModal />
+      <LogoutModal navigation={navigation} />
       <DonationDialogModal />
     </>
   );
