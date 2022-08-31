@@ -15,6 +15,7 @@ export default function WishList() {
       .then(res => {
         if (res.status == 200) {
           setWishList(res.data);
+          console.log(res.data);
         } else {
           console.log('위시리스트를 가져오지 못했습니다.');
         }
@@ -22,25 +23,27 @@ export default function WishList() {
       .catch(err => console.log(err));
   }, []);
 
-  const _handleLikeChange = id => {
+  const _deleteFromWishList = id => {
     let newData = [...wishList];
 
     for (var idx in wishList) {
       if (newData[idx].wishId == id) {
-        newData.splice(idx, 1);
-
         const deleteId = newData[idx].spotDTO.spotId;
-
+        // 1. 삭제 api 요청
         ListService.deleteWishList(deleteId)
           .then(res => {
             if (res.status == 200) {
               console.log('success deleting wishlist');
+
+              //2. state 변경
+              newData.splice(idx, 1);
             } else {
               console.log('delete wishlist failed');
             }
+            setWishList(newData);
           })
           .catch(err => console.log(err));
-        setWishList(newData);
+
         return;
       }
     }
@@ -68,34 +71,33 @@ export default function WishList() {
       />
       {sorts[sortId].title == '최신순' ? (
         <>
-          {!empty &&
-            wishList
-              .reverse()
-              .map(place => (
-                <ImageCard
-                  key={place.wishId}
-                  id={place.wishId}
-                  image={place.spotDTO.image}
-                  title={place.spotDTO.name}
-                  address={place.spotDTO.location}
-                  liked={true}
-                  handleLike={() => _handleLikeChange(place.wishId)}
-                />
-              ))}
-        </>
-      ) : (
-        <>
-          {!empty &&
-            wishList.map(place => (
+          {wishList
+            .slice()
+            .reverse()
+            .map(place => (
               <ImageCard
                 key={place.wishId}
                 id={place.wishId}
+                image={place.spotDTO.image}
                 title={place.spotDTO.name}
                 address={place.spotDTO.location}
                 liked={true}
-                handleLike={() => _handleLikeChange(place.wishId)}
+                handleLike={() => _deleteFromWishList(place.wishId)}
               />
             ))}
+        </>
+      ) : (
+        <>
+          {wishList.map(place => (
+            <ImageCard
+              key={place.wishId}
+              id={place.wishId}
+              title={place.spotDTO.name}
+              address={place.spotDTO.location}
+              liked={true}
+              handleLike={() => _handleLikeChange(place.wishId)}
+            />
+          ))}
         </>
       )}
     </View>
