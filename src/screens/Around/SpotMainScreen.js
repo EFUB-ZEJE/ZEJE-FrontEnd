@@ -206,16 +206,10 @@ export default function SpotMainScreen({navigation}) {
       ) : (
         <ScreenContainer>
           <SortButton sortBy={sortType} handlePress={_handlePressSortButton} />
-          {nearbySpotCnt == 0 ? (
-            <Center>
-              <SvgIcon name="RedOrange" size={'130px'} />
-              <font.title.Subhead3 color={theme.colors.main}>
-                주위에 친환경 스팟이 없어요.
-              </font.title.Subhead3>
-            </Center>
-          ) : (
-            <SpotList places={sproutPlaces} type={sortType} />
-          )}
+
+
+          <SpotList sproutPlaces={sproutPlaces} type={sortType} />
+
         </ScreenContainer>
       )}
     </>
