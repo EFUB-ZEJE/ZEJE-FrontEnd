@@ -10,7 +10,6 @@ import {ORANGES_LIST} from '../../../components/home/oranges/OrangeBox';
 
 const OrangeSourModal = () => {
   const {isModalOpen, closeModal} = useOrangeSourModal();
-  const walk = ORANGES_LIST[6].walk;
   const maxWalk = ORANGES_LIST[6].maxWalk;
 
   return (
@@ -22,7 +21,7 @@ const OrangeSourModal = () => {
           새콤함이 특징인 청견은 감귤과 오렌지의 교배종으로, 감귤보다 큰 크기에
           오렌지보다 얇은 껍질과 풍부한 과즙을 가지고 있습니다.
         </Body_long1>
-        <OrangeModalProgressBar walk={walk} maxWalk={maxWalk} />
+        <OrangeModalProgressBar maxWalk={maxWalk} />
         <ModalButton onPress={closeModal} text={'닫기'} />
       </Column>
     </ModalSheet>

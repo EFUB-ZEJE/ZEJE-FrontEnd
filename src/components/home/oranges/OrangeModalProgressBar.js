@@ -4,8 +4,11 @@ import styled from 'styled-components/native';
 import * as Progress from 'react-native-progress';
 import {palette, theme} from '../../../styles/theme';
 import {Body_long1} from '../../../styles/font';
+import {usePedometer} from '../../../feature/pedometer/recoil/usePedometer';
 
-export function OrangeModalProgressBar({walk, maxWalk}) {
+export function OrangeModalProgressBar({maxWalk}) {
+  const {stepCount: walk} = usePedometer();
+
   return (
     <Column w={'100%'} alignItems={'center'} my={2}>
       <Row px={15}>

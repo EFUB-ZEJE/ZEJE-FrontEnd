@@ -10,7 +10,6 @@ import {ORANGES_LIST} from '../../../components/home/oranges/OrangeBox';
 
 const OrangeGreenModal = () => {
   const {isModalOpen, closeModal} = useOrangeGreenModal();
-  const walk = ORANGES_LIST[2].walk;
   const maxWalk = ORANGES_LIST[2].maxWalk;
 
   return (
@@ -22,7 +21,7 @@ const OrangeGreenModal = () => {
           제주 고유종인 청귤은 12월까지도 파랗다가 3월이 되어서야 주황빛이
           됩니다. 시중에 보이는 덜 익은 귤인 하귤과는 다르다는 사실!
         </Body_long1>
-        <OrangeModalProgressBar walk={walk} maxWalk={maxWalk} />
+        <OrangeModalProgressBar maxWalk={maxWalk} />
         <ModalButton onPress={closeModal} text={'닫기'} />
       </Column>
     </ModalSheet>

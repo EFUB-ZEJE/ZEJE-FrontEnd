@@ -10,7 +10,6 @@ import {ORANGES_LIST} from '../../../components/home/oranges/OrangeBox';
 
 const OrangeThousandModal = () => {
   const {isModalOpen, closeModal} = useOrangeThousandModal();
-  const walk = ORANGES_LIST[7].walk;
   const maxWalk = ORANGES_LIST[7].maxWalk;
 
   return (
@@ -22,7 +21,7 @@ const OrangeThousandModal = () => {
           천혜향은 천리까지 그 향이 퍼진다고 해 이런 이름이 붙었다고 합니다.
           이름처럼 진한 향과 얇고 매끈한 껍질, 높은 당도가 특징입니다.
         </Body_long1>
-        <OrangeModalProgressBar walk={walk} maxWalk={maxWalk} />
+        <OrangeModalProgressBar maxWalk={maxWalk} />
         <ModalButton onPress={closeModal} text={'닫기'} />
       </Column>
     </ModalSheet>
