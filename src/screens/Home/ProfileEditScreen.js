@@ -1,5 +1,5 @@
 import {View, Text, TextInput, TouchableOpacity, Alert} from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import {ScreenHeader, ScreenContainer} from '../../components';
 import font, {Caption, Subhead3, Subhead2} from '../../styles/font';
@@ -7,8 +7,9 @@ import Profile from '../../components/home/MyPage/Profile';
 import {palette, theme} from '../../styles/theme';
 import {SizedBox} from '../../components';
 import MyPageService from '../../services/MyPageService';
+
 export default function ProfileEditScreen({navigation, route}) {
-  let userInfo = route.params;
+  let {userInfo, fetchProfile} = route.params;
 
   const [text, setText] = useState(userInfo.nickname);
   const [image, setImage] = useState({
@@ -37,6 +38,7 @@ export default function ProfileEditScreen({navigation, route}) {
         if (res.status == 200) {
           console.log('success editing profile');
 
+          fetchProfile();
           Alert.alert('알림', '저장되었습니다', [
             {
               text: '확인',
