@@ -6,8 +6,6 @@ import {Column} from 'native-base';
 import {Body_long1, Subhead_long3} from '../../../styles/font';
 import ModalButton from '../../../components/home/ModalButton';
 import {palette} from '../../../styles/theme';
-import {BasektThree, BasketEmpty, BasketOne, BasketTwo} from '../../../assets';
-import {NumOfFruit} from '../../../components/home/Basket';
 import {SvgIcon} from '../../../components';
 
 const DonationDialogModal = () => {
