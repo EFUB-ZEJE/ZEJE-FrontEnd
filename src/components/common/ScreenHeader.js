@@ -6,6 +6,7 @@ import {TouchableOpacity} from 'react-native';
 import SvgIcon from '../common/SvgIcon';
 import SizedBox from '../common/SizedBox';
 import SearchBar from '../common/SearchBar';
+import {LogoSvg} from '../../assets/index.js';
 
 const ScreenHeader = ({
   isHome,
@@ -29,7 +30,7 @@ const ScreenHeader = ({
       <LineWrapper>
         {isHome ? (
           <>
-            <Logo alt="logo" source={require('../../assets/images/logo.png')} />
+            <LogoSvg width="69" height="33" />
             <Wrapper>
               <TouchableOpacity
                 onPress={() => navigation.navigate('MypageMain')}>

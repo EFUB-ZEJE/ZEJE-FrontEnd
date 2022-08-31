@@ -26,15 +26,14 @@ const ImageCard = ({id, title, address, liked, handleLike}) => {
             <font.title.Subhead2>{title}</font.title.Subhead2>
             <font.body.Caption>{address}</font.body.Caption>
           </View>
-          {liked ? (
-            <TouchableOpacity onPress={() => handleLike(id)}>
+
+          <TouchableOpacity onPress={() => handleLike(id)}>
+            {liked ? (
               <SvgIcon name="HeartFilled" />
-            </TouchableOpacity>
-          ) : (
-            <TouchableOpacity onPress={() => handleLike(id)}>
+            ) : (
               <SvgIcon name="HeartOutline" />
-            </TouchableOpacity>
-          )}
+            )}
+          </TouchableOpacity>
         </TextContainer>
       </BoxContainer>
     </DropShadow>
