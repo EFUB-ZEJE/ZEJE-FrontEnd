@@ -7,7 +7,9 @@ import DropShadow from 'react-native-drop-shadow';
 import SvgIcon from '../common/SvgIcon';
 
 // DropShadow 해결 방법 찾는 중
-const ImageCard = ({id, title, address, liked, handleLike}) => {
+const ImageCard = ({id, title, address, liked, handleLike, image}) => {
+  console.log(image);
+
   return (
     <DropShadow
       style={{
@@ -20,7 +22,14 @@ const ImageCard = ({id, title, address, liked, handleLike}) => {
         shadowRadius: 5,
       }}>
       <BoxContainer>
-        <ImageContainer source={require('../../assets/images/sample.jpeg')} />
+        {image ? (
+          <ImageContainer source={{uri: image}} />
+        ) : (
+          <ImageContainer
+            source={require('../../assets/images/thumbnail.jpg')}
+          />
+        )}
+
         <TextContainer>
           <View>
             <font.title.Subhead2>{title}</font.title.Subhead2>
