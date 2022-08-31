@@ -10,7 +10,6 @@ import {ORANGES_LIST} from '../../../components/home/oranges/OrangeBox';
 
 const OrangeMandarinModal = () => {
   const {isModalOpen, closeModal} = useOrangeMandarinModal();
-  const walk = ORANGES_LIST[3].walk;
   const maxWalk = ORANGES_LIST[3].maxWalk;
 
   return (
@@ -22,7 +21,7 @@ const OrangeMandarinModal = () => {
           감귤 하면 떠오르는 대표 품종인 온주는 껍질이 얇고 쉽게 벗겨져 생과로
           가장 많이 먹는 품종입니다.
         </Body_long1>
-        <OrangeModalProgressBar walk={walk} maxWalk={maxWalk} />
+        <OrangeModalProgressBar maxWalk={maxWalk} />
         <ModalButton onPress={closeModal} text={'닫기'} />
       </Column>
     </ModalSheet>

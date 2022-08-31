@@ -10,7 +10,6 @@ import {ORANGES_LIST} from '../../../components/home/oranges/OrangeBox';
 
 const OrangeMtModal = () => {
   const {isModalOpen, closeModal} = useOrangeMtModal();
-  const walk = ORANGES_LIST[4].walk;
   const maxWalk = ORANGES_LIST[4].maxWalk;
 
   return (
@@ -22,7 +21,7 @@ const OrangeMtModal = () => {
           꼭지가 튀어나온 모양이 꼭 한라산같은 한라봉은 과육이 부드럽고, 과즙이
           풍부하며 당도가 매우 높은 것이 특징이랍니다.
         </Body_long1>
-        <OrangeModalProgressBar walk={walk} maxWalk={maxWalk} />
+        <OrangeModalProgressBar maxWalk={maxWalk} />
         <ModalButton onPress={closeModal} text={'닫기'} />
       </Column>
     </ModalSheet>

@@ -10,7 +10,6 @@ import {ORANGES_LIST} from '../../../components/home/oranges/OrangeBox';
 
 const OrangeRedModal = () => {
   const {isModalOpen, closeModal} = useOrangeRedModal();
-  const walk = ORANGES_LIST[5].walk;
   const maxWalk = ORANGES_LIST[5].maxWalk;
 
   return (
@@ -22,7 +21,7 @@ const OrangeRedModal = () => {
           껍질과 과육에 붉은 빛이 도는 레드향은 신맛이 적고, 다른 만감류에 비해
           껍질을 벗기기가 편하다는 특징이 있습니다.
         </Body_long1>
-        <OrangeModalProgressBar walk={walk} maxWalk={maxWalk} />
+        <OrangeModalProgressBar maxWalk={maxWalk} />
         <ModalButton onPress={closeModal} text={'닫기'} />
       </Column>
     </ModalSheet>

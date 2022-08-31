@@ -10,7 +10,6 @@ import {ORANGES_LIST} from '../../../components/home/oranges/OrangeBox';
 
 const OrangeGoldModal = () => {
   const {isModalOpen, closeModal} = useOrangeGoldModal();
-  const walk = ORANGES_LIST[1].walk;
   const maxWalk = ORANGES_LIST[1].maxWalk;
 
   return (
@@ -22,7 +21,7 @@ const OrangeGoldModal = () => {
           황금향은 여왕과 같은 품위를 지녔다고 해서 이런 이름이 붙었다고 합니다.
           알맹이가 통통하고 신맛이 적으며, 과즙이 풍부합니다.
         </Body_long1>
-        <OrangeModalProgressBar walk={walk} maxWalk={maxWalk} />
+        <OrangeModalProgressBar maxWalk={maxWalk} />
         <ModalButton onPress={closeModal} text={'닫기'} />
       </Column>
     </ModalSheet>

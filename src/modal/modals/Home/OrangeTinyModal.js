@@ -10,7 +10,6 @@ import {ORANGES_LIST} from '../../../components/home/oranges/OrangeBox';
 
 const OrangeTinyModal = () => {
   const {isModalOpen, closeModal} = useOrangeTinyModal();
-  const walk = ORANGES_LIST[8].walk;
   const maxWalk = ORANGES_LIST[8].maxWalk;
 
   return (
@@ -22,7 +21,7 @@ const OrangeTinyModal = () => {
           낑깡이라고도 불리는 금귤은 껍질째 먹는 작은 귤입니다. 특이하게도
           껍질은 달고 과육에서 톡 쏘는 신맛이 납니다.
         </Body_long1>
-        <OrangeModalProgressBar walk={walk} maxWalk={maxWalk} />
+        <OrangeModalProgressBar maxWalk={maxWalk} />
         <ModalButton onPress={closeModal} text={'닫기'} />
       </Column>
     </ModalSheet>
