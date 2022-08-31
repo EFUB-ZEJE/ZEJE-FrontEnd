@@ -10,23 +10,23 @@ import {SizedBox} from '../../components';
 import {theme, palette} from '../../styles/theme';
 
 //region: 현재 유저가 지도에서 보고 있는 지역의 좌표
-export default function SpotList({sproutPlaces, type}) {
+export default function SpotList({places, type}) {
   const [region, setRegion] = useRecoilState(MapRegionState);
   const [isLoading, setIsLoading] = useState(true);
 
   function sortByMap() {
     return new Promise((resolve, reject) => {
-      sproutPlaces.forEach(place => {
+      places.forEach(place => {
         const distBetween = haversine(region, place);
         place.dist = distBetween; //새로운 attr 추가
       });
 
       // dist가 가까운 순으로 정렬
-      sproutPlaces.sort(function (a, b) {
+      places.sort(function (a, b) {
         return a.dist - b.dist;
       });
 
-      resolve(sproutPlaces);
+      resolve(places);
       reject('sortByMap 실패');
     });
   }
@@ -35,16 +35,16 @@ export default function SpotList({sproutPlaces, type}) {
     return new Promise((resolve, reject) => {
       Geolocation.getCurrentPosition(
         position => {
-          sproutPlaces.forEach(place => {
+          places.forEach(place => {
             const distBetween = haversine(position.coords, place);
             place.dist = distBetween;
           });
 
-          sproutPlaces.sort(function (a, b) {
+          places.sort(function (a, b) {
             return a.dist - b.dist;
           });
 
-          resolve(sproutPlaces);
+          resolve(places);
         },
         error => {
           console.log(error.code, error.message);
@@ -77,12 +77,12 @@ export default function SpotList({sproutPlaces, type}) {
       {isLoading == true ? (
         <Text>loading...</Text>
       ) : (
-        sproutPlaces.map(place => (
+        places.map(place => (
           <Spot
-            key={place.spotId}
-            name={place.name}
+            key={place.spotId ? place.spotId : place.loadName}
+            name={place.name ? place.name : place.loadName}
             desc={place.description}
-            location={place.location}
+            location={place.location ? place.location : place.start}
           />
         ))
       )}

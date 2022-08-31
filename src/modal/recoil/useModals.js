@@ -1,5 +1,7 @@
 import {generateModalHook} from './generateModalHook';
 import {
+  basketModalState,
+  letterModalState,
   orangeGoldModalState,
   orangeGreenModalState,
   orangeMandarinModalState,
@@ -8,11 +10,21 @@ import {
   orangeSourModalState,
   orangeThousandModalState,
   orangeTinyModalState,
+
   ArriveSpotModalState,
   DistanceToSpotModalState,
   GetAllFlowersModalState,
   GetPossibleFlowersModalState,
   NotFoundModalState,
+
+  deleteDiaryFolderModalState,
+  deleteDiaryModalState,
+  checkDeleteAllTasksModalState,
+  exceedMaximumListModalState,
+  addSuccessModalState,
+  donationDialogModalState,
+  logoutModalState,
+
 } from './modalStates';
 
 export const useOrangeGoldModal = generateModalHook(orangeGoldModalState);
@@ -27,3 +39,26 @@ export const useOrangeThousandModal = generateModalHook(
   orangeThousandModalState,
 );
 export const useOrangeTinyModal = generateModalHook(orangeTinyModalState);
+
+export const useDeleteDiaryFolderModal = generateModalHook(
+  deleteDiaryFolderModalState,
+);
+
+export const useDeleteDiaryModal = generateModalHook(deleteDiaryModalState);
+
+export const useLetterModal = generateModalHook(letterModalState);
+export const useBaksetModal = generateModalHook(basketModalState);
+export const useCheckDeleteAllTasksModal = generateModalHook(
+  checkDeleteAllTasksModalState,
+);
+
+export const useExceedMaximumListModal = generateModalHook(
+  exceedMaximumListModalState,
+);
+
+export const useAddSuccessModal = generateModalHook(addSuccessModalState);
+
+export const useDonationDialogModalState = generateModalHook(
+  donationDialogModalState,
+);
+export const useLogoutModalState = generateModalHook(logoutModalState);

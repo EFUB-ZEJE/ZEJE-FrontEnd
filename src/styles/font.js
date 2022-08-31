@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 
 const k = 1;
 // Title
@@ -142,7 +142,7 @@ export const Caption = styled.Text`
   font-weight: ${regular};
   color: ${({color}) => (color ? color : 'black')};
   font-size: ${12 * k}px;
-  line-height: ${28 * k}px;
+  line-height: ${18 * k}px;
   letter-spacing: -0.6px;
   font-family: 'Pretendard';
 `;

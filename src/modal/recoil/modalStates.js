@@ -4,10 +4,10 @@ import {atom} from 'recoil';
 const generateModalAtomOption = key => ({key, default: false});
 
 export const orangeGoldModalState = atom(
-  generateModalAtomOption('OrangeGoldModalState'),
+  generateModalAtomOption('orangeGoldModalState'),
 );
 export const orangeGreenModalState = atom(
-  generateModalAtomOption('OrangeGreenModalState'),
+  generateModalAtomOption('orangeGreenModalState'),
 );
 export const orangeMandarinModalState = atom(
   generateModalAtomOption('orangeMandarinModalState'),
@@ -46,4 +46,43 @@ export const GetPossibleFlowersModalState = atom(
 
 export const NotFoundModalState = atom(
   generateModalAtomOption('NotFoundModalState'),
+);
+
+export const FoundModalState = atom(generateModalAtomOption('FoundModalState'));
+
+export const PlaceDetailModalState = atom(
+  generateModalAtomOption('PlaceDetailModalState'),
+);
+
+export const deleteDiaryFolderModalState = atom(
+  generateModalAtomOption('deleteDiaryFolderModalState'),
+);
+
+export const deleteDiaryModalState = atom(
+  generateModalAtomOption('deleteDiaryModalState'),
+);
+
+export const letterModalState = atom(
+  generateModalAtomOption('letterModalState'),
+);
+export const basketModalState = atom(
+  generateModalAtomOption('basketModalState'),
+);
+
+export const checkDeleteAllTasksModalState = atom(
+  generateModalAtomOption('checkDeleteAllTasksModalState'),
+);
+export const exceedMaximumListModalState = atom(
+  generateModalAtomOption('exceedMaximumListModalState'),
+);
+export const addSuccessModalState = atom(
+  generateModalAtomOption('addSuccessModalState'),
+);
+
+export const donationDialogModalState = atom(
+  generateModalAtomOption('donationDialogModalState'),
+);
+
+export const logoutModalState = atom(
+  generateModalAtomOption('logoutModalState'),
 );

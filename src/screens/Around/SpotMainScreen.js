@@ -207,7 +207,9 @@ export default function SpotMainScreen({navigation}) {
         <ScreenContainer>
           <SortButton sortBy={sortType} handlePress={_handlePressSortButton} />
 
+
           <SpotList sproutPlaces={sproutPlaces} type={sortType} />
+
         </ScreenContainer>
       )}
     </>

@@ -13,12 +13,14 @@ import SortButton from './Around/SortButton';
 import ImageCard from './Around/ImageCard';
 
 import PostBanner from './Remember/PostBanner';
-import DiaryList from './Remember/List/DiaryList';
+import FolderList from './Remember/List/FolderList';
 import AddButton from './Remember/AddButton';
 import WriteEditor from './Remember/Post/WriteEditor';
 import DateEditor from './Remember/Post/DateEditor';
 import ImageEditor from './Remember/Post/ImageEditor';
-
+import FolderTitle from './Remember/BottomSheet/FolderTitle';
+import ReviseFolder from './Remember/BottomSheet/ReviseFolder';
+import DiaryCard from './Remember/DairyCard';
 import OrangeSvg from './home/oranges/OrangeSvg';
 import CommonButton from './common/CommonButton';
 export {
@@ -35,11 +37,17 @@ export {
   SortButton,
   ImageCard,
   PostBanner,
-  DiaryList,
+  FolderList,
   AddButton,
+
   CommonButton,
+
+  FolderTitle,
   WriteEditor,
   DateEditor,
   ImageEditor,
+  ReviseFolder,
+  DiaryCard,
+
   OrangeSvg,
 };

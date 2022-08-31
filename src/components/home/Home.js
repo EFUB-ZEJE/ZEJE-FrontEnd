@@ -10,7 +10,7 @@ export default function Home() {
     <>
       <Row style={styles.stateBar} space={3}>
         <LeftFlowers leftFlowers={0} />
-        <LeftWalks leftWalks={0} />
+        <LeftWalks />
       </Row>
       <Tree />
     </>
@@ -20,9 +20,10 @@ export default function Home() {
 const styles = StyleSheet.create({
   stateBar: {
     position: 'absolute',
-    top: 10,
+    top: 15,
     zIndex: 10,
     justifyContent: 'center',
     alignSelf: 'center',
+    marginHorizontal: 25,
   },
 });

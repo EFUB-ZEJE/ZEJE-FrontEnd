@@ -21,6 +21,7 @@ export default function GrayMarker({size}) {
           fill="white"
         />
       </Svg>
+
     );
   } else {
     //big
@@ -44,6 +45,7 @@ export default function GrayMarker({size}) {
           />
         </Svg>
       </View>
+
     );
   }
 }
