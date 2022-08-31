@@ -11,6 +11,10 @@ const ListService = {
     API.get(`/wish/${spotId}`, {
       headers: {'X-AUTH-TOKEN': await getData(ACCESS_TOKEN)},
     }),
+  deleteWishList: async spotId =>
+    API.delete(`/wish/${spotId}`, {
+      headers: {'X-AUTH-TOKEN': await getData(ACCESS_TOKEN)},
+    }),
 };
 
 export default ListService;

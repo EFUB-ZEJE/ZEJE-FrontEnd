@@ -28,6 +28,18 @@ export default function WishList() {
     for (var idx in wishList) {
       if (newData[idx].wishId == id) {
         newData.splice(idx, 1);
+
+        const deleteId = newData[idx].spotDTO.spotId;
+
+        ListService.deleteWishList(deleteId)
+          .then(res => {
+            if (res.status == 200) {
+              console.log('success deleting wishlist');
+            } else {
+              console.log('delete wishlist failed');
+            }
+          })
+          .catch(err => console.log(err));
         setWishList(newData);
         return;
       }
