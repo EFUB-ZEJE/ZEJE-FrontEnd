@@ -8,11 +8,58 @@ import {
   AroundScreen,
   RememberScreen,
 } from '../screens';
+import {
+  accelerometer,
+  SensorTypes,
+  setUpdateIntervalForType,
+} from 'react-native-sensors';
+import {usePedometer} from '../feature/pedometer/recoil/usePedometer';
+import {saveStepCount, STEP_COUNT} from '../data/LocalStorage';
+import {useState} from 'react';
+import {useEffect} from 'react';
+
 const Tab = createBottomTabNavigator();
 const themeGray = palette.gray200;
 const themeMain = theme.colors.main;
+setUpdateIntervalForType(SensorTypes.accelerometer, 400);
 
 export default function TabNavigator() {
+  const [xAcceleration, setXAcceleration] = useState(0);
+  const [yAcceleration, setYAcceleration] = useState(0);
+  const [zAcceleration, setZAcceleration] = useState(0);
+  const [magnitudePrevious, setMagnitudePrevious] = useState(0);
+
+  const {stepCount, setStepCount} = usePedometer();
+
+  useEffect(() => {
+    const subscription = accelerometer
+      .pipe(data => data)
+      .subscribe(speed => {
+        setXAcceleration(speed.x);
+        setYAcceleration(speed.y);
+        setZAcceleration(speed.z);
+      });
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, []);
+
+  useEffect(() => {
+    const magnitude = Math.sqrt(
+      Math.pow(xAcceleration, 2) +
+        Math.pow(yAcceleration, 2) +
+        Math.pow(zAcceleration, 2),
+    );
+
+    const magnitudeDelta = magnitude - magnitudePrevious;
+    setMagnitudePrevious(() => magnitude);
+
+    if (magnitudeDelta > 2) {
+      setStepCount(prevSteps => prevSteps + 1);
+      saveStepCount(STEP_COUNT, stepCount.toString());
+    }
+  }, [xAcceleration, yAcceleration, zAcceleration]);
+
   return (
     <Tab.Navigator
       initialRouteName="AroundScreen"
