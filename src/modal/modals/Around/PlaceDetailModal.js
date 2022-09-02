@@ -38,7 +38,7 @@ export default function PlaceDetailModal({
 
   const [modalVisible, setModalVisible] = useRecoilState(PlaceDetailModalState);
   return (
-    <BottomSheet modalVisible={true} setModalVisible={setModalVisible}>
+    <BottomSheet modalVisible={modalVisible} setModalVisible={setModalVisible}>
       <ModalContainer height={'132px'}>
         <font.title.Subhead3>{spotInfo.loadName}</font.title.Subhead3>
         <font.body.Body1>{spotInfo.start}</font.body.Body1>
