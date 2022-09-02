@@ -23,3 +23,12 @@ export const getData = async key => {
 export const storeToken = async token => {
   await saveData(ACCESS_TOKEN, JSON.stringify(token));
 };
+
+export const saveStepCount = async value => {
+  if (value == null) value = 0;
+  try {
+    await AsyncStorage.setItem(STEP_COUNT, value);
+  } catch (e) {
+    console.log(e);
+  }
+};
