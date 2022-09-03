@@ -5,6 +5,7 @@ import {KakaoLoginButton, LogoLogin} from '../../assets';
 import {useKakaoLogin} from '../../data/recoil/kakaoLogin/hooks/useKakaoLogin';
 import AuthService from '../../services/AuthService';
 import {ACCESS_TOKEN, saveData} from '../../data/LocalStorage';
+import CheckToS from '../../components/Login/CheckToS';
 
 export default function LoginScreen({navigation}) {
   const {kakaoLoginResponse, signInWithKakao, getProfile} = useKakaoLogin();
@@ -24,6 +25,10 @@ export default function LoginScreen({navigation}) {
   return (
     <Center flex={1}>
       <LogoLogin />
+      <CheckToS
+          navigation.navigate('ToSDetail');
+        }}
+      />
       <ButtonWrapper onPress={() => loginHandler()}>
         <KakaoLoginButton />
       </ButtonWrapper>
