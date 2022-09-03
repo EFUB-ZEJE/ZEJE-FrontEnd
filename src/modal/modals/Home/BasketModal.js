@@ -7,12 +7,23 @@ import ModalButton from '../../../components/home/ModalButton';
 import {palette} from '../../../styles/theme';
 import {BasektThree, BasketEmpty, BasketOne, BasketTwo} from '../../../assets';
 import {useFruitBoxPoint} from '../../../data/recoil/fruitBox/hooks/useFruitBoxPoint';
+import {FruitService} from '../../../services/FruitService';
 
 const BasketModal = () => {
   const {isModalOpen, closeModal} = useBaksetModal();
-  const {fruitBoxPoint} = useFruitBoxPoint();
+  const {fruitBoxPoint, setFruitBoxPoint} = useFruitBoxPoint();
 
-  //TODO: 열매 기부하기 기능 연결
+  const donationAll = () => {
+    FruitService.donateFruitBoxPoint(fruitBoxPoint)
+      .then(() => {
+        closeModal();
+        setFruitBoxPoint(0);
+      })
+      .catch(err => {
+        console.error('donationAll error: ', err);
+      });
+  };
+
   return (
     <ModalSheet isModalOpen={isModalOpen} closeModal={closeModal}>
       <Column space={5} alignItems={'center'} w={'100%'} my={2}>
@@ -37,12 +48,7 @@ const BasketModal = () => {
         </Column>
 
         <Column space={1} alignItems={'center'} w={'100%'}>
-          <ModalButton
-            onPress={() => {
-              console.log('열매 기부하기');
-            }}
-            text={'열매 기부하기'}
-          />
+          <ModalButton onPress={donationAll} text={'열매 기부하기'} />
           <ModalButton onPress={closeModal} text={'취소하기'} white />
         </Column>
       </Column>

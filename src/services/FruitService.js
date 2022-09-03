@@ -14,4 +14,16 @@ export const FruitService = {
         headers: {'X-AUTH-TOKEN': await getData(ACCESS_TOKEN)},
       },
     ),
+  donateFruitBoxPoint: async fruitBoxPoint =>
+    API.post(
+      '/donations',
+      {fruitBox: fruitBoxPoint},
+      {
+        headers: {'X-AUTH-TOKEN': await getData(ACCESS_TOKEN)},
+      },
+    ),
+  getDonatedFruitBoxPoint: async () =>
+    API.get('/donations', {
+      headers: {'X-AUTH-TOKEN': await getData(ACCESS_TOKEN)},
+    }),
 };
