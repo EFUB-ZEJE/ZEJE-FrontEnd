@@ -11,6 +11,7 @@ import OrangeThousandModal from '../../../modal/modals/Home/OrangeThousandModal'
 import OrangeTinyModal from '../../../modal/modals/Home/OrangeTinyModal';
 import UnRegisterCheckModal from '../../../modal/modals/Home/UnRegisterCheckModal';
 import UnRegisterDoneModal from '../../../modal/modals/Home/UnRegisterDoneModal';
+import ToSNotCheckedModal from '../../../modal/modals/Log/Login/ToSNotCheckedModal';
 
 const ModalWrapper = () => {
   return (
@@ -27,6 +28,7 @@ const ModalWrapper = () => {
       <BasketModal />
       <UnRegisterCheckModal />
       <UnRegisterDoneModal />
+      <ToSNotCheckedModal />
     </>
   );
 };

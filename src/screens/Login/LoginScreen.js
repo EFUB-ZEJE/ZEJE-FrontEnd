@@ -7,12 +7,23 @@ import AuthService from '../../services/AuthService';
 import {ACCESS_TOKEN, saveData} from '../../data/LocalStorage';
 import Spinner from 'react-native-loading-spinner-overlay';
 import {theme} from '../../styles/theme';
+import CheckToS from '../../components/Login/CheckToS';
+import {useToSNotCheckedModal} from '../../modal/recoil/useModals';
 
 export default function LoginScreen({navigation}) {
   const [isLoading, setIsLoading] = useState(false);
   const {kakaoSignin, kakaoLoginResponse, signInWithKakao, getProfile} =
     useKakaoLogin();
+  const [toSChecked, setToSChecked] = useState(false);
+  const {openModal} = useToSNotCheckedModal();
 
+  const onPressHandler = () => {
+    if (toSChecked) {
+      signInWithKakao();
+    } else {
+      openModal();
+    }
+  };
   useEffect(() => {
     if (kakaoLoginResponse.id !== '' && kakaoSignin) {
       setIsLoading(true);
@@ -38,7 +49,17 @@ export default function LoginScreen({navigation}) {
       />
       <Center flex={1}>
         <LogoLogin />
-        <ButtonWrapper onPress={() => signInWithKakao()}>
+        {kakaoLoginResponse.id == '' && (
+          <CheckToS
+            onPress={() => {
+              navigation.navigate('ToSDetail');
+            }}
+            toSChecked={toSChecked}
+            setToSChecked={setToSChecked}
+          />
+        )}
+
+        <ButtonWrapper onPress={() => onPressHandler()}>
           <KakaoLoginButton />
         </ButtonWrapper>
       </Center>
