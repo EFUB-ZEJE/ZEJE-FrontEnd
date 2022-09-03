@@ -45,33 +45,6 @@ export default function SpotMainScreen({navigation}) {
 
   function _fetchSproutPlaces() {
     // 로컬에 저장된
-    AroundService.getSproutPoints()
-      .then(res => {
-        if (res.status == 200) {
-          setSproutPlace(() => {
-            const deconstructedData = res.data.map(
-              ({mapX, mapY, spotId, name, location}) => {
-                // 해당 스팟 방문 여부
-                return {
-                  name,
-                  spotId,
-                  latitude: parseFloat(mapY),
-                  longitude: parseFloat(mapX),
-                  isVisited: false,
-                  location: location,
-                };
-              },
-            );
-            console.log(deconstructedData);
-            return deconstructedData;
-          });
-
-          setIsLoading(false);
-        } else {
-          console.log('failed get sprouts');
-        }
-      })
-      .catch(err => console.log(err));
   }
 
   const _handleFirstModal = (unVisitedCnt, nearbySpotCnt) => {
@@ -86,35 +59,74 @@ export default function SpotMainScreen({navigation}) {
   };
 
   useEffect(() => {
-    _fetchSproutPlaces();
+    AroundService.getSproutPoints()
+      .then(res => {
+        if (res.status == 200) {
+          var deconstructedData = [];
+          setSproutPlace(() => {
+            deconstructedData = res.data.map(
+              ({mapX, mapY, spotId, name, location}) => {
+                return {
+                  name,
+                  spotId,
+                  latitude: parseFloat(mapY),
+                  longitude: parseFloat(mapX),
+                  isVisited: true,
+                  location: location,
+                };
 
-    //첫화면 모달 분기
-    var unVisitedCnt = 0; // 아직 방문하지 않은 spot 목록
-    for (var place of sproutPlaces) {
-      if (place.isVisited == false) unVisitedCnt++;
-    }
-    setUnvisitedSpotCnt(unVisitedCnt); //setstate는 비동기
+                // 해당 스팟 방문 여부
+              },
+            );
 
-    var nearbySpotCnt = 0;
-    Geolocation.getCurrentPosition(
-      position => {
-        for (place of sproutPlaces) {
-          // 내위치와 스팟간의 거리차이 계산 (단위 : km)
-          const dist_between = haversine(position.coords, place);
-          if (dist_between <= 10) {
-            //10km 이내라면 (가까운)
-            nearbySpotCnt++;
-          }
+            console.log('deconstructedData');
+            return deconstructedData;
+          });
+
+          setIsLoading(false);
+        } else {
+          console.log('failed get sprouts');
         }
-        setNearbySpotCnt(nearbySpotCnt);
 
-        _handleFirstModal(unVisitedCnt, nearbySpotCnt);
-      },
-      error => {
-        console.log(error.code, error.message);
-      },
-      {enableHighAccuracy: true, timeout: 15000, maximumAge: 10000},
-    );
+        return new Promise((resolve, reject) => {
+          resolve(deconstructedData);
+          reject('fetch err');
+        });
+      })
+      .catch(err => console.log(err))
+      .then(res => {
+        const sproutPlaces = res;
+
+        //첫화면 모달 분기
+        var unVisitedCnt = 0; // 아직 방문하지 않은 spot 목록
+        for (var place of sproutPlaces) {
+          if (place.isVisited == false) unVisitedCnt++;
+        }
+
+        console.log(unVisitedCnt);
+        setUnvisitedSpotCnt(unVisitedCnt); //setstate는 비동기
+
+        var nearbySpotCnt = 0;
+        Geolocation.getCurrentPosition(
+          position => {
+            for (place of sproutPlaces) {
+              // 내위치와 스팟간의 거리차이 계산 (단위 : km)
+              const dist_between = haversine(position.coords, place);
+              if (dist_between <= 10) {
+                //10km 이내라면 (가까운)
+                nearbySpotCnt++;
+              }
+            }
+            setNearbySpotCnt(nearbySpotCnt);
+
+            _handleFirstModal(unVisitedCnt, nearbySpotCnt);
+          },
+          error => {
+            console.log(error.code, error.message);
+          },
+          {enableHighAccuracy: true, timeout: 15000, maximumAge: 10000},
+        );
+      });
   }, []);
 
   const _handlePressSortButton = () => {
