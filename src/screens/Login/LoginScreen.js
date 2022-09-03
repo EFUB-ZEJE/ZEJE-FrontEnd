@@ -1,21 +1,17 @@
 import React, {useEffect} from 'react';
 import styled from 'styled-components/native';
-import {Center} from 'native-base';
+import {Center, Pressable} from 'native-base';
 import {KakaoLoginButton, LogoLogin} from '../../assets';
 import {useKakaoLogin} from '../../data/recoil/kakaoLogin/hooks/useKakaoLogin';
 import AuthService from '../../services/AuthService';
 import {ACCESS_TOKEN, saveData} from '../../data/LocalStorage';
 
 export default function LoginScreen({navigation}) {
-  const {kakaoLoginResponse, signInWithKakao, getProfile} = useKakaoLogin();
-
-  const loginHandler = () => {
-    signInWithKakao();
-    getProfile();
-  };
+  const {kakaoSignin, kakaoLoginResponse, signInWithKakao, getProfile} =
+    useKakaoLogin();
 
   useEffect(() => {
-    if (kakaoLoginResponse.id !== '') {
+    if (kakaoLoginResponse.id !== '' && kakaoSignin) {
       AuthService.getAccessToken(kakaoLoginResponse)
         .then(res => {
           saveData(ACCESS_TOKEN, res.data);
@@ -25,12 +21,12 @@ export default function LoginScreen({navigation}) {
     } else {
       getProfile();
     }
-  }, [kakaoLoginResponse]);
+  }, [kakaoLoginResponse.id, kakaoSignin]);
 
   return (
     <Center flex={1}>
       <LogoLogin />
-      <ButtonWrapper onPress={() => loginHandler()}>
+      <ButtonWrapper onPress={() => signInWithKakao()}>
         <KakaoLoginButton />
       </ButtonWrapper>
     </Center>

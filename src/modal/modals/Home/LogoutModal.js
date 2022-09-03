@@ -3,13 +3,19 @@ import styled from 'styled-components';
 import {useLogoutModalState} from '../../recoil/useModals';
 import ModalSheet from '../../../components/common/modal/ModalSheet';
 import ModalButton from '../../../components/home/ModalButton';
-import font, {Subhead3} from '../../../styles/font';
+import {Subhead3} from '../../../styles/font';
+import {useKakaoLogin} from '../../../data/recoil/kakaoLogin/hooks/useKakaoLogin';
+import {useNavigation} from '@react-navigation/native';
 
 export default function LogoutModal() {
-  const _logout = () => {
-    console.log('logout');
-  };
   const {isModalOpen, closeModal} = useLogoutModalState();
+  const {signOutWithKakao} = useKakaoLogin();
+  const navigation = useNavigation();
+
+  const _logout = () => {
+    signOutWithKakao();
+    navigation.navigate('Login');
+  };
   return (
     <ModalSheet isModalOpen={isModalOpen} closeModal={closeModal}>
       <ModalContainer>
