@@ -14,14 +14,16 @@ const BasketModal = () => {
   const {fruitBoxPoint, setFruitBoxPoint} = useFruitBoxPoint();
 
   const donationAll = () => {
-    FruitService.donateFruitBoxPoint(fruitBoxPoint)
-      .then(() => {
-        closeModal();
-        setFruitBoxPoint(0);
-      })
-      .catch(err => {
-        console.error('donationAll error: ', err);
-      });
+    if (fruitBoxPoint > 0) {
+      FruitService.donateFruitBoxPoint(fruitBoxPoint)
+        .then(() => {
+          closeModal();
+          setFruitBoxPoint(0);
+        })
+        .catch(err => {
+          console.error('donationAll error: ', err);
+        });
+    }
   };
 
   return (
