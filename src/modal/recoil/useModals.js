@@ -10,13 +10,6 @@ import {
   orangeSourModalState,
   orangeThousandModalState,
   orangeTinyModalState,
-
-  ArriveSpotModalState,
-  DistanceToSpotModalState,
-  GetAllFlowersModalState,
-  GetPossibleFlowersModalState,
-  NotFoundModalState,
-
   deleteDiaryFolderModalState,
   deleteDiaryModalState,
   checkDeleteAllTasksModalState,
@@ -24,7 +17,7 @@ import {
   addSuccessModalState,
   donationDialogModalState,
   logoutModalState,
-
+  toSNotCheckedState,
 } from './modalStates';
 
 export const useOrangeGoldModal = generateModalHook(orangeGoldModalState);
@@ -62,3 +55,5 @@ export const useDonationDialogModalState = generateModalHook(
   donationDialogModalState,
 );
 export const useLogoutModalState = generateModalHook(logoutModalState);
+
+export const useToSNotCheckedModal = generateModalHook(toSNotCheckedState);

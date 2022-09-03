@@ -9,6 +9,7 @@ import OrangeRedModal from '../../../modal/modals/Home/OrangeRedModal';
 import OrangeSourModal from '../../../modal/modals/Home/OrangeSourModal';
 import OrangeThousandModal from '../../../modal/modals/Home/OrangeThousandModal';
 import OrangeTinyModal from '../../../modal/modals/Home/OrangeTinyModal';
+import ToSNotCheckedModal from '../../../modal/modals/Log/Login/ToSNotCheckedModal';
 
 const ModalWrapper = () => {
   return (
@@ -23,6 +24,7 @@ const ModalWrapper = () => {
       <OrangeTinyModal />
       <LetterModal />
       <BasketModal />
+      <ToSNotCheckedModal />
     </>
   );
 };
