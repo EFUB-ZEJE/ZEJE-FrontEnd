@@ -31,7 +31,8 @@ export default function ProfileEditScreen({navigation, route}) {
     var body = new FormData();
 
     body.append('nickname', text);
-    body.append('uploadFile', image.uri);
+    var photo = {name: image.fileName, uri: image.uri, type: image.type};
+    body.append('uploadFile', photo);
 
     MyPageService.editProfile(body)
       .then(res => {
