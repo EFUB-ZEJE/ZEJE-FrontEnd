@@ -9,3 +9,8 @@ export const kakaoLoginState = atom({
     profileUrl: null,
   },
 });
+
+export const kakaoSigninState = atom({
+  key: 'kakaoSigninState',
+  default: {},
+});
