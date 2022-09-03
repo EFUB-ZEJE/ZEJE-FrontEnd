@@ -70,7 +70,7 @@ export default function BikeMap({places}) {
 
           return (
             <Marker
-              key={place.loadName}
+              key={place.loadName + Math.random(1, 1000)}
               onPress={() => _onMarkerClick(place)}
               coordinate={{
                 // 자전거 도로 시작 위치
