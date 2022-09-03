@@ -8,8 +8,10 @@ import {
 import Home from '../../components/home/Home';
 import {theme} from '../../styles/theme';
 import {getData, ORANGE_LIST} from '../../data/LocalStorage';
+import {useOrange} from '../../data/recoil/oranges/hooks/useOrange';
 
 export default function HomeScreen({navigation}) {
+  const {setOrange} = useOrange();
   async function initOrangeList() {
     const list = await getData(ORANGE_LIST);
     if (list) setOrange(list);
