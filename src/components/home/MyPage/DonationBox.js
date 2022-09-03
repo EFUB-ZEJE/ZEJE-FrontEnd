@@ -28,7 +28,6 @@ export default function DonationBox({n}) {
         shadowOpacity: 0.06,
         shadowRadius: 5,
       }}>
-      <Text>DonationBox</Text>
       <Container>
         <SubContainer>
           <Caption color={palette.gray350}>기부한 귤 수</Caption>
@@ -51,9 +50,7 @@ const StyledButton = styled.TouchableOpacity`
   align-items: center;
   align-content: center;
   text-align: center;
-  width: 70px;
-  height: 35px;
-  padding: 4px;
+  padding: 4px 8px;
 `;
 
 const Container = styled.View`
