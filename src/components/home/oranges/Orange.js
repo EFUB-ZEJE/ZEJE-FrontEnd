@@ -16,8 +16,9 @@ import {usePedometer} from '../../../feature/pedometer/recoil/usePedometer';
 import {ORANGES_LIST} from './OrangeBox';
 import {useOrange} from '../../../data/recoil/oranges/hooks/useOrange';
 import {ORANGE_LIST, saveData} from '../../../data/LocalStorage';
+import {useFocusedOrangeOrder} from '../../../data/recoil/oranges/hooks/useFocusedOrangeOrder';
 
-// 꽃봉오리->오렌지 바뀐 내용 로컬에 저장
+// 오렌지 리스트 바뀐 내용 로컬에 저장
 export async function saveOrangeList(orange) {
   saveData(ORANGE_LIST, orange);
 }
@@ -33,6 +34,7 @@ export default function Orange({top, left, right, order}) {
   const {openModal: openTinyModal} = useOrangeTinyModal();
   const {stepCount, setStepCount} = usePedometer();
   const {orange, setOrange} = useOrange();
+  const {setFocusedOrangeOrder} = useFocusedOrangeOrder();
 
   // [꽃봉오리->오렌지] 바뀐 내용 로컬에 저장
   const setChangedOrangeData = randomInt => {
@@ -58,26 +60,30 @@ export default function Orange({top, left, right, order}) {
     }
   };
 
-  const onPressHandler = () => {
-    const name = orange[order].name;
+  const openModal = name => {
+    name === 'OrangeGold'
+      ? openGoldModal()
+      : name === 'OrangeGreen'
+      ? openGreenModal()
+      : name === 'OrangeMandarin'
+      ? openMandarinModal()
+      : name === 'OrangeMt'
+      ? openMtModal()
+      : name === 'OrangeRed'
+      ? openRedModal()
+      : name === 'OrangeSour'
+      ? openSourModal()
+      : name === 'OrangeThousand'
+      ? openThousandModal()
+      : openTinyModal();
+  };
+
+  const onPressHandler = name => {
     if (name == 'OrangeFlower') {
       changeFlowerToOrange();
     } else {
-      name === 'OrangeGold'
-        ? openGoldModal()
-        : name === 'OrangeGreen'
-        ? openGreenModal()
-        : name === 'OrangeMandarin'
-        ? openMandarinModal()
-        : name === 'OrangeMt'
-        ? openMtModal()
-        : name === 'OrangeRed'
-        ? openRedModal()
-        : name === 'OrangeSour'
-        ? openSourModal()
-        : name === 'OrangeThousand'
-        ? openThousandModal()
-        : openTinyModal();
+      openModal(name);
+      setFocusedOrangeOrder(order);
     }
   };
 
@@ -85,7 +91,7 @@ export default function Orange({top, left, right, order}) {
   return (
     <Pressable
       onPress={() => {
-        onPressHandler();
+        onPressHandler(orange[order].name);
       }}
       position={'absolute'}
       top={top}
