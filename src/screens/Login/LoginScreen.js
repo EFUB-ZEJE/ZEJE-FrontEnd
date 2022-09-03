@@ -6,14 +6,20 @@ import {useKakaoLogin} from '../../data/recoil/kakaoLogin/hooks/useKakaoLogin';
 import AuthService from '../../services/AuthService';
 import {ACCESS_TOKEN, saveData} from '../../data/LocalStorage';
 import CheckToS from '../../components/Login/CheckToS';
+import {useToSNotCheckedModal} from '../../modal/recoil/useModals';
 
 export default function LoginScreen({navigation}) {
   const {kakaoLoginResponse, signInWithKakao, getProfile} = useKakaoLogin();
-  const [tosChecked, setTosChecked] = useState(false);
+  const [toSChecked, setToSChecked] = useState(false);
+  const {openModal} = useToSNotCheckedModal();
 
   const loginHandler = () => {
-    signInWithKakao();
-    getProfile();
+    if (toSChecked) {
+      signInWithKakao();
+      getProfile();
+    } else {
+      openModal();
+    }
   };
   if (kakaoLoginResponse.id !== '') {
     AuthService.getAccessToken(kakaoLoginResponse)
@@ -31,8 +37,8 @@ export default function LoginScreen({navigation}) {
         onPress={() => {
           navigation.navigate('ToSDetail');
         }}
-        tosChecked={tosChecked}
-        setTosChecked={setTosChecked}
+        toSChecked={toSChecked}
+        setToSChecked={setToSChecked}
       />
       <ButtonWrapper onPress={() => loginHandler()}>
         <KakaoLoginButton />
