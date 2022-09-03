@@ -8,13 +8,13 @@ import DonationBox from '../../components/home/MyPage/DonationBox';
 import Menu from '../../components/home/MyPage/Menu';
 import styled from 'styled-components';
 import {SizedBox} from '../../components';
-import LogoutModal from '../../modal/modals/Home/LogoutModal';
 import {
   useLogoutModal,
   useUnRegisterCheckModal,
 } from '../../modal/recoil/useModals';
 import {Subhead2} from '../../styles/font';
 import {theme, palette} from '../../styles/theme';
+
 export default function MypageMainScreen({navigation}) {
   const [userInfo, setUserInfo] = useState({
     userId: 2,
@@ -55,7 +55,6 @@ export default function MypageMainScreen({navigation}) {
           </Pressable>
         </Right>
       </ScreenContainer>
-      <LogoutModal />
       <DonationDialogModal />
     </>
   );

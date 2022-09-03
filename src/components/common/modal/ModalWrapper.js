@@ -1,6 +1,7 @@
 import React from 'react';
 import BasketModal from '../../../modal/modals/Home/BasketModal';
 import LetterModal from '../../../modal/modals/Home/LetterModal';
+import LogoutModal from '../../../modal/modals/Home/LogoutModal';
 import OrangeGoldModal from '../../../modal/modals/Home/OrangeGoldModal';
 import OrangeGreenModal from '../../../modal/modals/Home/OrangeGreenModal';
 import OrangeMandarinModal from '../../../modal/modals/Home/OrangeMandarinModal';
@@ -26,6 +27,7 @@ const ModalWrapper = () => {
       <OrangeTinyModal />
       <LetterModal />
       <BasketModal />
+      <LogoutModal />
       <UnRegisterCheckModal />
       <UnRegisterDoneModal />
       <ToSNotCheckedModal />
