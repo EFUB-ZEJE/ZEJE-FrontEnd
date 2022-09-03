@@ -17,6 +17,8 @@ import {usePedometer} from '../feature/pedometer/recoil/usePedometer';
 import {saveStepCount, STEP_COUNT} from '../data/LocalStorage';
 import {useState} from 'react';
 import {useEffect} from 'react';
+import {FruitService} from '../services/FruitService';
+import {useFruitBoxPoint} from '../data/recoil/fruitBox/hooks/useFruitBoxPoint';
 
 const Tab = createBottomTabNavigator();
 const themeGray = palette.gray200;
@@ -30,8 +32,18 @@ export default function TabNavigator() {
   const [magnitudePrevious, setMagnitudePrevious] = useState(0);
 
   const {stepCount, setStepCount} = usePedometer();
+  const {setFruitBoxPoint} = useFruitBoxPoint();
 
   useEffect(() => {
+    // api 연결
+    FruitService.getFruitBoxPoint()
+      .then(res => {
+        setFruitBoxPoint(res.data.fruitBox);
+      })
+      .catch(err => {
+        console.error('getFruitBoxPoint error', err);
+      });
+
     const subscription = accelerometer
       .pipe(data => data)
       .subscribe(speed => {
