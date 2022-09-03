@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components/native';
 import {Center} from 'native-base';
 import {KakaoLoginButton, LogoLogin} from '../../assets';
@@ -9,6 +9,8 @@ import CheckToS from '../../components/Login/CheckToS';
 
 export default function LoginScreen({navigation}) {
   const {kakaoLoginResponse, signInWithKakao, getProfile} = useKakaoLogin();
+  const [tosChecked, setTosChecked] = useState(false);
+
   const loginHandler = () => {
     signInWithKakao();
     getProfile();
@@ -29,6 +31,8 @@ export default function LoginScreen({navigation}) {
         onPress={() => {
           navigation.navigate('ToSDetail');
         }}
+        tosChecked={tosChecked}
+        setTosChecked={setTosChecked}
       />
       <ButtonWrapper onPress={() => loginHandler()}>
         <KakaoLoginButton />
