@@ -5,9 +5,9 @@ import {Body1} from '../../styles/font';
 import {palette} from '../../styles/theme';
 import SvgIcon from '../common/SvgIcon';
 
-export default function CheckToS({onPress, tosChecked, setTosChecked}) {
+export default function CheckToS({onPress, toSChecked, setToSChecked}) {
   const onToggle = () => {
-    setTosChecked(prev => !prev);
+    setToSChecked(prev => !prev);
   };
 
   return (
@@ -15,7 +15,7 @@ export default function CheckToS({onPress, tosChecked, setTosChecked}) {
       <Pressable onPress={onToggle}>
         <Row space={1}>
           <SvgIcon
-            name={tosChecked ? 'CheckedBox' : 'EmptyBox'}
+            name={toSChecked ? 'CheckedBox' : 'EmptyBox'}
             size={'24px'}
           />
           <Body1>이용 약관 동의하기</Body1>
