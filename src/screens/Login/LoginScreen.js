@@ -26,6 +26,7 @@ export default function LoginScreen({navigation}) {
     <Center flex={1}>
       <LogoLogin />
       <CheckToS
+        onPress={() => {
           navigation.navigate('ToSDetail');
         }}
       />
