@@ -9,12 +9,25 @@ import Home from '../../components/home/Home';
 import {theme} from '../../styles/theme';
 import {getData, ORANGE_LIST} from '../../data/LocalStorage';
 import {useOrange} from '../../data/recoil/oranges/hooks/useOrange';
+import {ORANGES_LIST} from '../../components/home/oranges/Orange';
 
 export default function HomeScreen({navigation}) {
-  const {setOrange} = useOrange();
+  const {orange, setOrange} = useOrange();
+
   async function initOrangeList() {
     const list = await getData(ORANGE_LIST);
-    if (list) setOrange(list);
+    if (list) {
+      // setOrange(list);
+
+      // 테스트 용으로 꽃봉오리 1개 부여
+      setOrange({
+        ...orange,
+        [1]: {
+          name: ORANGES_LIST[0].name,
+          maxWalk: ORANGES_LIST[0].maxWalk,
+        },
+      });
+    }
   }
 
   useEffect(() => {
