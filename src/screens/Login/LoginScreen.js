@@ -4,7 +4,7 @@ import {Center} from 'native-base';
 import {KakaoLoginButton, LogoLogin} from '../../assets';
 import {useKakaoLogin} from '../../data/recoil/kakaoLogin/hooks/useKakaoLogin';
 import AuthService from '../../services/AuthService';
-import {storeToken} from '../../data/LocalStorage';
+import {ACCESS_TOKEN, saveData} from '../../data/LocalStorage';
 
 export default function LoginScreen({navigation}) {
   const {kakaoLoginResponse, signInWithKakao, getProfile} = useKakaoLogin();
@@ -15,7 +15,7 @@ export default function LoginScreen({navigation}) {
   if (kakaoLoginResponse.id !== '') {
     AuthService.getAccessToken(kakaoLoginResponse)
       .then(res => {
-        storeToken(res.data);
+        saveData(ACCESS_TOKEN, res.data);
         navigation.navigate('TabNavigator');
       })
       .catch(err => console.error(err));
