@@ -6,12 +6,14 @@ import {OrangeTiny} from '../../../assets/images/oranges';
 import {Body_long1, Subhead_long3} from '../../../styles/font';
 import ModalButton from '../../../components/home/ModalButton';
 import OrangeModalProgressBar from '../../../components/home/oranges/OrangeModalProgressBar';
-import {ORANGES_LIST} from '../../../components/home/oranges/OrangeBox';
 import {usePedometer} from '../../../feature/pedometer/recoil/usePedometer';
 import {useFruitBoxPoint} from '../../../data/recoil/fruitBox/hooks/useFruitBoxPoint';
 import {useOrange} from '../../../data/recoil/oranges/hooks/useOrange';
 import {useFocusedOrangeOrder} from '../../../data/recoil/oranges/hooks/useFocusedOrangeOrder';
-import {saveOrangeList} from '../../../components/home/oranges/Orange';
+import {
+  ORANGES_LIST,
+  saveOrangeList,
+} from '../../../components/home/oranges/Orange';
 
 const OrangeTinyModal = () => {
   const {isModalOpen, closeModal} = useOrangeTinyModal();

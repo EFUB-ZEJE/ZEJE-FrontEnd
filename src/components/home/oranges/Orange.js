@@ -13,10 +13,48 @@ import {
 } from '../../../modal/recoil/useModals';
 import OrangeSmallProgressBar from './OrangeSmallProgressBar';
 import {usePedometer} from '../../../feature/pedometer/recoil/usePedometer';
-import {ORANGES_LIST} from './OrangeBox';
 import {useOrange} from '../../../data/recoil/oranges/hooks/useOrange';
 import {ORANGE_LIST, saveData} from '../../../data/LocalStorage';
 import {useFocusedOrangeOrder} from '../../../data/recoil/oranges/hooks/useFocusedOrangeOrder';
+
+export const ORANGES_LIST = [
+  {
+    name: 'OrangeFlower',
+    maxWalk: 10, // 500에서 10으로 바꿈
+  },
+  {
+    name: 'OrangeGold',
+    maxWalk: 12000,
+  },
+  {
+    name: 'OrangeGreen',
+    maxWalk: 8000,
+  },
+  {
+    name: 'OrangeMandarin',
+    maxWalk: 11000,
+  },
+  {
+    name: 'OrangeMt',
+    maxWalk: 4000,
+  },
+  {
+    name: 'OrangeRed',
+    maxWalk: 2000,
+  },
+  {
+    name: 'OrangeSour',
+    maxWalk: 4000,
+  },
+  {
+    name: 'OrangeThousand',
+    maxWalk: 3000,
+  },
+  {
+    name: 'OrangeTiny',
+    maxWalk: 4000,
+  },
+];
 
 // 오렌지 리스트 바뀐 내용 로컬에 저장
 export async function saveOrangeList(orange) {

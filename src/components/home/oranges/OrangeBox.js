@@ -2,45 +2,6 @@ import React from 'react';
 import styled from 'styled-components/native';
 import Orange from './Orange';
 
-export const ORANGES_LIST = [
-  {
-    name: 'OrangeFlower',
-    maxWalk: 10, // 500에서 10으로 바꿈
-  },
-  {
-    name: 'OrangeGold',
-    maxWalk: 12000,
-  },
-  {
-    name: 'OrangeGreen',
-    maxWalk: 8000,
-  },
-  {
-    name: 'OrangeMandarin',
-    maxWalk: 11000,
-  },
-  {
-    name: 'OrangeMt',
-    maxWalk: 4000,
-  },
-  {
-    name: 'OrangeRed',
-    maxWalk: 2000,
-  },
-  {
-    name: 'OrangeSour',
-    maxWalk: 4000,
-  },
-  {
-    name: 'OrangeThousand',
-    maxWalk: 3000,
-  },
-  {
-    name: 'OrangeTiny',
-    maxWalk: 4000,
-  },
-];
-
 export default function OrangeBox() {
   return (
     <View>
