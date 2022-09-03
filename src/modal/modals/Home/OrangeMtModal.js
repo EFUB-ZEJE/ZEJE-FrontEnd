@@ -7,10 +7,18 @@ import {Body_long1, Subhead_long3} from '../../../styles/font';
 import ModalButton from '../../../components/home/ModalButton';
 import OrangeModalProgressBar from '../../../components/home/oranges/OrangeModalProgressBar';
 import {ORANGES_LIST} from '../../../components/home/oranges/OrangeBox';
+import {usePedometer} from '../../../feature/pedometer/recoil/usePedometer';
+import {useFruitBoxPoint} from '../../../data/recoil/fruitBox/hooks/useFruitBoxPoint';
 
 const OrangeMtModal = () => {
   const {isModalOpen, closeModal} = useOrangeMtModal();
   const maxWalk = ORANGES_LIST[4].maxWalk;
+  const {stepCount} = usePedometer();
+  const {addFruitBoxPoint} = useFruitBoxPoint();
+
+  const orangeToPoint = () => {
+    addFruitBoxPoint({maxWalk: maxWalk});
+  };
 
   return (
     <ModalSheet isModalOpen={isModalOpen} closeModal={closeModal}>
@@ -22,7 +30,11 @@ const OrangeMtModal = () => {
           풍부하며 당도가 매우 높은 것이 특징이랍니다.
         </Body_long1>
         <OrangeModalProgressBar maxWalk={maxWalk} />
-        <ModalButton onPress={closeModal} text={'닫기'} />
+
+        {stepCount > maxWalk && (
+          <ModalButton onPress={() => orangeToPoint()} text={'획득하기'} />
+        )}
+        <ModalButton onPress={() => console.log('닫기')} text={'닫기'} white />
       </Column>
     </ModalSheet>
   );
