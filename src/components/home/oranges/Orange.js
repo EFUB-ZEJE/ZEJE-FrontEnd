@@ -74,7 +74,7 @@ export default function Orange({top, left, right, order}) {
   const {orange, setOrange} = useOrange();
   const {setFocusedOrangeOrder} = useFocusedOrangeOrder();
 
-  // [꽃봉오리->오렌지] 바뀐 내용 로컬에 저장
+  // [꽃봉오리->오렌지] 바뀐 내용 로컬 및 리코일에 저장
   const setChangedOrangeData = randomInt => {
     setOrange({
       ...orange,
@@ -88,7 +88,6 @@ export default function Orange({top, left, right, order}) {
     return;
   };
 
-  // [꽃봉오리->오렌지] 바뀐 내용 recoil로 저장 (빠르게 활용하기 위해 두번저장)
   const changeFlowerToOrange = () => {
     if (stepCount >= 10) {
       setStepCount(stepCount - 10);
