@@ -40,7 +40,7 @@ export const useKakaoLogin = () => {
         profileUrl: profile.profileImageUrl,
       }));
     } catch (err) {
-      console.error('signOut error', err);
+      console.error('getProfile error', err);
     }
   };
 
@@ -50,7 +50,7 @@ export const useKakaoLogin = () => {
       const message = await unlink();
     } catch (err) {
       // eslint-disable-next-line no-console
-      console.error('signOut error', err);
+      console.error('unlinkKakao error', err);
     }
   };
 
