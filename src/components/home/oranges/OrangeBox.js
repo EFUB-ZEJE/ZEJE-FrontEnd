@@ -5,7 +5,7 @@ import Orange from './Orange';
 export const ORANGES_LIST = [
   {
     name: 'OrangeFlower',
-    maxWalk: 500,
+    maxWalk: 10, // 500에서 10으로 바꿈
   },
   {
     name: 'OrangeGold',
@@ -44,47 +44,13 @@ export const ORANGES_LIST = [
 export default function OrangeBox() {
   return (
     <View>
-      <Orange
-        name={ORANGES_LIST[0].name}
-        maxWalk={ORANGES_LIST[0].maxWalk}
-        top={'20%'}
-      />
-      <Orange
-        name={ORANGES_LIST[1].name}
-        maxWalk={ORANGES_LIST[1].maxWalk}
-        top={'55%'}
-      />
-
-      <Orange
-        name={ORANGES_LIST[2].name}
-        maxWalk={ORANGES_LIST[2].maxWalk}
-        left={'38%'}
-      />
-      <Orange
-        name={ORANGES_LIST[3].name}
-        maxWalk={ORANGES_LIST[3].maxWalk}
-        left={'38%'}
-        top={'35%'}
-      />
-      <Orange
-        name={ORANGES_LIST[4].name}
-        maxWalk={ORANGES_LIST[4].maxWalk}
-        left={'38%'}
-        top={'75%'}
-      />
-
-      <Orange
-        name={ORANGES_LIST[5].name}
-        maxWalk={ORANGES_LIST[5].maxWalk}
-        top={'20%'}
-        right={0}
-      />
-      <Orange
-        name={ORANGES_LIST[6].name}
-        maxWalk={ORANGES_LIST[6].maxWalk}
-        top={'55%'}
-        right={0}
-      />
+      <Orange top={'20%'} order={1} />
+      <Orange top={'55%'} order={2} />
+      <Orange left={'38%'} order={3} />
+      <Orange left={'38%'} top={'35%'} order={4} />
+      <Orange left={'38%'} top={'75%'} order={5} />
+      <Orange top={'20%'} right={0} order={6} />
+      <Orange top={'55%'} right={0} order={7} />
     </View>
   );
 }
