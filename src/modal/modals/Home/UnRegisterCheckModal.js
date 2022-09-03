@@ -1,28 +1,38 @@
 import React from 'react';
 import styled from 'styled-components';
-import {useLogoutModal} from '../../recoil/useModals';
+import {
+  useUnRegisterCheckModal,
+  useUnRegisterDoneModal,
+} from '../../recoil/useModals';
 import ModalSheet from '../../../components/common/modal/ModalSheet';
 import ModalButton from '../../../components/home/ModalButton';
 import {Subhead3} from '../../../styles/font';
-import {useKakaoLogin} from '../../../data/recoil/kakaoLogin/hooks/useKakaoLogin';
-import {useNavigation} from '@react-navigation/native';
+import AuthService from '../../../services/AuthService';
 
-export default function LogoutModal() {
-  const {isModalOpen, closeModal} = useLogoutModal();
-  const {signOutWithKakao} = useKakaoLogin();
-  const navigation = useNavigation();
+export default function UnRegisterCheckModal() {
+  const {isModalOpen, closeModal} = useUnRegisterCheckModal();
+  const {openModal: openUnRegisterDoneModal} = useUnRegisterDoneModal();
 
-  const _logout = () => {
-    signOutWithKakao();
-    navigation.navigate('Login');
+  const unRegister = () => {
+    AuthService.unRegister()
+      .then(res => {
+        if (res.data == '유저 탈퇴처리 완료') {
+          closeModal();
+          openUnRegisterDoneModal();
+        }
+      })
+      .catch(err => console.error('unregister error:', err));
   };
+
   return (
     <ModalSheet isModalOpen={isModalOpen} closeModal={closeModal}>
       <ModalContainer>
-        <Subhead3>로그아웃 하시겠어요?</Subhead3>
+        <Subhead3>정말로 탈퇴하시겠어요?</Subhead3>
         <Row>
           <ModalButton
-            onPress={_logout}
+            onPress={() => {
+              unRegister();
+            }}
             text={'예'}
             white
             width={'110px'}
