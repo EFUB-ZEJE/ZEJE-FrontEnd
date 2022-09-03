@@ -1,5 +1,6 @@
 import OnBoardingScreen from './OnBoarding/OnBoardingScreen';
 import LoginScreen from './Login/LoginScreen';
+import ToSDetailScreen from './Login/ToSDetailScreen';
 
 import AroundScreen from './AroundScreen';
 import HomeScreen from './Home/HomeScreen';
@@ -27,6 +28,7 @@ import LicenseDetailScreen from './Home/LicenseDetailScreen';
 export {
   OnBoardingScreen,
   LoginScreen,
+  ToSDetailScreen,
   AroundScreen,
   HomeScreen,
   MyListScreen,
