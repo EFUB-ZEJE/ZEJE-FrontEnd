@@ -10,7 +10,11 @@ import SvgIcon from '../../components';
 import styled from 'styled-components';
 import {SizedBox} from '../../components';
 import LogoutModal from '../../modal/modals/Home/LogoutModal';
-import {useLogoutModalState} from '../../modal/recoil/useModals';
+import {
+  useLogoutModal,
+  useUnRegisterCheckModal,
+  useUnRegisterDoneModal,
+} from '../../modal/recoil/useModals';
 import font, {Subhead2} from '../../styles/font';
 import {theme, palette} from '../../styles/theme';
 export default function MypageMainScreen({navigation}) {
@@ -21,11 +25,8 @@ export default function MypageMainScreen({navigation}) {
     profileUrl: null,
     fruitBox: 0,
   });
-  const {openModal} = useLogoutModalState();
-
-  const _unregister = () => {
-    //회원탈퇴 요청
-  };
+  const {openModal: openLogoutModal} = useLogoutModal();
+  const {openModal: openUnRegisterCheckModal} = useUnRegisterCheckModal();
 
   return (
     <>
@@ -47,11 +48,11 @@ export default function MypageMainScreen({navigation}) {
         <SizedBox height={24} />
         <Menu navigation={navigation} />
         <Right>
-          <TouchableOpacity onPress={openModal}>
+          <TouchableOpacity onPress={openLogoutModal}>
             <Subhead2 color={theme.colors.main}>로그아웃 </Subhead2>
           </TouchableOpacity>
           <Subhead2 color={palette.gray200}> | </Subhead2>
-          <TouchableOpacity onPress={_unregister}>
+          <TouchableOpacity onPress={openUnRegisterCheckModal}>
             <Subhead2 color={palette.gray300}>회원탈퇴 </Subhead2>
           </TouchableOpacity>
         </Right>
