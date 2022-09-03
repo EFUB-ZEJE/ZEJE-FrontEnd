@@ -2,6 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const STEP_COUNT = 'stepCount';
 export const ACCESS_TOKEN = 'accessToken';
+export const ORANGE_LIST = 'orangeList';
 
 export const saveData = async (key, value) => {
   try {
