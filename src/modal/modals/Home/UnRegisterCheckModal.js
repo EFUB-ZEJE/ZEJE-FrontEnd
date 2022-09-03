@@ -6,7 +6,7 @@ import {
 } from '../../recoil/useModals';
 import ModalSheet from '../../../components/common/modal/ModalSheet';
 import ModalButton from '../../../components/home/ModalButton';
-import {Subhead3} from '../../../styles/font';
+import {Body_long2, Subhead3} from '../../../styles/font';
 import AuthService from '../../../services/AuthService';
 
 export default function UnRegisterCheckModal() {
@@ -28,6 +28,7 @@ export default function UnRegisterCheckModal() {
     <ModalSheet isModalOpen={isModalOpen} closeModal={closeModal}>
       <ModalContainer>
         <Subhead3>정말로 탈퇴하시겠어요?</Subhead3>
+        <Body_long2>탈퇴 시 재가입이 불가합니다.</Body_long2>
         <Row>
           <ModalButton
             onPress={() => {
@@ -48,7 +49,6 @@ const ModalContainer = styled.View`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 136px;
   padding: 16px;
 `;
 const Row = styled.View`
@@ -56,4 +56,5 @@ const Row = styled.View`
   flex-direction: row;
   justify-content: space-between;
   width: 232px;
+  margin-top: 20px;
 `;
