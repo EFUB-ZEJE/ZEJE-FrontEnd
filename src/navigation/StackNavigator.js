@@ -15,7 +15,6 @@ import {
   DairyPostScreen,
   DairyDetailScreen,
   EcoItemScreen,
-  TosScreen,
   ProfileEditScreen,
   InformationScreen,
   OpenSourceScreen,
@@ -47,7 +46,6 @@ export default function StackNavigator() {
       <Stack.Screen name="MyReview" component={MyReviewScreen} />
       <Stack.Screen name="OpenSource" component={OpenSourceScreen} />
       <Stack.Screen name="License" component={LicenseDetailScreen} />
-      <Stack.Screen name="Tos" component={TosScreen} />
       <Stack.Screen name="ProfileEdit" component={ProfileEditScreen} />
 
       <Stack.Screen name="MyList" component={MyListScreen} />
