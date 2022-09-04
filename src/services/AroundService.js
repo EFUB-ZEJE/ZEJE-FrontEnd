@@ -4,13 +4,25 @@ import {ACCESS_TOKEN} from '../data/LocalStorage';
 
 const AroundService = {
   getSproutPoints: async () =>
-    API.get('/spots/todayFlowers', {
+    API.get('/spots/flowers/today-visit/lists', {
       headers: {'X-AUTH-TOKEN': await getData(ACCESS_TOKEN)},
     }),
-  checkVisited: async spotId =>
+  checkVisited: async (
+    spotId, // 방문 여부 확인
+  ) =>
     API.get(`/spots/flowers/today-visit?spot=${spotId}`, {
       headers: {'X-AUTH-TOKEN': await getData(ACCESS_TOKEN)},
     }),
+  saveVisited: async (
+    spotId, // 방문한 것 저장.
+  ) =>
+    API.post(
+      `/spots/flowers`,
+      {spotId: spotId},
+      {
+        headers: {'X-AUTH-TOKEN': await getData(ACCESS_TOKEN)},
+      },
+    ),
 };
 
 export default AroundService;

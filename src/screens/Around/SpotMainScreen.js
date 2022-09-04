@@ -43,10 +43,6 @@ export default function SpotMainScreen({navigation}) {
 
   const [sproutPlaces, setSproutPlace] = useState([]);
 
-  function _fetchSproutPlaces() {
-    // 로컬에 저장된
-  }
-
   const _handleFirstModal = (unVisitedCnt, nearbySpotCnt) => {
     if (unVisitedCnt == 0) {
       //모두 방문했다면
@@ -65,13 +61,13 @@ export default function SpotMainScreen({navigation}) {
           var deconstructedData = [];
           setSproutPlace(() => {
             deconstructedData = res.data.map(
-              ({mapX, mapY, spotId, name, location}) => {
+              ({mapX, mapY, spotId, name, location, todayVisit}) => {
                 return {
                   name,
                   spotId,
                   latitude: parseFloat(mapY),
                   longitude: parseFloat(mapX),
-                  isVisited: true,
+                  isVisited: todayVisit,
                   location: location,
                 };
 
@@ -126,7 +122,8 @@ export default function SpotMainScreen({navigation}) {
           },
           {enableHighAccuracy: true, timeout: 15000, maximumAge: 10000},
         );
-      });
+      })
+      .catch(err => console.log(err));
   }, []);
 
   const _handlePressSortButton = () => {
@@ -167,7 +164,6 @@ export default function SpotMainScreen({navigation}) {
             <Map
               places={sproutPlaces}
               navigation={navigation}
-              sproutPlaces={sproutPlaces}
               setSproutPlace={setSproutPlace}
             />
           )}
