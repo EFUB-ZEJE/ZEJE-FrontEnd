@@ -86,3 +86,15 @@ export const donationDialogModalState = atom(
 export const logoutModalState = atom(
   generateModalAtomOption('logoutModalState'),
 );
+
+export const unRegisterCheckModalState = atom(
+  generateModalAtomOption('unRegisterCheckModalState'),
+);
+
+export const unRegisterDoneModalState = atom(
+  generateModalAtomOption('unRegisterDoneModalState'),
+);
+
+export const toSNotCheckedState = atom(
+  generateModalAtomOption('toSNotCheckedState'),
+);

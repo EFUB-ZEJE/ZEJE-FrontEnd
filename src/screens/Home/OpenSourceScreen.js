@@ -10,7 +10,7 @@ import {SvgIcon} from '../../components';
 import styled from 'styled-components';
 import {theme} from '../../styles/theme';
 
-export default function TosScreen({navigation}) {
+export default function OpenSourceScreen({navigation}) {
   const renderItem = ({item}) => (
     <Row>
       <Subhead3>{item.libraryName}</Subhead3>

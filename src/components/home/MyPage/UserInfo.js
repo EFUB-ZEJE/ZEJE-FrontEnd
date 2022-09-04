@@ -26,12 +26,10 @@ const Container = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
-  width: 370px;
 `;
 
 const Wrapper = styled.View`
   display: flex;
-  //width: 256px;
   justify-content: center;
   align-items: flex-start;
 `;

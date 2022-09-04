@@ -8,6 +8,7 @@ import {FoundModalState} from '../../modal/recoil/modalStates';
 import BikeMap from './BikeMap';
 import styled from 'styled-components';
 import SpotList from '../../components/Around/SpotList';
+import BikeService from '../../services/BikeService';
 
 export default function BikeMainScreen({navigation}) {
   const [sortType, setSortType] = useState('내 위치 중심');
@@ -17,23 +18,33 @@ export default function BikeMainScreen({navigation}) {
   const [foundModalVisible, setFoundModalVisible] =
     useRecoilState(FoundModalState);
   useEffect(() => {
-    setBikeLoads(() => {
-      const destructedData = BikeData.map(load => {
-        return {
-          start: load['기점'],
-          latitude: parseFloat(load['기점 위도']),
-          longitude: parseFloat(load['기점 경도']),
-          end: load['종점'],
-          endLat: parseFloat(load['종점 위도']),
-          endLng: parseFloat(load['종점 경도']),
-          length: parseFloat(load['연장(km)']),
-          loadName: load['노선명'],
-        };
-      });
+    BikeService.getBikeLoads()
+      .then(res => {
+        if (res.status == 200) {
+          console.log('success get bikeload');
+          console.log(res.data);
 
-      return destructedData;
-    });
-    setFoundModalVisible(true);
+          setBikeLoads(() => {
+            const deconstructedData = res.data.data.map(load => {
+              return {
+                start: load['기점'],
+                latitude: parseFloat(load['기점 위도']),
+                longitude: parseFloat(load['기점 경도']),
+                end: load['종점'],
+                endLat: parseFloat(load['종점 위도']),
+                endLng: parseFloat(load['종점 경도']),
+                length: parseFloat(load['연장(km)']),
+                loadName: load['노선명'],
+              };
+            });
+            return deconstructedData;
+          });
+        } else {
+          console.log('failed get bike load');
+        }
+      })
+      .catch(err => console.log(err)),
+      setFoundModalVisible(true);
   }, []);
   const _handlePressSortButton = () => {
     if (sortType === '내 위치 중심') {
