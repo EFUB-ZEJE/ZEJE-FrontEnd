@@ -1,7 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {ScreenContainer, ScreenHeader} from '../../components';
 import {Pressable} from 'react-native';
-import DonationDialogModal from '../../modal/modals/Home/DonationDialogModal';
 import Profile from '../../components/home/MyPage/Profile';
 import UserInfo from '../../components/home/MyPage/UserInfo';
 import DonationBox from '../../components/home/MyPage/DonationBox';
@@ -59,7 +58,6 @@ export default function MypageMainScreen({navigation}) {
           </Pressable>
         </Right>
       </ScreenContainer>
-      <DonationDialogModal />
     </>
   );
 }
