@@ -13,7 +13,6 @@ import {
   BikeMainScreen,
   RememberScreen,
   SpotMainScreen,
-  ShareInfoMainScreen,
   DairyPostScreen,
   DairyDetailScreen,
   EcoItemScreen,
@@ -24,6 +23,7 @@ import {
   LicenseDetailScreen,
   OnBoardingScreen,
   ToSDetailScreen,
+  ReportEcoSpotScreen,
 } from '../screens';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import LoginScreen from '../screens/Login/LoginScreen';
@@ -57,11 +57,11 @@ export default function StackNavigator() {
       <Stack.Screen name="ActivityDetail" component={ActivityDetailScreen} />
       <Stack.Screen name="TourMain" component={TourMainScreen} />
       <Stack.Screen name="TourDetail" component={TourDetailScreen} />
+      <Stack.Screen name="ReportSpot" component={ReportEcoSpotScreen} />
 
       <Stack.Screen name="BatteryMain" component={BatteryMainScreen} />
       <Stack.Screen name="BikeMain" component={BikeMainScreen} />
       <Stack.Screen name="SpotMain" component={SpotMainScreen} />
-      <Stack.Screen name="ShareInfoMain" component={ShareInfoMainScreen} />
 
       <Stack.Screen name="Remember" component={RememberScreen} />
       <Stack.Screen name="DairyPost" component={DairyPostScreen} />

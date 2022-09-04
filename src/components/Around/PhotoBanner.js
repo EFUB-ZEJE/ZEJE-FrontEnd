@@ -6,7 +6,21 @@ import font from '../../styles/font.js';
 import DropShadow from 'react-native-drop-shadow';
 import SvgIcon from '../common/SvgIcon';
 
-export default function PhotoBanner({text, navigation, path}) {
+export default function PhotoBanner({text, navigation, path, image}) {
+  if (image == 'spot') {
+    var image = (
+      <ImageContainer
+        source={require('../../assets/images/recommend_spot.png')}
+      />
+    );
+  } else if (image == 'activity') {
+    var image = (
+      <ImageContainer
+        source={require('../../assets/images/recommend_activity.png')}
+      />
+    );
+  }
+
   return (
     <DropShadow
       style={{
@@ -17,6 +31,7 @@ export default function PhotoBanner({text, navigation, path}) {
         },
         shadowOpacity: 0.06,
         shadowRadius: 5,
+        marginBottom: 12,
       }}>
       <BoxContainer onPress={() => navigation.navigate(path)}>
         <Wrapper>
@@ -24,18 +39,15 @@ export default function PhotoBanner({text, navigation, path}) {
           <SvgIcon name="RightArrow" color={theme.colors.black} />
         </Wrapper>
         <Empty />
-        <ImageContainer source={require('../../assets/images/thumbnail.jpg')} />
+        {image}
       </BoxContainer>
     </DropShadow>
   );
 }
 
-const BoxContainer = styled.TouchableOpacity`
-  padding-bottom: 16px;
-`;
+const BoxContainer = styled.TouchableOpacity``;
 
 const Empty = styled.View`
-  background-color: white;
   width: 100%;
   height: 158px;
   border-radius: 10px;
@@ -44,9 +56,9 @@ const Empty = styled.View`
 const ImageContainer = styled.Image`
   position: absolute;
   width: 100%;
-  height: 158px;
+  height: 170px;
   border-radius: 10px;
-  opacity: 0.5;
+  opacity: 1;
 `;
 
 const Wrapper = styled.View`
