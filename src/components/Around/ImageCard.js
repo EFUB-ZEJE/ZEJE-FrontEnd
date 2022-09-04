@@ -33,7 +33,7 @@ const ImageCard = ({
           <ImageContainer source={{uri: image}} />
         ) : (
           <ImageContainer
-            source={require('../../assets/images/thumbnail.jpg')}
+            source={require('../../assets/images/thumbnail.png')}
           />
         )}
 

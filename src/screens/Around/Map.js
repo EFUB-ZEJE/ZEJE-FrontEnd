@@ -1,11 +1,7 @@
-import {Text, View, StyleSheet} from 'react-native';
-import React, {Component, useState, useEffect} from 'react';
+import {StyleSheet} from 'react-native';
+import React, {useState, useEffect} from 'react';
 import MapView, {Marker} from 'react-native-maps';
-import font from '../../styles/font';
 import layout, {HEADER_HEIGHT} from '../../styles/layout';
-import {SvgIcon} from '../../components/common/SvgIcon';
-import {UnvistedMarkerSmall} from '../../assets';
-
 import {DistanceToSpotModalState} from '../../modal/recoil/modalStates';
 import {useRecoilState} from 'recoil';
 import DistanceToSpotModal from '../../modal/modals/Around/DistanceToSpotModal';
@@ -26,7 +22,6 @@ export default function Map({
   sproutPlaces,
   setSproutPlace,
 }) {
-  console.log('map');
   const [placeDetailModalVisible, setPlaceDetailModalVisible] = useRecoilState(
     DistanceToSpotModalState,
   );
@@ -35,7 +30,14 @@ export default function Map({
   const [ArriveSpotModalVisible, setArriveSpotModalVisible] =
     useRecoilState(ArriveSpotModalState);
 
-  const [focusedSpot, setFocusedSpot] = useState(null);
+  const [focusedSpot, setFocusedSpot] = useState({
+    spotId: 628,
+    name: '석부작박물관',
+    location: '제주특별자치도 서귀포시 일주동로 8941',
+    mapX: '126.5360193536',
+    mapY: '33.2503192271',
+    todayVisit: false,
+  });
   const [distBetween, setDistBetween] = useState(0);
 
   // 위치 정보 승인 요청
