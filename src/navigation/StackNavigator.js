@@ -12,6 +12,7 @@ import {
   BatteryMainScreen,
   BikeMainScreen,
   RememberScreen,
+  RememberRenewalScreen,
   SpotMainScreen,
   DairyPostScreen,
   DairyDetailScreen,
@@ -24,6 +25,9 @@ import {
   OnBoardingScreen,
   ToSDetailScreen,
   ReportEcoSpotScreen,
+  DiaryMainScreen,
+  AddMemoryScreen,
+  MemoryMainScreen,
 } from '../screens';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import LoginScreen from '../screens/Login/LoginScreen';
@@ -64,8 +68,13 @@ export default function StackNavigator() {
       <Stack.Screen name="SpotMain" component={SpotMainScreen} />
 
       <Stack.Screen name="Remember" component={RememberScreen} />
+      <Stack.Screen name="RememberRenewal" component={RememberRenewalScreen} />
+
       <Stack.Screen name="DairyPost" component={DairyPostScreen} />
       <Stack.Screen name="DairyDetail" component={DairyDetailScreen} />
+      <Stack.Screen name="DiaryMain" component={DiaryMainScreen} />
+      <Stack.Screen name="AddMemory" component={AddMemoryScreen} />
+      <Stack.Screen name="MemoryMain" component={MemoryMainScreen} />
     </Stack.Navigator>
   );
 }
