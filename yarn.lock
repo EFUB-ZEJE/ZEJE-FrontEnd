@@ -2780,6 +2780,11 @@
     "color-convert" "^2.0.1"
     "color-string" "^1.9.0"
 
+"colord@2.9.2":
+  "integrity" "sha512-Uqbg+J445nc1TKn4FoDPS6ZZqAvEDnwrH42yo8B40JSOgSLxMZ/gt3h4nmCtPLQeXhjJJkqBx7SCY35WnIixaQ=="
+  "resolved" "https://registry.npmjs.org/colord/-/colord-2.9.2.tgz"
+  "version" "2.9.2"
+
 "colorette@^1.0.7":
   "version" "1.4.0"
 
@@ -5773,6 +5778,13 @@
   "version" "7.3.5"
   dependencies:
     "rxjs" ">= 6"
+
+"react-native-shadow-2@^7.0.5":
+  "integrity" "sha512-nmYuyv0SFMZpFf7RDxsf1638IfA2E7VSKkQf2D/t5R/i0/wSlQN/2gvg41mO7oam4/tt+jQJc2XqICCmvxm/FA=="
+  "resolved" "https://registry.npmjs.org/react-native-shadow-2/-/react-native-shadow-2-7.0.5.tgz"
+  "version" "7.0.5"
+  dependencies:
+    "colord" "2.9.2"
 
 "react-native-splash-screen@^3.3.0":
   "integrity" "sha512-rGjt6HkoSXxMqH4SQUJ1gnPQlPJV8+J47+4yhgTIan4bVvAwJhEeJH7wWt9hXSdH4+VfwTS0GTaflj1Tw83IhA=="

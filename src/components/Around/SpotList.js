@@ -35,7 +35,7 @@ export default function SpotList({places, type}) {
     return new Promise((resolve, reject) => {
       Geolocation.getCurrentPosition(
         position => {
-          places.forEach(place => {
+          places?.forEach(place => {
             const distBetween = haversine(position.coords, place);
             place.dist = distBetween;
           });
@@ -79,7 +79,11 @@ export default function SpotList({places, type}) {
       ) : (
         places.map(place => (
           <Spot
-            key={place.spotId ? place.spotId : place.loadName}
+            key={
+              place.spotId
+                ? place.spotId + String(Math.random())
+                : place.loadName
+            }
             name={place.name ? place.name : place.loadName}
             desc={place.description}
             location={place.location ? place.location : place.start}
