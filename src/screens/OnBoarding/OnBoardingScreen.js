@@ -30,12 +30,12 @@ export default function OnBoardingScreen() {
 
   return (
     <ScrollView>
-      <Spinner
+      {/* <Spinner
         cancelable={true}
         color={theme.colors.main}
         visible={!isInstalled}
         textContent="Loading..."
-      />
+      /> */}
       <Column
         flex={1}
         backgroundColor={palette.orange50}

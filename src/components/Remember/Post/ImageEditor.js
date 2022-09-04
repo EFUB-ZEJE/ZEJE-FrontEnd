@@ -40,9 +40,9 @@ export default function ImageEditor() {
     setImgs(imgs.filter(img => img !== item));
   };
 
-  useEffect(() => {
-    console.log('remove');
-  }, [imgs]);
+  // useEffect(() => {
+  //   console.log('remove');
+  // }, [imgs]);
   return (
     <StyledRoot>
       <font.title.Subhead2 color={theme.colors.black}>
