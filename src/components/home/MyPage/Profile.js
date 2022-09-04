@@ -48,7 +48,7 @@ function Profile({uri, type, setImage}) {
           }}
         />
         <IconContainer onPress={pickImage}>
-          <SvgIcon name="Camera" color={theme.colors.main} />
+          <SvgIcon name="CameraBadge" />
         </IconContainer>
       </HStack>
     );
