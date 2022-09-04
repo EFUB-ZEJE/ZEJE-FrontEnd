@@ -24,7 +24,7 @@ export default function PhotoBanner({text, navigation, path}) {
           <SvgIcon name="RightArrow" color={theme.colors.black} />
         </Wrapper>
         <Empty />
-        {/* <ImageContainer source={require('../../assets/images/sample.jpeg')} /> */}
+        <ImageContainer source={require('../../assets/images/thumbnail.jpg')} />
       </BoxContainer>
     </DropShadow>
   );
@@ -41,12 +41,13 @@ const Empty = styled.View`
   border-radius: 10px;
 `;
 
-// const ImageContainer = styled.Image`
-//   width: 100%;
-//   height: 158px;
-//   border-radius: 10px;
-//   opacity: 0.1;
-// `;
+const ImageContainer = styled.Image`
+  position: absolute;
+  width: 100%;
+  height: 158px;
+  border-radius: 10px;
+  opacity: 0.5;
+`;
 
 const Wrapper = styled.View`
   position: absolute;

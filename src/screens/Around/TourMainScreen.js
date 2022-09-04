@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import {TouchableOpacity} from 'react-native';
 import {
@@ -15,32 +15,39 @@ import {
 } from '../../components';
 import font from '../../styles/font.js';
 import {theme} from '../../styles/theme.js';
+import {AroundService} from '../../services/AroundService';
 
 export default function TourMainScreen({navigation}) {
-  const [search, setSearch] = useState('');
   const [filterId, setFilterId] = useState(0);
   const [sortId, setSortId] = useState(0);
   const [modalVisible, setModalVisible] = useState(false);
-
-  // 테스트 데이터 - 지금은 안 되는데 백 연결 시 liked 토글 정상 작동 가능
-  const [tourData, setTourData] = useState([
-    {
-      id: 0,
-      title: '추천 여행지 이름 1',
-      address: '추천 여행지 주소 1',
-      liked: true,
-      tag: 1,
-    },
-    {
-      id: 1,
-      title: '추천 여행지 이름 2',
-      address: '추천 여행지 주소 2',
-      liked: false,
-      tag: 2,
-    },
-  ]);
+  const [tourData, setTourData] = useState([]);
+  useEffect(() => {
+    AroundService.getTourList()
+      .then(res => {
+        setTourData(res.data.slice(0, 30));
+      })
+      .catch(err => {
+        console.error('TourList error', err);
+      });
+  }, []);
   const _handleTextChange = text => {
-    setSearch(text);
+    if (text.length === 0) {
+      AroundService.getTourList()
+        .then(res => {
+          setTourData(res.data.slice(0, 30));
+        })
+        .catch(err => {
+          console.error('TourList error', err);
+        });
+    }
+    AroundService.searchTourList(text)
+      .then(res => {
+        setTourData(res.data.slice(0, 30));
+      })
+      .catch(err => {
+        console.error('TourList error', err);
+      });
   };
   const _handleFilterChange = id => {
     setFilterId(id);
@@ -68,7 +75,7 @@ export default function TourMainScreen({navigation}) {
         placeholder="여행지의 이름이나 주소를 검색해보세요"
         handleChange={_handleTextChange}
       />
-      <>
+      <ScreenContainer>
         <FilterList>
           {filters.map(f => (
             <FilterBox
@@ -110,25 +117,29 @@ export default function TourMainScreen({navigation}) {
         {filterId === 0
           ? tourData.map(d => (
               <ImageCard
-                id={d.id}
-                title={d.title}
-                address={d.address}
-                liked={d.liked}
+                id={d.spotId}
+                title={d.name}
+                image={d.image}
+                address={d.location}
+                liked={true}
                 handleLike={_handleLikeChange}
+                navigation={navigation}
               />
             ))
           : tourData
               .filter(f => f.tag === filterId)
               .map(d => (
                 <ImageCard
-                  id={d.id}
-                  title={d.title}
-                  address={d.address}
+                  id={d.spotId}
+                  title={d.name}
+                  image={d.image}
+                  address={d.location}
                   liked={d.liked}
                   handleLike={_handleLikeChange}
+                  navigation={navigation}
                 />
               ))}
-      </>
+      </ScreenContainer>
     </>
   );
 }

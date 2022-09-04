@@ -5,20 +5,11 @@ import PostBanner from '../PostBanner';
 import DeleteDiaryFolderModal from '../../../modal/modals/Remember/DeleteDairyFolderModal';
 import {useDeleteDiaryFolderModal} from '../../../modal/recoil/useModals';
 
-const data = [
-  {id: '111', title: '일기 이름'},
-  {id: '222', title: '일기 이름'},
-  {id: '333', title: '일기 이름'},
-  {id: '444', title: '일기 이름'},
-  {id: '555', title: '일기 이름'},
-  {id: '666', title: '일기 이름'},
-  {id: '777', title: '일기 이름'},
-];
-
 export default function FolderList({
   navigation,
   modalVisible,
   setModalVisible,
+  diaries,
 }) {
   const {isModalOpen, openModal, closeModal} = useDeleteDiaryFolderModal();
   const handlePostBanner = () => {
@@ -28,7 +19,7 @@ export default function FolderList({
   return (
     <>
       <Container
-        data={data}
+        data={diaries}
         numColumns={2}
         keyExractor={(item, index) => index.toString()}
         columnWrapperStyle={{
@@ -47,8 +38,8 @@ export default function FolderList({
         renderItem={({item}) => (
           <>
             <FolderCard
-              id={item.id}
-              title={item.title}
+              id={item.diaryId}
+              title={item.name}
               navigation={navigation}
               path="DairyDetail"
               openDeleteModal={openModal}
