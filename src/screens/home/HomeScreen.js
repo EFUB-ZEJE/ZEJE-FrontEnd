@@ -10,6 +10,7 @@ import {theme} from '../../styles/theme';
 import {getData, ORANGE_LIST, STEP_COUNT} from '../../data/LocalStorage';
 import {useOrange} from '../../data/recoil/oranges/hooks/useOrange';
 import {usePedometer} from '../../feature/pedometer/recoil/usePedometer';
+import {ScrollView} from 'native-base';
 
 export default function HomeScreen({navigation}) {
   const {setOrange} = useOrange();
@@ -27,7 +28,7 @@ export default function HomeScreen({navigation}) {
   }, []);
 
   return (
-    <>
+    <ScrollView>
       <ScreenHeader isHome={true} navigation={navigation} />
       <ScreenContainer>
         <Home />
@@ -40,6 +41,6 @@ export default function HomeScreen({navigation}) {
           onPress={() => navigation.navigate('SpotMain')}
         />
       </ScreenContainer>
-    </>
+    </ScrollView>
   );
 }

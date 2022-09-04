@@ -11,9 +11,11 @@ function Tree() {
       <Letter />
       <Basket />
       <Image
+        style={{borderRadius: 10}}
         alt="tree background"
         h={'493px'}
-        resizeMode={'contain'}
+        w={'100%'}
+        resizeMode={'cover'}
         source={require(`../../assets/images/tree.png`)}
       />
     </View>
