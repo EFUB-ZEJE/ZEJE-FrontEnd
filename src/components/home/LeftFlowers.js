@@ -2,9 +2,11 @@ import {Image, Row} from 'native-base';
 import React from 'react';
 import {StyleSheet} from 'react-native';
 import styled from 'styled-components';
+import {useLeftFlowers} from '../../data/recoil/fruitBox/hooks/useLeftFlowers';
 import {theme} from '../../styles/theme';
 
-function LeftFlowers({leftFlowers}) {
+function LeftFlowers() {
+  const {leftFlowers} = useLeftFlowers();
   return (
     <Row style={styles.container}>
       <Row space={1} alignItems={'center'}>
@@ -19,7 +21,7 @@ function LeftFlowers({leftFlowers}) {
       </Row>
       <Row>
         <TextBold fontSize={12} color={theme.colors.font} fontWeight={700}>
-          {leftFlowers.toString()}개
+          {leftFlowers}개
         </TextBold>
       </Row>
     </Row>
