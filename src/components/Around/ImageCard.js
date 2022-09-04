@@ -7,9 +7,15 @@ import DropShadow from 'react-native-drop-shadow';
 import SvgIcon from '../common/SvgIcon';
 
 // DropShadow 해결 방법 찾는 중
-const ImageCard = ({id, title, address, liked, handleLike, image}) => {
-  console.log(image);
-
+const ImageCard = ({
+  id,
+  title,
+  address,
+  liked,
+  handleLike,
+  image,
+  navigation,
+}) => {
   return (
     <DropShadow
       style={{
@@ -21,7 +27,8 @@ const ImageCard = ({id, title, address, liked, handleLike, image}) => {
         shadowOpacity: 0.06,
         shadowRadius: 5,
       }}>
-      <BoxContainer>
+      <BoxContainer
+        onPress={() => navigation.navigate('TourDetail', {spotId: id})}>
         {image ? (
           <ImageContainer source={{uri: image}} />
         ) : (

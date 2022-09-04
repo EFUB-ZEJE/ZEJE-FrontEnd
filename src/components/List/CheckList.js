@@ -30,6 +30,7 @@ export default function CheckList({route}) {
   const [tasks, setTasks] = useRecoilState(tasksState);
   const [isLoading, setIsLoading] = useState(true);
 
+  console.log(tasks);
   const {openModal: openExceedMaximumListModal} = useExceedMaximumListModal();
   const {openModal: openCheckDeleteAllTasksModal} =
     useCheckDeleteAllTasksModal();
@@ -51,7 +52,7 @@ export default function CheckList({route}) {
   };
 
   const storeData = async tasks => {
-    await saveData('tasks', JSON.stringify(tasks));
+    await saveData('tasks', tasks);
     setTasks(tasks);
   };
 
@@ -59,18 +60,22 @@ export default function CheckList({route}) {
     setIsLoading(true);
     const loadedData = await getData('tasks');
 
-    if (loadedData) setTasks(loadedData);
+    if (loadedData) {
+      setTasks(loadedData);
+    }
+
     setIsLoading(false);
   };
 
   const _toggleTask = id => {
-    var currentTask = Object.assign({}, tasks);
+    const currentTask = JSON.parse(JSON.stringify(tasks)); // 깊은 복사 수행
     currentTask[id]['completed'] = !currentTask[id]['completed'];
+
     storeData(currentTask);
   };
 
   const _deleteTask = id => {
-    const currentTask = Object.assign({}, tasks);
+    const currentTask = JSON.parse(JSON.stringify(tasks));
     delete currentTask[id];
     storeData(currentTask);
   };

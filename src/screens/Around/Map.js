@@ -34,7 +34,14 @@ export default function Map({
   const [ArriveSpotModalVisible, setArriveSpotModalVisible] =
     useRecoilState(ArriveSpotModalState);
 
-  const [focusedSpot, setFocusedSpot] = useState(null);
+  const [focusedSpot, setFocusedSpot] = useState({
+    spotId: 628,
+    name: '석부작박물관',
+    location: '제주특별자치도 서귀포시 일주동로 8941',
+    mapX: '126.5360193536',
+    mapY: '33.2503192271',
+    todayVisit: false,
+  });
   const [distBetween, setDistBetween] = useState(0);
 
   // 위치 정보 승인 요청

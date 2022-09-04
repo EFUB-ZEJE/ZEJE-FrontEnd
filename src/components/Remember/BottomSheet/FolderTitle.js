@@ -7,6 +7,7 @@ import BottomSheet from '../../common/BottomSheet';
 import {theme} from '../../../styles/theme';
 import font from '../../../styles/font';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import {DiaryService} from '../../../services/DiaryService';
 
 export default function FolderTitle({
   modalVisible,
@@ -19,7 +20,13 @@ export default function FolderTitle({
     setModalVisible(false);
   };
   const handleOnSubmitEditing = () => {
-    console.log(folder);
+    DiaryService.addDiary(folder)
+      .then(res => {
+        console.log(res.data);
+      })
+      .catch(err => {
+        console.error('k error', err);
+      });
     setModalVisible(false);
   };
   return (
