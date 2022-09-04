@@ -13,15 +13,16 @@ import {useOrange} from '../../data/recoil/oranges/hooks/useOrange';
 export default function HomeScreen({navigation}) {
   const {orange, setOrange} = useOrange();
 
-  async function initOrangeList() {
-    const list = await getData(ORANGE_LIST);
-    if (list) {
-      setOrange(list);
-    }
+  async function initAsyncStorage() {
+    const orangeList = await getData(ORANGE_LIST);
+    const stepCount = await getData(STEP_COUNT);
+
+    if (orangeList) setOrange(orangeList);
+    if (stepCount) setStepCount(stepCount);
   }
 
   useEffect(() => {
-    initOrangeList();
+    initAsyncStorage();
   }, []);
 
   return (
