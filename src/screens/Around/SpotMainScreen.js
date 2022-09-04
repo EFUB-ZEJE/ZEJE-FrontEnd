@@ -21,10 +21,14 @@ import Layout from '../../styles/layout';
 import SvgIcon from '../../components/common/SvgIcon';
 import font from '../../styles/font';
 import {theme, palette} from '../../styles/theme';
+import AroundService from '../../services/AroundService';
+import Spinner from 'react-native-loading-spinner-overlay';
+import {getData, saveData} from '../../data/LocalStorage';
 
 export default function SpotMainScreen({navigation}) {
   const [sortType, setSortType] = useState('내 위치 중심');
   const [viewType, setViewType] = useState('Map');
+  const [isLoading, setIsLoading] = useState(true);
 
   const [notFoundModalVisible, setNotFoundModalVisible] =
     useRecoilState(NotFoundModalState);
@@ -37,88 +41,11 @@ export default function SpotMainScreen({navigation}) {
   const [unvisitedSpotCnt, setUnvisitedSpotCnt] = useState(0);
   const [nearbySpotCnt, setNearbySpotCnt] = useState(0);
 
-  const [sproutPlaces, setSproutPlace] = useState([
-    {
-      spotId: 87,
-      contentId: 129145,
-      category: '여행',
-      type: '자연',
-      name: '마라도 등대',
-      location: '제주특별자치도 서귀포시 대정읍 마라로 161',
-      description: null,
-      latitude: 33.31,
-      longitude: 126.42,
-      link: null,
-      isVisited: true,
-    },
+  const [sproutPlaces, setSproutPlace] = useState([]);
 
-    {
-      spotId: 88,
-      contentId: 126450,
-      category: '여행',
-      type: '자연',
-      name: '마라도(마라해양도립공원)',
-      location: '제주특별자치도 서귀포시 대정읍 마라로101번길 46',
-      latitude: 33.33,
-      longitude: 126.47,
-      description: null,
-      link: null,
-      isVisited: false,
-    },
-    {
-      spotId: 89,
-      contentId: 126452,
-      category: '여행',
-      type: '자연',
-      name: '만장굴 (제주도 국가지질공원)',
-      location: '제주특별자치도 제주시 구좌읍 만장굴길 182',
-      latitude: 33.36,
-      longitude: 126.44,
-      description: null,
-      link: null,
-      isVisited: false,
-    },
-    {
-      spotId: 90,
-      contentId: 1926601,
-      category: '여행',
-      type: '자연',
-      name: '모구리오름',
-      location: '제주특별자치도 서귀포시 성산읍 서성일로',
-      latitude: 33.39,
-      longitude: 126.42,
-      description: null,
-      link: null,
-      isVisited: true,
-    },
-    {
-      spotId: 101,
-      contentId: 126452,
-      category: '여행',
-      type: '자연',
-      name: '먼곳',
-      location: '제주특별자치도 제주시 구좌읍 만장굴길 182',
-      latitude: 34.369,
-      longitude: 127.442,
-      description: null,
-      link: null,
-      isVisited: false,
-    },
-
-    {
-      spotId: 91,
-      contentId: 1928045,
-      category: '여행',
-      type: '자연',
-      name: '모지오름',
-      location: '제주특별자치도 서귀포시 표선면 번영로',
-      latitude: 33.37,
-      longitude: 126.48,
-      description: null,
-      link: null,
-      isVisited: false,
-    },
-  ]);
+  function _fetchSproutPlaces() {
+    // 로컬에 저장된
+  }
 
   const _handleFirstModal = (unVisitedCnt, nearbySpotCnt) => {
     if (unVisitedCnt == 0) {
@@ -132,38 +59,75 @@ export default function SpotMainScreen({navigation}) {
   };
 
   useEffect(() => {
-    //첫화면 모달 분기
-    var unVisitedCnt = 0; // 아직 방문하지 않은 spot 목록
-    for (var place of sproutPlaces) {
-      if (place.isVisited == false) unVisitedCnt++;
-    }
-    setUnvisitedSpotCnt(unVisitedCnt); //setstate는 비동기
+    AroundService.getSproutPoints()
+      .then(res => {
+        if (res.status == 200) {
+          var deconstructedData = [];
+          setSproutPlace(() => {
+            deconstructedData = res.data.map(
+              ({mapX, mapY, spotId, name, location}) => {
+                return {
+                  name,
+                  spotId,
+                  latitude: parseFloat(mapY),
+                  longitude: parseFloat(mapX),
+                  isVisited: true,
+                  location: location,
+                };
 
-    var nearbySpotCnt = 0;
-    Geolocation.getCurrentPosition(
-      position => {
-        for (place of sproutPlaces) {
-          // 내위치와 스팟간의 거리차이 계산 (단위 : km)
-          const dist_between = haversine(position.coords, place);
-          if (dist_between <= 10) {
-            //10km 이내라면 (가까운)
-            nearbySpotCnt++;
-          }
+                // 해당 스팟 방문 여부
+              },
+            );
+
+            console.log('deconstructedData');
+            return deconstructedData;
+          });
+
+          setIsLoading(false);
+        } else {
+          console.log('failed get sprouts');
         }
-        setNearbySpotCnt(nearbySpotCnt);
-        console.log(nearbySpotCnt);
-        _handleFirstModal(unVisitedCnt, nearbySpotCnt);
-      },
-      error => {
-        console.log(error.code, error.message);
-      },
-      {enableHighAccuracy: true, timeout: 15000, maximumAge: 10000},
-    );
+
+        return new Promise((resolve, reject) => {
+          resolve(deconstructedData);
+          reject('fetch err');
+        });
+      })
+      .catch(err => console.log(err))
+      .then(res => {
+        const sproutPlaces = res;
+
+        //첫화면 모달 분기
+        var unVisitedCnt = 0; // 아직 방문하지 않은 spot 목록
+        for (var place of sproutPlaces) {
+          if (place.isVisited == false) unVisitedCnt++;
+        }
+
+        console.log(unVisitedCnt);
+        setUnvisitedSpotCnt(unVisitedCnt); //setstate는 비동기
+
+        var nearbySpotCnt = 0;
+        Geolocation.getCurrentPosition(
+          position => {
+            for (place of sproutPlaces) {
+              // 내위치와 스팟간의 거리차이 계산 (단위 : km)
+              const dist_between = haversine(position.coords, place);
+              if (dist_between <= 10) {
+                //10km 이내라면 (가까운)
+                nearbySpotCnt++;
+              }
+            }
+            setNearbySpotCnt(nearbySpotCnt);
+
+            _handleFirstModal(unVisitedCnt, nearbySpotCnt);
+          },
+          error => {
+            console.log(error.code, error.message);
+          },
+          {enableHighAccuracy: true, timeout: 15000, maximumAge: 10000},
+        );
+      });
   }, []);
-  const _fetchSproutPlaces = () => {
-    // GET /spots/flowers 요청
-    // SproutPlace 갱신
-  };
 
   const _handlePressSortButton = () => {
     if (sortType === '내 위치 중심') {
@@ -182,6 +146,12 @@ export default function SpotMainScreen({navigation}) {
 
   return (
     <>
+      <Spinner
+        cancelable={true}
+        color={theme.colors.main}
+        visible={isLoading}
+        textContent="Loading..."
+      />
       <ScreenHeader
         navigation={navigation}
         screenTitle="내 주변의 친환경 스팟"
@@ -193,12 +163,15 @@ export default function SpotMainScreen({navigation}) {
 
       {viewType === 'Map' ? (
         <>
-          <Map
-            places={sproutPlaces}
-            navigation={navigation}
-            sproutPlaces={sproutPlaces}
-            setSproutPlace={setSproutPlace}
-          />
+          {sproutPlaces.length != 0 && (
+            <Map
+              places={sproutPlaces}
+              navigation={navigation}
+              sproutPlaces={sproutPlaces}
+              setSproutPlace={setSproutPlace}
+            />
+          )}
+
           <GetPossibleFlowersModal unvisitedSpotCnt={unvisitedSpotCnt} />
           <NotFoundModal />
           <GetAllFlowersModal />
@@ -207,9 +180,9 @@ export default function SpotMainScreen({navigation}) {
         <ScreenContainer>
           <SortButton sortBy={sortType} handlePress={_handlePressSortButton} />
 
-
-          <SpotList sproutPlaces={sproutPlaces} type={sortType} />
-
+          {!isLoading && (
+            <SpotList sproutPlaces={sproutPlaces} type={sortType} />
+          )}
         </ScreenContainer>
       )}
     </>

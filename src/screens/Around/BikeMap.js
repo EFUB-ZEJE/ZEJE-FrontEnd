@@ -11,12 +11,13 @@ import {PermissionsAndroid} from 'react-native';
 import {MapRegionState} from '../../recoil/GlobalState';
 import OrangeMarker from '../../components/Around/maps/OrangeMarker';
 import BicycleMarker from '../../components/Around/maps/BicycleMarker';
-
+import BasicMarker from '../../components/Around/maps/BasicMarker';
 import {theme} from '../../styles/theme';
 import PlaceDetailModal from '../../modal/modals/Around/PlaceDetailModal';
 import {PlaceDetailModalState} from '../../modal/recoil/modalStates';
 
 export default function BikeMap({places}) {
+  console.log('BikeMap');
   const [mapRegionState, setMapRegionState] = useRecoilState(MapRegionState);
 
   const [focusedSpot, setFocusedSpot] = useState(null);
@@ -69,7 +70,7 @@ export default function BikeMap({places}) {
 
           return (
             <Marker
-              key={place.loadName}
+              key={place.loadName + Math.random(1, 1000)}
               onPress={() => _onMarkerClick(place)}
               coordinate={{
                 // 자전거 도로 시작 위치
@@ -80,8 +81,33 @@ export default function BikeMap({places}) {
             </Marker>
           );
         })}
+
         {focusedSpot && (
-          <Polyline coordinates={[]} strokeColor={'#000'} strokeWidth={6} />
+          <Polyline
+            coordinates={[
+              {
+                latitude: focusedSpot.latitude,
+                longitude: focusedSpot.longitude,
+              },
+              {
+                latitude: focusedSpot.endLat,
+                longitude: focusedSpot.endLng,
+              },
+            ]}
+            strokeColor={theme.colors.main}
+            strokeWidth={6}
+          />
+        )}
+        {focusedSpot && (
+          <Marker
+            key={focusedSpot.loadName + '2'}
+            coordinate={{
+              // 자전거 도로 시작 위치
+              latitude: focusedSpot.endLat,
+              longitude: focusedSpot.endLng,
+            }}>
+            <BasicMarker />
+          </Marker>
         )}
       </MapView>
       {focusedSpot && <PlaceDetailModal spotInfo={focusedSpot} />}

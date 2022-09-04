@@ -7,20 +7,17 @@ import styled from 'styled-components';
 
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 
-function Profile({uri, type}) {
-  const [image, setImage] = useState(uri);
-
+function Profile({uri, type, setImage}) {
   const pickImage = async () => {
     try {
       const result = await launchImageLibrary({
         selectionLimit: 1,
         mediaType: 'photo',
-        includeBase64: false,
+        includeBase64: true,
         includeExtra: false,
       });
 
-      console.log(result);
-      setImage(result.assets[0].uri);
+      setImage(result.assets[0]);
     } catch (e) {
       console.log(e);
     }
@@ -31,8 +28,8 @@ function Profile({uri, type}) {
         <Avatar
           size={'xl'}
           source={{
-            uri: image
-              ? image
+            uri: uri
+              ? uri
               : 'https://www.pngall.com/wp-content/uploads/5/Profile-PNG-File.png',
           }}
         />
@@ -45,8 +42,8 @@ function Profile({uri, type}) {
         <Avatar
           size={'xl'}
           source={{
-            uri: image
-              ? image
+            uri: uri
+              ? uri
               : 'https://www.pngall.com/wp-content/uploads/5/Profile-PNG-File.png',
           }}
         />
