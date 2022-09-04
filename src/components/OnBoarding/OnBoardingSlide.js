@@ -1,6 +1,6 @@
 import PagerView from 'react-native-pager-view';
 import {Animated, ImageBackground} from 'react-native';
-import {useEffect, useMemo, useRef} from 'react';
+import {useMemo, useRef} from 'react';
 import React from 'react';
 import {Box, Column} from 'native-base';
 import {SlidingDot} from 'react-native-animated-pagination-dots';
@@ -49,10 +49,6 @@ export default function OnBoardingSlide() {
       ),
     [],
   );
-
-  useEffect(() => {
-    console.log('he..');
-  }, [scrollX]);
 
   return (
     <Column space={1} alignItems={'center'}>

@@ -1,4 +1,4 @@
-import {View, Text, TouchableOpacity} from 'react-native';
+import {TouchableOpacity} from 'react-native';
 import React from 'react';
 import {Subhead3, Body1} from '../../styles/font';
 import {ScreenHeader, ScreenContainer} from '../../components';
@@ -23,7 +23,7 @@ export default function InformationScreen({navigation}) {
         </Col>
         <Row>
           <Subhead3>이용약관</Subhead3>
-          <TouchableOpacity onPress={() => navigation.navigate('Tos')}>
+          <TouchableOpacity onPress={() => navigation.navigate('ToSDetail')}>
             <SvgIcon name="RightArrow" color={palette.gray400} />
           </TouchableOpacity>
         </Row>
