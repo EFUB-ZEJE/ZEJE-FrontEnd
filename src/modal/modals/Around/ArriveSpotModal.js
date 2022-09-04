@@ -14,6 +14,7 @@ import {
   ORANGES_LIST,
   saveOrangeList,
 } from '../../../components/home/oranges/Orange';
+import {getData, LEFT_FLOWERS, saveData} from '../../../data/LocalStorage';
 
 const ModalContainer = styled.View`
   display: flex;
@@ -33,16 +34,26 @@ export default function ArriveSpotModal({
   const {orange, setOrange} = useOrange();
   const {focusedOrangeOrder} = useFocusedOrangeOrder();
 
-  const addSprout = () => {
-    setOrange({
-      ...orange,
-      [focusedOrangeOrder]: {
-        name: ORANGES_LIST[0].name,
-        maxWalk: ORANGES_LIST[0].maxWalk,
-      },
-    });
+  // 남은 꽃 추가
+  const addLeftSprout = async () => {
+    const current = await getData(LEFT_FLOWERS);
+    if (!current) current = 0;
+    await saveData(LEFT_FLOWERS, current + 1);
+  };
 
-    saveOrangeList(orange);
+  const addSprout = () => {
+    if (focusedOrangeOrder == 0) {
+      addLeftSprout();
+    } else {
+      setOrange({
+        ...orange,
+        [focusedOrangeOrder]: {
+          name: ORANGES_LIST[0].name,
+          maxWalk: ORANGES_LIST[0].maxWalk,
+        },
+      });
+      saveOrangeList(orange);
+    }
   };
 
   const _handleBtnClick = async () => {
