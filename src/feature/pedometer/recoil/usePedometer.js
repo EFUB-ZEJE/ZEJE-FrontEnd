@@ -17,6 +17,7 @@ export const usePedometer = () => {
 
   return {
     stepCount,
+    setStepCount,
     storeStepCount,
   };
 };
