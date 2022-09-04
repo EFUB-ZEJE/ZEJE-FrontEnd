@@ -7,7 +7,7 @@ import {useRecoilState} from 'recoil';
 import {ArriveSpotModalState} from '../../recoil/modalStates';
 import SpotDetail from '../../../components/Around/maps/SpotDetail';
 import {CommonButton} from '../../../components';
-import AroundService from '../../../services/AroundService';
+import {AroundService} from '../../../services/AroundService';
 import {useOrange} from '../../../data/recoil/oranges/hooks/useOrange';
 import {useFocusedOrangeOrder} from '../../../data/recoil/oranges/hooks/useFocusedOrangeOrder';
 import {
