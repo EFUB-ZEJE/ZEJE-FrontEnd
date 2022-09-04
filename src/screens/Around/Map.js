@@ -1,11 +1,7 @@
-import {Text, View, StyleSheet} from 'react-native';
-import React, {Component, useState, useEffect} from 'react';
+import {StyleSheet} from 'react-native';
+import React, {useState, useEffect} from 'react';
 import MapView, {Marker} from 'react-native-maps';
-import font from '../../styles/font';
 import layout, {HEADER_HEIGHT} from '../../styles/layout';
-import {SvgIcon} from '../../components/common/SvgIcon';
-import {UnvistedMarkerSmall} from '../../assets';
-
 import {DistanceToSpotModalState} from '../../modal/recoil/modalStates';
 import {useRecoilState} from 'recoil';
 import DistanceToSpotModal from '../../modal/modals/Around/DistanceToSpotModal';

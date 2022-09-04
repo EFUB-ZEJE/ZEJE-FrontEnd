@@ -2,6 +2,10 @@ import {ACCESS_TOKEN, getData} from '../data/LocalStorage';
 import API from '../utils/api';
 
 export const AroundService = {
+  getSproutPoints: async () =>
+    API.get('/spots/flowers/today-visit/lists', {
+      headers: {'X-AUTH-TOKEN': await getData(ACCESS_TOKEN)},
+    }),
   getTourList: async () =>
     API.get('/spots/search/travel', {
       headers: {'X-AUTH-TOKEN': await getData(ACCESS_TOKEN)},
@@ -22,5 +26,14 @@ export const AroundService = {
     API.get(`/spots/details/${spotId}`, {
       headers: {'X-AUTH-TOKEN': await getData(ACCESS_TOKEN)},
     }),
+  saveVisited: async (
+    spotId, // 방문한 것 저장.
+  ) =>
+    API.post(
+      `/spots/flowers`,
+      {spotId: spotId},
+      {
+        headers: {'X-AUTH-TOKEN': await getData(ACCESS_TOKEN)},
+      },
+    ),
 };
-
