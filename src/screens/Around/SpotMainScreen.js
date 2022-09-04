@@ -43,11 +43,6 @@ export default function SpotMainScreen({navigation}) {
 
   const [sproutPlaces, setSproutPlace] = useState([]);
 
-  console.log(sproutPlaces);
-  function _fetchSproutPlaces() {
-    // 로컬에 저장된
-  }
-
   const _handleFirstModal = (unVisitedCnt, nearbySpotCnt) => {
     if (unVisitedCnt == 0) {
       //모두 방문했다면
