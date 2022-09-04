@@ -3,7 +3,7 @@ import {KeyboardAvoidingView} from 'react-native';
 import SvgIcon from '../../common/SvgIcon';
 import SizedBox from '../../common/SizedBox';
 import BottomSheet from '../../common/BottomSheet';
-import {theme, palette} from '../../../styles/theme';
+import {theme} from '../../../styles/theme';
 import font from '../../../styles/font';
 import styled from 'styled-components';
 
@@ -13,21 +13,18 @@ export default function AddfolderBottomSheet({
   folderModalVisible,
   setFolderModalVisible,
   openDeleteModal,
-  closeDeleteModal
+  closeDeleteModal,
 }) {
-
   const handleIconPress = () => {
     console.log('handleIconPress Modal Close');
     setModalVisible(false);
   };
-
   const handleRevisePress = () => {
     console.log('handleRevisePress', folderModalVisible);
     setModalVisible(false);
     setFolderModalVisible(!folderModalVisible);
   };
   const handleDeletePress = () => {
-    
     setModalVisible(false);
     openDeleteModal();
     console.log('handleDeletePress');
@@ -41,7 +38,6 @@ export default function AddfolderBottomSheet({
           <SvgIcon name="Close" size={'36px'} />
           <SizedBox height={12} />
         </IconContainer>
-
         <ReviseContainer onPress={handleRevisePress}>
           <SizedBox height={16} />
           <font.title.Subhead2 color={theme.colors.black}>
@@ -49,7 +45,6 @@ export default function AddfolderBottomSheet({
           </font.title.Subhead2>
           <SizedBox height={16} />
         </ReviseContainer>
-
         <DeleteContainer onPress={handleDeletePress}>
           <SizedBox height={16} />
           <font.title.Subhead2 color={theme.colors.black}>
@@ -57,7 +52,6 @@ export default function AddfolderBottomSheet({
           </font.title.Subhead2>
           <SizedBox height={16} />
         </DeleteContainer>
-       
       </BottomSheet>
     </KeyboardAvoidingView>
   );

@@ -10,7 +10,9 @@ import MypageMainScreen from './Home/MypageMainScreen';
 import AlertMainScreen from './Home/AlertMainScreen';
 import EcoItemScreen from './List/EcoItemScreen';
 import ActivityMainScreen from './Around/ActivityMainScreen';
+import ActivityDetailScreen from './Around/ActivityDetailScreen';
 import TourMainScreen from './Around/TourMainScreen';
+import TourDetailScreen from './Around/TourDetailScreen';
 import BatteryMainScreen from './Around/BatteryMainScreen';
 import BikeMainScreen from './Around/BikeMainScreen';
 import SpotMainScreen from './Around/SpotMainScreen';
@@ -34,7 +36,9 @@ export {
   MypageMainScreen,
   AlertMainScreen,
   ActivityMainScreen,
+  ActivityDetailScreen,
   TourMainScreen,
+  TourDetailScreen,
   BatteryMainScreen,
   BikeMainScreen,
   SpotMainScreen,
