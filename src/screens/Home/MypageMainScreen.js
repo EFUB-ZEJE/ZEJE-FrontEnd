@@ -1,19 +1,19 @@
 import React, {useState, useEffect} from 'react';
 import {ScreenContainer, ScreenHeader} from '../../components';
-import {Text, Image, TouchableOpacity} from 'react-native';
+import {TouchableOpacity} from 'react-native';
 import DonationDialogModal from '../../modal/modals/Home/DonationDialogModal';
 import Profile from '../../components/home/MyPage/Profile';
 import UserInfo from '../../components/home/MyPage/UserInfo';
 import DonationBox from '../../components/home/MyPage/DonationBox';
 import Menu from '../../components/home/MyPage/Menu';
-import SvgIcon from '../../components';
 import styled from 'styled-components';
 import {SizedBox} from '../../components';
 import LogoutModal from '../../modal/modals/Home/LogoutModal';
 import {useLogoutModalState} from '../../modal/recoil/useModals';
-import font, {Subhead2} from '../../styles/font';
+import {Subhead2} from '../../styles/font';
 import {theme, palette} from '../../styles/theme';
 import MyPageService from '../../services/MyPageService';
+import {View} from 'native-base';
 
 export default function MypageMainScreen({navigation}) {
   const [userInfo, setUserInfo] = useState({
@@ -80,7 +80,9 @@ export default function MypageMainScreen({navigation}) {
             navigation.navigate('ProfileEdit', {userInfo, fetchProfile})
           }
         />
-        <DonationBox n={donations} />
+        <View alignItems={'center'}>
+          <DonationBox n={donations} />
+        </View>
         <SizedBox height={24} />
         <Menu navigation={navigation} />
         <Right>
