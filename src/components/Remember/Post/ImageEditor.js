@@ -91,8 +91,6 @@ export default function ImageEditor() {
           horizontal={true}
         />
       </PhotoContainer>
-
-      <SizedBox height={22} />
     </StyledRoot>
   );
 }
