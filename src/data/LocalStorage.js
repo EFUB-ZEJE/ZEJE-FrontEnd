@@ -4,6 +4,7 @@ export const STEP_COUNT = 'stepCount';
 export const ACCESS_TOKEN = 'accessToken';
 export const ORANGE_LIST = 'orangeList';
 export const IS_INSTALLED = 'isInstalled'; //최초 설치 여부 판단
+export const LEFT_FLOWERS = 'leftFlowers'; //남은 꽃
 
 export const saveData = async (key, value) => {
   try {

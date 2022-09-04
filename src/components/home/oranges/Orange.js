@@ -76,16 +76,16 @@ export default function Orange({top, left, right, order}) {
 
   // [꽃봉오리->오렌지] 바뀐 내용 로컬 및 리코일에 저장
   const setChangedOrangeData = randomInt => {
-    setOrange({
-      ...orange,
-      [order]: {
-        name: ORANGES_LIST[randomInt].name,
-        maxWalk: ORANGES_LIST[randomInt].maxWalk,
-      },
-    });
-
-    saveOrangeList(orange);
-    return;
+    if (order != 0) {
+      setOrange({
+        ...orange,
+        [order]: {
+          name: ORANGES_LIST[randomInt].name,
+          maxWalk: ORANGES_LIST[randomInt].maxWalk,
+        },
+      });
+      saveOrangeList(orange);
+    }
   };
 
   const changeFlowerToOrange = () => {
