@@ -65,13 +65,13 @@ export default function SpotMainScreen({navigation}) {
           var deconstructedData = [];
           setSproutPlace(() => {
             deconstructedData = res.data.map(
-              ({mapX, mapY, spotId, name, location}) => {
+              ({mapX, mapY, spotId, name, location, todayVisit}) => {
                 return {
                   name,
                   spotId,
                   latitude: parseFloat(mapY),
                   longitude: parseFloat(mapX),
-                  isVisited: true,
+                  isVisited: todayVisit,
                   location: location,
                 };
 
