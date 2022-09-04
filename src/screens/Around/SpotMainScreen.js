@@ -99,7 +99,6 @@ export default function SpotMainScreen({navigation}) {
           if (place.isVisited == false) unVisitedCnt++;
         }
 
-        console.log(unVisitedCnt);
         setUnvisitedSpotCnt(unVisitedCnt); //setstate는 비동기
 
         var nearbySpotCnt = 0;
@@ -140,7 +139,7 @@ export default function SpotMainScreen({navigation}) {
       setViewType('List');
     }
   };
-
+  console.log('sproutPlaces.length', sproutPlaces.length);
   return (
     <>
       <Spinner
@@ -176,8 +175,12 @@ export default function SpotMainScreen({navigation}) {
         <ScreenContainer>
           <SortButton sortBy={sortType} handlePress={_handlePressSortButton} />
 
-          {!isLoading && (
-            <SpotList sproutPlaces={sproutPlaces} type={sortType} />
+          {sproutPlaces.length !== 0 && (
+            <SpotList
+              places={sproutPlaces}
+              sproutPlaces={sproutPlaces}
+              type={sortType}
+            />
           )}
         </ScreenContainer>
       )}
