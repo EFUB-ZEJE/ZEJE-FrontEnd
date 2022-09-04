@@ -43,6 +43,7 @@ export default function SpotMainScreen({navigation}) {
 
   const [sproutPlaces, setSproutPlace] = useState([]);
 
+  console.log(sproutPlaces);
   function _fetchSproutPlaces() {
     // 로컬에 저장된
   }
@@ -126,7 +127,8 @@ export default function SpotMainScreen({navigation}) {
           },
           {enableHighAccuracy: true, timeout: 15000, maximumAge: 10000},
         );
-      });
+      })
+      .catch(err => console.log(err));
   }, []);
 
   const _handlePressSortButton = () => {
@@ -167,7 +169,6 @@ export default function SpotMainScreen({navigation}) {
             <Map
               places={sproutPlaces}
               navigation={navigation}
-              sproutPlaces={sproutPlaces}
               setSproutPlace={setSproutPlace}
             />
           )}
