@@ -6,7 +6,9 @@ import {
   MyListScreen,
   AroundScreen,
   ActivityMainScreen,
+  ActivityDetailScreen,
   TourMainScreen,
+  TourDetailScreen,
   BatteryMainScreen,
   BikeMainScreen,
   RememberScreen,
@@ -52,7 +54,10 @@ export default function StackNavigator() {
 
       <Stack.Screen name="Around" component={AroundScreen} />
       <Stack.Screen name="ActivityMain" component={ActivityMainScreen} />
+      <Stack.Screen name="ActivityDetail" component={ActivityDetailScreen} />
       <Stack.Screen name="TourMain" component={TourMainScreen} />
+      <Stack.Screen name="TourDetail" component={TourDetailScreen} />
+
       <Stack.Screen name="BatteryMain" component={BatteryMainScreen} />
       <Stack.Screen name="BikeMain" component={BikeMainScreen} />
       <Stack.Screen name="SpotMain" component={SpotMainScreen} />
