@@ -20,7 +20,7 @@ import {useFocusedOrangeOrder} from '../../../data/recoil/oranges/hooks/useFocus
 export const ORANGES_LIST = [
   {
     name: 'OrangeFlower',
-    maxWalk: 10, // 500에서 10으로 바꿈
+    maxWalk: 100,
   },
   {
     name: 'OrangeGold',
