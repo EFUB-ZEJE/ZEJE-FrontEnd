@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <Box>
       <Row style={styles.stateBar} space={'5%'} w={'100%'}>
-        <LeftFlowers leftFlowers={0} />
+        <LeftFlowers />
         <LeftWalks />
       </Row>
       <Tree />

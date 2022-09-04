@@ -15,6 +15,7 @@ import {
   saveOrangeList,
 } from '../../../components/home/oranges/Orange';
 import {getData, LEFT_FLOWERS, saveData} from '../../../data/LocalStorage';
+import {useLeftFlowers} from '../../../data/recoil/fruitBox/hooks/useLeftFlowers';
 
 const ModalContainer = styled.View`
   display: flex;
@@ -33,17 +34,11 @@ export default function ArriveSpotModal({
   const [modalVisible, setModalVisible] = useRecoilState(ArriveSpotModalState);
   const {orange, setOrange} = useOrange();
   const {focusedOrangeOrder} = useFocusedOrangeOrder();
-
-  // 남은 꽃 추가
-  const addLeftSprout = async () => {
-    const current = await getData(LEFT_FLOWERS);
-    if (!current) current = 0;
-    await saveData(LEFT_FLOWERS, current + 1);
-  };
+  const {addLeftFlowers} = useLeftFlowers();
 
   const addSprout = () => {
     if (focusedOrangeOrder == 0) {
-      addLeftSprout();
+      addLeftFlowers();
     } else {
       setOrange({
         ...orange,
