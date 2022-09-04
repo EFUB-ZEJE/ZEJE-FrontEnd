@@ -24,12 +24,17 @@ export default function LoginScreen({navigation}) {
       openModal();
     }
   };
+
+  const storeToken = async token => {
+    await saveData(ACCESS_TOKEN, token);
+  };
+
   useEffect(() => {
     if (kakaoLoginResponse.id !== '' && kakaoSignin) {
       setIsLoading(true);
       AuthService.getAccessToken(kakaoLoginResponse)
         .then(res => {
-          saveData(ACCESS_TOKEN, res.data);
+          storeToken(res.data);
           setIsLoading(false);
           navigation.navigate('TabNavigator');
         })

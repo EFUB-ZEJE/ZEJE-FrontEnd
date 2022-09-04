@@ -25,7 +25,7 @@ export const getData = async key => {
 export const saveStepCount = async value => {
   if (value == null) value = 0;
   try {
-    await AsyncStorage.setItem(STEP_COUNT, value);
+    await AsyncStorage.setItem(STEP_COUNT, JSON.stringify(value));
   } catch (e) {
     console.log(e);
   }

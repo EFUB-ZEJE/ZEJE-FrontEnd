@@ -16,7 +16,7 @@ export default function OnBoardingScreen() {
     const value = await getData(IS_INSTALLED);
     if (value) {
       setIsInstalled(true);
-      saveData(IS_INSTALLED, 'true'); // 앱 삭제하면 자동으로 지워지도록 함, 추후 수정 없음
+      await saveData(IS_INSTALLED, 'true'); // 앱 삭제하면 자동으로 지워지도록 함, 추후 수정 없음
     }
   }
 
