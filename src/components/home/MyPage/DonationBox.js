@@ -1,14 +1,13 @@
-import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import React from 'react';
-import DropShadow from 'react-native-drop-shadow';
-import font, {Caption, Subhead3, Body1} from '../../../styles/font';
+import {Caption, Subhead3, Body1} from '../../../styles/font';
 import {palette, theme} from '../../../styles/theme';
 import styled from 'styled-components';
-import SizedBox from '../../common/SizedBox';
 import {useDonationDialogModalState} from '../../../modal/recoil/useModals';
+import ShadowContainer from '../../common/ShadowContainer';
+import {Column} from 'native-base';
 
 function DonationBtn() {
-  const {openModal, closeModal} = useDonationDialogModalState();
+  const {openModal} = useDonationDialogModalState();
   return (
     <StyledButton onPress={openModal}>
       <Body1 color={theme.colors.main}>기부처 보기</Body1>
@@ -17,26 +16,18 @@ function DonationBtn() {
 }
 
 export default function DonationBox({n}) {
+  const borderRadius = 10;
+
   return (
-    <DropShadow
-      style={{
-        shadowColor: '#000',
-        shadowOffset: {
-          width: 0,
-          height: 3,
-        },
-        shadowOpacity: 0.06,
-        shadowRadius: 5,
-      }}>
-      <Container>
-        <SubContainer>
+    <ShadowContainer borderRadius={borderRadius}>
+      <Container borderRadius={borderRadius}>
+        <Column space={2}>
           <Caption color={palette.gray350}>기부한 귤 수</Caption>
-          <SizedBox height={10} />
           <Subhead3>{n}</Subhead3>
-        </SubContainer>
+        </Column>
         <DonationBtn />
       </Container>
-    </DropShadow>
+    </ShadowContainer>
   );
 }
 
@@ -58,10 +49,7 @@ const Container = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 5px 20px;
-`;
-
-const SubContainer = styled.View`
-  display: flex;
-  flex-direction: column;
+  padding: 20px;
+  background-color: white;
+  border-radius: ${props => props.borderRadius};
 `;
