@@ -1,5 +1,6 @@
 import React from 'react';
 import BasketModal from '../../../modal/modals/Home/BasketModal';
+import DonationDialogModal from '../../../modal/modals/Home/DonationDialogModal';
 import LetterModal from '../../../modal/modals/Home/LetterModal';
 import LogoutModal from '../../../modal/modals/Home/LogoutModal';
 import OrangeGoldModal from '../../../modal/modals/Home/OrangeGoldModal';
@@ -31,6 +32,7 @@ const ModalWrapper = () => {
       <UnRegisterCheckModal />
       <UnRegisterDoneModal />
       <ToSNotCheckedModal />
+      <DonationDialogModal />
     </>
   );
 };

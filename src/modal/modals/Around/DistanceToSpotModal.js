@@ -7,6 +7,7 @@ import {useRecoilState} from 'recoil';
 import SpotDetail from '../../../components/Around/maps/SpotDetail';
 import font from '../../../styles/font';
 import {theme, palette} from '../../../styles/theme';
+import SpotDetail2 from '../../../components/Around/maps/SpotDetail2';
 
 const ModalContainer = styled.View`
   display: flex;
@@ -49,7 +50,12 @@ export default function DistanceToSpotModal({
   return (
     <BottomSheet modalVisible={modalVisible} setModalVisible={setModalVisible}>
       <ModalContainer height={'132px'}>
-        <SpotDetail spotInfo={spotInfo} navigation={navigation} />
+        {navigation ? (
+          <SpotDetail spotInfo={spotInfo} navigation={navigation} />
+        ) : (
+          <SpotDetail2 spotInfo={spotInfo} />
+        )}
+
         <font.title.Subhead3 color={theme.colors.main}>
           현재위치에서 {setDistanceUnit(dist_between)} 떨어져 있습니다.{' '}
         </font.title.Subhead3>

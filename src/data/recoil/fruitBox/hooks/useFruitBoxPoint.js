@@ -1,10 +1,16 @@
 import {useRecoilState} from 'recoil';
 import {usePedometer} from '../../../../feature/pedometer/recoil/usePedometer';
 import {FruitService} from '../../../../services/FruitService';
-import {fruitBoxPointState} from '../states/fruitBoxPointState';
+import {
+  donatedFruitBoxPointState,
+  fruitBoxPointState,
+} from '../states/fruitBoxPointState';
 
 export const useFruitBoxPoint = () => {
   const [fruitBoxPoint, setFruitBoxPoint] = useRecoilState(fruitBoxPointState);
+  const [donatedFruitBoxPoint, setDonatedFruitBoxPoint] = useRecoilState(
+    donatedFruitBoxPointState,
+  );
   const {stepCount, setStepCount} = usePedometer();
 
   // 열매 획득하기
@@ -17,5 +23,20 @@ export const useFruitBoxPoint = () => {
       .catch(err => console.error('orangeToPoint error : ', err));
   };
 
-  return {fruitBoxPoint, setFruitBoxPoint, addFruitBoxPoint};
+  const getAllDonatedPoint = () => {
+    FruitService.getDonatedFruitBoxPoint()
+      .then(res => {
+        setDonatedFruitBoxPoint(res.data.fruitTotal);
+      })
+      .catch(err => {
+        console.error('getDonatedFruitBoxPoint error: ', err);
+      });
+  };
+  return {
+    fruitBoxPoint,
+    setFruitBoxPoint,
+    addFruitBoxPoint,
+    donatedFruitBoxPoint,
+    getAllDonatedPoint,
+  };
 };

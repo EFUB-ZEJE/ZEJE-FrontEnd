@@ -1,13 +1,11 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import SizedBox from './SizedBox';
-import {Text} from 'react-native';
 
 const ScreenContainer = ({children, bgColor}) => {
   return (
     <Container bgColor={bgColor}>
       {children}
-
       <SizedBox height={30} />
     </Container>
   );
