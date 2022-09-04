@@ -19,6 +19,7 @@ export default function HomeScreen({navigation}) {
   async function initAsyncStorage() {
     const orangeList = await getData(ORANGE_LIST);
     const stepCount = await getData(STEP_COUNT);
+
     if (orangeList) setOrange(orangeList);
     if (stepCount) setStepCount(stepCount);
   }

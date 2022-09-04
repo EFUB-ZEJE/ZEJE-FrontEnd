@@ -16,6 +16,7 @@ import {usePedometer} from '../../../feature/pedometer/recoil/usePedometer';
 import {useOrange} from '../../../data/recoil/oranges/hooks/useOrange';
 import {ORANGE_LIST, saveData} from '../../../data/LocalStorage';
 import {useFocusedOrangeOrder} from '../../../data/recoil/oranges/hooks/useFocusedOrangeOrder';
+import {useLeftFlowers} from '../../../data/recoil/fruitBox/hooks/useLeftFlowers';
 
 export const ORANGES_LIST = [
   {
@@ -73,6 +74,7 @@ export default function Orange({top, left, right, order}) {
   const {stepCount, storeStepCount} = usePedometer();
   const {orange, setOrange} = useOrange();
   const {setFocusedOrangeOrder} = useFocusedOrangeOrder();
+  const {leftFlowers, setLeftFlowers, minusLeftFlowers} = useLeftFlowers();
 
   // [꽃봉오리->오렌지] 바뀐 내용 로컬 및 리코일에 저장
   const setChangedOrangeData = randomInt => {
@@ -85,6 +87,7 @@ export default function Orange({top, left, right, order}) {
         },
       });
       saveOrangeList(orange);
+    } else {
     }
   };
 
