@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {ScreenContainer, ScreenHeader} from '../../components';
 import {Pressable} from 'react-native';
 import Profile from '../../components/home/MyPage/Profile';
@@ -13,6 +13,10 @@ import {
 } from '../../modal/recoil/useModals';
 import {Subhead2} from '../../styles/font';
 import {theme, palette} from '../../styles/theme';
+import {useKakaoLogin} from '../../data/recoil/kakaoLogin/hooks/useKakaoLogin';
+import {View} from 'native-base';
+import {useFruitBoxPoint} from '../../data/recoil/fruitBox/hooks/useFruitBoxPoint';
+import MyPageService from '../../services/MyPageService';
 
 export default function MypageMainScreen({navigation}) {
   const [userInfo, setUserInfo] = useState({
@@ -22,8 +26,30 @@ export default function MypageMainScreen({navigation}) {
     profileUrl: null,
     fruitBox: 0,
   });
+
   const {openModal: openLogoutModal} = useLogoutModal();
   const {openModal: openUnRegisterCheckModal} = useUnRegisterCheckModal();
+  const {donatedFruitBoxPoint, getAllDonatedPoint} = useFruitBoxPoint();
+
+  const fetchProfile = () => {
+    MyPageService.getProfile()
+      .then(res => {
+        if (res.status == 200) {
+          console.log('success getting profile');
+          console.log(res.data);
+          setUserInfo(res.data);
+          return res.data;
+        } else {
+          console.log('get profile failed');
+        }
+      })
+      .catch(err => console.log(err));
+  };
+
+  useEffect(() => {
+    getAllDonatedPoint();
+    fetchProfile();
+  }, []);
 
   return (
     <>
@@ -43,8 +69,8 @@ export default function MypageMainScreen({navigation}) {
             navigation.navigate('ProfileEdit', {userInfo, fetchProfile})
           }
         />
-        <View alignItems={'center'}>
-          <DonationBox n={donations} />
+        <View alignItems={'center'} marginY={15}>
+          <DonationBox n={donatedFruitBoxPoint} />
         </View>
         <SizedBox height={24} />
         <Menu navigation={navigation} />
