@@ -26,7 +26,6 @@ export default function Map({
   sproutPlaces,
   setSproutPlace,
 }) {
-  console.log('map');
   const [placeDetailModalVisible, setPlaceDetailModalVisible] = useRecoilState(
     DistanceToSpotModalState,
   );

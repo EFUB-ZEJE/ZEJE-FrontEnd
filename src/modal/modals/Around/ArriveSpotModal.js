@@ -1,5 +1,4 @@
-import {View, Text} from 'react-native';
-import React, {useState} from 'react';
+import React from 'react';
 import {BottomSheet} from '../../../components';
 import styled from 'styled-components';
 import font from '../../../styles/font';
@@ -8,10 +7,14 @@ import {useRecoilState} from 'recoil';
 import {ArriveSpotModalState} from '../../recoil/modalStates';
 import SpotDetail from '../../../components/Around/maps/SpotDetail';
 import {CommonButton} from '../../../components';
-import SizedBox from '../../../components';
-import {getData, saveData} from '../../../data/LocalStorage';
 import AroundService from '../../../services/AroundService';
-import {useEffect} from 'react';
+import {useOrange} from '../../../data/recoil/oranges/hooks/useOrange';
+import {useFocusedOrangeOrder} from '../../../data/recoil/oranges/hooks/useFocusedOrangeOrder';
+import {
+  ORANGES_LIST,
+  saveOrangeList,
+} from '../../../components/home/oranges/Orange';
+
 const ModalContainer = styled.View`
   display: flex;
   justify-content: space-between;
@@ -27,6 +30,20 @@ export default function ArriveSpotModal({
   setSproutPlace,
 }) {
   const [modalVisible, setModalVisible] = useRecoilState(ArriveSpotModalState);
+  const {orange, setOrange} = useOrange();
+  const {focusedOrangeOrder} = useFocusedOrangeOrder();
+
+  const addSprout = () => {
+    setOrange({
+      ...orange,
+      [focusedOrangeOrder]: {
+        name: ORANGES_LIST[0].name,
+        maxWalk: ORANGES_LIST[0].maxWalk,
+      },
+    });
+
+    saveOrangeList(orange);
+  };
 
   const _handleBtnClick = async () => {
     console.log('_handleBtnClick');
@@ -43,10 +60,7 @@ export default function ArriveSpotModal({
               .then(res => {
                 if (res.status == 200) {
                   console.log('save visited success');
-
-                  /*
-        꽃봉우리 개수 증가 
-        */
+                  addSprout();
                 } else {
                   console.log('save visited failed');
                 }
@@ -69,7 +83,7 @@ export default function ArriveSpotModal({
           친환경 스팟에 도착했습니다!
         </font.title.Subhead3>
         <SpotDetail spotInfo={spotInfo} navigation={navigation} />
-        {spotInfo.isVisited ? (
+        {spotInfo?.isVisited ? (
           <CommonButton
             text="이미 꽃을 받은 스팟입니다"
             bgColor={palette.gray200}
