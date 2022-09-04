@@ -24,6 +24,8 @@ import {theme, palette} from '../../styles/theme';
 import AroundService from '../../services/AroundService';
 import Spinner from 'react-native-loading-spinner-overlay';
 import {getData, saveData} from '../../data/LocalStorage';
+import {useFocusedOrangeOrder} from '../../data/recoil/oranges/hooks/useFocusedOrangeOrder';
+import {useOrange} from '../../data/recoil/oranges/hooks/useOrange';
 
 export default function SpotMainScreen({navigation}) {
   const [sortType, setSortType] = useState('내 위치 중심');
@@ -43,6 +45,18 @@ export default function SpotMainScreen({navigation}) {
 
   const [sproutPlaces, setSproutPlace] = useState([]);
 
+  const {orange} = useOrange();
+  const {setFocusedOrangeOrder} = useFocusedOrangeOrder();
+
+  const findEmptyOrder = () => {
+    for (let i = 1; i < 8; i++) {
+      if (orange[i].name === '') {
+        setFocusedOrangeOrder(i);
+        return;
+      }
+    }
+  };
+
   const _handleFirstModal = (unVisitedCnt, nearbySpotCnt) => {
     if (unVisitedCnt == 0) {
       //모두 방문했다면
@@ -55,6 +69,8 @@ export default function SpotMainScreen({navigation}) {
   };
 
   useEffect(() => {
+    findEmptyOrder();
+
     AroundService.getSproutPoints()
       .then(res => {
         if (res.status == 200) {
