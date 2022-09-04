@@ -1,5 +1,6 @@
 import OnBoardingScreen from './OnBoarding/OnBoardingScreen';
 import LoginScreen from './Login/LoginScreen';
+import ToSDetailScreen from './Login/ToSDetailScreen';
 
 import AroundScreen from './AroundScreen';
 import HomeScreen from './Home/HomeScreen';
@@ -18,7 +19,6 @@ import ShareInfoMainScreen from './Around/ShareInfoMainScreen';
 import InformationScreen from './Home/InformationScreen';
 import ProfileEditScreen from './Home/ProfileEditScreen';
 import OpenSourceScreen from './Home/OpenSourceScreen';
-import TosScreen from './Home/TosScreen';
 import DairyPostScreen from './Remember/DairyPostScreen';
 import DairyDetailScreen from './Remember/DairyDetailScreen';
 import MyReviewScreen from './Home/MyReviewScreen';
@@ -27,6 +27,7 @@ import LicenseDetailScreen from './Home/LicenseDetailScreen';
 export {
   OnBoardingScreen,
   LoginScreen,
+  ToSDetailScreen,
   AroundScreen,
   HomeScreen,
   MyListScreen,
@@ -45,7 +46,6 @@ export {
   InformationScreen,
   ProfileEditScreen,
   OpenSourceScreen,
-  TosScreen,
   MyReviewScreen,
   LicenseDetailScreen,
 };

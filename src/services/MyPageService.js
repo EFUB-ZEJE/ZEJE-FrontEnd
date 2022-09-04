@@ -6,11 +6,6 @@ const MyPageService = {
     API.get('/users/account/profile', {
       headers: {'X-AUTH-TOKEN': await getData(ACCESS_TOKEN)},
     }),
-
-  getDonations: async () =>
-    API.get('/donations', {
-      headers: {'X-AUTH-TOKEN': await getData(ACCESS_TOKEN)},
-    }),
   getMyReviews: async () =>
     API.get('/reviews/my-review', {
       headers: {'X-AUTH-TOKEN': await getData(ACCESS_TOKEN)},
