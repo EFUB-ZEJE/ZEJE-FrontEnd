@@ -5,12 +5,14 @@ import {NavigationContainer} from '@react-navigation/native';
 import {RecoilRoot} from 'recoil';
 import ModalWrapper from './src/components/common/modal/ModalWrapper.js';
 import SplashScreen from 'react-native-splash-screen';
+import {LogBox} from 'react-native';
 
 export default function App() {
   useEffect(() => {
     SplashScreen.hide();
   }, []);
-
+  LogBox.ignoreLogs(['new NativeEventEmitter']); // Ignore log notification by message
+  LogBox.ignoreAllLogs(); //Ignore all log notifications
   return (
     <RecoilRoot>
       <NativeBaseProvider>
