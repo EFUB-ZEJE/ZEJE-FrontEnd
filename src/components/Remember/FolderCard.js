@@ -21,7 +21,6 @@ const FolderCard = ({
   const [folderModalVisible, setFolderModalVisible] = useState(false);
 
   const handlePressMore = () => {
-    console.log('ReviseFolder BottomSheet 띄우기', reviseModalVisible);
     setReviseModalVisible(!reviseModalVisible);
   };
   return (
@@ -35,7 +34,6 @@ const FolderCard = ({
           <View>
             <font.title.Subhead2>{title}</font.title.Subhead2>
           </View>
-
           <TouchableOpacity onPress={handlePressMore}>
             <SvgIcon name="More" />
           </TouchableOpacity>

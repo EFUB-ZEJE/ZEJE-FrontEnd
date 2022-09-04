@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import {TouchableOpacity} from 'react-native';
 import {
@@ -15,32 +15,40 @@ import {
 } from '../../components';
 import font from '../../styles/font.js';
 import {theme} from '../../styles/theme.js';
+import {AroundService} from '../../services/AroundService';
 
 export default function ActivityMainScreen({navigation}) {
-  const [search, setSearch] = useState('');
   const [filterId, setFilterId] = useState(0);
   const [sortId, setSortId] = useState(0);
   const [modalVisible, setModalVisible] = useState(false);
+  const [activityData, setActivityData] = useState([]);
 
-  // 테스트 데이터 - 지금은 안 되는데 백 연결 시 liked 토글 정상 작동 가능
-  const [activityData, setActivityData] = useState([
-    {
-      id: 0,
-      title: '추천 액티비티 이름 1',
-      address: '추천 액티비티 주소 1',
-      liked: true,
-      tag: 1,
-    },
-    {
-      id: 1,
-      title: '추천 액티비티 이름 2',
-      address: '추천 액티비티 주소 2',
-      liked: false,
-      tag: 2,
-    },
-  ]);
+  useEffect(() => {
+    AroundService.getActivityList()
+      .then(res => {
+        setActivityData(res.data.slice(0, 30));
+      })
+      .catch(err => {
+        console.error('ActivityList error', err);
+      });
+  }, []);
   const _handleTextChange = text => {
-    setSearch(text);
+    if (text.length === 0) {
+      AroundService.getActivityList()
+        .then(res => {
+          setActivityData(res.data.slice(0, 30));
+        })
+        .catch(err => {
+          console.error('ActivityList error', err);
+        });
+    }
+    AroundService.searchActivityList(text)
+      .then(res => {
+        setActivityData(res.data.slice(0, 30));
+      })
+      .catch(err => {
+        console.error('ActivityList error', err);
+      });
   };
   const _handleFilterChange = id => {
     setFilterId(id);
@@ -109,22 +117,26 @@ export default function ActivityMainScreen({navigation}) {
         {filterId === 0
           ? activityData.map(d => (
               <ImageCard
-                id={d.id}
-                title={d.title}
-                address={d.address}
-                liked={d.liked}
+                id={d.spotId}
+                title={d.name}
+                address={d.location}
+                image={d.image}
+                liked={true}
                 handleLike={_handleLikeChange}
+                navigation={navigation}
               />
             ))
           : activityData
               .filter(f => f.tag === filterId)
               .map(d => (
                 <ImageCard
-                  id={d.id}
-                  title={d.title}
-                  address={d.address}
-                  liked={d.liked}
+                  id={d.spotId}
+                  title={d.name}
+                  address={d.location}
+                  image={d.image}
+                  liked={true}
                   handleLike={_handleLikeChange}
+                  navigation={navigation}
                 />
               ))}
       </ScreenContainer>
