@@ -73,6 +73,7 @@ export default function ReportEcoSpotScreen({navigation}) {
           <FilterList>
             {filters.map(f => (
               <FilterBox
+                key={f.id}
                 id={f.id}
                 title={f.title}
                 activated={f.id === filterId}
