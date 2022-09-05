@@ -121,7 +121,7 @@ export default function ActivityMainScreen({navigation}) {
                 title={d.name}
                 address={d.location}
                 image={d.image}
-                liked={true}
+                liked={false}
                 handleLike={_handleLikeChange}
                 navigation={navigation}
               />
@@ -134,7 +134,7 @@ export default function ActivityMainScreen({navigation}) {
                   title={d.name}
                   address={d.location}
                   image={d.image}
-                  liked={true}
+                  liked={false}
                   handleLike={_handleLikeChange}
                   navigation={navigation}
                 />

@@ -23,6 +23,12 @@ import ReviseFolder from './Remember/BottomSheet/ReviseFolder';
 import DiaryCard from './Remember/DairyCard';
 import OrangeSvg from './home/oranges/OrangeSvg';
 import CommonButton from './common/CommonButton';
+import CommonInput from './common/CommonInput';
+import AddDiaryCard from './RememberRenewal/AddDiaryCard';
+import DiaryCardList from './RememberRenewal/DiaryCardList';
+import NewDiaryCard from './RememberRenewal/NewDiaryCard';
+import RememberCard from './RememberRenewal/RememberCard';
+
 export {
   ScreenContainer,
   ScreenHeader,
@@ -39,15 +45,17 @@ export {
   PostBanner,
   FolderList,
   AddButton,
-
   CommonButton,
-
   FolderTitle,
   WriteEditor,
   DateEditor,
   ImageEditor,
   ReviseFolder,
   DiaryCard,
-
   OrangeSvg,
+  AddDiaryCard,
+  CommonInput,
+  DiaryCardList,
+  NewDiaryCard,
+  RememberCard,
 };

@@ -6,7 +6,7 @@ import AroundScreen from './AroundScreen';
 import HomeScreen from './Home/HomeScreen';
 import MyListScreen from './MyListScreen';
 import RememberScreen from './RememberScreen';
-
+import RememberRenewalScreen from './RemeberRenewalScreen';
 import MypageMainScreen from './Home/MypageMainScreen';
 import AlertMainScreen from './Home/AlertMainScreen';
 import EcoItemScreen from './List/EcoItemScreen';
@@ -26,6 +26,10 @@ import DairyDetailScreen from './Remember/DairyDetailScreen';
 import MyReviewScreen from './Home/MyReviewScreen';
 import LicenseDetailScreen from './Home/LicenseDetailScreen';
 import ReportEcoSpotScreen from './Around/ReportEcoSpotScreen';
+import DiaryMainScreen from './RememberRenewal/DiaryMainScreen';
+import AddMemoryScreen from './RememberRenewal/AddMemoryScreen';
+import MemoryMainScreen from './RememberRenewal/MemoryMainScreen';
+
 export {
   OnBoardingScreen,
   LoginScreen,
@@ -34,6 +38,7 @@ export {
   HomeScreen,
   MyListScreen,
   RememberScreen,
+  RememberRenewalScreen,
   MypageMainScreen,
   AlertMainScreen,
   ActivityMainScreen,
@@ -52,4 +57,7 @@ export {
   MyReviewScreen,
   LicenseDetailScreen,
   ReportEcoSpotScreen,
+  DiaryMainScreen,
+  AddMemoryScreen,
+  MemoryMainScreen,
 };

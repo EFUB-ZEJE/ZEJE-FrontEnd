@@ -121,20 +121,20 @@ export default function TourMainScreen({navigation}) {
                 title={d.name}
                 image={d.image}
                 address={d.location}
-                liked={true}
+                liked={false}
                 handleLike={_handleLikeChange}
                 navigation={navigation}
               />
             ))
           : tourData
-              .filter(f => f.tag === filterId)
+              .filter(f => f.type === filters[filterId].title)
               .map(d => (
                 <ImageCard
                   id={d.spotId}
                   title={d.name}
                   image={d.image}
                   address={d.location}
-                  liked={d.liked}
+                  liked={false}
                   handleLike={_handleLikeChange}
                   navigation={navigation}
                 />
