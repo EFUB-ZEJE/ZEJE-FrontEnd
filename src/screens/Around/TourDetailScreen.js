@@ -36,7 +36,7 @@ export default function TourDetailScreen({route, navigation}) {
           <ImageContainer source={{uri: data.image}} />
         ) : (
           <ImageContainer
-            source={require('../../assets/images/thumbnail.jpg')}
+            source={require('../../assets/images/thumbnail.png')}
           />
         )}
         <SizedBox height={16} />

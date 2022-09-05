@@ -1,29 +1,22 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
-import {Text} from 'react-native';
+import {useIsFocused} from '@react-navigation/native';
 import {
   ScreenContainer,
   ScreenHeader,
   CommonButton,
-  FilterList,
-  SortButton,
   RememberCard,
-  BottomSheet,
   SizedBox,
-  SvgIcon,
-  RadioButton,
 } from '../../components';
-import font from '../../styles/font.js';
 import {palette} from '../../styles/theme.js';
-import {RemeberService, RememberService} from '../../services/RememberService';
+import {RememberService} from '../../services/RememberService';
 
 export default function DiaryMainScreen({route, navigation}) {
+  const isFocused = useIsFocused();
   const {diaryId, diaryName} = route.params;
   const [memories, setMemories] = useState([]);
-  const [filterId, setFilterId] = useState(0);
-  const [sortId, setSortId] = useState(0);
   const [modalVisible, setModalVisible] = useState(false);
-  const [activityData, setActivityData] = useState([]);
+
   const _handleDeleteMemoryButton = id => {
     setModalVisible(true);
   };
@@ -35,7 +28,7 @@ export default function DiaryMainScreen({route, navigation}) {
       .catch(err => {
         console.error('getMemories error', err);
       });
-  }, [diaryId]);
+  }, [diaryId, isFocused]);
   return (
     <>
       <ScreenHeader

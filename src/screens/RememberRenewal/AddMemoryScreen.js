@@ -27,7 +27,9 @@ export default function AddMemoryScreen({route, navigation}) {
       })
       .catch(err => {
         console.error('일기 작성 error', err);
+        console.log(err);
       });
+    navigation.goBack();
   };
   return (
     <>

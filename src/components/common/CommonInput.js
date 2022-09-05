@@ -4,28 +4,29 @@ import {theme} from '../../styles/theme.js';
 
 const CommonInput = ({placeholder, handleChange, handleSubmit, bigger}) => {
   return (
-    <SearchContainer bigger={bigger}>
+    <Container bigger={bigger}>
       {bigger ? (
-        <BiggerSearchInput
+        <BiggerInput
           placeholder={placeholder}
           onChangeText={text => handleChange(text)}
           returnKeyLabel="완료"
           multiline={true}
         />
       ) : (
-        <SearchInput
+        <Input
           placeholder={placeholder}
           onChangeText={text => handleChange(text)}
           returnKeyLabel="완료"
+          onSubmitEditing={() => handleSubmit()}
         />
       )}
-    </SearchContainer>
+    </Container>
   );
 };
 
 export default CommonInput;
 
-const SearchContainer = styled.View`
+const Container = styled.View`
   flex-direction: column;
   background-color: ${theme.colors.search};
   width: 100%;
@@ -35,7 +36,7 @@ const SearchContainer = styled.View`
   justify-content: space-between;
 `;
 
-const SearchInput = styled.TextInput`
+const Input = styled.TextInput`
   font-weight: 400;
   color: ${theme.colors.font};
   font-size: 14px;
@@ -47,7 +48,7 @@ const SearchInput = styled.TextInput`
   }
 `;
 
-const BiggerSearchInput = styled.TextInput`
+const BiggerInput = styled.TextInput`
   font-weight: 400;
   overflow: scroll;
   color: ${theme.colors.font};
