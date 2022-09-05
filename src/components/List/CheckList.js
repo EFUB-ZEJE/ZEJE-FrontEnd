@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import {theme} from '../../styles/theme';
 import {useCheckDeleteAllTasksModal} from '../../modal/recoil/useModals';
 import CheckDeleteAllTasksModal from '../../modal/modals/List/CheckDeleteAllTasksModal';
-
+import {Subhead_long2} from '../../styles/font';
 import {saveData, getData} from '../../data/LocalStorage';
 import Spinner from 'react-native-loading-spinner-overlay';
 import {tasksState} from '../../data/GlobalVariable';
@@ -30,7 +30,6 @@ export default function CheckList({route}) {
   const [tasks, setTasks] = useRecoilState(tasksState);
   const [isLoading, setIsLoading] = useState(true);
 
-  console.log(tasks);
   const {openModal: openExceedMaximumListModal} = useExceedMaximumListModal();
   const {openModal: openCheckDeleteAllTasksModal} =
     useCheckDeleteAllTasksModal();
@@ -53,15 +52,20 @@ export default function CheckList({route}) {
 
   const storeData = async tasks => {
     await saveData('tasks', tasks);
-    setTasks(tasks);
+    if (typeof tasks == 'object') setTasks(tasks);
+    else {
+      console.log('아닙니다');
+    }
   };
 
   const loadData = async () => {
     setIsLoading(true);
     const loadedData = await getData('tasks');
 
-    if (loadedData) {
+    if (typeof loadedData == 'object') {
       setTasks(loadedData);
+    } else {
+      console.log('아닙니다');
     }
 
     setIsLoading(false);
@@ -86,6 +90,7 @@ export default function CheckList({route}) {
 
   useEffect(() => {
     loadData();
+    console.log('useEffect');
   }, []);
 
   return (
@@ -96,6 +101,7 @@ export default function CheckList({route}) {
         visible={isLoading}
         textContent="Loading..."
       />
+
       {mode == 'view' ? (
         <TextContainer1>
           <Pressable
