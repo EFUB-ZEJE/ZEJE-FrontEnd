@@ -3,7 +3,7 @@ import React from 'react';
 import {View, TouchableOpacity} from 'react-native';
 import styled from 'styled-components/native';
 import font from '../../styles/font.js';
-import DropShadow from 'react-native-drop-shadow';
+
 import SvgIcon from '../common/SvgIcon';
 
 const RememberCard = ({
@@ -16,41 +16,28 @@ const RememberCard = ({
   navigation,
 }) => {
   return (
-    <DropShadow
-      style={{
-        shadowColor: '#000',
-        shadowOffset: {
-          width: 0,
-          height: 3,
-        },
-        shadowOpacity: 0.06,
-        shadowRadius: 5,
-      }}>
-      <BoxContainer
-        onPress={() =>
-          navigation.navigate('MemoryMain', {
-            diaryId: diaryId,
-            memoryId: memoryId,
-          })
-        }>
-        {image ? (
-          <ImageContainer source={{uri: image}} />
-        ) : (
-          <ImageContainer
-            source={require('../../assets/images/thumbnail.png')}
-          />
-        )}
-        <TextContainer>
-          <View>
-            <font.title.Subhead2>{title}</font.title.Subhead2>
-            <font.body.Caption>{address}</font.body.Caption>
-          </View>
-          <TouchableOpacity onPress={() => handleDelete(id)}>
-            <SvgIcon name="Trash" />
-          </TouchableOpacity>
-        </TextContainer>
-      </BoxContainer>
-    </DropShadow>
+    <BoxContainer
+      onPress={() =>
+        navigation.navigate('MemoryMain', {
+          diaryId: diaryId,
+          memoryId: memoryId,
+        })
+      }>
+      {image ? (
+        <ImageContainer source={{uri: image}} />
+      ) : (
+        <ImageContainer source={require('../../assets/images/thumbnail.png')} />
+      )}
+      <TextContainer>
+        <View>
+          <font.title.Subhead2>{title}</font.title.Subhead2>
+          <font.body.Caption>{address}</font.body.Caption>
+        </View>
+        <TouchableOpacity onPress={() => handleDelete(id)}>
+          <SvgIcon name="Trash" />
+        </TouchableOpacity>
+      </TextContainer>
+    </BoxContainer>
   );
 };
 
