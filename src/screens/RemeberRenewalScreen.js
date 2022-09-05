@@ -28,6 +28,7 @@ export default function RememberRenewalScreen({navigation}) {
     RememberService.getDiaries()
       .then(res => {
         setDiaries(res.data);
+        console.log('*');
       })
       .catch(err => {
         console.error('Diaries error', err);

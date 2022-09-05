@@ -35,7 +35,7 @@ export default function SpotList({places, type}) {
     return new Promise((resolve, reject) => {
       Geolocation.getCurrentPosition(
         position => {
-          places?.forEach(place => {
+          places.forEach(place => {
             const distBetween = haversine(position.coords, place);
             place.dist = distBetween;
           });
