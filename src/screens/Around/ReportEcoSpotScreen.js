@@ -9,6 +9,7 @@ import {
   FilterList,
   SizedBox,
 } from '../../components';
+
 import {Subhead2, Caption} from '../../styles/font';
 import {DiaryService} from '../../services/DiaryService';
 import {palette} from '../../styles/theme';
@@ -73,6 +74,7 @@ export default function ReportEcoSpotScreen({navigation}) {
           <FilterList>
             {filters.map(f => (
               <FilterBox
+                key={f.id}
                 id={f.id}
                 title={f.title}
                 activated={f.id === filterId}

@@ -7,6 +7,7 @@ import {
   MyListScreen,
   AroundScreen,
   RememberScreen,
+  RememberRenewalScreen,
 } from '../screens';
 import {
   accelerometer,
@@ -110,7 +111,8 @@ export default function TabNavigator() {
       <Tab.Screen name="홈" component={HomeScreen} />
       <Tab.Screen name="리스트" component={MyListScreen} />
       <Tab.Screen name="둘러보기" component={AroundScreen} />
-      <Tab.Screen name="기록하기" component={RememberScreen} />
+      <Tab.Screen name="기록하기" component={RememberRenewalScreen} />
+      {/* <Tab.Screen name="기록하기" component={RememberScreen} /> */}
     </Tab.Navigator>
   );
 }

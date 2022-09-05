@@ -8,10 +8,18 @@ import {
 } from '../../components';
 import {RememberService} from '../../services/RememberService';
 
-export default function DairyPostScreen({navigation}) {
+export default function AddMemoryScreen({route, navigation}) {
+  const {diaryId} = route.params;
   const [title, setTitle] = useState();
+  const _handleTitleChange = text => {
+    setTitle(text);
+  };
   const [body, setBody] = useState();
+  const _handleBodyChange = text => {
+    setBody(text);
+  };
   const [date, setDate] = useState(new Date());
+
   const _handleComplete = () => {
     RememberService.addMemory(diaryId, title, body)
       .then(res => {
@@ -19,7 +27,9 @@ export default function DairyPostScreen({navigation}) {
       })
       .catch(err => {
         console.error('일기 작성 error', err);
+        console.log(err);
       });
+    navigation.goBack();
   };
   return (
     <>
@@ -35,8 +45,8 @@ export default function DairyPostScreen({navigation}) {
         <WriteEditor
           title={title}
           body={body}
-          onChangeBody={setBody}
-          onChangeTitle={setTitle}
+          onChangeBody={_handleBodyChange}
+          onChangeTitle={_handleTitleChange}
         />
         <ImageEditor />
       </ScreenContainer>

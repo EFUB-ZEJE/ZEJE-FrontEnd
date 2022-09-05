@@ -81,7 +81,7 @@ export default function WishList() {
                 image={place.spotDTO.image}
                 title={place.spotDTO.name}
                 address={place.spotDTO.location}
-                liked={true}
+                liked={false}
                 handleLike={() => _deleteFromWishList(place.wishId)}
               />
             ))}
@@ -94,7 +94,7 @@ export default function WishList() {
               id={place.wishId}
               title={place.spotDTO.name}
               address={place.spotDTO.location}
-              liked={true}
+              liked={false}
               handleLike={() => _handleLikeChange(place.wishId)}
             />
           ))}
