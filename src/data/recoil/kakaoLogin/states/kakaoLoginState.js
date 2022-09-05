@@ -12,5 +12,5 @@ export const kakaoLoginState = atom({
 
 export const kakaoSigninState = atom({
   key: 'kakaoSigninState',
-  default: {},
+  default: false,
 });

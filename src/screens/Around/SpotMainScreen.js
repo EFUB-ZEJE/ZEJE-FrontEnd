@@ -21,7 +21,7 @@ import Layout from '../../styles/layout';
 import SvgIcon from '../../components/common/SvgIcon';
 import font from '../../styles/font';
 import {theme, palette} from '../../styles/theme';
-import AroundService from '../../services/AroundService';
+import {AroundService} from '../../services/AroundService';
 import Spinner from 'react-native-loading-spinner-overlay';
 import {getData, saveData} from '../../data/LocalStorage';
 import {useFocusedOrangeOrder} from '../../data/recoil/oranges/hooks/useFocusedOrangeOrder';
