@@ -4,14 +4,14 @@ import {Center} from 'native-base';
 import {KakaoLoginButton, LogoLogin} from '../../assets';
 import {useKakaoLogin} from '../../data/recoil/kakaoLogin/hooks/useKakaoLogin';
 import AuthService from '../../services/AuthService';
-import {ACCESS_TOKEN, saveData} from '../../data/LocalStorage';
+import {ACCESS_TOKEN, IS_INSTALLED, saveData} from '../../data/LocalStorage';
 import Spinner from 'react-native-loading-spinner-overlay';
 import {theme} from '../../styles/theme';
 import CheckToS from '../../components/Login/CheckToS';
 import {useToSNotCheckedModal} from '../../modal/recoil/useModals';
 
 export default function LoginScreen({navigation}) {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const {kakaoSignin, kakaoLoginResponse, signInWithKakao, getProfile} =
     useKakaoLogin();
   const [toSChecked, setToSChecked] = useState(false);
@@ -24,18 +24,22 @@ export default function LoginScreen({navigation}) {
       openModal();
     }
   };
+
   useEffect(() => {
-    if (kakaoLoginResponse.id !== '' && kakaoSignin) {
-      setIsLoading(true);
+    setIsLoading(true);
+    if (kakaoLoginResponse.id !== '') {
       AuthService.getAccessToken(kakaoLoginResponse)
         .then(res => {
           saveData(ACCESS_TOKEN, res.data);
+          console.log(res.data);
+          saveData(IS_INSTALLED, 'true');
           setIsLoading(false);
           navigation.navigate('TabNavigator');
         })
         .catch(err => console.error(err));
     } else {
       getProfile();
+      setIsLoading(false);
     }
   }, [kakaoLoginResponse.id, kakaoSignin]);
 
@@ -49,19 +53,20 @@ export default function LoginScreen({navigation}) {
       />
       <Center flex={1}>
         <LogoLogin />
-        {kakaoLoginResponse.id == '' && (
-          <CheckToS
-            onPress={() => {
-              navigation.navigate('ToSDetail');
-            }}
-            toSChecked={toSChecked}
-            setToSChecked={setToSChecked}
-          />
+        {!kakaoSignin && (
+          <>
+            <CheckToS
+              onPress={() => {
+                navigation.navigate('ToSDetail');
+              }}
+              toSChecked={toSChecked}
+              setToSChecked={setToSChecked}
+            />
+            <ButtonWrapper onPress={() => onPressHandler()}>
+              <KakaoLoginButton />
+            </ButtonWrapper>
+          </>
         )}
-
-        <ButtonWrapper onPress={() => onPressHandler()}>
-          <KakaoLoginButton />
-        </ButtonWrapper>
       </Center>
     </>
   );
