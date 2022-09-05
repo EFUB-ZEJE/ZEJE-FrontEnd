@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import {ScreenHeader, FolderList, FolderTitle} from '../components';
-import {DiaryService} from '../services/DiaryService';
+import {RememberService} from '../services/RememberService';
 export default function RememberScreen({navigation}) {
   const [modalVisible, setModalVisible] = useState(false);
   const [folder, setFolder] = useState('');
   const [diaries, setDiaries] = useState([]);
 
   useEffect(() => {
-    DiaryService.getDiaries()
+    RememberService.getDiaries()
       .then(res => {
         setDiaries(res.data);
       })
