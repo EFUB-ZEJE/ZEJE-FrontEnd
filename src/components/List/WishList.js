@@ -15,7 +15,7 @@ export default function WishList() {
       .then(res => {
         if (res.status == 200) {
           setWishList(res.data);
-          console.log(res.data);
+          //console.log(res.data);
         } else {
           console.log('위시리스트를 가져오지 못했습니다.');
         }
