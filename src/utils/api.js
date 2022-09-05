@@ -1,7 +1,7 @@
-import {BASE_URL, EV_STATION_BASE_URL} from '../constants/config';
+import {EV_STATION_BASE_URL} from '../constants/config';
 import Config from 'react-native-config';
 import axios from 'axios';
-
+import {BASE_URL} from './base_url';
 // 로그인 - 토큰 발급 용 api
 export const GET_ACCESS_TOKEN_API = axios.create({
   baseURL: BASE_URL,
