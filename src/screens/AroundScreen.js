@@ -46,7 +46,7 @@ export default function AroundScreen({navigation}) {
           path="TourMain"
           image="spot"
         />
-        <SizedBox height={16} />
+        <SizedBox height={32} />
         <PhotoBanner
           text="ZEJE의 추천 액티비티"
           navigation={navigation}

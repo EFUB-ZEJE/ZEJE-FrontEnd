@@ -5,35 +5,21 @@ import styled from 'styled-components/native';
 import {palette} from '../../styles/theme';
 import font from '../../styles/font.js';
 import SvgIcon from '../common/SvgIcon';
-import DropShadow from 'react-native-drop-shadow';
 
 const NewDiaryCard = ({handlePress, id, name}) => {
   const width = Dimensions.get('window').width;
   return (
-    <DropShadow
-      style={{
-        shadowColor: '#000',
-        shadowOffset: {
-          width: 0,
-          height: 3,
-        },
-        shadowOpacity: 0.06,
-        shadowRadius: 5,
-      }}>
-      <BoxContainer width={width}>
-        <CardContainer width={width} onPress={() => handlePress(id, name)}>
-          <ImageContainer
-            source={require('../../assets/images/thumbnail.png')}
-          />
-          <TextContainer>
-            <font.title.Subhead2 color={palette.gray600}>
-              {name}
-            </font.title.Subhead2>
-            <SvgIcon name="More" />
-          </TextContainer>
-        </CardContainer>
-      </BoxContainer>
-    </DropShadow>
+    <BoxContainer width={width}>
+      <CardContainer width={width} onPress={() => handlePress(id, name)}>
+        <ImageContainer source={require('../../assets/images/thumbnail.png')} />
+        <TextContainer>
+          <font.title.Subhead2 color={palette.gray600}>
+            {name}
+          </font.title.Subhead2>
+          <SvgIcon name="More" />
+        </TextContainer>
+      </CardContainer>
+    </BoxContainer>
   );
 };
 

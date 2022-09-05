@@ -3,7 +3,6 @@ import React from 'react';
 import styled from 'styled-components';
 import {theme} from '../../styles/theme';
 import font from '../../styles/font.js';
-import DropShadow from 'react-native-drop-shadow';
 import SvgIcon from '../common/SvgIcon';
 
 export default function PhotoBanner({text, navigation, path, image}) {
@@ -22,26 +21,14 @@ export default function PhotoBanner({text, navigation, path, image}) {
   }
 
   return (
-    <DropShadow
-      style={{
-        shadowColor: '#000',
-        shadowOffset: {
-          width: 0,
-          height: 3,
-        },
-        shadowOpacity: 0.06,
-        shadowRadius: 5,
-        marginBottom: 12,
-      }}>
-      <BoxContainer onPress={() => navigation.navigate(path)}>
-        <Wrapper>
-          <font.title.Subhead3>{text}</font.title.Subhead3>
-          <SvgIcon name="RightArrow" color={theme.colors.black} />
-        </Wrapper>
-        <Empty />
-        {image}
-      </BoxContainer>
-    </DropShadow>
+    <BoxContainer onPress={() => navigation.navigate(path)}>
+      <Wrapper>
+        <font.title.Subhead3>{text}</font.title.Subhead3>
+        <SvgIcon name="RightArrow" color={theme.colors.black} />
+      </Wrapper>
+      <Empty />
+      {image}
+    </BoxContainer>
   );
 }
 
