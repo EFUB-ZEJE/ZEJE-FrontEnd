@@ -36,25 +36,22 @@ export default function LoginScreen({navigation}) {
 
   const autoLogin = async () => {
     const isInstalled = await getData(IS_INSTALLED);
-    if (isInstalled == 'true') {
+
+    if (isInstalled == 'true' && kakaoLoginResponse.id != '') {
+      AuthService.getAccessToken(kakaoLoginResponse)
+        .then(res => {
+          storeToken(res.data);
+          saveData(ACCESS_TOKEN, res.data);
+          saveData(IS_INSTALLED, 'true');
+          setIsLoading(false);
+          navigation.navigate('TabNavigator');
+        })
+        .catch(err => console.error(err));
       setIsLoading(false);
       navigation.navigate('TabNavigator');
     } else {
-      if (kakaoLoginResponse.id !== '') {
-        AuthService.getAccessToken(kakaoLoginResponse)
-          .then(res => {
-            storeToken(res.data);
-            saveData(ACCESS_TOKEN, res.data);
-            console.log(res.data);
-            saveData(IS_INSTALLED, 'true');
-            setIsLoading(false);
-            navigation.navigate('TabNavigator');
-          })
-          .catch(err => console.error(err));
-      } else {
-        getProfile();
-        setIsLoading(false);
-      }
+      getProfile();
+      setIsLoading(false);
     }
   };
 

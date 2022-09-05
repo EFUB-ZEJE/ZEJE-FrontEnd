@@ -6,7 +6,6 @@ import {
   HomeScreen,
   MyListScreen,
   AroundScreen,
-  RememberScreen,
   RememberRenewalScreen,
 } from '../screens';
 import {
@@ -17,7 +16,6 @@ import {
 import {usePedometer} from '../feature/pedometer/recoil/usePedometer';
 import {useState} from 'react';
 import {useEffect} from 'react';
-import {FruitService} from '../services/FruitService';
 import {useFruitBoxPoint} from '../data/recoil/fruitBox/hooks/useFruitBoxPoint';
 
 const Tab = createBottomTabNavigator();
@@ -35,15 +33,6 @@ export default function TabNavigator() {
   const {setFruitBoxPoint} = useFruitBoxPoint();
 
   useEffect(() => {
-    // api 연결
-    FruitService.getFruitBoxPoint()
-      .then(res => {
-        setFruitBoxPoint(res.data.fruitBox);
-      })
-      .catch(err => {
-        console.error('getFruitBoxPoint error', err);
-      });
-
     const subscription = accelerometer
       .pipe(data => data)
       .subscribe(speed => {
