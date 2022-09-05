@@ -7,7 +7,7 @@ import {
   ImageEditor,
 } from '../../components';
 import FilterBox from '../../components';
-import {DiaryService} from '../../services/DiaryService';
+// import {DiaryService} from '../../services/DiaryService';
 import FilterList from '../../components';
 export default function ReportEcoSpotScreen({navigation}) {
   const [title, setTitle] = useState();

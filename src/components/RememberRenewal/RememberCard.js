@@ -37,7 +37,7 @@ const RememberCard = ({
           <ImageContainer source={{uri: image}} />
         ) : (
           <ImageContainer
-            source={require('../../assets/images/thumbnail.jpg')}
+            source={require('../../assets/images/thumbnail.png')}
           />
         )}
         <TextContainer>

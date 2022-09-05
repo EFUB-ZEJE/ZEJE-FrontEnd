@@ -35,6 +35,7 @@ export {default as DismissCircle} from './icons/DismissCircleIcon.svg';
 export {default as PlusCircle} from './icons/PlusCircleIcon.svg';
 export {default as Trash} from './icons/TrashIcon.svg';
 export {default as Complete} from './icons/CompleteIcon.svg';
+export {default as Modify} from './icons/ModifyIcon.svg';
 
 export {default as LetterSvg} from './images/letter.svg';
 export {default as BasketEmpty} from './images/basket-empty.svg';
