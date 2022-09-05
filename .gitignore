@@ -66,3 +66,4 @@ buck-out/
 #environment
 
 .env
+src/utils/base_url.js
