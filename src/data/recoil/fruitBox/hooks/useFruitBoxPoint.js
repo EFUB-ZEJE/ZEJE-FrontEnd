@@ -17,7 +17,7 @@ export const useFruitBoxPoint = () => {
   const addFruitBoxPoint = ({maxWalk}) => {
     FruitService.setFruitBoxPoint()
       .then(res => {
-        storeStepCount(stepCount - maxWalk, 'minus');
+        storeStepCount(stepCount - maxWalk);
         setFruitBoxPoint(res.data.fruitBox);
       })
       .catch(err => console.error('orangeToPoint error : ', err));

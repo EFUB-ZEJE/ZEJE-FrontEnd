@@ -93,7 +93,7 @@ export default function Orange({top, left, right, order}) {
 
   const changeFlowerToOrange = () => {
     if (stepCount >= 10) {
-      storeStepCount(stepCount - 10, 'minus');
+      storeStepCount(stepCount - 10);
       let randomInt = parseInt(Math.random() * 8);
 
       setChangedOrangeData(randomInt);

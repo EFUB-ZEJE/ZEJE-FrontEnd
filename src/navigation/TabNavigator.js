@@ -67,7 +67,8 @@ export default function TabNavigator() {
     setMagnitudePrevious(() => magnitude);
 
     if (magnitudeDelta > 2) {
-      storeStepCount(stepCount, 'plus');
+      const tmp = stepCount + 1;
+      storeStepCount(tmp);
     }
   }, [xAcceleration, yAcceleration, zAcceleration]);
 

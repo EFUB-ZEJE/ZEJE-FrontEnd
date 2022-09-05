@@ -17,7 +17,7 @@ function LeftWalks() {
       />
       <Pressable
         onPress={() => {
-          storeStepCount(stepCount + 1000, 'minus');
+          storeStepCount(stepCount + 1000);
         }}>
         <TextBold fontSize={12} color={theme.colors.font} fontWeight={700}>
           {stepCount.toString()}걸음

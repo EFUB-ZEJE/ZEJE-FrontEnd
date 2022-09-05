@@ -11,7 +11,7 @@ import {
 } from '../../components';
 
 import {Subhead2, Caption} from '../../styles/font';
-import {DiaryService} from '../../services/DiaryService';
+// import {DiaryService} from '../../services/DiaryService';
 import {palette} from '../../styles/theme';
 import {theme} from '../../styles/theme';
 import styled, {css} from 'styled-components';

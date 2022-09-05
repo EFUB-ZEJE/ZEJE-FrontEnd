@@ -4,7 +4,7 @@ import {ScrollView} from 'react-native';
 import OnBoardingSlide from '../../components/OnBoarding/OnBoardingSlide';
 import {palette, theme} from '../../styles/theme';
 import layout from '../../styles/layout';
-import {getData, IS_INSTALLED} from '../../data/LocalStorage';
+import {getData, IS_INSTALLED, saveData} from '../../data/LocalStorage';
 import {useNavigation} from '@react-navigation/native';
 import Spinner from 'react-native-loading-spinner-overlay';
 
@@ -30,12 +30,12 @@ export default function OnBoardingScreen() {
 
   return (
     <ScrollView>
-      {/* <Spinner
+      <Spinner
         cancelable={true}
         color={theme.colors.main}
         visible={isInstalled}
         textContent="Loading..."
-      /> */}
+      />
       <Column
         flex={1}
         backgroundColor={palette.orange50}
