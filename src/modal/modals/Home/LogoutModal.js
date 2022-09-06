@@ -15,6 +15,7 @@ export default function LogoutModal() {
   const _logout = () => {
     signOutWithKakao();
     navigation.navigate('Login');
+    closeModal();
   };
   return (
     <ModalSheet isModalOpen={isModalOpen} closeModal={closeModal}>
