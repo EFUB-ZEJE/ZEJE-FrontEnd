@@ -33,6 +33,7 @@ const IconContainer = styled.TouchableOpacity`
 
 //컨테이너에 shadow추가 필요
 export default function SpotDetail({spotInfo, navigation}) {
+  console.log(spotInfo);
   return (
     <Container>
       <Wrapper>
@@ -40,14 +41,6 @@ export default function SpotDetail({spotInfo, navigation}) {
         <SizedBox height={9} />
         <font.body.Body1>{spotInfo.location}</font.body.Body1>
       </Wrapper>
-      <IconContainer
-        onPress={() => {
-          //navigation.navigate(스팟 상세보기 스크린)
-
-          console.log('스팟 상세보기 스크린으로 이동');
-        }}>
-        <SvgIcon name="RightArrow" size={'30px'} color={theme.colors.main} />
-      </IconContainer>
     </Container>
   );
 }

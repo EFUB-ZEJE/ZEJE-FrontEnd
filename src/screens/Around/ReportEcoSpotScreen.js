@@ -39,7 +39,7 @@ export default function ReportEcoSpotScreen({navigation}) {
   ];
 
   const _reportSpot = () => {
-    Alert.alert('알림', '제보되었습니다', [
+    Alert.alert('알림', '제보기능은 다음에 찾아뵙겠습니다 :)', [
       {
         text: '확인',
         style: 'default',
@@ -57,15 +57,14 @@ export default function ReportEcoSpotScreen({navigation}) {
 
       <ScreenContainer>
         <Col>
-          <Subhead2>장소명</Subhead2>
-          <SizedBox height={8} />
-          <CommonBanner
+          {/**  <Subhead2>장소명</Subhead2>
+          <SizedBox height={8} /> <CommonBanner
             text="구글 지도에서 찾기"
             color={palette.gray350}
             bgColor={palette.gray100}
             onPress={() => console.log('카카오지도로 이동')}
             icon="RightArrow"
-          />
+          /> */}
         </Col>
         <SizedBox height={24} />
         <Col>

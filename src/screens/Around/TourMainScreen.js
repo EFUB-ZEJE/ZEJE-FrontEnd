@@ -61,6 +61,8 @@ export default function TourMainScreen({navigation}) {
   };
   const _handleLikeChange = id => {
     let newData = tourData;
+    console.log(newData);
+    console.log(id);
     newData[id].liked = !newData[id].liked;
     setTourData(newData);
   };
@@ -76,16 +78,6 @@ export default function TourMainScreen({navigation}) {
         handleChange={_handleTextChange}
       />
       <ScreenContainer>
-        <FilterList>
-          {filters.map(f => (
-            <FilterBox
-              id={f.id}
-              title={f.title}
-              activated={f.id === filterId}
-              handlePress={_handleFilterChange}
-            />
-          ))}
-        </FilterList>
         <BottomSheet
           modalVisible={modalVisible}
           setModalVisible={setModalVisible}
@@ -110,10 +102,7 @@ export default function TourMainScreen({navigation}) {
             </>
           ))}
         </BottomSheet>
-        <SortButton
-          sortBy={sorts[sortId].title}
-          handlePress={_handlePressSortButton}
-        />
+
         {filterId === 0
           ? tourData.map(d => (
               <ImageCard

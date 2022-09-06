@@ -9,16 +9,18 @@ import Spinner from 'react-native-loading-spinner-overlay';
 import {theme} from '../../styles/theme';
 import CheckToS from '../../components/Login/CheckToS';
 import {useToSNotCheckedModal} from '../../modal/recoil/useModals';
+import CheckInfo from '../../components/Login/CheckInfo';
 
 export default function LoginScreen({navigation}) {
   const [isLoading, setIsLoading] = useState(true);
   const {kakaoSignin, kakaoLoginResponse, signInWithKakao, getProfile} =
     useKakaoLogin();
   const [toSChecked, setToSChecked] = useState(false);
+  const [infoChecked, setInfoChecked] = useState(false); // 개인정보
   const {openModal} = useToSNotCheckedModal();
 
   const onPressHandler = () => {
-    if (toSChecked) {
+    if (toSChecked && infoChecked) {
       signInWithKakao();
     } else {
       openModal();
@@ -53,6 +55,7 @@ export default function LoginScreen({navigation}) {
       />
       <Center flex={1}>
         <LogoLogin />
+
         {!kakaoSignin && (
           <>
             <CheckToS
@@ -61,6 +64,13 @@ export default function LoginScreen({navigation}) {
               }}
               toSChecked={toSChecked}
               setToSChecked={setToSChecked}
+            />
+            <CheckInfo
+              onPress={() => {
+                navigation.navigate('Info');
+              }}
+              toSChecked={infoChecked}
+              setToSChecked={setInfoChecked}
             />
             <ButtonWrapper onPress={() => onPressHandler()}>
               <KakaoLoginButton />

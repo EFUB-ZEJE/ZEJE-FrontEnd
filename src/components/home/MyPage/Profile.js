@@ -8,6 +8,9 @@ import styled from 'styled-components';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 
 function Profile({uri, type, setImage}) {
+  if (uri == '') {
+    uri = null;
+  }
   const pickImage = async () => {
     try {
       const result = await launchImageLibrary({
