@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {ScreenHeader, SortButton} from '../../components';
 import {Text} from 'react-native';
-import BikeData from './BikeData.json';
+
 import FoundModal from '../../modal/modals/Around/FoundModal';
 import {useRecoilState} from 'recoil';
 import {FoundModalState} from '../../modal/recoil/modalStates';

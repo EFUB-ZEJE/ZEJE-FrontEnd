@@ -80,7 +80,7 @@ export default function EVstationMap({places}) {
 
           return (
             <Marker
-              key={place.spotId + String(Math.random())}
+              key={place.spotId}
               onPress={() => _onMarkerClick(place)}
               coordinate={{
                 // 제주도 위치

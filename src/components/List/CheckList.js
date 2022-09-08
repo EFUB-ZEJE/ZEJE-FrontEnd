@@ -30,6 +30,8 @@ export default function CheckList({route}) {
   const [tasks, setTasks] = useRecoilState(tasksState);
   const [isLoading, setIsLoading] = useState(true);
 
+  console.log('tasks', tasks);
+
   const {openModal: openExceedMaximumListModal} = useExceedMaximumListModal();
   const {openModal: openCheckDeleteAllTasksModal} =
     useCheckDeleteAllTasksModal();
@@ -52,20 +54,16 @@ export default function CheckList({route}) {
 
   const storeData = async tasks => {
     await saveData('tasks', tasks);
-    if (typeof tasks == 'object') setTasks(tasks);
-    else {
-      console.log('아닙니다');
-    }
+    setTasks(tasks);
   };
 
   const loadData = async () => {
     setIsLoading(true);
     const loadedData = await getData('tasks');
 
-    if (typeof loadedData == 'object') {
+    console.log('loadedData', loadedData);
+    if (loadedData) {
       setTasks(loadedData);
-    } else {
-      console.log('아닙니다');
     }
 
     setIsLoading(false);
@@ -90,7 +88,7 @@ export default function CheckList({route}) {
 
   useEffect(() => {
     loadData();
-    console.log('useEffect');
+    setIsLoading(false);
   }, []);
 
   return (
@@ -127,6 +125,7 @@ export default function CheckList({route}) {
         </TextContainer2>
       )}
       <ListInput _addTask={_addTask} />
+
       {Object.values(tasks)
         .reverse()
         .map(task => (
