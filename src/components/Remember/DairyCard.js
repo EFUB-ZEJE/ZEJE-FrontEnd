@@ -16,7 +16,7 @@ const DiaryCard = ({id, title, date, openModal}) => {
           <font.title.Subhead2>{title}</font.title.Subhead2>
           <font.body.Caption>{date}</font.body.Caption>
         </View>
-        <TouchableOpacity onPress={openModal}>
+        <TouchableOpacity onPress={() => console.log('삭제')}>
           <SvgIcon name="Trash" />
         </TouchableOpacity>
       </TextContainer>

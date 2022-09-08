@@ -38,13 +38,21 @@ export default function BatteryMainScreen({navigation}) {
     EVService.getEVstation()
       .then(res => {
         if (res.status == 200) {
-          deconstructData(res.data.items.item)
-            .then(res => {
-              setEVstations(res);
-              setIsLoading(false);
-              setFoundModalVisible(true);
-            })
-            .catch(err => console.log(err));
+          setEVstations(() => {
+            const deconstructedData = res.data.items.item.map(
+              ({statNm, statId, addr, lat, lng}) => {
+                return {
+                  name: statNm,
+                  spotId: statId,
+                  location: addr,
+                  latitude: parseFloat(lat),
+                  longitude: parseFloat(lng),
+                };
+              },
+            );
+            return deconstructedData;
+          });
+          setIsLoading(false);
         } else {
           console.log('데이터를 가져오는데 실패하였습니다.');
         }

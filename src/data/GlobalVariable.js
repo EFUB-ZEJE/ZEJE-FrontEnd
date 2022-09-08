@@ -1,3 +1,6 @@
 import {atom} from 'recoil';
 
-export const tasksState = atom({key: 'TasksState', default: {}});
+export const tasksState = atom({
+  key: 'TasksState',
+  default: {},
+});

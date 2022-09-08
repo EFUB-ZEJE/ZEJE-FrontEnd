@@ -11,7 +11,7 @@ export default function InfoScreen({navigation}) {
     <>
       <ScreenHeader
         navigation={navigation}
-        screenTitle="이용 약관"
+        screenTitle="개인 정보 처리 방침"
         canGoBack={true}
         canSearch={false}
       />
