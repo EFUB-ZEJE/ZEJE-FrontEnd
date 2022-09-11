@@ -17,7 +17,8 @@ export const saveData = async (key, value) => {
 export const getData = async key => {
   try {
     const loadedData = await AsyncStorage.getItem(key);
-    return loadedData != null ? JSON.parse(loadedData) : null;
+
+    return loadedData === null ? null : JSON.parse(loadedData);
   } catch (e) {
     console.log(e);
   }

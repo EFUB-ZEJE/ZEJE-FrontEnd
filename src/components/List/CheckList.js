@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import {theme} from '../../styles/theme';
 import {useCheckDeleteAllTasksModal} from '../../modal/recoil/useModals';
 import CheckDeleteAllTasksModal from '../../modal/modals/List/CheckDeleteAllTasksModal';
-
+import {Subhead_long2} from '../../styles/font';
 import {saveData, getData} from '../../data/LocalStorage';
 import Spinner from 'react-native-loading-spinner-overlay';
 import {tasksState} from '../../data/GlobalVariable';
@@ -30,7 +30,8 @@ export default function CheckList({route}) {
   const [tasks, setTasks] = useRecoilState(tasksState);
   const [isLoading, setIsLoading] = useState(true);
 
-  console.log(tasks);
+  console.log('tasks', tasks);
+
   const {openModal: openExceedMaximumListModal} = useExceedMaximumListModal();
   const {openModal: openCheckDeleteAllTasksModal} =
     useCheckDeleteAllTasksModal();
@@ -60,6 +61,7 @@ export default function CheckList({route}) {
     setIsLoading(true);
     const loadedData = await getData('tasks');
 
+    console.log('loadedData', loadedData);
     if (loadedData) {
       setTasks(loadedData);
     }
@@ -86,6 +88,7 @@ export default function CheckList({route}) {
 
   useEffect(() => {
     loadData();
+    setIsLoading(false);
   }, []);
 
   return (
@@ -96,6 +99,7 @@ export default function CheckList({route}) {
         visible={isLoading}
         textContent="Loading..."
       />
+
       {mode == 'view' ? (
         <TextContainer1>
           <Pressable
@@ -121,6 +125,7 @@ export default function CheckList({route}) {
         </TextContainer2>
       )}
       <ListInput _addTask={_addTask} />
+
       {Object.values(tasks)
         .reverse()
         .map(task => (

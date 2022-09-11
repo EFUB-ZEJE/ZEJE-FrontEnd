@@ -17,7 +17,7 @@ import TourDetailScreen from './Around/TourDetailScreen';
 import BatteryMainScreen from './Around/BatteryMainScreen';
 import BikeMainScreen from './Around/BikeMainScreen';
 import SpotMainScreen from './Around/SpotMainScreen';
-
+import InfoScreen from './Login/InfoScreen';
 import InformationScreen from './Home/InformationScreen';
 import ProfileEditScreen from './Home/ProfileEditScreen';
 import OpenSourceScreen from './Home/OpenSourceScreen';
@@ -60,4 +60,5 @@ export {
   DiaryMainScreen,
   AddMemoryScreen,
   MemoryMainScreen,
+  InfoScreen,
 };

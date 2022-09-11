@@ -2,7 +2,7 @@ import {EV_STATION_API} from '../utils/api';
 import axios from 'axios';
 import Config from 'react-native-config';
 
-const NUM_OF_EV_STATIONS_TO_GET = 50;
+const NUM_OF_EV_STATIONS_TO_GET = 10;
 const EVService = {
   getEVstation: () =>
     axios.get(

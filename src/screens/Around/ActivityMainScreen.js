@@ -16,12 +16,22 @@ import {
 import font from '../../styles/font.js';
 import {theme} from '../../styles/theme.js';
 import {AroundService} from '../../services/AroundService';
-
+import ListService from '../../services/ListService';
 export default function ActivityMainScreen({navigation}) {
   const [filterId, setFilterId] = useState(0);
   const [sortId, setSortId] = useState(0);
   const [modalVisible, setModalVisible] = useState(false);
   const [activityData, setActivityData] = useState([]);
+
+  const _addLike = spotId => {
+    ListService.addWishList(spotId).then(res => {
+      if (res.data == 200) {
+        console.log(successWishList);
+      } else {
+        console.log('add wish failed');
+      }
+    });
+  };
 
   useEffect(() => {
     AroundService.getActivityList()
@@ -77,16 +87,6 @@ export default function ActivityMainScreen({navigation}) {
         handleChange={_handleTextChange}
       />
       <ScreenContainer>
-        <FilterList>
-          {filters.map(f => (
-            <FilterBox
-              id={f.id}
-              title={f.title}
-              activated={f.id === filterId}
-              handlePress={_handleFilterChange}
-            />
-          ))}
-        </FilterList>
         <BottomSheet
           modalVisible={modalVisible}
           setModalVisible={setModalVisible}>
@@ -110,10 +110,7 @@ export default function ActivityMainScreen({navigation}) {
             </>
           ))}
         </BottomSheet>
-        <SortButton
-          sortBy={sorts[sortId].title}
-          handlePress={_handlePressSortButton}
-        />
+
         {filterId === 0
           ? activityData.map(d => (
               <ImageCard

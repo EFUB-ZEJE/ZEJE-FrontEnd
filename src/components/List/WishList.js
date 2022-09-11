@@ -15,7 +15,7 @@ export default function WishList() {
       .then(res => {
         if (res.status == 200) {
           setWishList(res.data);
-          console.log(res.data);
+          //console.log(res.data);
         } else {
           console.log('위시리스트를 가져오지 못했습니다.');
         }
@@ -81,7 +81,7 @@ export default function WishList() {
                 image={place.spotDTO.image}
                 title={place.spotDTO.name}
                 address={place.spotDTO.location}
-                liked={false}
+                liked={true}
                 handleLike={() => _deleteFromWishList(place.wishId)}
               />
             ))}
@@ -94,7 +94,7 @@ export default function WishList() {
               id={place.wishId}
               title={place.spotDTO.name}
               address={place.spotDTO.location}
-              liked={false}
+              liked={true}
               handleLike={() => _handleLikeChange(place.wishId)}
             />
           ))}

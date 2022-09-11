@@ -35,18 +35,19 @@ export default function EcoItemScreen({navigation}) {
       return;
     }
 
-    //저장된 data가 없을때 예외처리
     const ID = Date.now().toString();
     const newTaskObject = {
       [ID]: {id: ID, text: text, completed: false},
     };
 
-    storeData({...newTaskObject, ...loadedData}); //데이터 저장
+    if (loadedData) storeData({...newTaskObject, ...loadedData}); //데이터 저장
+    else storeData(newTaskObject); //저장된 data가 없을때 예외처리
+
     openAddSuccessModal();
   };
 
   const storeData = async tasks => {
-    await saveData('tasks', JSON.stringify(tasks));
+    await saveData('tasks', tasks);
     setTasks(tasks);
   };
 
