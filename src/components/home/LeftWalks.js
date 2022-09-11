@@ -32,12 +32,12 @@ export default LeftWalks;
 const styles = StyleSheet.create({
   container: {
     height: 32,
-    width: '45%',
+    width: '40%',
     backgroundColor: 'white',
     borderRadius: 16,
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingHorizontal: 10,
+    paddingHorizontal: 12,
   },
 });
 
