@@ -1,17 +1,21 @@
 import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
-import {Text} from 'react-native';
+import {Text, TouchableOpacity} from 'react-native';
 import font from '../../styles/font.js';
 import {theme} from '../../styles/theme.js';
 import Reviews from '../../components/Around/Reviews.js';
+import {Subhead3} from '../../styles/font.js';
+import ModalButton from '../../components/home/ModalButton.js';
 
 import {
   ScreenHeader,
   ScreenContainer,
   SizedBox,
   CommonButton,
+  SvgIcon,
 } from '../../components';
 import {AroundService} from '../../services/AroundService';
+
 export default function TourDetailScreen({route, navigation}) {
   const {spotId} = route.params;
   const [data, setData] = useState('');
@@ -100,19 +104,29 @@ export default function TourDetailScreen({route, navigation}) {
         <SizedBox height={4} />
         <font.body.Body1>{data.location}</font.body.Body1>
 
-        <CommonButton
-          text="지도에서 위치 확인하기"
-          bgColor={theme.main}
-          color="#fff"
-        />
+        <SizedBox height={48} />
+        <ReviewContainer>
+          <Subhead3>후기 </Subhead3>
+          <TouchableOpacity onPress={() => navigation.navigate('WriteReview')}>
+            <SvgIcon name="Write" />
+          </TouchableOpacity>
+        </ReviewContainer>
         <Reviews reviews={reviews} />
       </ScreenContainer>
     </>
   );
 }
 
+const ReviewContainer = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 4px;
+  padding: 4px;
+`;
 const ImageContainer = styled.Image`
   width: 100%;
   height: 180px;
   border-radius: 10px;
 `;
+
+const ReviewBox = styled.View``;

@@ -61,6 +61,6 @@ export {default as Bell} from './icons/bell.svg';
 export {default as Review} from './icons/review.svg';
 
 export {default as GrayCircle} from './icons/gray-circle.svg';
-
+export {default as Write} from './icons/write.svg';
 export {default as LogoLogin} from './images/logo-login.svg';
 export {default as KakaoLoginButton} from './images/kakao-login-button.svg';
