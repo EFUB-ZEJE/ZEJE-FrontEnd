@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import {useIsFocused} from '@react-navigation/native';
 import {
-  ScreenContainer,
   ScreenHeader,
   CommonButton,
   RememberCard,
@@ -45,25 +44,25 @@ export default function DiaryMainScreen({route, navigation}) {
           onPress={() => navigation.navigate('AddMemory', {diaryId: diaryId})}
         />
         <SizedBox height={16} />
-        {memories.length !== 0 ? (
-          memories.map(m => (
-            <RememberCard
-              diaryId={diaryId}
-              memoryId={m.memoryId}
-              title={m.title}
-              address={m.createdDate}
-              navigation={navigation}
-              handleDelete={_handleDeleteMemoryButton}
-            />
-          ))
-        ) : (
-          <></>
-        )}
+        {memories.map(m => (
+          <RememberCard
+            diaryId={diaryId}
+            memoryId={m.memoryId}
+            title={m.title}
+            address={m.createdDate}
+            navigation={navigation}
+            handleDelete={_handleDeleteMemoryButton}
+          />
+        ))}
       </ScreenContainer>
     </>
   );
 }
 
+const ScreenContainer = styled.View`
+  flex-direction: row;
+  flex-wrap: wrap;
+`;
 const filters = [
   {id: 0, title: '전체'},
   {id: 1, title: '스포츠'},

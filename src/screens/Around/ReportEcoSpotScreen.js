@@ -97,7 +97,6 @@ export default function ReportEcoSpotScreen({navigation}) {
             textAlignVertical="top"
             multiline={true}
             numberOfLines={9}
-            tec
           />
         </Col>
         <SizedBox height={24} />
