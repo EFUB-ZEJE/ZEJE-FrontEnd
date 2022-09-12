@@ -29,7 +29,7 @@ import ReportEcoSpotScreen from './Around/ReportEcoSpotScreen';
 import DiaryMainScreen from './RememberRenewal/DiaryMainScreen';
 import AddMemoryScreen from './RememberRenewal/AddMemoryScreen';
 import MemoryMainScreen from './RememberRenewal/MemoryMainScreen';
-
+import SearchMapScreen from './Around/SearchMapScreen';
 export {
   OnBoardingScreen,
   LoginScreen,
@@ -61,4 +61,5 @@ export {
   AddMemoryScreen,
   MemoryMainScreen,
   InfoScreen,
+  SearchMapScreen,
 };

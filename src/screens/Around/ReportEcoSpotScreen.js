@@ -11,23 +11,68 @@ import {
 } from '../../components';
 
 import {Subhead2, Caption} from '../../styles/font';
-
+import {AroundService} from '../../services/AroundService';
 import {palette} from '../../styles/theme';
 import {theme} from '../../styles/theme';
 import styled, {css} from 'styled-components';
 import ModalButton from '../../components/home/ModalButton';
 import {CommonBanner} from '../../components';
 import {Alert} from 'react-native';
+import {CommonInput} from '../../components';
 export default function ReportEcoSpotScreen({navigation}) {
-  const [title, setTitle] = useState();
-  const [body, setBody] = useState();
-
+  const [name, setName] = useState(''); // 장소명
+  const [description, setDescription] = useState(''); //설명
+  const [image, setImage] = useState(null); //이미지
+  const [coordinate, setCoordinate] = useState({
+    //좌표
+    // 제주도 위치
+    latitude: 33.38825,
+    longitude: 126.4324,
+  });
+  const [location, setLocation] = useState('');
   const [filterId, setFilterId] = useState(0);
 
   const _handleFilterChange = id => {
     setFilterId(id);
   };
-  const _handleComplete = () => {};
+  const _handleComplete = () => {
+    var body = new FormData();
+
+    body.append('name', name);
+    body.append('type', filters[filterId].title);
+
+    var photo = null;
+    if (image) {
+      photo = {name: image.fileName, uri: image.uri, type: image.type};
+    }
+
+    body.append('image', photo);
+    body.append('description', description);
+    body.append('mapX', coordinate.longitude);
+    body.append('mapY', coordinate.latitude);
+    body.append('location', location);
+    console.log(body);
+
+    AroundService.reportSpot(body)
+      .then(res => {
+        if (res.status == 200) {
+          Alert.alert('알림', '제보가 완료되었습니다 :)', [
+            {
+              text: '확인',
+              style: 'default',
+            },
+          ]);
+        } else {
+          Alert.alert('알림', '제보에 실패했습니다 :(', [
+            {
+              text: '확인',
+              style: 'default',
+            },
+          ]);
+        }
+      })
+      .catch(err => console.log(err));
+  };
 
   const filters = [
     {id: 0, title: '관광'},
@@ -39,12 +84,7 @@ export default function ReportEcoSpotScreen({navigation}) {
   ];
 
   const _reportSpot = () => {
-    Alert.alert('알림', '제보기능은 다음에 찾아뵙겠습니다 :)', [
-      {
-        text: '확인',
-        style: 'default',
-      },
-    ]);
+    _handleComplete();
   };
   return (
     <>
@@ -57,14 +97,39 @@ export default function ReportEcoSpotScreen({navigation}) {
 
       <ScreenContainer>
         <Col>
-          {/**  <Subhead2>장소명</Subhead2>
-          <SizedBox height={8} /> <CommonBanner
-            text="구글 지도에서 찾기"
+          <Subhead2>장소명</Subhead2>
+          <SizedBox height={8} />
+          <CommonInput
+            placeholder={'장소명을 입력해주세요'}
+            value={name}
+            handleSubmit={() => console.log('제출')}
+            handleChange={name => setName(name)}
+          />
+        </Col>
+        <SizedBox height={12} />
+        <Col>
+          <Subhead2>위치</Subhead2>
+          <SizedBox height={8} />
+          <CommonBanner
+            text="지도에서 찾기"
             color={palette.gray350}
             bgColor={palette.gray100}
-            onPress={() => console.log('카카오지도로 이동')}
+            onPress={() =>
+              navigation.navigate('SearchMap', {coordinate, setCoordinate})
+            }
             icon="RightArrow"
-          /> */}
+          />
+        </Col>
+        <SizedBox height={12} />
+        <Col>
+          <Subhead2>주소</Subhead2>
+          <SizedBox height={8} />
+          <CommonInput
+            placeholder={'주소를 입력해주세요'}
+            value={location}
+            handleSubmit={() => console.log('제출')}
+            handleChange={location => setLocation(location)}
+          />
         </Col>
         <SizedBox height={24} />
         <Col>
@@ -83,7 +148,7 @@ export default function ReportEcoSpotScreen({navigation}) {
           </FilterList>
         </Col>
         <SizedBox height={24} />
-        <ImageEditor />
+        <ImageEditor setImage={setImage} />
 
         <Col>
           <Subhead2 color={theme.colors.black}>장소설명</Subhead2>
@@ -96,8 +161,9 @@ export default function ReportEcoSpotScreen({navigation}) {
             placeholderTextColor={palette.gray350}
             textAlignVertical="top"
             multiline={true}
+            value={description}
             numberOfLines={9}
-            tec
+            onChangeText={desc => setDescription(desc)}
           />
         </Col>
         <SizedBox height={24} />

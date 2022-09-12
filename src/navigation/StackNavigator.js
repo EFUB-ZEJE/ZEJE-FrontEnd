@@ -29,6 +29,7 @@ import {
   AddMemoryScreen,
   MemoryMainScreen,
   InfoScreen,
+  SearchMapScreen,
 } from '../screens';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import LoginScreen from '../screens/Login/LoginScreen';
@@ -62,6 +63,7 @@ export default function StackNavigator() {
       <Stack.Screen name="TourMain" component={TourMainScreen} />
       <Stack.Screen name="TourDetail" component={TourDetailScreen} />
       <Stack.Screen name="ReportSpot" component={ReportEcoSpotScreen} />
+      <Stack.Screen name="SearchMap" component={SearchMapScreen} />
       <Stack.Screen name="BatteryMain" component={BatteryMainScreen} />
       <Stack.Screen name="BikeMain" component={BikeMainScreen} />
       <Stack.Screen name="SpotMain" component={SpotMainScreen} />

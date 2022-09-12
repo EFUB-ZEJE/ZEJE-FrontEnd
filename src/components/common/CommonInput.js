@@ -1,8 +1,14 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import {theme} from '../../styles/theme.js';
+import {palette, theme} from '../../styles/theme.js';
 
-const CommonInput = ({placeholder, handleChange, handleSubmit, bigger}) => {
+const CommonInput = ({
+  placeholder,
+  handleChange,
+  handleSubmit,
+  bigger,
+  value,
+}) => {
   return (
     <Container bigger={bigger}>
       {bigger ? (
@@ -11,13 +17,17 @@ const CommonInput = ({placeholder, handleChange, handleSubmit, bigger}) => {
           onChangeText={text => handleChange(text)}
           returnKeyLabel="완료"
           multiline={true}
+          value={value}
+          placeholderTextColor={palette.gray250}
         />
       ) : (
         <Input
           placeholder={placeholder}
           onChangeText={text => handleChange(text)}
           returnKeyLabel="완료"
+          value={value}
           onSubmitEditing={() => handleSubmit()}
+          placeholderTextColor={palette.gray250}
         />
       )}
     </Container>

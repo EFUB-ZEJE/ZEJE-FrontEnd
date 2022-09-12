@@ -16,12 +16,13 @@ const imagePickerOption = {
   includeBase64: Platform.OS === 'android',
 };
 
-export default function ImageEditor() {
-  const MAX_IMG_CNT = 3;
+export default function ImageEditor({setImage}) {
+  const MAX_IMG_CNT = 1;
   const [imgs, setImgs] = useState([]);
 
   const onPickImage = res => {
     // console.log("onPickImage",imgs.length)
+
     if (imgs.length >= MAX_IMG_CNT) {
       //3개 이상 이미지 추가 불가능 하게
       return;
@@ -29,6 +30,9 @@ export default function ImageEditor() {
       return;
     } else if (res.assets[0].uri) {
       setImgs(imgs => [...imgs, res.assets[0].uri]);
+    }
+    if (setImage) {
+      setImage(res.assets[0]);
     }
   };
   const onLaunchImageLibrary = () => {
