@@ -7,7 +7,7 @@ import styled from 'styled-components';
 
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 
-function Profile({uri, type, setImage}) {
+function Profile({uri, type, setImage, size}) {
   if (uri == '') {
     uri = null;
   }
@@ -29,7 +29,7 @@ function Profile({uri, type, setImage}) {
     return (
       <HStack justifyContent="center" space={2} position="relative">
         <Avatar
-          size={'xl'}
+          size={size ? size : 'xl'}
           source={{
             uri: uri
               ? uri
@@ -43,7 +43,7 @@ function Profile({uri, type, setImage}) {
     return (
       <HStack justifyContent="center" space={2}>
         <Avatar
-          size={'xl'}
+          size={size ? size : 'xl'}
           source={{
             uri: uri
               ? uri
