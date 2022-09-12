@@ -30,47 +30,6 @@ export default function TourDetailScreen({route, navigation}) {
       createdDate: '2022-07-14T17:10:57',
       image: null,
     },
-    {
-      reviewId: 2,
-      spotId: 1,
-      userId: 4,
-      content: 'dsf',
-      score: 5,
-      createdDate: '2022-07-14T17:11:43',
-      image:
-        'http://dnyenjxny3wzj.cloudfront.net/review/스크린샷 2022-07-09 오후 2.53.52-20220714171142.png',
-    },
-    {
-      reviewId: 3,
-      spotId: 1,
-      userId: 4,
-      content:
-        '안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요',
-      score: 2,
-      createdDate: '2022-07-14T17:12:22',
-      image:
-        'http://dnyenjxny3wzj.cloudfront.net/review/제제캐릭터-20220714171221.png',
-    },
-    {
-      reviewId: 4,
-      spotId: 1,
-      userId: 4,
-      content: '안녕',
-      score: 3,
-      createdDate: '2022-07-14T17:12:57',
-      image:
-        'http://dnyenjxny3wzj.cloudfront.net/review/제 제 캐릭터-20220714171256.png',
-    },
-    {
-      reviewId: 5,
-      spotId: 1,
-      userId: 6,
-      content: '안녕',
-      score: 5,
-      createdDate: '2022-07-15T15:40:08',
-      image:
-        'http://dnyenjxny3wzj.cloudfront.net/review/제 제 캐릭터-20220715154007.png',
-    },
   ]);
 
   useEffect(() => {
@@ -84,7 +43,7 @@ export default function TourDetailScreen({route, navigation}) {
       });
   }, [spotId]);
 
-  useEffect(() => {
+  const _fetchReviews = () => {
     AroundService.getReviews(spotId).then(res => {
       if (res.status == 200) {
         setReviews(res.data);
@@ -92,7 +51,13 @@ export default function TourDetailScreen({route, navigation}) {
         console.log('리뷰를 가져오지 못했습니다');
       }
     });
-  });
+  };
+
+  useEffect(() => {
+    //console.log('리뷰가져오기');
+    _fetchReviews();
+  }, [spotId]);
+
   return (
     <>
       <ScreenHeader
@@ -120,7 +85,12 @@ export default function TourDetailScreen({route, navigation}) {
         <ReviewContainer>
           <Subhead3>후기 </Subhead3>
           <TouchableOpacity
-            onPress={() => navigation.navigate('WriteReview', data.spotId)}>
+            onPress={() =>
+              navigation.navigate('WriteReview', {
+                spotId: data.spotId,
+                _fetchReviews: _fetchReviews,
+              })
+            }>
             <SvgIcon name="Write" />
           </TouchableOpacity>
         </ReviewContainer>

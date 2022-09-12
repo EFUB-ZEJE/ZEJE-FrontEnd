@@ -21,7 +21,7 @@ import {Alert} from 'react-native';
 import {Rating} from 'react-native-ratings';
 import {AroundService} from '../../services/AroundService';
 export default function WriteReviewScreen({navigation, route}) {
-  const spotId = route.params;
+  const {spotId, _fetchReviews} = route.params;
   const [ratingCount, setRatingCount] = useState(3);
   const [content, setContent] = useState('');
 
@@ -43,6 +43,7 @@ export default function WriteReviewScreen({navigation, route}) {
             },
           ]);
           setContent('');
+          _fetchReviews();
         } else {
           Alert.alert(
             '알림',

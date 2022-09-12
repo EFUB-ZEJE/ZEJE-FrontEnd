@@ -121,6 +121,7 @@ export default function ActivityMainScreen({navigation}) {
                 liked={false}
                 handleLike={_handleLikeChange}
                 navigation={navigation}
+                type="activity"
               />
             ))
           : activityData
@@ -134,6 +135,7 @@ export default function ActivityMainScreen({navigation}) {
                   liked={false}
                   handleLike={_handleLikeChange}
                   navigation={navigation}
+                  type="activity"
                 />
               ))}
       </ScreenContainer>

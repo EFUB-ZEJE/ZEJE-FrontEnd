@@ -113,6 +113,7 @@ export default function TourMainScreen({navigation}) {
                 liked={false}
                 handleLike={_handleLikeChange}
                 navigation={navigation}
+                type="tour"
               />
             ))
           : tourData
@@ -126,6 +127,7 @@ export default function TourMainScreen({navigation}) {
                   liked={false}
                   handleLike={_handleLikeChange}
                   navigation={navigation}
+                  type="tour"
                 />
               ))}
       </ScreenContainer>
