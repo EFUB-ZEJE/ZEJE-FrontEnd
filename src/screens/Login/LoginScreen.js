@@ -37,8 +37,8 @@ export default function LoginScreen({navigation}) {
   };
 
   const autoLogin = async () => {
-    const isInstalled = await getData(IS_INSTALLED);
-    if (isInstalled == 'true' && kakaoLoginResponse.id != '') {
+    setIsLoading(true);
+    if (kakaoLoginResponse.id != '') {
       AuthService.getAccessToken(kakaoLoginResponse)
         .then(res => {
           storeToken(res.data);
@@ -57,7 +57,6 @@ export default function LoginScreen({navigation}) {
   };
 
   useEffect(() => {
-    setIsLoading(true);
     autoLogin();
   }, [kakaoLoginResponse.id, kakaoSignin]);
 
