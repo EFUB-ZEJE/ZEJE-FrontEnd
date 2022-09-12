@@ -36,6 +36,14 @@ export const AroundService = {
         headers: {'X-AUTH-TOKEN': await getData(ACCESS_TOKEN)},
       },
     ),
+  reportSpot: async body =>
+    API.post('/spotReports', body, {
+      headers: {
+        'X-AUTH-TOKEN': await getData(ACCESS_TOKEN),
+        'content-type': 'multipart/form-data',
+      },
+    }),
+
   writeReview: async body =>
     API.post('/reviews', body, {
       headers: {

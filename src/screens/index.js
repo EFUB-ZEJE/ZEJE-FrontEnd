@@ -29,6 +29,7 @@ import ReportEcoSpotScreen from './Around/ReportEcoSpotScreen';
 import DiaryMainScreen from './RememberRenewal/DiaryMainScreen';
 import AddMemoryScreen from './RememberRenewal/AddMemoryScreen';
 import MemoryMainScreen from './RememberRenewal/MemoryMainScreen';
+import SearchMapScreen from './Around/SearchMapScreen';
 import WriteReviewScreen from './Around/WriteReviewScreen';
 export {
   OnBoardingScreen,
@@ -61,5 +62,6 @@ export {
   AddMemoryScreen,
   MemoryMainScreen,
   InfoScreen,
+  SearchMapScreen,
   WriteReviewScreen,
 };
