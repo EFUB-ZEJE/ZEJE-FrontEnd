@@ -115,6 +115,7 @@ export default function ActivityMainScreen({navigation}) {
           ? activityData.map(d => (
               <ImageCard
                 id={d.spotId}
+                key={d.spotId}
                 title={d.name}
                 address={d.location}
                 image={d.image}
@@ -129,6 +130,7 @@ export default function ActivityMainScreen({navigation}) {
               .map(d => (
                 <ImageCard
                   id={d.spotId}
+                  key={d.spotId}
                   title={d.name}
                   address={d.location}
                   image={d.image}

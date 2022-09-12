@@ -6,7 +6,7 @@ import {palette, theme} from '../../styles/theme.js';
 import Reviews from '../../components/Around/Reviews.js';
 import {Subhead3, Caption} from '../../styles/font.js';
 import ModalButton from '../../components/home/ModalButton.js';
-
+import {Linking} from 'react-native';
 import {
   ScreenHeader,
   ScreenContainer,
@@ -58,6 +58,11 @@ export default function TourDetailScreen({route, navigation}) {
     _fetchReviews();
   }, [spotId]);
 
+  const _openLink = () => {
+    if (data.link == '') return;
+
+    Linking.openURL(data.link);
+  };
   return (
     <>
       <ScreenHeader
@@ -81,7 +86,8 @@ export default function TourDetailScreen({route, navigation}) {
         <SizedBox height={16} />
         <Caption color={palette.gray400}>{data.description}</Caption>
         <SizedBox height={24} />
-
+        <ModalButton text="더 알아보기" onPress={_openLink} />
+        <SizedBox height={24} />
         <ReviewContainer>
           <Subhead3>후기 </Subhead3>
           <TouchableOpacity
@@ -95,7 +101,7 @@ export default function TourDetailScreen({route, navigation}) {
           </TouchableOpacity>
         </ReviewContainer>
 
-        <Reviews reviews={reviews} />
+        <Reviews reviews={reviews} _fetchReviews={_fetchReviews} />
       </ScreenContainer>
     </>
   );

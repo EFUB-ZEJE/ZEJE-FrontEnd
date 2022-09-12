@@ -108,7 +108,7 @@ export default function ActivityDetailScreen({route, navigation}) {
           </TouchableOpacity>
         </ReviewContainer>
 
-        <Reviews reviews={reviews} />
+        <Reviews reviews={reviews} _fetchReviews={_fetchReviews} />
       </ScreenContainer>
     </>
   );

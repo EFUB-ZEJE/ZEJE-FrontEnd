@@ -47,4 +47,8 @@ export const AroundService = {
     API.get(`/reviews/spots/${spotId}`, {
       headers: {'X-AUTH-TOKEN': await getData(ACCESS_TOKEN)},
     }),
+  deleteReview: async reviewId =>
+    API.delete(`reviews/${reviewId}`, {
+      headers: {'X-AUTH-TOKEN': await getData(ACCESS_TOKEN)},
+    }),
 };
