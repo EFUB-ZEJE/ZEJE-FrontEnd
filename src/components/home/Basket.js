@@ -34,8 +34,8 @@ export default function Basket() {
 const Pressable = styled.Pressable`
   position: absolute;
   z-index: 5;
-  right: 12%;
-  bottom: 17%;
+  right: 7%;
+  bottom: 14%;
 `;
 
 const Caption = styled.Text`
