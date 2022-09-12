@@ -19,9 +19,45 @@ import ModalButton from '../../components/home/ModalButton';
 import {CommonBanner} from '../../components';
 import {Alert} from 'react-native';
 import {Rating} from 'react-native-ratings';
+import {AroundService} from '../../services/AroundService';
+export default function WriteReviewScreen({navigation, route}) {
+  const spotId = route.params;
+  const [ratingCount, setRatingCount] = useState(3);
+  const [content, setContent] = useState('');
 
-export default function WriteReviewScreen({navigation}) {
-  const [ratingCount, setRatingCount] = useState(0);
+  const _onSubmitReview = () => {
+    var body = new FormData();
+    body.append('spotId', spotId);
+    body.append('score', ratingCount);
+    body.append('content', content);
+    body.append('image', null);
+
+    AroundService.writeReview(body)
+      .then(res => {
+        console.log(res.status);
+        if (res.status == 201) {
+          Alert.alert('알림', '후기가 등록완료되었습니다 :)', [
+            {
+              text: '확인',
+              style: 'default',
+            },
+          ]);
+          setContent('');
+        } else {
+          Alert.alert(
+            '알림',
+            '후기가 등록에 실패했습니다 :( 다시 시도해주세요! ',
+            [
+              {
+                text: '확인',
+                style: 'default',
+              },
+            ],
+          );
+        }
+      })
+      .catch(err => console.log(err));
+  };
   return (
     <>
       <ScreenHeader
@@ -37,6 +73,7 @@ export default function WriteReviewScreen({navigation}) {
             onFinishRating={score => setRatingCount(score)}
             style={{paddingVertical: 10, margin: 'auto'}}
             imageSize={30}
+            startingValue={3}
           />
           <Caption color={palette.gray600}>
             별표를 스와이프하여 평점을 매겨주세요 :)
@@ -50,11 +87,14 @@ export default function WriteReviewScreen({navigation}) {
           placeholderTextColor={palette.gray350}
           textAlignVertical="top"
           multiline={true}
+          value={content}
+          onChangeText={text => setContent(text)}
           numberOfLines={9}
           maxLength={300}
         />
+
         <SizedBox height={16} />
-        <ModalButton text={'제출하기'} onPress={() => console.log('제출')} />
+        <ModalButton text={'제출하기'} onPress={_onSubmitReview} />
       </ScreenContainer>
     </>
   );
@@ -70,7 +110,7 @@ const TextInput = css`
   color: ${palette.gray350};
   background-color: ${theme.colors.search};
   border-radius: 10px;
-  line-height: 10px;
+  line-height: 18px;
   // margin-top: 8px;
 `;
 const BodyInput = styled.TextInput`

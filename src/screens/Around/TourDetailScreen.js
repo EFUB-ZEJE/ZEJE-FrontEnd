@@ -2,9 +2,9 @@ import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import {Text, TouchableOpacity} from 'react-native';
 import font from '../../styles/font.js';
-import {theme} from '../../styles/theme.js';
+import {palette, theme} from '../../styles/theme.js';
 import Reviews from '../../components/Around/Reviews.js';
-import {Subhead3} from '../../styles/font.js';
+import {Subhead3, Caption} from '../../styles/font.js';
 import ModalButton from '../../components/home/ModalButton.js';
 
 import {
@@ -83,6 +83,16 @@ export default function TourDetailScreen({route, navigation}) {
         console.error('TourList error', err);
       });
   }, [spotId]);
+
+  useEffect(() => {
+    AroundService.getReviews(spotId).then(res => {
+      if (res.status == 200) {
+        setReviews(res.data);
+      } else {
+        console.log('리뷰를 가져오지 못했습니다');
+      }
+    });
+  });
   return (
     <>
       <ScreenHeader
@@ -103,14 +113,18 @@ export default function TourDetailScreen({route, navigation}) {
         <font.title.Subhead3>{data.name}</font.title.Subhead3>
         <SizedBox height={4} />
         <font.body.Body1>{data.location}</font.body.Body1>
+        <SizedBox height={16} />
+        <Caption color={palette.gray400}>{data.description}</Caption>
+        <SizedBox height={24} />
 
-        <SizedBox height={48} />
         <ReviewContainer>
           <Subhead3>후기 </Subhead3>
-          <TouchableOpacity onPress={() => navigation.navigate('WriteReview')}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('WriteReview', data.spotId)}>
             <SvgIcon name="Write" />
           </TouchableOpacity>
         </ReviewContainer>
+
         <Reviews reviews={reviews} />
       </ScreenContainer>
     </>

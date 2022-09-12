@@ -1,13 +1,20 @@
 import {View, Text} from 'react-native';
 import React, {useState} from 'react';
 import styled from 'styled-components';
-import {Subhead2, Caption} from '../../styles/font';
+import {Subhead2, Caption, Body2} from '../../styles/font';
 import {palette} from '../../styles/theme';
 import SizedBox from '../common/SizedBox';
 import Profile from '../home/MyPage/Profile';
 import {Rating} from 'react-native-ratings';
 
 export default function Reviews({reviews}) {
+  if (reviews.length == 0) {
+    return (
+      <View style={{marginLeft: 10}}>
+        <Body2 color={palette.gray350}>아직 작성된 후기가 없습니다.</Body2>
+      </View>
+    );
+  }
   return (
     <>
       {reviews.map(review => {
@@ -19,6 +26,7 @@ export default function Reviews({reviews}) {
 
         return (
           <Review
+            key={review.reviewId}
             userId={review.userId}
             createdDate={deconstructed_date}
             content={review.content}
@@ -38,7 +46,7 @@ function Review({createdDate, userId, content, image, score}) {
 
   return (
     <Container>
-      <Profile uri={image} type="view" size="xs" />
+      <Profile uri={null} type="view" size="xs" />
       <SizedBox width={8} />
       <SubContainer>
         <RatingContainer>
