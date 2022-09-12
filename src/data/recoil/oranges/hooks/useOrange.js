@@ -1,6 +1,11 @@
 import {useState} from 'react';
 import {useRecoilState} from 'recoil';
-import {getData, LEFT_FLOWERS} from '../../../LocalStorage';
+import {
+  getData,
+  LEFT_FLOWERS,
+  ORANGE_LIST,
+  saveData,
+} from '../../../LocalStorage';
 import {useLeftFlowers} from '../../fruitBox/hooks/useLeftFlowers';
 import {orangesState} from '../states/orangesState';
 
@@ -15,11 +20,16 @@ export const useOrange = () => {
     else setHowMuchLeft(cnt);
   };
 
+  const storeOrange = async orange => {
+    setOrange(orange);
+    await saveData(ORANGE_LIST, orange);
+  };
+
   // 오렌지 삭제하기, 남은 꽃이 꽃봉오리 있으면 불러오기
-  const deleteOrangeList = order => {
+  const deleteOrangeList = async order => {
     getLeft();
     if (howMuchLeft == 0) {
-      setOrange({
+      storeOrange({
         ...orange,
         [order]: {
           name: '',
@@ -27,7 +37,7 @@ export const useOrange = () => {
         },
       });
     } else {
-      setOrange({
+      storeOrange({
         ...orange,
         [order]: {
           name: 'OrangeFlower',
@@ -41,6 +51,7 @@ export const useOrange = () => {
   return {
     orange,
     setOrange,
+    storeOrange,
     deleteOrangeList,
   };
 };

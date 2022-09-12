@@ -14,7 +14,6 @@ import {
 import OrangeSmallProgressBar from './OrangeSmallProgressBar';
 import {usePedometer} from '../../../feature/pedometer/recoil/usePedometer';
 import {useOrange} from '../../../data/recoil/oranges/hooks/useOrange';
-import {ORANGE_LIST, saveData} from '../../../data/LocalStorage';
 import {useFocusedOrangeOrder} from '../../../data/recoil/oranges/hooks/useFocusedOrangeOrder';
 import {useLeftFlowers} from '../../../data/recoil/fruitBox/hooks/useLeftFlowers';
 
@@ -57,11 +56,6 @@ export const ORANGES_LIST = [
   },
 ];
 
-// 오렌지 리스트 바뀐 내용 로컬에 저장
-export async function saveOrangeList(orange) {
-  await saveData(ORANGE_LIST, orange);
-}
-
 export default function Orange({top, left, right, order}) {
   const {openModal: openGoldModal} = useOrangeGoldModal();
   const {openModal: openGreenModal} = useOrangeGreenModal();
@@ -72,22 +66,20 @@ export default function Orange({top, left, right, order}) {
   const {openModal: openThousandModal} = useOrangeThousandModal();
   const {openModal: openTinyModal} = useOrangeTinyModal();
   const {stepCount, storeStepCount} = usePedometer();
-  const {orange, setOrange} = useOrange();
+  const {orange, storeOrange} = useOrange();
   const {setFocusedOrangeOrder} = useFocusedOrangeOrder();
   const {leftFlowers, setLeftFlowers, minusLeftFlowers} = useLeftFlowers();
 
   // [꽃봉오리->오렌지] 바뀐 내용 로컬 및 리코일에 저장
   const setChangedOrangeData = randomInt => {
     if (order != 0) {
-      setOrange({
+      storeOrange({
         ...orange,
         [order]: {
           name: ORANGES_LIST[randomInt].name,
           maxWalk: ORANGES_LIST[randomInt].maxWalk,
         },
       });
-      saveOrangeList(orange);
-    } else {
     }
   };
 

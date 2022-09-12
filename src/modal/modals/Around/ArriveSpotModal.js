@@ -10,11 +10,7 @@ import {CommonButton} from '../../../components';
 import {AroundService} from '../../../services/AroundService';
 import {useOrange} from '../../../data/recoil/oranges/hooks/useOrange';
 import {useFocusedOrangeOrder} from '../../../data/recoil/oranges/hooks/useFocusedOrangeOrder';
-import {
-  ORANGES_LIST,
-  saveOrangeList,
-} from '../../../components/home/oranges/Orange';
-import {getData, LEFT_FLOWERS, saveData} from '../../../data/LocalStorage';
+import {ORANGES_LIST} from '../../../components/home/oranges/Orange';
 import {useLeftFlowers} from '../../../data/recoil/fruitBox/hooks/useLeftFlowers';
 
 const ModalContainer = styled.View`
@@ -32,7 +28,7 @@ export default function ArriveSpotModal({
   setSproutPlace,
 }) {
   const [modalVisible, setModalVisible] = useRecoilState(ArriveSpotModalState);
-  const {orange, setOrange} = useOrange();
+  const {orange, storeOrange} = useOrange();
   const {focusedOrangeOrder} = useFocusedOrangeOrder();
   const {addLeftFlowers} = useLeftFlowers();
 
@@ -40,14 +36,13 @@ export default function ArriveSpotModal({
     if (focusedOrangeOrder == 0) {
       addLeftFlowers();
     } else {
-      setOrange({
+      storeOrange({
         ...orange,
         [focusedOrangeOrder]: {
           name: ORANGES_LIST[0].name,
           maxWalk: ORANGES_LIST[0].maxWalk,
         },
       });
-      saveOrangeList(orange);
     }
   };
 
