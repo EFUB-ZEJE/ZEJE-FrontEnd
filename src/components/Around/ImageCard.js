@@ -15,10 +15,12 @@ const ImageCard = ({
   handleLike,
   image,
   navigation,
+  type,
 }) => {
+  var path = type == 'tour' ? 'TourDetail' : 'ActivityDetail';
+
   return (
-    <BoxContainer
-      onPress={() => navigation.navigate('TourDetail', {spotId: id})}>
+    <BoxContainer onPress={() => navigation.navigate(path, {spotId: id})}>
       {image ? (
         <ImageContainer source={{uri: image}} />
       ) : (

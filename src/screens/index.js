@@ -30,6 +30,7 @@ import DiaryMainScreen from './RememberRenewal/DiaryMainScreen';
 import AddMemoryScreen from './RememberRenewal/AddMemoryScreen';
 import MemoryMainScreen from './RememberRenewal/MemoryMainScreen';
 import SearchMapScreen from './Around/SearchMapScreen';
+import WriteReviewScreen from './Around/WriteReviewScreen';
 export {
   OnBoardingScreen,
   LoginScreen,
@@ -62,4 +63,5 @@ export {
   MemoryMainScreen,
   InfoScreen,
   SearchMapScreen,
+  WriteReviewScreen,
 };

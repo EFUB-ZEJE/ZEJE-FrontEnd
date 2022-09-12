@@ -16,21 +16,25 @@ import {
 import font from '../../styles/font.js';
 import {theme} from '../../styles/theme.js';
 import {AroundService} from '../../services/AroundService';
-
+import ListService from '../../services/ListService';
+import Spinner from 'react-native-loading-spinner-overlay/lib';
 export default function TourMainScreen({navigation}) {
   const [filterId, setFilterId] = useState(0);
   const [sortId, setSortId] = useState(0);
   const [modalVisible, setModalVisible] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [tourData, setTourData] = useState([]);
   useEffect(() => {
     AroundService.getTourList()
       .then(res => {
-        setTourData(res.data.slice(0, 30));
+        setTourData(res.data.slice(0, 100));
+        setIsLoading(false);
       })
       .catch(err => {
         console.error('TourList error', err);
       });
   }, []);
+
   const _handleTextChange = text => {
     if (text.length === 0) {
       AroundService.getTourList()
@@ -59,16 +63,49 @@ export default function TourMainScreen({navigation}) {
     setSortId(id);
     setModalVisible(false);
   };
-  const _handleLikeChange = id => {
+  const _handleLikeChange = spotId => {
     let newData = tourData;
-    console.log(newData);
-    console.log(id);
-    newData[id].liked = !newData[id].liked;
+
+    if (newData[spotId].liked == undefined || newData[spotId].liked == false) {
+      //좋아요 안된 상태면 좋아요 추가
+      ListService.addWishList(spotId)
+        .then(res => {
+          if (res.status == 200) {
+            console.log('위시리스트 추가 성공');
+          } else {
+            console.log('위시리스트 추가 실패');
+          }
+        })
+        .catch(err => console.log(err));
+    } else {
+      //좋아요 된 상태면 좋아요 취소
+      ListService.deleteWishList(spotId)
+        .then(res => {
+          if (res.status == 200) {
+            console.log('위시리스트 삭제 성공');
+          } else {
+            console.log('위시리스트 삭제 실패');
+          }
+        })
+        .catch(err => console.log(err));
+    }
+
+    if (newData[spotId].liked == true || newData[spotId].liked == false) {
+      newData[spotId].liked = !newData[spotId].liked;
+    } else {
+      newData[spotId].liked = true;
+    }
     setTourData(newData);
   };
 
   return (
     <>
+      <Spinner
+        cancelable={true}
+        color={theme.colors.main}
+        visible={isLoading}
+        textContent="Loading..."
+      />
       <ScreenHeader
         navigation={navigation}
         screenTitle="ZEJE의 추천 여행지"
@@ -95,6 +132,7 @@ export default function TourMainScreen({navigation}) {
               {s.id !== 0 ? <SizedBox height={4} /> : <></>}
               <RadioButton
                 id={s.id}
+                key={s.id}
                 label={s.title}
                 activated={sortId === s.id}
                 handlePress={_handleSortChange}
@@ -106,26 +144,30 @@ export default function TourMainScreen({navigation}) {
         {filterId === 0
           ? tourData.map(d => (
               <ImageCard
+                key={d.spotId}
                 id={d.spotId}
                 title={d.name}
                 image={d.image}
                 address={d.location}
-                liked={false}
-                handleLike={_handleLikeChange}
+                liked={d.liked ? d.liked : false}
+                handleLike={() => _handleLikeChange(d.spotId)}
                 navigation={navigation}
+                type="tour"
               />
             ))
           : tourData
               .filter(f => f.type === filters[filterId].title)
               .map(d => (
                 <ImageCard
+                  key={d.spotId}
                   id={d.spotId}
                   title={d.name}
                   image={d.image}
                   address={d.location}
-                  liked={false}
+                  liked={d.liked ? d.liked : false}
                   handleLike={_handleLikeChange}
                   navigation={navigation}
+                  type="tour"
                 />
               ))}
       </ScreenContainer>

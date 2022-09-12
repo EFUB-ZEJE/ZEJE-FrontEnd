@@ -43,4 +43,20 @@ export const AroundService = {
         'content-type': 'multipart/form-data',
       },
     }),
+
+  writeReview: async body =>
+    API.post('/reviews', body, {
+      headers: {
+        'X-AUTH-TOKEN': await getData(ACCESS_TOKEN),
+        'content-type': 'multipart/form-data',
+      },
+    }),
+  getReviews: async spotId =>
+    API.get(`/reviews/spots/${spotId}`, {
+      headers: {'X-AUTH-TOKEN': await getData(ACCESS_TOKEN)},
+    }),
+  deleteReview: async reviewId =>
+    API.delete(`reviews/${reviewId}`, {
+      headers: {'X-AUTH-TOKEN': await getData(ACCESS_TOKEN)},
+    }),
 };

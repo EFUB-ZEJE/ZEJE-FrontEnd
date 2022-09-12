@@ -115,12 +115,14 @@ export default function ActivityMainScreen({navigation}) {
           ? activityData.map(d => (
               <ImageCard
                 id={d.spotId}
+                key={d.spotId}
                 title={d.name}
                 address={d.location}
                 image={d.image}
                 liked={false}
                 handleLike={_handleLikeChange}
                 navigation={navigation}
+                type="activity"
               />
             ))
           : activityData
@@ -128,12 +130,14 @@ export default function ActivityMainScreen({navigation}) {
               .map(d => (
                 <ImageCard
                   id={d.spotId}
+                  key={d.spotId}
                   title={d.name}
                   address={d.location}
                   image={d.image}
                   liked={false}
                   handleLike={_handleLikeChange}
                   navigation={navigation}
+                  type="activity"
                 />
               ))}
       </ScreenContainer>
