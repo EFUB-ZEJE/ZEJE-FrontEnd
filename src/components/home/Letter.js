@@ -16,6 +16,6 @@ export default function Letter() {
 const Pressable = styled.Pressable`
   position: absolute;
   z-index: 5;
-  left: 16%;
-  bottom: 14%;
+  left: 15%;
+  bottom: 11%;
 `;

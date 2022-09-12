@@ -6,7 +6,6 @@ import {
   HomeScreen,
   MyListScreen,
   AroundScreen,
-  RememberScreen,
   RememberRenewalScreen,
 } from '../screens';
 import {
@@ -15,11 +14,8 @@ import {
   setUpdateIntervalForType,
 } from 'react-native-sensors';
 import {usePedometer} from '../feature/pedometer/recoil/usePedometer';
-import {saveStepCount, STEP_COUNT} from '../data/LocalStorage';
 import {useState} from 'react';
 import {useEffect} from 'react';
-import {FruitService} from '../services/FruitService';
-import {useFruitBoxPoint} from '../data/recoil/fruitBox/hooks/useFruitBoxPoint';
 
 const Tab = createBottomTabNavigator();
 const themeGray = palette.gray200;
@@ -32,19 +28,9 @@ export default function TabNavigator() {
   const [zAcceleration, setZAcceleration] = useState(0);
   const [magnitudePrevious, setMagnitudePrevious] = useState(0);
 
-  const {stepCount, setStepCount} = usePedometer();
-  const {setFruitBoxPoint} = useFruitBoxPoint();
+  const {stepCount, storeStepCount} = usePedometer();
 
   useEffect(() => {
-    // api 연결
-    FruitService.getFruitBoxPoint()
-      .then(res => {
-        setFruitBoxPoint(res.data.fruitBox);
-      })
-      .catch(err => {
-        console.error('getFruitBoxPoint error', err);
-      });
-
     const subscription = accelerometer
       .pipe(data => data)
       .subscribe(speed => {
@@ -68,8 +54,8 @@ export default function TabNavigator() {
     setMagnitudePrevious(() => magnitude);
 
     if (magnitudeDelta > 2) {
-      setStepCount(prevSteps => prevSteps + 1);
-      saveStepCount(STEP_COUNT, stepCount.toString());
+      const tmp = stepCount + 1;
+      storeStepCount(tmp);
     }
   }, [xAcceleration, yAcceleration, zAcceleration]);
 
