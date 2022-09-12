@@ -6,7 +6,7 @@ import {usePedometer} from '../../feature/pedometer/recoil/usePedometer';
 import {theme} from '../../styles/theme';
 
 function LeftWalks() {
-  const {stepCount, setStepCount} = usePedometer();
+  const {stepCount, storeStepCount} = usePedometer();
 
   return (
     <Row style={styles.container}>
@@ -17,7 +17,7 @@ function LeftWalks() {
       />
       <Pressable
         onPress={() => {
-          setStepCount(stepCount + 1000);
+          storeStepCount(stepCount + 1000);
         }}>
         <TextBold fontSize={12} color={theme.colors.font} fontWeight={700}>
           {stepCount.toString()}걸음

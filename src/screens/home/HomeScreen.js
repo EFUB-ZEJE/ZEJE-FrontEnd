@@ -7,11 +7,13 @@ import {
 } from '../../components';
 import Home from '../../components/home/Home';
 import {theme} from '../../styles/theme';
-import {getData, ORANGE_LIST} from '../../data/LocalStorage';
+import {getData, ORANGE_LIST, STEP_COUNT} from '../../data/LocalStorage';
 import {useOrange} from '../../data/recoil/oranges/hooks/useOrange';
+import {usePedometer} from '../../feature/pedometer/recoil/usePedometer';
 
 export default function HomeScreen({navigation}) {
-  const {orange, setOrange} = useOrange();
+  const {setOrange} = useOrange();
+  const {setStepCount} = usePedometer();
 
   async function initAsyncStorage() {
     const orangeList = await getData(ORANGE_LIST);

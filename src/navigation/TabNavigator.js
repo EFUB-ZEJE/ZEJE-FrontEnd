@@ -15,7 +15,6 @@ import {
   setUpdateIntervalForType,
 } from 'react-native-sensors';
 import {usePedometer} from '../feature/pedometer/recoil/usePedometer';
-import {saveStepCount, STEP_COUNT} from '../data/LocalStorage';
 import {useState} from 'react';
 import {useEffect} from 'react';
 import {FruitService} from '../services/FruitService';
@@ -32,7 +31,7 @@ export default function TabNavigator() {
   const [zAcceleration, setZAcceleration] = useState(0);
   const [magnitudePrevious, setMagnitudePrevious] = useState(0);
 
-  const {stepCount, setStepCount} = usePedometer();
+  const {stepCount, storeStepCount} = usePedometer();
   const {setFruitBoxPoint} = useFruitBoxPoint();
 
   useEffect(() => {
@@ -68,8 +67,8 @@ export default function TabNavigator() {
     setMagnitudePrevious(() => magnitude);
 
     if (magnitudeDelta > 2) {
-      setStepCount(prevSteps => prevSteps + 1);
-      saveStepCount(STEP_COUNT, stepCount.toString());
+      const tmp = stepCount + 1;
+      storeStepCount(tmp);
     }
   }, [xAcceleration, yAcceleration, zAcceleration]);
 

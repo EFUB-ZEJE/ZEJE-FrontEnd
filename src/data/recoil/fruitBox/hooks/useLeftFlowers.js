@@ -1,6 +1,4 @@
 import {useRecoilState} from 'recoil';
-import {usePedometer} from '../../../../feature/pedometer/recoil/usePedometer';
-import {FruitService} from '../../../../services/FruitService';
 import {LEFT_FLOWERS, saveData} from '../../../LocalStorage';
 
 import {leftFlowersState} from '../states/leftFlowersState';

@@ -4,7 +4,12 @@ import {Center} from 'native-base';
 import {KakaoLoginButton, LogoLogin} from '../../assets';
 import {useKakaoLogin} from '../../data/recoil/kakaoLogin/hooks/useKakaoLogin';
 import AuthService from '../../services/AuthService';
-import {ACCESS_TOKEN, IS_INSTALLED, saveData} from '../../data/LocalStorage';
+import {
+  ACCESS_TOKEN,
+  getData,
+  IS_INSTALLED,
+  saveData,
+} from '../../data/LocalStorage';
 import Spinner from 'react-native-loading-spinner-overlay';
 import {theme} from '../../styles/theme';
 import CheckToS from '../../components/Login/CheckToS';
@@ -15,9 +20,9 @@ export default function LoginScreen({navigation}) {
   const [isLoading, setIsLoading] = useState(true);
   const {kakaoSignin, kakaoLoginResponse, signInWithKakao, getProfile} =
     useKakaoLogin();
+  const {openModal} = useToSNotCheckedModal();
   const [toSChecked, setToSChecked] = useState(false);
   const [infoChecked, setInfoChecked] = useState(false); // 개인정보
-  const {openModal} = useToSNotCheckedModal();
 
   const onPressHandler = () => {
     if (toSChecked && infoChecked) {
@@ -27,22 +32,37 @@ export default function LoginScreen({navigation}) {
     }
   };
 
+  const storeToken = async token => {
+    await saveData(ACCESS_TOKEN, token);
+  };
+
+  const autoLogin = async () => {
+    const isInstalled = await getData(IS_INSTALLED);
+    if (isInstalled == 'true') {
+      setIsLoading(false);
+      navigation.navigate('TabNavigator');
+    } else {
+      if (kakaoLoginResponse.id !== '') {
+        AuthService.getAccessToken(kakaoLoginResponse)
+          .then(res => {
+            storeToken(res.data);
+            saveData(ACCESS_TOKEN, res.data);
+            console.log(res.data);
+            saveData(IS_INSTALLED, 'true');
+            setIsLoading(false);
+            navigation.navigate('TabNavigator');
+          })
+          .catch(err => console.error(err));
+      } else {
+        getProfile();
+        setIsLoading(false);
+      }
+    }
+  };
+
   useEffect(() => {
     setIsLoading(true);
-    if (kakaoLoginResponse.id !== '') {
-      AuthService.getAccessToken(kakaoLoginResponse)
-        .then(res => {
-          saveData(ACCESS_TOKEN, res.data);
-          console.log(res.data);
-          saveData(IS_INSTALLED, 'true');
-          setIsLoading(false);
-          navigation.navigate('TabNavigator');
-        })
-        .catch(err => console.error(err));
-    } else {
-      getProfile();
-      setIsLoading(false);
-    }
+    autoLogin();
   }, [kakaoLoginResponse.id, kakaoSignin]);
 
   return (

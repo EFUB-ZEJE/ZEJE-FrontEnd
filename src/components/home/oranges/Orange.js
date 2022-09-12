@@ -59,7 +59,7 @@ export const ORANGES_LIST = [
 
 // 오렌지 리스트 바뀐 내용 로컬에 저장
 export async function saveOrangeList(orange) {
-  saveData(ORANGE_LIST, orange);
+  await saveData(ORANGE_LIST, orange);
 }
 
 export default function Orange({top, left, right, order}) {
@@ -71,7 +71,7 @@ export default function Orange({top, left, right, order}) {
   const {openModal: openSourModal} = useOrangeSourModal();
   const {openModal: openThousandModal} = useOrangeThousandModal();
   const {openModal: openTinyModal} = useOrangeTinyModal();
-  const {stepCount, setStepCount} = usePedometer();
+  const {stepCount, storeStepCount} = usePedometer();
   const {orange, setOrange} = useOrange();
   const {setFocusedOrangeOrder} = useFocusedOrangeOrder();
   const {leftFlowers, setLeftFlowers, minusLeftFlowers} = useLeftFlowers();
@@ -93,7 +93,7 @@ export default function Orange({top, left, right, order}) {
 
   const changeFlowerToOrange = () => {
     if (stepCount >= 10) {
-      setStepCount(stepCount - 10);
+      storeStepCount(stepCount - 10);
       let randomInt = parseInt(Math.random() * 8);
 
       setChangedOrangeData(randomInt);
