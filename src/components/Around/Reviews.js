@@ -1,4 +1,4 @@
-import {View, Text} from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
 import React, {useState} from 'react';
 import styled from 'styled-components';
 import {Subhead2, Caption, Body2} from '../../styles/font';
@@ -6,13 +6,83 @@ import {palette} from '../../styles/theme';
 import SizedBox from '../common/SizedBox';
 import Profile from '../home/MyPage/Profile';
 import {Rating} from 'react-native-ratings';
+import SvgIcon from '../common/SvgIcon';
+import {AroundService} from '../../services/AroundService';
+import {Alert} from 'react-native';
+import {kakaoLoginState} from '../../data/recoil/kakaoLogin/states/kakaoLoginState';
+import {useRecoilState} from 'recoil';
+export default function Reviews({reviews, edit, _fetchReviews}) {
+  const [userInfo, setUserInfo] = useRecoilState(kakaoLoginState);
 
-export default function Reviews({reviews}) {
   if (reviews.length == 0) {
     return (
       <View style={{marginLeft: 10}}>
         <Body2 color={palette.gray350}>아직 작성된 후기가 없습니다.</Body2>
       </View>
+    );
+  }
+  function Review({createdDate, userId, content, image, score, reviewId}) {
+    const _ratingCompleted = e => {
+      console.log(e);
+    };
+    const _deleteReview = reviewId => {
+      AroundService.deleteReview(reviewId)
+        .then(res => {
+          if (res.status == 200) {
+            Alert.alert('알림', '리뷰가 정상적으로 삭제되었습니다 :)', [
+              {
+                text: '확인',
+                style: 'default',
+              },
+            ]);
+            _fetchReviews();
+          } else {
+            Alert.alert(
+              '알림',
+              '리뷰가 삭제되지 않았습니다. 다시시도해주세요 :)',
+              [
+                {
+                  text: '확인',
+                  style: 'default',
+                },
+              ],
+            );
+          }
+        })
+        .catch(err => console.log(err));
+    };
+    return (
+      <Container>
+        <Profile uri={null} type="view" size="xs" />
+        <SizedBox width={8} />
+        <SubContainer>
+          <RatingContainer>
+            <Rating
+              ratingCount={5}
+              readonly
+              onFinishRating={_ratingCompleted}
+              style={{paddingVertical: 10, margin: 'auto'}}
+              imageSize={15}
+              startingValue={score}
+              isDisabled={true}
+              ratingColor={'#FFB700'}
+            />
+          </RatingContainer>
+
+          <Row>
+            <Subhead2>익명{userId} </Subhead2>
+
+            <Caption color={palette.gray250}> | {createdDate}</Caption>
+          </Row>
+          <SizedBox height={4} />
+          <Caption color={palette.gray400}>{content}</Caption>
+        </SubContainer>
+        {edit && (
+          <TouchableOpacity onPress={() => _deleteReview(reviewId)}>
+            <SvgIcon name="Trash" />
+          </TouchableOpacity>
+        )}
+      </Container>
     );
   }
   return (
@@ -27,6 +97,7 @@ export default function Reviews({reviews}) {
         return (
           <Review
             key={review.reviewId}
+            reviewId={review.reviewId}
             userId={review.userId}
             createdDate={deconstructed_date}
             content={review.content}
@@ -39,41 +110,6 @@ export default function Reviews({reviews}) {
   );
 }
 
-function Review({createdDate, userId, content, image, score}) {
-  const _ratingCompleted = e => {
-    console.log(e);
-  };
-
-  return (
-    <Container>
-      <Profile uri={null} type="view" size="xs" />
-      <SizedBox width={8} />
-      <SubContainer>
-        <RatingContainer>
-          <Rating
-            ratingCount={5}
-            readonly
-            onFinishRating={_ratingCompleted}
-            style={{paddingVertical: 10, margin: 'auto'}}
-            imageSize={15}
-            startingValue={score}
-            isDisabled={true}
-            ratingColor={'#FFB700'}
-          />
-        </RatingContainer>
-
-        <Row>
-          <Subhead2>익명{userId} </Subhead2>
-
-          <Caption color={palette.gray250}> | {createdDate}</Caption>
-        </Row>
-        <SizedBox height={4} />
-        <Caption color={palette.gray400}>{content}</Caption>
-      </SubContainer>
-    </Container>
-  );
-}
-
 const Row = styled.View`
   flex-direction: row;
   justify-content: flex-start;
@@ -82,6 +118,7 @@ const Row = styled.View`
 
 const Container = styled.View`
   flex-direction: row;
+
   border-bottom-width: 0.5px;
   border-bottom-color: ${palette.gray250};
   margin: 4px;
@@ -92,6 +129,7 @@ const Container = styled.View`
 const SubContainer = styled.View`
   flex-direction: column;
   justify-content: flex-start;
+  flex: 1;
 `;
 
 const RatingContainer = styled.View`

@@ -17,6 +17,7 @@ const MyPageService = {
         'content-type': 'multipart/form-data',
       },
     }),
+    
 };
 
 export default MyPageService;
