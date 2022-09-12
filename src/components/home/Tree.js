@@ -13,9 +13,7 @@ function Tree() {
       <Image
         alt="tree background"
         h={'493px'}
-        w={'100%'}
-        borderRadius={10}
-        resizeMode={'cover'}
+        resizeMode={'contain'}
         source={require(`../../assets/images/tree.png`)}
       />
     </View>

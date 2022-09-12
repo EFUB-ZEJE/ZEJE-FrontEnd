@@ -54,8 +54,6 @@ export default function SpotMainScreen({navigation}) {
         setFocusedOrangeOrder(i);
         return;
       }
-      // 홈화면 오렌지부분에 빈 자리가 없다 => setFocusedOrangeOrder(0)
-      setFocusedOrangeOrder(0);
     }
   };
 

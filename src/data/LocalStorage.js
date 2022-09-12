@@ -9,6 +9,8 @@ export const LEFT_FLOWERS = 'leftFlowers'; //남은 꽃
 export const saveData = async (key, value) => {
   try {
     await AsyncStorage.setItem(key, JSON.stringify(value));
+
+    console.log('저장');
     // 혹시 이부분도 key를 stringfy하게끔 수정해도 될까용
   } catch (e) {
     console.log(e);

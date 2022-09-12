@@ -1,5 +1,5 @@
 import React from 'react';
-import {Row, Box} from 'native-base';
+import {Row} from 'native-base';
 import Tree from './Tree';
 import LeftFlowers from './LeftFlowers';
 import LeftWalks from './LeftWalks';
@@ -7,13 +7,13 @@ import {StyleSheet} from 'react-native';
 
 export default function Home() {
   return (
-    <Box>
-      <Row style={styles.stateBar} space={'5%'} w={'100%'}>
-        <LeftFlowers />
+    <>
+      <Row style={styles.stateBar} space={3}>
+        <LeftFlowers leftFlowers={0} />
         <LeftWalks />
       </Row>
       <Tree />
-    </Box>
+    </>
   );
 }
 

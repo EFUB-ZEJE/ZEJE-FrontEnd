@@ -10,16 +10,17 @@ import Spinner from 'react-native-loading-spinner-overlay';
 
 export default function OnBoardingScreen() {
   const navigation = useNavigation();
-  const [isLoading, setIsLoading] = useState(true);
+  const [isInstalled, setIsInstalled] = useState(true);
 
   async function getIsInstalled() {
     const value = await getData(IS_INSTALLED);
     if (value == 'true') {
-      setIsLoading(false);
+      setIsInstalled(true);
       navigation.navigate('Login');
     } else {
-      setIsLoading(false);
+      setIsInstalled(false);
     }
+    setIsInstalled(false);
   }
 
   useEffect(() => {
@@ -28,12 +29,12 @@ export default function OnBoardingScreen() {
 
   return (
     <ScrollView>
-      <Spinner
+      {/* <Spinner
         cancelable={true}
         color={theme.colors.main}
-        visible={isLoading}
+        visible={isInstalled}
         textContent="Loading..."
-      />
+      /> */}
       <Column
         flex={1}
         backgroundColor={palette.orange50}

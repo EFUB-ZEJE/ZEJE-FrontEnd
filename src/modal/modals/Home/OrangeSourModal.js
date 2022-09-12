@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useOrangeSourModal} from '../../recoil/useModals';
 import ModalSheet from '../../../components/common/modal/ModalSheet';
 import {Column} from 'native-base';
@@ -10,21 +10,31 @@ import {usePedometer} from '../../../feature/pedometer/recoil/usePedometer';
 import {useFruitBoxPoint} from '../../../data/recoil/fruitBox/hooks/useFruitBoxPoint';
 import {useOrange} from '../../../data/recoil/oranges/hooks/useOrange';
 import {useFocusedOrangeOrder} from '../../../data/recoil/oranges/hooks/useFocusedOrangeOrder';
-import {ORANGES_LIST} from '../../../components/home/oranges/Orange';
+import {
+  ORANGES_LIST,
+  saveOrangeList,
+} from '../../../components/home/oranges/Orange';
 
 const OrangeSourModal = () => {
   const {isModalOpen, closeModal} = useOrangeSourModal();
   const maxWalk = ORANGES_LIST[6].maxWalk;
   const {stepCount} = usePedometer();
   const {addFruitBoxPoint} = useFruitBoxPoint();
-  const {deleteOrangeList} = useOrange();
+  const {orange, deleteOrangeList} = useOrange();
   const {focusedOrangeOrder} = useFocusedOrangeOrder();
 
   const orangeToPoint = () => {
     addFruitBoxPoint({maxWalk: maxWalk});
     closeModal();
+
+    // 리코일 오렌지리스트에서 삭제하기
     deleteOrangeList(focusedOrangeOrder);
   };
+
+  // 로컬 오렌지리스트에서 삭제하기
+  useEffect(() => {
+    saveOrangeList(orange);
+  }, [orange]);
 
   return (
     <ModalSheet isModalOpen={isModalOpen} closeModal={closeModal}>

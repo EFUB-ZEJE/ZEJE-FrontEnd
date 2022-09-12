@@ -11,13 +11,13 @@ export const useFruitBoxPoint = () => {
   const [donatedFruitBoxPoint, setDonatedFruitBoxPoint] = useRecoilState(
     donatedFruitBoxPointState,
   );
-  const {stepCount, storeStepCount} = usePedometer();
+  const {stepCount, setStepCount} = usePedometer();
 
   // 열매 획득하기
   const addFruitBoxPoint = ({maxWalk}) => {
     FruitService.setFruitBoxPoint()
       .then(res => {
-        storeStepCount(stepCount - maxWalk);
+        setStepCount(stepCount - maxWalk);
         setFruitBoxPoint(res.data.fruitBox);
       })
       .catch(err => console.error('orangeToPoint error : ', err));
