@@ -31,15 +31,18 @@ export default function HomeScreen({navigation}) {
   useEffect(() => {
     setIsLoading(true);
     initAsyncStorage();
-    FruitService.getFruitBoxPoint()
-      .then(res => {
-        setFruitBoxPoint(res.data.fruitBox);
-        setIsLoading(false);
-      })
-      .catch(err => {
-        console.error('getFruitBoxPoint error', err);
-      });
+    setTimeout(() => {
+      FruitService.getFruitBoxPoint()
+        .then(res => {
+          setFruitBoxPoint(res.data.fruitBox);
+          setIsLoading(false);
+        })
+        .catch(err => {
+          console.error('getFruitBoxPoint error', err);
+        });
+    }, 1000);
   }, []);
+
   if (isLoading)
     return (
       <Spinner
