@@ -7,8 +7,6 @@ import {ScreenHeader} from '../../components';
 import OrangeMarker from '../../components/Around/maps/OrangeMarker';
 import Config from 'react-native-config';
 import Geocoder from 'react-native-geocoding';
-import SetLocationModal from '../../modal/modals/Around/setLocationModal.js';
-import {AroundService} from '../../services/AroundService';
 
 export default function SearchMapScreen({navigation, route}) {
   const {coordinate, setCoordinate} = route.params;

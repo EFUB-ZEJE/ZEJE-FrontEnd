@@ -21,7 +21,15 @@ export default function Reviews({reviews, edit, _fetchReviews}) {
       </View>
     );
   }
-  function Review({createdDate, userId, content, image, score, reviewId}) {
+  function Review({
+    createdDate,
+    userId,
+    content,
+    profile,
+    nickname,
+    score,
+    reviewId,
+  }) {
     const _ratingCompleted = e => {
       console.log(e);
     };
@@ -53,7 +61,7 @@ export default function Reviews({reviews, edit, _fetchReviews}) {
     };
     return (
       <Container>
-        <Profile uri={null} type="view" size="xs" />
+        <Profile uri={profile} type="view" size="xs" />
         <SizedBox width={8} />
         <SubContainer>
           <RatingContainer>
@@ -70,7 +78,7 @@ export default function Reviews({reviews, edit, _fetchReviews}) {
           </RatingContainer>
 
           <Row>
-            <Subhead2>익명{userId} </Subhead2>
+            <Subhead2>{nickname} </Subhead2>
 
             <Caption color={palette.gray250}> | {createdDate}</Caption>
           </Row>
@@ -103,6 +111,8 @@ export default function Reviews({reviews, edit, _fetchReviews}) {
             content={review.content}
             image={review.image}
             score={review.score}
+            profile={review.profile}
+            nickname={review.nickname}
           />
         );
       })}

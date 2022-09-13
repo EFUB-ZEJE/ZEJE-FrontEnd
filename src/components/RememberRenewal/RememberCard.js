@@ -45,6 +45,7 @@ export default RememberCard;
 
 const BoxContainer = styled.TouchableOpacity`
   padding-bottom: 16px;
+  width: 100%;
 `;
 
 const ImageContainer = styled.Image`
