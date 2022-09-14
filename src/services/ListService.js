@@ -8,7 +8,7 @@ const ListService = {
       headers: {'X-AUTH-TOKEN': await getData(ACCESS_TOKEN)},
     }),
   addWishList: async spotId =>
-    API.post(`/wish/${spotId}`, {
+    API.post(`/wish/${spotId}`, null, {
       headers: {'X-AUTH-TOKEN': await getData(ACCESS_TOKEN)},
     }),
   deleteWishList: async spotId =>

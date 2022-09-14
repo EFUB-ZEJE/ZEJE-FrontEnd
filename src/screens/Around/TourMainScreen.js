@@ -45,6 +45,7 @@ export default function TourMainScreen({navigation}) {
           console.error('TourList error', err);
         });
     }
+
     AroundService.searchTourList(text)
       .then(res => {
         setTourData(res.data.slice(0, 30));
@@ -64,38 +65,35 @@ export default function TourMainScreen({navigation}) {
     setModalVisible(false);
   };
   const _handleLikeChange = spotId => {
-    let newData = tourData;
+    let newData = [...tourData];
 
-    if (newData[spotId].liked == undefined || newData[spotId].liked == false) {
-      //좋아요 안된 상태면 좋아요 추가
-      ListService.addWishList(spotId)
+    if (newData[spotId - 1].isWish == false) {
+      ListService.addWishList(spotId) //좋아요 안된 상태면 좋아요 추가
         .then(res => {
           if (res.status == 200) {
             console.log('위시리스트 추가 성공');
+            newData[spotId - 1].isWish = true;
+
+            setTourData(newData);
           } else {
             console.log('위시리스트 추가 실패');
           }
         })
         .catch(err => console.log(err));
     } else {
-      //좋아요 된 상태면 좋아요 취소
-      ListService.deleteWishList(spotId)
+      ListService.deleteWishList(spotId) //좋아요 된 상태면 좋아요 취소
         .then(res => {
           if (res.status == 200) {
             console.log('위시리스트 삭제 성공');
+            newData[spotId - 1].isWish = false;
+
+            setTourData(newData);
           } else {
             console.log('위시리스트 삭제 실패');
           }
         })
         .catch(err => console.log(err));
     }
-
-    if (newData[spotId].liked == true || newData[spotId].liked == false) {
-      newData[spotId].liked = !newData[spotId].liked;
-    } else {
-      newData[spotId].liked = true;
-    }
-    setTourData(newData);
   };
 
   return (
@@ -149,7 +147,7 @@ export default function TourMainScreen({navigation}) {
                 title={d.name}
                 image={d.image}
                 address={d.location}
-                liked={d.liked ? d.liked : false}
+                liked={d.isWish}
                 handleLike={() => _handleLikeChange(d.spotId)}
                 navigation={navigation}
                 type="tour"
@@ -164,8 +162,8 @@ export default function TourMainScreen({navigation}) {
                   title={d.name}
                   image={d.image}
                   address={d.location}
-                  liked={d.liked ? d.liked : false}
-                  handleLike={_handleLikeChange}
+                  liked={d.isWish}
+                  handleLike={() => _handleLikeChange(d.spotId)}
                   navigation={navigation}
                   type="tour"
                 />

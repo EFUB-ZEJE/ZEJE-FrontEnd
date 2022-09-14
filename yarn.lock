@@ -7628,7 +7628,7 @@
   "resolved" "https://registry.npmjs.org/react-native-swipe-gestures/-/react-native-swipe-gestures-1.0.5.tgz"
   "version" "1.0.5"
 
-"react-native@*", "react-native@^0.0.0-0 || 0.60 - 0.70 || 1000.0.0", "react-native@^0.69.5", "react-native@>= 0.30.0", "react-native@>= 0.64.3", "react-native@>=0.39.0", "react-native@>=0.42.0", "react-native@>=0.48.4", "react-native@>=0.50.0", "react-native@>=0.57.0", "react-native@>=0.59.0", "react-native@>=0.65.0":
+"react-native@*", "react-native@^0.0.0-0 || 0.60 - 0.70 || 1000.0.0", "react-native@^0.69.5", "react-native@>= 0.30.0", "react-native@>= 0.64.3", "react-native@>=0.39.0", "react-native@>=0.42.0", "react-native@>=0.48.4", "react-native@>=0.57.0", "react-native@>=0.59.0", "react-native@>=0.65.0":
   "integrity" "sha512-4Psrj1nDMLQjBXVH8n3UikzOHQc8+sa6NbxZQR0XKtpx8uC3HiJBgX+/FIum/RWxfi5J/Dt/+A2gLGmq2Hps8g=="
   "resolved" "https://registry.npmjs.org/react-native/-/react-native-0.69.5.tgz"
   "version" "0.69.5"
