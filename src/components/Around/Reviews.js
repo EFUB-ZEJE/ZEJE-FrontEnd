@@ -11,6 +11,7 @@ import {AroundService} from '../../services/AroundService';
 import {Alert} from 'react-native';
 import {kakaoLoginState} from '../../data/recoil/kakaoLogin/states/kakaoLoginState';
 import {useRecoilState} from 'recoil';
+
 export default function Reviews({reviews, edit, _fetchReviews}) {
   const [userInfo, setUserInfo] = useRecoilState(kakaoLoginState);
 
@@ -84,6 +85,18 @@ export default function Reviews({reviews, edit, _fetchReviews}) {
           </Row>
           <SizedBox height={4} />
           <Caption color={palette.gray400}>{content}</Caption>
+          <SizedBox height={4} />
+          <TouchableOpacity
+            onPress={() => {
+              Alert.alert('알림', '신고가 완료되었습니다.', [
+                {
+                  text: '확인',
+                  style: 'default',
+                },
+              ]);
+            }}>
+            <Caption color={palette.gray250}>신고</Caption>
+          </TouchableOpacity>
         </SubContainer>
         {edit && (
           <TouchableOpacity onPress={() => _deleteReview(reviewId)}>

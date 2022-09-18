@@ -7,20 +7,20 @@ export const AroundService = {
       headers: {'X-AUTH-TOKEN': await getData(ACCESS_TOKEN)},
     }),
   getTourList: async () =>
-    API.get('/spots/search/travel/과거', {
+    API.get('/spots/search/travels/과거', {
       headers: {'X-AUTH-TOKEN': await getData(ACCESS_TOKEN)},
     }),
 
   searchTourList: async search =>
-    API.get(`/spots/search/travel/과거/${search}`, {
+    API.get(`/spots/search/travels/과거/${search}`, {
       headers: {'X-AUTH-TOKEN': await getData(ACCESS_TOKEN)},
     }),
   getActivityList: async () =>
-    API.get('/spots/search/experience/과거', {
+    API.get('/spots/search/experiences/과거', {
       headers: {'X-AUTH-TOKEN': await getData(ACCESS_TOKEN)},
     }),
   searchActivityList: async search =>
-    API.get(`/spots/search/experience/과거/${search}`, {
+    API.get(`/spots/search/experiences/과거/${search}`, {
       headers: {'X-AUTH-TOKEN': await getData(ACCESS_TOKEN)},
     }),
   getSpot: async spotId =>
